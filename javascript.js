@@ -41,7 +41,7 @@ var gameUrl = "https://api.mysportsfeeds.com/v2.0/pull/nba/current/date/" + toda
 var teamsUrl = "https://api.mysportsfeeds.com/v2.0/pull/nba/current/team_stats_totals.json"
 
 
-var api = config.MY_KEY
+var api = config.MY_KEY;
 
 
 
