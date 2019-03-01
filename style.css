@@ -1,0 +1,24 @@
+body {
+    background-image: url("images/retina_wood.png");
+    
+  };
+
+@font-face {
+    font-family: 'googleSpies';
+    src: url('fonts/Google-spies.ttf') format('opentype');
+}
+@font-face {
+  font-family: 'Ncaa';
+  src: url('fonts/ncaa.otf') format('opentype');
+}
+
+.conference {
+  font-family: 'Ncaa';
+  font-size: 18px;
+}
+
+.ncaa {
+  font-family: 'Ncaa';
+  font-size: 25px;
+}
+
