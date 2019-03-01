@@ -152,6 +152,9 @@ $.ajax
             hDisplayName == "OKC";
           };
 
+         var aLogo = aTeam.toLowerCase();
+         var hLogo = hTeam.toLowerCase();
+
           var htmlString = '<div class="card  text-dark rounded m-1" style="width: 187px;" id='+aTeam + hTeam+'>';
           htmlString += '<div class="row mr-1 ml-1 ">';
           htmlString += '<table class="table  table-borderless table-sm  mt-1 mb-1" style="background-color: rgba(245, 245, 245, .7) !important;" >';
@@ -164,12 +167,12 @@ $.ajax
           htmlString += '</thead>';
           htmlString += '<tbody>';
           htmlString += '<tr>';
-          htmlString += '<th scope="row" class="table-borderless align-middle text-left  pt-0 pr-0" style="font-size: 12px;" ><img src="images/logos/' + aTeam + '.png" height="25px" width="25px">' + " " + aDisplayName + '</th>'
+          htmlString += '<th scope="row" class="table-borderless align-middle text-left  pt-0 pr-0" style="font-size: 12px;" ><img src="images/logos/' + aLogo + '.png" height="25px" width="25px">' + " " + aDisplayName + '</th>'
           htmlString += '<td class="table-borderless align-middle text-left text-muted  pt-0 pl-0" id="'+aTeam+'record" style=" font-size: 10px;"> </td>';
           htmlString += '<td class="table-borderless  align-middle pt-0 text-right" style=" font-size: 14px;"><strong>' + aScore + '</strong></td>';
           htmlString += '</tr>';
           htmlString += '<tr>';
-          htmlString += '<th scope="row" class="align-middle text-left  pt-0 pr-0" style="font-size: 12px;"><img src="images/logos/' + hTeam + '.png" height="25px" width="25px">' + " " + hDisplayName + '</th>'
+          htmlString += '<th scope="row" class="align-middle text-left  pt-0 pr-0" style="font-size: 12px;"><img src="images/logos/' + hLogo + '.png" height="25px" width="25px">' + " " + hDisplayName + '</th>'
           htmlString += '<td class="align-middle text-left text-muted  pt-0 pl-0" id="'+hTeam+'record" style=" font-size: 10px;"> </td>';
           htmlString += '<td class="  align-middle  pt-0 text-right" style=" font-size: 14px;"><strong>' + hScore + '</strong></td>';
           htmlString += '</tr>';  
