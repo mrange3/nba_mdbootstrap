@@ -5,7 +5,6 @@ var api = config.MY_KEY
 
 
 
-
 $.ajax
     ({
         type: "GET",

@@ -1,6 +1,6 @@
 
 //==================== Todays Date =========================
-
+console.log("hello")
 var today = new Date();
 
 function schedule(today) {
@@ -42,9 +42,6 @@ var teamsUrl = "https://api.mysportsfeeds.com/v2.0/pull/nba/current/team_stats_t
 
 
 var api = config.MY_KEY;
-
-
-
 
 $.ajax
   ({
