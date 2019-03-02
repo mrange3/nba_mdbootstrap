@@ -155,9 +155,10 @@ $.ajax
          var aLogo = aTeam.toLowerCase();
          var hLogo = hTeam.toLowerCase();
 
-          var htmlString = '<div class="col-4 p-0">';
-          htmlString += '<div class="card  text-dark  rounded m-1" " id='+aTeam + hTeam+'>';
-          htmlString += '<table class="table  table-borderless table-sm w-90 mt-2 mb-2 " style="background-color: rgba(245, 245, 245, .7) !important;" >';
+          var htmlString = '<div class="col-4 ">';
+          htmlString += '<div class="card justify-content-center text-dark  rounded m-1" " id='+aTeam + hTeam+'>';
+          htmlString += '<div class="m-1">'
+          htmlString += '<table class="table rounded table-borderless table-sm w-85 m-0" style="background-color: rgba(245, 245, 245, .7) !important;" >';
           htmlString += '<thead class="table-borderless">';
           htmlString += '<tr>';
           htmlString += '<th class="table-borderless  pt-0" style=" font-size: 11px;">' + localTimeString + '</th>';
@@ -168,16 +169,17 @@ $.ajax
           htmlString += '<tbody>';
           htmlString += '<tr>';
           htmlString += '<th scope="row" class="table-borderless align-middle text-left  pt-0 " style="font-size: 12px;" ><img src="images/logos/' + aLogo + '.png" height="25px" width="25px">' + " " + aDisplayName + '</th>'
-          htmlString += '<td class="table-borderless align-middle text-left text-muted  pt-0 " id="'+aTeam+'record" style=" font-size: 10px;"> </td>';
-          htmlString += '<td class="table-borderless  align-middle pt-0 text-right" style=" font-size: 14px;"><strong>' + aScore + '</strong></td>';
+          htmlString += '<td class="table-borderless align-middle text-left text-muted  pt-0 pl-0" id="'+aTeam+'record" style=" font-size: 10px;"> </td>';
+          htmlString += '<td class="table-borderless  align-middle pt-0 text-right pl-0" style=" font-size: 14px;"><strong>' + aScore + '</strong></td>';
           htmlString += '</tr>';
           htmlString += '<tr>';
           htmlString += '<th scope="row" class="align-middle text-left  pt-0 " style="font-size: 12px;"><img src="images/logos/' + hLogo + '.png" height="25px" width="25px">' + " " + hDisplayName + '</th>'
-          htmlString += '<td class="align-middle text-left text-muted  pt-0 " id="'+hTeam+'record" style=" font-size: 10px;"> </td>';
-          htmlString += '<td class="  align-middle  pt-0 text-right " style=" font-size: 14px;"><strong>' + hScore + '</strong></td>';
+          htmlString += '<td class="align-middle text-left text-muted  pt-0 pl-0" id="'+hTeam+'record" style=" font-size: 10px;"> </td>';
+          htmlString += '<td class="  align-middle  pt-0 text-right pl-0" style=" font-size: 14px;"><strong>' + hScore + '</strong></td>';
           htmlString += '</tr>';  
           htmlString += '</tbody>';      
           htmlString += '</table>';
+          htmlString += '</div>';
           htmlString += '</div>';
           htmlString += '</div>';
           $("#schedule-holder").append(htmlString);      // Append the new elements 
