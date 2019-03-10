@@ -19,8 +19,14 @@ body {
 
 .ncaa {
   font-family: 'Ncaa';
-  font-size: 25px;
+  font-size: 16px;
 }
+
+.title {
+  font-family: 'Ncaa';
+  font-size: 24px;
+}
+
 
 @media (max-width:740px)  { 
   .standings {
@@ -43,4 +49,5 @@ display: none;
   .footer {
     display: none;
   }
+  
 }
