@@ -123,11 +123,12 @@ $.ajax
           }
 
           if (status == "COMPLETED_PENDING_REVIEW" || status == "COMPLETED") {
-            status = "FINAL";
+            scoreStatus = "FINAL";
           } else if (status == "UNPLAYED") {
-            status = " ";
+            scoreStatus = localTimeString;
           } else if (status == "LIVE") {
-            status = timeRemaining + quarter;
+            $("#scoreboard-header").addClass("text-danger");
+            scoreStatus = timeRemaining + quarter;
           }
 
 
@@ -143,14 +144,14 @@ $.ajax
             aDisplayName = "BKN";
           } ;
           if (aTeam == "OKL") {
-            aDisplayName == "OKC";
+            aDisplayName = "OKC";
           };
 
           if (hTeam == "BRO") {
             hDisplayName = "BKN";
           } ;
           if (hTeam == "OKL") {
-            hDisplayName == "OKC";
+            hDisplayName = "OKC";
           };
 
          var aLogo = aTeam.toLowerCase();
@@ -162,21 +163,21 @@ $.ajax
           htmlString += '<table class="table rounded table-borderless table-sm w-85 m-0" style="background-color: rgba(245, 245, 245, .7) !important;" >';
           htmlString += '<thead class="table-borderless">';
           htmlString += '<tr>';
-          htmlString += '<th class="table-borderless  pt-0" style=" font-size: 11px;">' + localTimeString + '</th>';
-          htmlString += '<th class="table-borderless  text-danger text-center pt-0" style=" font-size: 11px;"><small></small></th>';
-          htmlString += '<th class="table-borderless  text-danger text-right pt-0" style=" font-size: 11px;">' + status + '</th>';
+          htmlString += '<th class="table-borderless scoreboard-header pt-0" style=" font-size: 11px;">' + scoreStatus + '</th>';
+          htmlString += '<th class="table-borderless scoreboard-header  ;"></th>';
+          htmlString += '<th class="table-borderless scoreboard-header "></th>';
           htmlString += '</tr>';
           htmlString += '</thead>';
           htmlString += '<tbody>';
           htmlString += '<tr>';
-          htmlString += '<th scope="row" class="table-borderless align-middle text-left  pt-0 " style="font-size: 12px;" ><img src="images/logos/' + aLogo + '.png" height="25px" width="25px">' + " " + aDisplayName + '</th>'
-          htmlString += '<td class="table-borderless align-middle text-left text-muted  pt-0 pl-0" id="'+aTeam+'record" style=" font-size: 10px;"> </td>';
-          htmlString += '<td class="table-borderless  align-middle pt-0 text-right pl-0" style=" font-size: 14px;"><strong>' + aScore + '</strong></td>';
+          htmlString += '<th scope="row" class="table-borderless scoreboard align-middle text-left  pt-0 " style="font-size: 12px;" ><img class="scoreLogo" src="images/logos/' + aLogo + '.png" height="25px" width="25px">' + " " + aDisplayName + '</th>'
+          htmlString += '<td class="table-borderless scoreboard align-middle teamRecord text-left text-muted  pt-0 pl-0" id="'+aTeam+'record" style=" font-size: 10px;"> </td>';
+          htmlString += '<td class="table-borderless  scoreboard align-middle pt-0 text-right pl-0" style=" font-size: 14px;"><strong>' + aScore + '</strong></td>';
           htmlString += '</tr>';
           htmlString += '<tr>';
-          htmlString += '<th scope="row" class="align-middle text-left  pt-0 " style="font-size: 12px;"><img src="images/logos/' + hLogo + '.png" height="25px" width="25px">' + " " + hDisplayName + '</th>'
-          htmlString += '<td class="align-middle text-left text-muted  pt-0 pl-0" id="'+hTeam+'record" style=" font-size: 10px;"> </td>';
-          htmlString += '<td class="  align-middle  pt-0 text-right pl-0" style=" font-size: 14px;"><strong>' + hScore + '</strong></td>';
+          htmlString += '<th scope="row" class="align-middle text-left scoreboard pt-0 " style="font-size: 12px;"><img class="scoreLogo" src="images/logos/' + hLogo + '.png" height="25px" width="25px">' + " " + hDisplayName + '</th>'
+          htmlString += '<td class="align-middle text-left text-muted teamRecord scoreboard pt-0 pl-0" id="'+hTeam+'record" style=" font-size: 10px;"> </td>';
+          htmlString += '<td class="  align-middle scoreboard pt-0 text-right pl-0" style=" font-size: 14px;"><strong>' + hScore + '</strong></td>';
           htmlString += '</tr>';  
           htmlString += '</tbody>';      
           htmlString += '</table>';
@@ -186,6 +187,9 @@ $.ajax
           $("#schedule-holder").append(htmlString);      // Append the new elements 
 
 
+          if (status == "LIVE" || status == "COMPLETED_PENDING_REVIEW" || status == "COMPLETED" ) {
+            $(".scoreboard-header").addClass("text-danger");
+          };
   
 
           for (j = 0; j < teamStats.teamStatsTotals.length; j++) {
