@@ -38,6 +38,7 @@ display: none;
     width: 20px;
   }
   .teamRecord {
-    display: none;
+    font-size: 6px !important;
+
   }
 }
