@@ -94,7 +94,9 @@ $.ajax
           var aScore = response.games[i].score.awayScoreTotal;
           var hScore = response.games[i].score.homeScoreTotal;
           var status = response.games[i].schedule.playedStatus;
-          var quarter = response.games[i].score.currentQuarter
+          var quarter = response.games[i].score.currentQuarter;
+          var intermission = response.games[i].score.currentIntermission;
+
 
           function myTime(time) {
             var hr = ~~(time / 3600);
@@ -110,25 +112,23 @@ $.ajax
           }
           var timeRemaining = (myTime(response.games[i].score.currentQuarterSecondsRemaining));
 
-          if (timeRemaining == "0:00") {
-            timeRemaining = ""
-          } else if (timeRemaining == "0:00" && quarter != null) {
-            timeRemaining = "End of"
+          if (quarter == null || intermission > 0) {
+            quarter = intermission
+          }
+
+        if (timeRemaining == "0:00") {
+            timeRemaining = "End of" + " Q" + quarter
           } else {
             timeRemaining = timeRemaining + " Q"
           }
 
-          if (quarter == null) {
-            quarter = ""
-          }
 
           if (status == "COMPLETED_PENDING_REVIEW" || status == "COMPLETED") {
             scoreStatus = "FINAL";
           } else if (status == "UNPLAYED") {
             scoreStatus = localTimeString;
           } else if (status == "LIVE") {
-            $("#scoreboard-header").addClass("text-danger");
-            scoreStatus = timeRemaining + quarter;
+            scoreStatus = timeRemaining;
           }
 
 
@@ -164,7 +164,7 @@ $.ajax
           htmlString += '<thead class="table-borderless">';
           htmlString += '<tr>';
           htmlString += '<th class="table-borderless scoreboard-header pt-0" style=" font-size: 11px;">' + scoreStatus + '</th>';
-          htmlString += '<th class="table-borderless scoreboard-header  ;"></th>';
+          htmlString += '<th class="table-borderless scoreboard-header "></th>';
           htmlString += '<th class="table-borderless scoreboard-header "></th>';
           htmlString += '</tr>';
           htmlString += '</thead>';
