@@ -4,6 +4,7 @@ console.log("hello")
 var today = new Date();
 
 function schedule(today) {
+  $("#schedule-holder").empty();
 
 //====================== Get Request for Todays Games ============
 var dd = today.getDate();
@@ -219,22 +220,23 @@ $.ajax
           }
 
         };
-
-
+        $("#yesterday").attr("disabled", false);
+        $("#tomorrow").attr("disabled", false);
       });
   });
-
+  // setTimeout($("#yesterday").removeAttr("disabled"), 2000);
+  // setTimeout($("#tomorrow").removeAttr("disabled"), 2000);
 }
 
 schedule(today);
 
 $("#yesterday").click(function() {
-  $("#schedule-holder").empty()
-  today.setDate(today.getDate() - 1)
+  $(this).attr("disabled", true);
+  today.setDate(today.getDate() - 1);
   schedule(today);
 });
 $("#tomorrow").click(function() {
-  $("#schedule-holder").empty()
-  today.setDate(today.getDate() + 1)
+  $(this).attr("disabled", true);
+  today.setDate(today.getDate() + 1);
   schedule(today);
 });
