@@ -117,9 +117,9 @@ $.ajax
           }
 
         if (timeRemaining == "0:00") {
-            timeRemaining = "End of" + " Q" + quarter
+            timeRemaining = "End of"
           } else {
-            timeRemaining = timeRemaining + " Q"
+            timeRemaining = timeRemaining + " Q" + quarter;
           }
 
 
