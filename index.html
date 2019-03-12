@@ -18,123 +18,128 @@
 </head>
 
 <body>
-    <div class="row justify-content-center">
-        <div class="col justify-content-center bg-white border border-dark p-0" style="height: 38px;">
-            <p class="justify-content-center text-center title p-0">NBA HUB</p>
-        </div>
-    </div>
 
-    <div class="row justify-content-center p-0">
+    <header>
+        <nav class="nav nav-pills justify-content-center bg-white navbar-expand-sm border w-100 border-dark nav-justified">
+            <a class="nav-link success-color-dark ncaa text-white" href="index.html">NBA</a>
+            <a class="nav-link ncaa disabled" href="#">NFL</a>
+            <a class="nav-link ncaa disabled" href="#">MLB</a>
+            <a class="nav-link ncaa disabled" href="#">NHL</a>
+        </nav>
+    </header>
+    <!--- Westen Conference -->
+    <div class="container-fluid ">
 
-<!--- Westen Conference -->
+    <main>
+        <div class="row ">
 
-        <div class="justify-content-center col-3 mt-2 standings" id="western-conference">
-            <div class=" ml-4 p-1 card rounded "
-                style="background-color: rgba(245, 245, 245, .7); opacity: 0.85;">
-                <p class="conference mb-2 text-center" style="color: crimson; opacity: 0.85;">Western Conference</p>
-                <table class="table table-sm  table-hover mb-0 table-borderless">
-                    <thead class="border-bottom border-dark">
-                        <tr>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                            <th scope="col " class="text-center" style="font-size: 10px;">W-L</th>
-                            <th scope="col" class="text-center pr-0" style="font-size: 10px;">GB</th>
-                        </tr>
-                    <tbody>
-                        <tr id="wTeam1">
-                        </tr>
-                        <tr id="wTeam2">
-                        </tr>
-                        <tr id="wTeam3">
-                        </tr>
-                        <tr id="wTeam4">
-                        </tr>
-                        <tr id="wTeam5">
-                        </tr>
-                        <tr id="wTeam6">
-                        </tr>
-                        <tr id="wTeam7">
-                        </tr>
-                        <tr class="border-bottom border-danger" id="wTeam8">
-                        </tr>
-                        <tr id="wTeam9">
-                        </tr>
-                        <tr id="wTeam10">
-                        </tr>
-                        <tr id="wTeam11">
-                        </tr>
-                        <tr id="wTeam12">
-                        </tr>
-                        <tr id="wTeam13">
-                        </tr>
-                        <tr id="wTeam14">
-                        </tr>
-                        <tr id="wTeam15">
-                        </tr>
-                        </thead>
-                </table>
+            <div class="justify-content-center  col-3 mt-2 standings" id="western-conference">
+                <div class=" ml-4 p-1 card rounded border border-dark" style="background-color: rgba(245, 245, 245, .7); opacity: 0.85;">
+                    <p class="conference mb-2 text-center" style="color: crimson; opacity: 0.85;">Western Conference</p>
+                    <table class="table table-sm  table-hover mb-0 table-borderless">
+                        <thead class="border-bottom border-dark">
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                                <th scope="col " class="text-center" style="font-size: 10px;">W-L</th>
+                                <th scope="col" class="text-center pr-0" style="font-size: 10px;">GB</th>
+                            </tr>
+                        <tbody>
+                            <tr id="wTeam1">
+                            </tr>
+                            <tr id="wTeam2">
+                            </tr>
+                            <tr id="wTeam3">
+                            </tr>
+                            <tr id="wTeam4">
+                            </tr>
+                            <tr id="wTeam5">
+                            </tr>
+                            <tr id="wTeam6">
+                            </tr>
+                            <tr id="wTeam7">
+                            </tr>
+                            <tr class="border-bottom border-danger" id="wTeam8">
+                            </tr>
+                            <tr id="wTeam9">
+                            </tr>
+                            <tr id="wTeam10">
+                            </tr>
+                            <tr id="wTeam11">
+                            </tr>
+                            <tr id="wTeam12">
+                            </tr>
+                            <tr id="wTeam13">
+                            </tr>
+                            <tr id="wTeam14">
+                            </tr>
+                            <tr id="wTeam15">
+                            </tr>
+                            </thead>
+                    </table>
+                </div>
             </div>
-        </div>
-        <!---End Wester Conference-->
-        <!---Navbar-->
-        <div class="col mt-2 p-0">
-            <div class="d-flex justify-content-center">
+            <!---End Wester Conference-->
+            <!---Navbar-->
+            <div class="col mt-2 p-0">
+                <div class="d-flex justify-content-center">
 
-                <nav class="navbar w-100 navbar-expand-sm justify-content-center success-color-dark rounded p-0 navbar-dark">
+                    <nav
+                        class="navbar border border-dark w-100 navbar-expand-sm justify-content-center success-color-dark rounded p-0 navbar-dark">
 
-                    <div class="navbar-expand justify-content-center" id="navbarNavDropdown">
-                        <ul class="navbar-nav ncaa">
-                            <li class="nav-item active">
-                                <a class="nav-link nav-text"  href="index.html">Home
-                                    <span class="sr-only">(current)</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link nav-text ncaa"  href="standings.html">Stats</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link nav-text ncaa"  href="#">Draft</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle class nav-text"  href="#" id="navbarDropdownMenuLink" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Teams
-                                </a>
-                                <div class="dropdown-menu ncaa" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="#">Atlanta Hawks</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
-                            </li>
-                        </ul>
+                        <div class="navbar-expand justify-content-center" id="navbarNavDropdown">
+                            <ul class="navbar-nav ncaa">
+                                <li class="nav-item active">
+                                    <a class="nav-link nav-text" href="index.html">Home
+                                        <span class="sr-only">(current)</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link nav-text ncaa disabled" href="standings.html">Stats</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link nav-text ncaa disabled" href="#">Draft</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle class nav-text disabled" href="#"
+                                        id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                        Teams
+                                    </a>
+                                    <div class="dropdown-menu ncaa" aria-labelledby="navbarDropdownMenuLink">
+                                        <a class="dropdown-item" href="#">Atlanta Hawks</a>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+                <!---End Navbar-->
+                <!---Schedule-->
+                <div class="mt-0 align-content-middle justify-content-center " style="height: 40px;">
+                    <div class="d-flex justify-content-between pr-4 pl-4 pt-2">
+                        <button type="button" class=" btn mt-1 pt-0 btn-dark btn-rounded btn-sm "
+                            style="opacity: 0.95; font-size: 18px;" id="yesterday"><i
+                                class="fas fa-caret-left"></i></button>
+                        <h4 class="text-center mt-2 mb-1 date font-weight-bold" id="date"
+                            style="opacity: 0.95; font-size: 20px;"></h4>
+                        <button type="button" class="btn mt-1  pt-0 btn-dark btn-rounded btn-sm" id="tomorrow"
+                            style="opacity: 0.95; font-size: 18px;" id="yesterday"><i
+                                class="fas fa-caret-right"></i></button>
+
                     </div>
-                </nav>
-            </div>
-            <!---End Navbar-->
-            <!---Schedule-->
-            <div class="mt-0 align-content-middle justify-content-center " style="height: 40px;">
-                <div class="d-flex justify-content-between pr-4 pl-4 pt-2">
-                    <button type="button" class=" btn mt-1 pt-0 btn-dark btn-rounded btn-sm "
-                        style="opacity: 0.95; font-size: 18px;" id="yesterday"><i
-                            class="fas fa-caret-left"></i></button>
-                    <h4 class="text-center mt-2 mb-1 date font-weight-bold" id="date"
-                        style="opacity: 0.95; font-size: 20px;"></h4>
-                    <button type="button" class="btn mt-1  pt-0 btn-dark btn-rounded btn-sm" id="tomorrow"
-                        style="opacity: 0.95; font-size: 18px;" id="yesterday"><i
-                            class="fas fa-caret-right"></i></button>
+                    <div class="d-flex align-content-stretch flex-wrap m-2 " id="schedule-holder">
+                    </div>
+
 
                 </div>
-                      <div class="d-flex align-content-stretch flex-wrap m-2 " id="schedule-holder">
-                      </div>
-            
-
             </div>
-        </div>
-        <!---End Schedule-->
-        <!---Eastern Conference-->
+            <!---End Schedule-->
+            <!---Eastern Conference-->
             <div class="justify-content-center col-3 mt-2 standings" id="eastern-conference">
-                <div class=" mr-4 p-1 card rounded "
-                    style="background-color: rgba(245, 245, 245, .7); opacity: 0.85;">
+                <div class=" mr-4 p-1 card rounded border border-dark" style="background-color: rgba(245, 245, 245, .7); opacity: 0.85;">
                     <p class="conference mb-2 text-center" style="color: navy; opacity: 0.85;">Eastern Conference</p>
                     <table class="table table-sm  table-hover mb-0 table-borderless">
                         <thead class="border-bottom border-dark">
@@ -179,12 +184,14 @@
                     </table>
                 </div>
             </div>
-    
-    </div>
-    <nav class="navbar footer fixed-bottom m-0 p-0 navbar-dark bg-dark justify-content-center" style="height: 25px;">
-        <p class="navbar-brand" style="font-size: 12px;" href="#">Contact</p>
-    </nav>
 
+        </div>
+    </main>
+        <nav class="navbar footer fixed-bottom m-0 p-0 navbar-dark bg-dark justify-content-center"
+            style="height: 25px;">
+            <p class="navbar-brand" style="font-size: 12px;" href="#">Contact</p>
+        </nav>
+        </div>
     <!-- JQuery -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- Bootstrap tooltips -->
