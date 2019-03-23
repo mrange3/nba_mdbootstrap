@@ -27,7 +27,7 @@ body {
   font-size: 24px;
 }
 
-.GameKey {
+.gameKey {
   font-size: 14px;
 
 }
@@ -56,6 +56,10 @@ display: none;
   }
   .footer {
     display: none;
+  }
+  .gameKey {
+    font-size: 10px !important;
+  
   }
   
 }
