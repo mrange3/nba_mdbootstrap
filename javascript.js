@@ -158,26 +158,26 @@ $.ajax
          var hLogo = hTeam.toLowerCase();
 
           var htmlString = '<div class="col-4 scoreCard px-1">';
-          htmlString += '<div class="card justify-content-center text-dark  rounded m-1" " id='+aTeam + hTeam+'>';
+          htmlString += '<div class="card justify-content-center text-dark m-1" " id='+aTeam + hTeam+'>';
           htmlString += '<div class="m-1">'
-          htmlString += '<table class="table rounded table-borderless table-sm w-85 m-0" style="background-color: rgba(245, 245, 245, .7) !important;" >';
+          htmlString += '<table class="table table-borderless table-sm w-85 m-0" style="background-color: rgba(245, 245, 245) !important;" >';
           htmlString += '<thead class="table-borderless">';
           htmlString += '<tr>';
-          htmlString += '<th class="table-borderless scoreboard-header pt-0" style=" font-size: 11px;">' + scoreStatus + '</th>';
-          htmlString += '<th class="table-borderless scoreboard-header "></th>';
-          htmlString += '<th class="table-borderless scoreboard-header "></th>';
+          htmlString += '<th class="table-borderless scoreboard-header pb-0" style=" font-size: 11px;">' + scoreStatus + '</th>';
+          htmlString += '<th class="table-borderless scoreboard-header pb-0"></th>';
+          htmlString += '<th class="table-borderless scoreboard-header pb-0"></th>';
           htmlString += '</tr>';
           htmlString += '</thead>';
           htmlString += '<tbody>';
           htmlString += '<tr>';
-          htmlString += '<th scope="row" class="table-borderless scoreboard align-middle text-left  pt-0 " style="font-size: 12px;" ><img class="scoreLogo" src="images/logos/' + aLogo + '.png" height="25px" width="25px">' + " " + aDisplayName + '</th>'
-          htmlString += '<td class="table-borderless scoreboard align-middle teamRecord text-left text-muted  pt-0 pl-0" id="'+aTeam+'record" style=" font-size: 10px;"> </td>';
-          htmlString += '<td class="table-borderless  scoreboard align-middle pt-0 text-right pl-0" style=" font-size: 14px;"><strong>' + aScore + '</strong></td>';
+          htmlString += '<th scope="row" class="table-borderless scoreboard align-middle text-left  py-0 " style="font-size: 12px;" ><img class="scoreLogo" src="images/logos/' + aLogo + '.png" height="25px" width="25px">' + " " + aDisplayName + '</th>'
+          htmlString += '<td class="table-borderless scoreboard align-middle teamRecord text-left text-muted  py-0 pl-0" id="'+aTeam+'record" style=" font-size: 10px;"> </td>';
+          htmlString += '<td class="table-borderless  scoreboard align-middle py-0 text-right pl-0" style=" font-size: 14px;"><strong>' + aScore + '</strong></td>';
           htmlString += '</tr>';
           htmlString += '<tr>';
-          htmlString += '<th scope="row" class="align-middle text-left scoreboard pt-0 " style="font-size: 12px;"><img class="scoreLogo" src="images/logos/' + hLogo + '.png" height="25px" width="25px">' + " " + hDisplayName + '</th>'
+          htmlString += '<th scope="row" class="align-middle text-left scoreboard pt-0" style="font-size: 12px;"><img class="scoreLogo" src="images/logos/' + hLogo + '.png" height="25px" width="25px">' + " " + hDisplayName + '</th>'
           htmlString += '<td class="align-middle text-left text-muted teamRecord scoreboard pt-0 pl-0" id="'+hTeam+'record" style=" font-size: 10px;"> </td>';
-          htmlString += '<td class="  align-middle scoreboard pt-0 text-right pl-0" style=" font-size: 14px;"><strong>' + hScore + '</strong></td>';
+          htmlString += '<td class="  align-middle scoreboard pt-0 text-right pl-0 pt-0" style=" font-size: 14px;"><strong>' + hScore + '</strong></td>';
           htmlString += '</tr>';  
           htmlString += '</tbody>';      
           htmlString += '</table>';
@@ -212,15 +212,15 @@ $.ajax
           }
 
           if (aTeamWinPct > .615 && hTeamWinPct > .615) {
-            $("#"+aTeam+hTeam).addClass("rgba-cyan-light");     
+            $("#"+aTeam+hTeam).addClass("cyan");     
           } else if (aTeamWinPct > .525 && hTeamWinPct > .525 || aTeamWinPct + hTeamWinPct > 1.15) {
-            $("#"+aTeam+hTeam).addClass("rgba-green-light");      
+            $("#"+aTeam+hTeam).addClass("green");      
           }  else if (aTeamWinPct > .425 && hTeamWinPct > .425 || aTeamWinPct + hTeamWinPct > .95) {
-            $("#"+aTeam+hTeam).addClass("rgba-yellow-light");      
+            $("#"+aTeam+hTeam).addClass("yellow");      
           } else if (aTeamWinPct > .3 && hTeamWinPct > .3 || aTeamWinPct + hTeamWinPct > .7) {
-            $("#"+aTeam+hTeam).addClass(" rgba-orange-light");      
+            $("#"+aTeam+hTeam).addClass("orange");      
           }else {
-            $("#"+aTeam+hTeam).addClass("rgba-red-light");      
+            $("#"+aTeam+hTeam).addClass("red");      
           }
 
         };
