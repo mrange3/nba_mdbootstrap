@@ -159,25 +159,25 @@ $.ajax
 
           var htmlString = '<div class="col-4 scoreCard px-1">';
           htmlString += '<div class="card justify-content-center text-dark m-1" " id='+aTeam + hTeam+'>';
-          htmlString += '<div class="m-1">'
+          htmlString += '<div class="m-2">'
           htmlString += '<table class="table table-borderless table-sm w-85 m-0" style="background-color: rgba(245, 245, 245) !important;" >';
           htmlString += '<thead class="table-borderless">';
           htmlString += '<tr>';
-          htmlString += '<th class="table-borderless scoreboard-header py-0" style=" font-size: 13px;">' + scoreStatus + '</th>';
-          htmlString += '<th class="table-borderless scoreboard-header py-0"></th>';
-          htmlString += '<th class="table-borderless scoreboard-header py-0"></th>';
+          htmlString += '<th class="table-borderless scoreboard-header py-0" style=" font-size: 12px;">' + scoreStatus + '</th>';
+          htmlString += '<th class="table-borderless  scoreboard-header py-0" ></th>';
+          htmlString += '<th class="table-borderless scoreboard-header text-right text-dark text-muted py-0" style=" font-size: 12px;" id='+'gs'+aTeam + hTeam+'></th>';
           htmlString += '</tr>';
           htmlString += '</thead>';
           htmlString += '<tbody>';
           htmlString += '<tr>';
-          htmlString += '<th scope="row" class="table-borderless scoreboard align-middle text-left  py-0 " style="font-size: 15px;" ><img class="scoreLogo" src="images/logos/' + aLogo + '.png" height="26px" width="26px">' + " " + aDisplayName + '</th>'
+          htmlString += '<th scope="row" class="table-borderless scoreboard align-middle text-left  py-0 " style="font-size: 13px;" ><img class="scoreLogo" src="images/logos/' + aLogo + '.png" height="24px" width="24px">' + " " + aDisplayName + '</th>'
           htmlString += '<td class="table-borderless scoreboard align-middle teamRecord text-left text-muted  py-0 pl-0" id="'+aTeam+'record" style=" font-size: 12px;"> </td>';
-          htmlString += '<td class="table-borderless  scoreboard align-middle py-0 text-right pl-0" style=" font-size: 15px;"><strong>' + aScore + '</strong></td>';
+          htmlString += '<td class="table-borderless  scoreboard align-middle py-0 text-right pl-0" style=" font-size: 13px;"><strong>' + aScore + '</strong></td>';
           htmlString += '</tr>';
           htmlString += '<tr>';
-          htmlString += '<th scope="row" class="align-middle text-left scoreboard py-0" style="font-size: 15px;"><img class="scoreLogo" src="images/logos/' + hLogo + '.png" height="26px" width="26px">' + " " + hDisplayName + '</th>'
+          htmlString += '<th scope="row" class="align-middle text-left scoreboard py-0" style="font-size: 13px;"><img class="scoreLogo" src="images/logos/' + hLogo + '.png" height="24px" width="24px">' + " " + hDisplayName + '</th>'
           htmlString += '<td class="align-middle text-left text-muted teamRecord scoreboard py-0 pl-0" id="'+hTeam+'record" style=" font-size: 12px;"> </td>';
-          htmlString += '<td class="  align-middle scoreboard pt-0 text-right pl-0 py-0" style=" font-size: 15px;"><strong>' + hScore + '</strong></td>';
+          htmlString += '<td class="  align-middle scoreboard pt-0 text-right pl-0 py-0" style=" font-size: 13px;"><strong>' + hScore + '</strong></td>';
           htmlString += '</tr>';  
           htmlString += '</tbody>';      
           htmlString += '</table>';
@@ -200,9 +200,6 @@ $.ajax
               var aTeamStats = teamStats.teamStatsTotals[j];
               var aTeamWinPct = teamStats.teamStatsTotals[j].stats.standings.winPct;
               $("#"+aTeam+"record").text(teamStats.teamStatsTotals[j].stats.standings.wins + "-"+teamStats.teamStatsTotals[j].stats.standings.losses);  
-              // if (teamStats.teamStatsTotals[j].stats.standings.winPct > .5) {
-              //   $("#"+aTeam+hTeam).addClass("border-success")
-              // }   // Append the new elements 
             }
             if (teamStats.teamStatsTotals[j].team.abbreviation == hTeam) {
               var hTeamStats = teamStats.teamStatsTotals[j]
@@ -211,25 +208,30 @@ $.ajax
             }
           }
 
-          if (aTeamWinPct > .615 && hTeamWinPct > .615) {
-            $("#"+aTeam+hTeam).addClass("cyan");     
-          } else if (aTeamWinPct > .525 && hTeamWinPct > .525 || aTeamWinPct + hTeamWinPct > 1.15) {
-            $("#"+aTeam+hTeam).addClass("green");      
-          }  else if (aTeamWinPct > .425 && hTeamWinPct > .425 || aTeamWinPct + hTeamWinPct > .95) {
-            $("#"+aTeam+hTeam).addClass("yellow");      
-          } else if (aTeamWinPct > .3 && hTeamWinPct > .3 || aTeamWinPct + hTeamWinPct > .7) {
-            $("#"+aTeam+hTeam).addClass("orange");      
-          }else {
-            $("#"+aTeam+hTeam).addClass("red");      
-          }
 
+          if (aTeamWinPct > .615 && hTeamWinPct > .615) {
+            $("#"+aTeam+hTeam).addClass("cyan");  
+            $("#"+'gs'+aTeam+hTeam).text("A");
+          } else if (aTeamWinPct > .525 && hTeamWinPct > .525 || aTeamWinPct + hTeamWinPct > 1.15) {
+            $("#"+aTeam+hTeam).addClass("green");    
+            $("#"+'gs'+aTeam+hTeam).text("B"); 
+          }  else if (aTeamWinPct > .425 && hTeamWinPct > .425 || aTeamWinPct + hTeamWinPct > .95) {
+            $("#"+aTeam+hTeam).addClass("yellow");
+            $("#"+'gs'+aTeam+hTeam).text("C");     
+          } else if (aTeamWinPct > .3 && hTeamWinPct > .3 || aTeamWinPct + hTeamWinPct > .7) {
+            $("#"+aTeam+hTeam).addClass("orange");
+            $("#"+'gs'+aTeam+hTeam).text("D");    
+          }else {
+            $("#"+aTeam+hTeam).addClass("red");    
+            $("#"+'gs'+aTeam+hTeam).text("F");  
+          }
         };
+
+
         $("#yesterday").attr("disabled", false);
         $("#tomorrow").attr("disabled", false);
       });
   });
-  // setTimeout($("#yesterday").removeAttr("disabled"), 2000);
-  // setTimeout($("#tomorrow").removeAttr("disabled"), 2000);
 }
 
 schedule(today);
