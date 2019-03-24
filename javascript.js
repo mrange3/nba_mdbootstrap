@@ -158,25 +158,25 @@ $.ajax
          var hLogo = hTeam.toLowerCase();
 
           var htmlString = '<div class="col-4 scoreCard px-1">';
-          htmlString += '<div class="card justify-content-center text-dark m-1" " id='+aTeam + hTeam+'>';
+          htmlString += '<div class="card justify-content-center border border-dark text-dark m-1" " id='+aTeam + hTeam+'>';
           htmlString += '<div class="m-2">'
-          htmlString += '<table class="table table-borderless table-sm w-85 m-0" style="background-color: rgba(245, 245, 245) !important;" >';
+          htmlString += '<table class="table table-borderless table-sm w-85 m-0"  >';
           htmlString += '<thead class="table-borderless">';
           htmlString += '<tr>';
-          htmlString += '<th class="table-borderless scoreboard-header py-0" style=" font-size: 12px;">' + scoreStatus + '</th>';
+          htmlString += '<th class="table-borderless scoreboard-header py-0" style=" font-size: 11px;">' + scoreStatus + '</th>';
           htmlString += '<th class="table-borderless  scoreboard-header py-0" ></th>';
-          htmlString += '<th class="table-borderless scoreboard-header text-right text-dark text-muted py-0" style=" font-size: 12px;" id='+'gs'+aTeam + hTeam+'></th>';
+          htmlString += '<th class="table-borderless scoreboard-header text-right text-dark py-0" style=" font-size: 11px;" id='+'gs'+aTeam + hTeam+'></th>';
           htmlString += '</tr>';
           htmlString += '</thead>';
           htmlString += '<tbody>';
           htmlString += '<tr>';
           htmlString += '<th scope="row" class="table-borderless scoreboard align-middle text-left  py-0 " style="font-size: 13px;" ><img class="scoreLogo" src="images/logos/' + aLogo + '.png" height="24px" width="24px">' + " " + aDisplayName + '</th>'
-          htmlString += '<td class="table-borderless scoreboard align-middle teamRecord text-left text-muted  py-0 pl-0" id="'+aTeam+'record" style=" font-size: 12px;"> </td>';
+          htmlString += '<td class="table-borderless scoreboard align-middle teamRecord text-left py-0 pl-0" id="'+aTeam+'record" style=" font-size: 12px;"> </td>';
           htmlString += '<td class="table-borderless  scoreboard align-middle py-0 text-right pl-0" style=" font-size: 13px;"><strong>' + aScore + '</strong></td>';
           htmlString += '</tr>';
           htmlString += '<tr>';
           htmlString += '<th scope="row" class="align-middle text-left scoreboard py-0" style="font-size: 13px;"><img class="scoreLogo" src="images/logos/' + hLogo + '.png" height="24px" width="24px">' + " " + hDisplayName + '</th>'
-          htmlString += '<td class="align-middle text-left text-muted teamRecord scoreboard py-0 pl-0" id="'+hTeam+'record" style=" font-size: 12px;"> </td>';
+          htmlString += '<td class="align-middle text-left teamRecord scoreboard py-0 pl-0" id="'+hTeam+'record" style=" font-size: 12px;"> </td>';
           htmlString += '<td class="  align-middle scoreboard pt-0 text-right pl-0 py-0" style=" font-size: 13px;"><strong>' + hScore + '</strong></td>';
           htmlString += '</tr>';  
           htmlString += '</tbody>';      
@@ -187,9 +187,6 @@ $.ajax
           $("#schedule-holder").append(htmlString);      // Append the new elements 
 
 
-          if (status == "LIVE" || status == "COMPLETED_PENDING_REVIEW" || status == "COMPLETED" ) {
-            $(".scoreboard-header").addClass("text-danger");
-          };
   
 
           for (j = 0; j < teamStats.teamStatsTotals.length; j++) {
