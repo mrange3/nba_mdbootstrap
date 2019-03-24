@@ -37,10 +37,10 @@ body {
 display: none;
   }
   .scoreboard {
-    font-size: 10px !important;
+    font-size: 9px !important;
   }
   .scoreboard-header {
-    font-size: 8px !important;
+    font-size: 7px !important;
   }
 
   .date {
@@ -48,17 +48,17 @@ display: none;
   }
 
   .scoreLogo {
-    height: 20px;
-    width: 20px;
+    height: 18px;
+    width: 18px;
   }
   .teamRecord {
-    font-size: 6px !important;
+    font-size: 5px !important;
   }
   .footer {
     display: none;
   }
   .gameKey {
-    font-size: 10px !important;
+    font-size: 13px !important;
   
   }
   
