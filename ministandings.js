@@ -18,6 +18,8 @@ $.ajax
     .then(function (standings) {
         console.log(standings)
 
+
+        // Home Page Stanings ////////////////////
         for (j = 0; j < standings.teams.length; j++) {
             tLogo = standings.teams[j].team.abbreviation.toLowerCase();
 
@@ -37,4 +39,62 @@ $.ajax
             }
 
         };
+        // /Main Standings///////////////
+        for (j = 0; j < standings.teams.length; j++) {
+            tLogo = standings.teams[j].team.abbreviation.toLowerCase();
+            var diff = Math.round(10*(standings.teams[j].stats.offense.ptsPerGame - standings.teams[j].stats.defense.ptsAgainstPerGame))/10;
+            var tRebounds = Math.round(10*(standings.teams[j].stats.rebounds.defRebPerGame + standings.teams[j].stats.rebounds.offRebPerGame))/10;
+
+            if (standings.teams[j].playoffRank.conferenceName == "Western") {
+                var standingsStringW = '<td class="align-middle text-left pt-1 pb-1" style="font-size: 10px;">'+ standings.teams[j].playoffRank.rank + '</td>'
+                standingsStringW += '<td class="align-middle text-left pl-0 pt-1 pb-1" style="font-size: 13px;"><img src="images/logos/' + tLogo + '.png" height="18px" width="18px">'+ " " +standings.teams[j].team.city + " " + standings.teams[j].team.name + '</td>'
+                standingsStringW += '<td class="align-middle text-center pr-0 pt-1 pb-1" style="font-size: 10px;">' + standings.teams[j].stats.standings.wins +'</td>'
+                standingsStringW += '<td class="align-middle text-center pr-0 pt-1 pb-1" style="font-size: 10px;">' + standings.teams[j].stats.standings.losses +'</td>'
+                standingsStringW += '<td class="align-middle text-center pr-0 pt-1 pb-1" style="font-size: 10px;">' + standings.teams[j].stats.standings.winPct + '</td>'
+                standingsStringW += '<td class="align-middle text-center pl-0 pt-1 pb-1" style="font-size: 10px;">' + standings.teams[j].conferenceRank.gamesBack + '</td>'
+                standingsStringW += '<td class="align-middle text-center pr-0 pt-1 pb-1" style="font-size: 10px;">' + standings.teams[j].stats.offense.ptsPerGame + '</td>'
+                standingsStringW += '<td class="align-middle text-center pr-0 pt-1 pb-1" style="font-size: 10px;">' + standings.teams[j].stats.offense.astPerGame + '</td>'
+                standingsStringW += '<td class="align-middle text-center pr-0 pt-1 pb-1" style="font-size: 10px;">' + standings.teams[j].stats.defense.ptsAgainstPerGame + '</td>'
+                standingsStringW += '<td class="align-middle text-center pr-0 pt-1 pb-1" style="font-size: 10px;">' + standings.teams[j].stats.defense.blkPerGame + '</td>'
+                standingsStringW += '<td class="align-middle text-center pr-0 pt-1 pb-1" style="font-size: 10px;">' + standings.teams[j].stats.defense.stlPerGame + '</td>'
+                standingsStringW += '<td class="align-middle text-center pr-0 pt-1 pb-1" style="font-size: 10px;">' + standings.teams[j].stats.rebounds.defRebPerGame + '</td>'
+                standingsStringW += '<td class="align-middle text-center pr-0 pt-1 pb-1" style="font-size: 10px;">' + standings.teams[j].stats.rebounds.offRebPerGame + '</td>'
+                standingsStringW += '<td class="align-middle text-center pr-0 pt-1 pb-1" style="font-size: 10px;">' + tRebounds + '</td>'
+                standingsStringW += '<td class="align-middle text-center pr-0 pt-1 pb-1" style="font-size: 10px;">' + diff + '</td>'
+
+                $("#wSTeam"+standings.teams[j].playoffRank.rank).append(standingsStringW)
+            } else {
+                var standingsStringE = '<td class="align-middle text-left pt-1 pb-1" style="font-size: 10px;">'+ standings.teams[j].playoffRank.rank + '</td>'
+                standingsStringE += '<td class="align-middle text-left pl-0 pt-1 pb-1" style="font-size: 13px;"><img src="images/logos/' + tLogo + '.png" height="18px" width="18px">'+ " " +standings.teams[j].team.city + " " + standings.teams[j].team.name + '</td>'
+                standingsStringE += '<td class="align-middle text-center pr-0 pt-1 pb-1" style="font-size: 10px;">' + standings.teams[j].stats.standings.wins +'</td>'
+                standingsStringE += '<td class="align-middle text-center pr-0 pt-1 pb-1" style="font-size: 10px;">' + standings.teams[j].stats.standings.losses +'</td>'
+                standingsStringE += '<td class="align-middle text-center pr-0 pt-1 pb-1" style="font-size: 10px;">' + standings.teams[j].stats.standings.winPct + '</td>'
+                standingsStringE += '<td class="align-middle text-center pl-0 pt-1 pb-1" style="font-size: 10px;">' + standings.teams[j].conferenceRank.gamesBack + '</td>'
+                standingsStringE += '<td class="align-middle text-center pr-0 pt-1 pb-1" style="font-size: 10px;">' + standings.teams[j].stats.offense.ptsPerGame + '</td>'
+                standingsStringE += '<td class="align-middle text-center pr-0 pt-1 pb-1" style="font-size: 10px;">' + standings.teams[j].stats.offense.astPerGame + '</td>'
+                standingsStringE += '<td class="align-middle text-center pr-0 pt-1 pb-1" style="font-size: 10px;">' + standings.teams[j].stats.defense.ptsAgainstPerGame + '</td>'
+                standingsStringE += '<td class="align-middle text-center pr-0 pt-1 pb-1" style="font-size: 10px;">' + standings.teams[j].stats.defense.blkPerGame + '</td>'
+                standingsStringE += '<td class="align-middle text-center pr-0 pt-1 pb-1" style="font-size: 10px;">' + standings.teams[j].stats.defense.stlPerGame + '</td>'
+                standingsStringE += '<td class="align-middle text-center pr-0 pt-1 pb-1" style="font-size: 10px;">' + standings.teams[j].stats.rebounds.defRebPerGame + '</td>'
+                standingsStringE += '<td class="align-middle text-center pr-0 pt-1 pb-1" style="font-size: 10px;">' + standings.teams[j].stats.rebounds.offRebPerGame + '</td>'
+                standingsStringE += '<td class="align-middle text-center pr-0 pt-1 pb-1" style="font-size: 10px;">' + tRebounds + '</td>'
+                standingsStringE += '<td class="align-middle text-center pr-0 pt-1 pb-1" style="font-size: 10px;">' + diff + '</td>'
+                $("#eSTeam"+standings.teams[j].playoffRank.rank).append(standingsStringE)
+
+            }
+
+        };
+
+
+
+        // /////////////////////////
+
+        for (j = 0; j < standings.teams.length; j++) {
+            tLogo = standings.teams[j].team.abbreviation.toLowerCase();
+            var lotteryRank = 31 - standings.teams[j].overallRank.rank 
+            var teamPickString = '<p class="m-0 p-0"><img src="images/logos/' + tLogo + '.png" height="25px" width="25px">'+ " " +standings.teams[j].team.city + " " + standings.teams[j].team.name + '</p>'
+            $("#teamPick"+lotteryRank).append(teamPickString)
+
+        };
+
     });

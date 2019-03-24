@@ -32,6 +32,10 @@ body {
 
 }
 
+.card-background {
+  background-color: rgba(245, 245, 245);
+}
+
 @media (max-width:740px)  { 
   .standings {
 display: none;
