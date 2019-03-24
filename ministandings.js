@@ -19,7 +19,7 @@ $.ajax
         console.log(standings)
 
 
-        // Home Page Stanings ////////////////////
+        // Home Page Standings ////////////////////
         for (j = 0; j < standings.teams.length; j++) {
             tLogo = standings.teams[j].team.abbreviation.toLowerCase();
 
@@ -84,17 +84,4 @@ $.ajax
             }
 
         };
-
-
-
-        // /////////////////////////
-
-        for (j = 0; j < standings.teams.length; j++) {
-            tLogo = standings.teams[j].team.abbreviation.toLowerCase();
-            var lotteryRank = 31 - standings.teams[j].overallRank.rank 
-            var teamPickString = '<p class="m-0 p-0"><img src="images/logos/' + tLogo + '.png" height="25px" width="25px">'+ " " +standings.teams[j].team.city + " " + standings.teams[j].team.name + '</p>'
-            $("#teamPick"+lotteryRank).append(teamPickString)
-
-        };
-
     });
