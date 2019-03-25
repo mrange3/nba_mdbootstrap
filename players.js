@@ -6,6 +6,7 @@ var playerPicks = [
         wt: 285,
         school: "Duke",
         birthday: "",
+        rank: 1,
     },
     {
         name: "Ja Morant",
@@ -14,6 +15,7 @@ var playerPicks = [
         wt: 170,
         school: "Murray State",
         birthday: "",
+        rank: 2,
     },
     {
         name: "Jarrett Culver",
@@ -22,6 +24,7 @@ var playerPicks = [
         wt: 195,
         school: "Texas Tech",
         birthday: "",
+        rank: 4,
     },
     {
         name: "Brandon Clarke",
@@ -30,6 +33,7 @@ var playerPicks = [
         wt: 215,
         school: "Gonzaga",
         birthday: "",
+        rank: 7
     },
     {
         name: "R.J. Barrett",
@@ -38,6 +42,8 @@ var playerPicks = [
         wt: 202,
         school: "Duke",
         birthday: "",
+        rank: 3,
+
     },
     {
         name: "Cam Reddish",
@@ -46,6 +52,8 @@ var playerPicks = [
         wt: 218,
         school: "Duke",
         birthday: "",
+        rank: 5,
+
     },
     {
         name: "Jaxson Hayes",
@@ -54,6 +62,7 @@ var playerPicks = [
         wt: 233,
         school: "Texas",
         birthday: "",
+        rank: 8,
     },
 
     {
@@ -63,6 +72,8 @@ var playerPicks = [
         wt: 233,
         school: "Virginia",
         birthday: "",
+        rank: 6,
+
     },
     {
         name: "Jontay Porter",
@@ -71,6 +82,8 @@ var playerPicks = [
         wt: 236,
         school: "Missouri",
         birthday: "",
+        rank: 20,
+
     },
     {
         name: "Bol Bol",
@@ -79,6 +92,8 @@ var playerPicks = [
         wt: 222,
         school: "Oregon",
         birthday: "",
+        rank: 10,
+
     },
     {
         name: "Darius Garland",
@@ -87,6 +102,8 @@ var playerPicks = [
         wt: 173,
         school: "Vanderbilt",
         birthday: "",
+        rank: 9,
+
     },
     {
         name: "Bruno Fernando",
