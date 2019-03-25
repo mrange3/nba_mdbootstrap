@@ -32,6 +32,8 @@ $.ajax
 
         lotteryTeams.sort(function(a, b){return b - a});
 
+        
+
         for (j = 0; j < standings.teams.length; j++) {
 
             for (i = 0; i < lotteryTeams.length; i++) {

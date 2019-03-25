@@ -158,9 +158,9 @@ $.ajax
          var hLogo = hTeam.toLowerCase();
 
           var htmlString = '<div class="col-4 scoreCard px-1">';
-          htmlString += '<div class="card justify-content-center border border-dark text-dark m-1" " id='+aTeam + hTeam+'>';
+          htmlString += '<div class="card justify-content-center  text-dark m-1" " id='+aTeam + hTeam+'>';
           htmlString += '<div class="m-2">'
-          htmlString += '<table class="table table-borderless table-sm w-85 m-0"  >';
+          htmlString += '<table class="table table-borderless card-background  table-sm w-85 m-0"  >';
           htmlString += '<thead class="table-borderless">';
           htmlString += '<tr>';
           htmlString += '<th class="table-borderless scoreboard-header py-0" style=" font-size: 11px;">' + scoreStatus + '</th>';

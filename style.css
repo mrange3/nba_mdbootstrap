@@ -33,7 +33,7 @@ body {
 }
 
 .card-background {
-  background-color: rgba(245, 245, 245);
+  background-color: white;
 }
 
 @media (max-width:740px)  { 
