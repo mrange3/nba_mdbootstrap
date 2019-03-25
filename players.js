@@ -131,14 +131,18 @@ var playerPicks = [
 
 for (i = 0; i < playerPicks.length; i++) {
 
-    var playerPickString = '<table>';
+    var playerPickString = '<table class="table  table-borderless p-0 m-0">';
+    playerPickString += '<thead>'
+    playerPickString += '<th class="p-0 m-0"></th>'
+    playerPickString += '<th class="p-0 m-0></th>'
+    playerPickString += '<th class="p-0 m-0></th>'
+    playerPickString += '</thead>'
     playerPickString += '<tbody>'
-    playerPickString += '<td class="text-left pr-2">' + playerPicks[i].name + '</td>';
-    playerPickString += '<td class="px-2">' + playerPicks[i].position + '</td>';
-    playerPickString += '<td class=" px-2">' + playerPicks[i].ht + '</td>';
-    playerPickString += '<td class=" px-2">' + playerPicks[i].wt + '</td>';
-    playerPickString += '<td class=" pl-2">' + playerPicks[i].school + '</td>';
-
+    playerPickString += '<tr>'
+    playerPickString += '<td class="text-left playerFont p-0 m-0">' + playerPicks[i].name + " - " + playerPicks[i].position + " | " + playerPicks[i].ht + " | " + playerPicks[i].wt + '</td>';
+    playerPickString += '<td class=" text-center p-0 m-0"></td>';
+    playerPickString += '<td class="text-right playerFont p-0 m-0">' + playerPicks[i].school + '</td>';
+    playerPickString += '</tr>'
     playerPickString += '</tbody>'
     playerPickString += '</table>'
 
