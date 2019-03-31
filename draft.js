@@ -218,7 +218,7 @@ $.ajax
                     teamPickString += '<div class="card card-background p-1">';
                     teamPickString += '<div class="m-0 p-0 playerPick " id="pickSpot'+[i+1]+'">';
                     teamPickString += '<span class="m-0 p-1 inline"><img src="images/collegelogos/' + players[i].collegelogo + '.png" height="25px" width="25px">' + " " + players[i].name + "  " +'</span>'
-                    teamPickString += '<span class="m-0 p-1 inline">'+ players[i].position + " - " + players[i].ht + " - " + players[i].wt + '</span>'
+                    teamPickString += '<span class="m-0 p-1 inline">'+ players[i].position + " | " + players[i].ht + " | " + players[i].wt + '</span>'
                     teamPickString += '</div>';
                     teamPickString += '</div>';
                     teamPickString += '</div>';
