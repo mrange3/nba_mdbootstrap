@@ -99,7 +99,7 @@ var players = [
         wt: 236,
         school: "Missouri",
         birthday: "",
-        rank: 20,
+        rank: 30,
         collegelogo: "mizzou",
 
     },
@@ -132,6 +132,7 @@ var players = [
         wt: 233,
         school: "Maryland",
         birthday: "",
+        rank: 11,
         collegelogo: "maryland",
 
     },
@@ -142,6 +143,7 @@ var players = [
         wt: 230,
         school: "Limoges CSP",
         birthday: "",
+        rank: 12,
         collegelogo: "limoges",
 
     },
@@ -152,6 +154,7 @@ var players = [
         wt: 202,
         school: "Indiana",
         birthday: "",
+        rank: 13,
         collegelogo: "indiana",
 
     },
@@ -162,10 +165,183 @@ var players = [
         wt: 225,
         school: "Gonzaga",
         birthday: "",
+        rank: 14,
         collegelogo: "gonzaga",
 
     },
+    {
+        name: "Tyler Herro",
+        position: "SG",
+        ht: "6-5",
+        wt: 195,
+        school: "Kentucky",
+        birthday: "",
+        rank: 15,
+        collegelogo: "kentucky",
+    },
+    {
+        name: "Coby White",
+        position: "PG/SG",
+        ht: "6-5",
+        wt: 185,
+        school: "North Carolina",
+        birthday: "",
+        rank: 16,
+        collegelogo: "unc",
+
+    },
+    {
+        name: "Grant Williams",
+        position: "PF",
+        ht: "6-7",
+        wt: 241,
+        school: "Tennessee",
+        birthday: "",
+        rank: 17,
+        collegelogo: "tennessee",
+
+    },
+    {
+        name: "Nassir Little",
+        position: "SF",
+        ht: "6-6",
+        wt: 220,
+        school: "North Carolina",
+        birthday: "",
+        rank: 18,
+        collegelogo: "unc",
+
+    },
+    {
+        name: "Keldon Johnson",
+        position: "SF",
+        ht: "6-6",
+        wt: 211,
+        school: "Kentucky",
+        birthday: "",
+        rank: 19,
+        collegelogo: "kentucky",
+
+    },
+    {
+        name: "Nickeil Alexander-Walker",
+        position: "SG",
+        ht: "6-5",
+        wt: 210,
+        school: "Virginia Tech",
+        birthday: "",
+        rank: 20,
+        collegelogo: "virginiatech",
+
+    },
+    {
+        name: "Tre Jones",
+        position: "PG",
+        ht: "6-2",
+        wt: 183,
+        school: "Duke",
+        birthday: "",
+        rank: 21,
+        collegelogo: "duke",
+
+    },
+
+    {
+        name: "P.J. Washington",
+        position: "PF",
+        ht: "6-8",
+        wt: 228,
+        school: "Kentucky",
+        birthday: "",
+        rank: 22,
+        collegelogo: "kentucky",
+
+    },
+    {
+        name: "Kevin Porter Jr.",
+        position: "SG",
+        ht: "6-5",
+        wt: 217,
+        school: "USC",
+        birthday: "",
+        rank: 23,
+        collegelogo: "usc",
+
+    },
+    {
+        name: "Matisse Thybulle",
+        position: "SF",
+        ht: "6-5",
+        wt: 190,
+        school: "Washington",
+        birthday: "",
+        rank: 24,
+        collegelogo: "washington",
+
+    },
+    {
+        name: "Talen Horton-Tucker",
+        position: "SF",
+        ht: "6-4",
+        wt: 233,
+        school: "Iowa State",
+        birthday: "",
+        rank: 25,
+        collegelogo: "iowastate",
+
+    },
+    {
+        name: "Shamorie Ponds",
+        position: "PG",
+        ht: "6-1",
+        wt: 175,
+        school: "St. Johns",
+        birthday: "",
+        rank: 26,
+        collegelogo: "stjohns",
+
+    },
+    {
+        name: "Chuma Okeke",
+        position: "PF",
+        ht: "6-8",
+        wt: 235,
+        school: "Auburn",
+        birthday: "",
+        rank: 27,
+        collegelogo: "auburn",
+
+    },
+    {
+        name: "Cameron Johnson",
+        position: "SF",
+        ht: "6-8",
+        wt: 210,
+        school: "North Carolina",
+        birthday: "",
+        rank: 28,
+        collegelogo: "unc",
+
+    },
+    {
+        name: "Ty Jerome",
+        position: "PG/SG",
+        ht: "6-5",
+        wt: 195,
+        school: "Virginia",
+        birthday: "",
+        rank: 29,
+        collegelogo: "virginia",
+
+    },
+
 ]
+ 
+var pickOrder = []
+var lotteryTeams = [];
+var playoffTeams = [];
+
+
 
 
 $.ajax
@@ -180,33 +356,45 @@ $.ajax
     })
     .then(function (standings) {
         // console.log(standings)
-        var lotteryTeams = [];
-
         for (j = 0; j < standings.teams.length; j++) {
 
             // var lotteryRank = 0;
             if (standings.teams[j].playoffRank.rank > 8) {
                 lotteryTeams.push(standings.teams[j].overallRank.rank);
-            
-
-            };
+            } else if (standings.teams[j].playoffRank.rank < 9) {
+                playoffTeams.push(standings.teams[j].overallRank.rank);
+            }
 
         };
-
-        lotteryTeams.sort(function(a, b){return b - a});
-
         
+        lotteryTeams.sort(function(a, b){return b - a});
+        playoffTeams.sort(function(a, b){return b - a});
 
-        for (j = 0; j < standings.teams.length; j++) {
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+              let j = Math.floor(Math.random() * (i + 1));
+              [array[i], array[j]] = [array[j], array[i]];
+            }
+          }
 
-            for (i = 0; i < lotteryTeams.length; i++) {
-                if (lotteryTeams[i] == standings.teams[j].overallRank.rank) {
+
+        function lottery() {
+            $("#draftHolder").empty();        
+        pickOrder = lotteryTeams.concat(playoffTeams);
+
+        console.log(pickOrder)
+
+        for (i = 0; i < 30; i++) {
+
+            for (j = 0; j < 30; j++) {
+                if (standings.teams[j].overallRank.rank == pickOrder[i]) {
                     var tLogo = standings.teams[j].team.abbreviation.toLowerCase();
 
-                    var teamPickString = '<div class="col-1 m-0 p-0"></div>';
+                    var teamPickString = '<div class="row mb-2">';
+                    teamPickString += '<div class="col-1 m-0 p-0"></div>';
                     teamPickString += '<div class="col-1 m-0 p-0">';
-                    teamPickString += '<div class="card bg-dark text-white align-middle text-center">';
-                    teamPickString += '<p class="m-0 p-1">'+[i+1]+'</p>';
+                    teamPickString += '<div class="card text-white align-middle text-center">';
+                    teamPickString += '<p class="m-0 p-1" id="pickNumber'+[i+1]+'">'+[i+1]+'</p>';
                     teamPickString += '</div>';
                     teamPickString += '</div>';
                     teamPickString += '<div class="col-4 m-0 px-1">';
@@ -224,15 +412,26 @@ $.ajax
                     teamPickString += '</div>';
                     teamPickString += '<div class="col-1 m-0 p-0"></div>';
                     teamPickString += '</div>';
-                    $("#draftrow"+[i+1]).append(teamPickString)
-        
+                    $("#draftHolder").append(teamPickString);
+
+                    if (pickOrder[i] > 16) {
+                        $("#pickNumber"+[i+1]).addClass("primary-color-dark")
+                    } else {
+                        $("#pickNumber"+[i+1]).addClass("bg-dark")
+
+                    }
+    
+
 
                 }
-
+            }
             }
 
-            }
-
+        }  
+        lottery();
+        $("#lotteryBtn").click(function() {
+            shuffle(lotteryTeams)
+            lottery();
+          });
         
     });
-    
