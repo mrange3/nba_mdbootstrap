@@ -39,6 +39,9 @@ body {
 .playerFont  {
   font-size: 18px;
 }
+.deskHide {
+  display: none;
+}
 
 
 @media (max-width:740px)  { 
@@ -63,12 +66,18 @@ display: none;
   .teamRecord {
     font-size: 5px !important;
   }
-  .footer {
+  .mobileHide {
     display: none;
   }
+  .deskHide {
+    display: block;
+  }
+  .draftLogo {
+    font-size: 14px;
+  }
+
   .gameKey {
     font-size: 13px !important;
-  
   }
   
 }
