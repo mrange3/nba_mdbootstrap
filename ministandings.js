@@ -24,16 +24,16 @@ $.ajax
             tLogo = standings.teams[j].team.abbreviation.toLowerCase();
 
             if (standings.teams[j].playoffRank.conferenceName == "Western") {
-                var miniStandingsStringW = '<td class="align-middle text-left pt-2 pb-1" style="font-size: 10px;">'+ standings.teams[j].playoffRank.rank + '</td>'
-                miniStandingsStringW += '<td class="align-middle text-left pl-0 pt-2 pb-1" style="font-size: 12px;"><img src="images/logos/' + tLogo + '.png" height="18px" width="18px">'+ " " +standings.teams[j].team.city + " " + standings.teams[j].team.name + '</td>'
-                miniStandingsStringW += '<td class="align-middle text-center pr-0 pt-2 pb-1" style="font-size: 10px;">' + standings.teams[j].stats.standings.wins + "-" + standings.teams[j].stats.standings.losses +'</td>'
-                miniStandingsStringW += '<td class="align-middle text-right pl-1 pt-2 pb-1" style="font-size: 10px;">' + standings.teams[j].conferenceRank.gamesBack + '</td>'
+                var miniStandingsStringW = '<td class="align-middle text-left pt-1 pb-1" style="font-size: 10px;">'+ standings.teams[j].playoffRank.rank + '</td>'
+                miniStandingsStringW += '<td class="align-middle text-left pl-0 pt-1 pb-1" style="font-size: 12px;"><img src="images/logos/' + tLogo + '.png" height="20px" width="20px">'+ " " +standings.teams[j].team.city + " " + standings.teams[j].team.name + '</td>'
+                miniStandingsStringW += '<td class="align-middle text-center pr-0 pt-1 pb-1" style="font-size: 10px;">' + standings.teams[j].stats.standings.wins + "-" + standings.teams[j].stats.standings.losses +'</td>'
+                miniStandingsStringW += '<td class="align-middle text-right pl-1 pt-1 pb-1" style="font-size: 10px;">' + standings.teams[j].conferenceRank.gamesBack + '</td>'
                 $("#wTeam"+standings.teams[j].playoffRank.rank).append(miniStandingsStringW)
             } else {
-                var miniStandingsStringE = '<td class="align-middle text-left pt-2 pb-1" style="font-size: 10px;">'+ standings.teams[j].playoffRank.rank + '</td>'
-                miniStandingsStringE += '<td class="align-middle text-left pl-0 pt-2 pb-1" style="font-size: 12px;"><img src="images/logos/' + tLogo + '.png" height="18px" width="18px">'+ " " +standings.teams[j].team.city + " " + standings.teams[j].team.name + '</td>'
-                miniStandingsStringE += '<td class="align-middle text-center pr-0 pt-2 pb-1" style="font-size: 10px;">' + standings.teams[j].stats.standings.wins + "-" + standings.teams[j].stats.standings.losses + '</td>'
-                miniStandingsStringE += '<td class="align-middle text-right pl-1 pt-2 pb-1" style="font-size: 10px;">' + standings.teams[j].conferenceRank.gamesBack + '</td>'
+                var miniStandingsStringE = '<td class="align-middle text-left pt-1 pb-1" style="font-size: 10px;">'+ standings.teams[j].playoffRank.rank + '</td>'
+                miniStandingsStringE += '<td class="align-middle text-left pl-0 pt-1 pb-1" style="font-size: 12px;"><img src="images/logos/' + tLogo + '.png" height="20px" width="20px">'+ " " +standings.teams[j].team.city + " " + standings.teams[j].team.name + '</td>'
+                miniStandingsStringE += '<td class="align-middle text-center pr-0 pt-1 pb-1" style="font-size: 10px;">' + standings.teams[j].stats.standings.wins + "-" + standings.teams[j].stats.standings.losses + '</td>'
+                miniStandingsStringE += '<td class="align-middle text-right pl-1 pt-1 pb-1" style="font-size: 10px;">' + standings.teams[j].conferenceRank.gamesBack + '</td>'
                 $("#eTeam"+standings.teams[j].playoffRank.rank).append(miniStandingsStringE)
 
             }
