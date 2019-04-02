@@ -355,10 +355,10 @@ $.ajax
 
     })
     .then(function (standings) {
-        // console.log(standings)
+
+/////////////////Sort Playoff & Lottery Teams ///////////////////////////////
         for (j = 0; j < standings.teams.length; j++) {
 
-            // var lotteryRank = 0;
             if (standings.teams[j].playoffRank.rank > 8) {
                 lotteryTeams.push(standings.teams[j].overallRank.rank);
             } else if (standings.teams[j].playoffRank.rank < 9) {
@@ -370,14 +370,14 @@ $.ajax
         lotteryTeams.sort(function(a, b){return b - a});
         playoffTeams.sort(function(a, b){return b - a});
 
+///////////// Lottery Order //////////////////////////////////////////////
         function shuffle(array) {
             for (let i = array.length - 1; i > 0; i--) {
               let j = Math.floor(Math.random() * (i + 1));
               [array[i], array[j]] = [array[j], array[i]];
             }
           }
-
-
+////////////Draft Functions///////////////////////////////////////////////////////
         function lottery() {
             $("#draftHolder").empty();        
         pickOrder = lotteryTeams.concat(playoffTeams);
@@ -392,7 +392,7 @@ $.ajax
 
                     var teamPickString = '<div class="row mb-2">';
                     teamPickString += '<div class="col-1 m-0 mobileHide p-0"></div>';
-                    teamPickString += '<div class="col-1 m-0 p-0">';
+                    teamPickString += '<div class="col-1 m-0 pl-1 pr-0">';
                     teamPickString += '<div class="card text-white align-middle text-center">';
                     teamPickString += '<p class="m-0 p-1" id="pickNumber'+[i+1]+'">'+[i+1]+'</p>';
                     teamPickString += '</div>';
@@ -406,11 +406,11 @@ $.ajax
                     teamPickString += '</div>';
                     teamPickString += '</div>';
                     teamPickString += '</div>';
-                    teamPickString += '<div class="col m-0 p-0">';
+                    teamPickString += '<div class="col m-0 pr-1 pl-0">';
                     teamPickString += '<div class="card card-background d-flex flex-row p-1">';
                     teamPickString += '<div class=" playerPick m-0 p-0 " id="pickSpot'+[i+1]+'">';
                     teamPickString += '<span class="m-0 p-0 draftLogo draftText inline"><img src="images/collegelogos/' + players[i].collegelogo + '.png" height="25px" width="25px">' + " " + players[i].name  +'</span>'
-                    teamPickString += '<span class="m-0 p-0 draftLogo inline"><small>'+ players[i].position + '</small></span>'
+                    teamPickString += '<span class="m-0 pl-1 py-0 pr-0 draftLogo inline"><small>'+ players[i].position + '</small></span>'
                     teamPickString += '<span class="m-0 p-0 mobileHide inline"><small>'+ " | " + players[i].ht + " | " + players[i].wt + '<small></span>'
                     teamPickString += '</div>';
                     teamPickString += '</div>';
