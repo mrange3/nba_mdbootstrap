@@ -391,31 +391,27 @@ $.ajax
                     var tLogo = standings.teams[j].team.abbreviation.toLowerCase();
 
                     var teamPickString = '<div class="row mb-2">';
-                    teamPickString += '<div class="col-1 m-0 mobileHide p-0"></div>';
+                    teamPickString += '<div class="col-2 m-0 mobileHide p-0"></div>';
                     teamPickString += '<div class="col-1 m-0 pl-1 pr-0">';
                     teamPickString += '<div class="card text-white align-middle text-center">';
                     teamPickString += '<p class="m-0 p-1" id="pickNumber'+[i+1]+'">'+[i+1]+'</p>';
                     teamPickString += '</div>';
                     teamPickString += '</div>';
-                    teamPickString += '<div class="col-4  m-0 px-1 py-0">';
-                    teamPickString += '<div class="card card-background p-1">';
-                    teamPickString += '<div class=" teamPick d-flex flex-row m-0 p-0 align-middle" id="teamSpot'+[i+1]+'">';
-                    teamPickString += '<span class="m-0 p-0 draftLogo deskHide inline align-middle"><img src="images/logos/' + tLogo + '.png" height="25px" width="25px">'+ " " +standings.teams[j].team.abbreviation + '</span>'
-                    teamPickString += '<span class="m-0 p-0 mobileHide inline align-middle"><img src="images/logos/' + tLogo + '.png" height="25px" width="25px">'+ " " +standings.teams[j].team.city + " " + standings.teams[j].team.name + '</span>'
-                    teamPickString += '<span class="m-0 px-1  draftLogo inline align-middle"><small>'+ " " +standings.teams[j].stats.standings.wins + " - " + standings.teams[j].stats.standings.losses + '</small></span>'
-                    teamPickString += '</div>';
+                    teamPickString += '<div class="col-3  m-0 px-1 py-0">';
+                    teamPickString += '<div class="card rounded-0 d-flex flex-row card-background p-1" id="teamSpot'+[i+1]+'">';
+                    teamPickString += '<div class="mr-auto p-0 draftLogo deskHide inline align-middle"><img src="images/logos/' + tLogo + '.png" height="25px" width="25px">'+ " " +standings.teams[j].team.abbreviation + '</div>'
+                    teamPickString += '<div class="mr-auto p-0 mobileHide inline align-middle"><img src="images/logos/' + tLogo + '.png" height="25px" width="25px">'+ " " +standings.teams[j].team.city + " " + standings.teams[j].team.name + '</div>'
+                    teamPickString += '<div class="px-1  draftLogo inline align-middle"><small>'+ " " +standings.teams[j].stats.standings.wins + " - " + standings.teams[j].stats.standings.losses + '</small></div>'
                     teamPickString += '</div>';
                     teamPickString += '</div>';
                     teamPickString += '<div class="col m-0 pr-1 pl-0">';
-                    teamPickString += '<div class="card card-background d-flex flex-row p-1">';
-                    teamPickString += '<div class=" playerPick m-0 p-0 " id="pickSpot'+[i+1]+'">';
-                    teamPickString += '<span class="m-0 p-0 draftLogo draftText inline"><img src="images/collegelogos/' + players[i].collegelogo + '.png" height="25px" width="25px">' + " " + players[i].name  +'</span>'
-                    teamPickString += '<span class="m-0 pl-1 py-0 pr-0 draftLogo inline"><small>'+ players[i].position + '</small></span>'
-                    teamPickString += '<span class="m-0 p-0 mobileHide inline"><small>'+ " | " + players[i].ht + " | " + players[i].wt + '<small></span>'
+                    teamPickString += '<div class="card rounded-0 card-background playerPick d-flex flex-row p-1" id="pickSpot'+[i+1]+'">';
+                    teamPickString += '<div class="mr-auto p-0 draftLogo draftText inline"><img src="images/collegelogos/' + players[i].collegelogo + '.png" height="25px" width="25px">' + " " + players[i].name  +'</div>'
+                    teamPickString += '<div class=" draftLogo inline pr-1"><small>'+ players[i].position + '</small></div>'
+                    teamPickString += '<div class=" mobileHide "><small>'+ " | " + players[i].ht + " | " + players[i].wt + '<small></div>'
                     teamPickString += '</div>';
                     teamPickString += '</div>';
-                    teamPickString += '</div>';
-                    teamPickString += '<div class="col-1 m-0 mobileHide p-0"></div>';
+                    teamPickString += '<div class="col-2 m-0 mobileHide p-0"></div>';
                     teamPickString += '</div>';
                     $("#draftHolder").append(teamPickString);
 
