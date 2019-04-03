@@ -408,7 +408,7 @@ $.ajax
                     teamPickString += '<div class="card rounded-0 card-background playerPick d-flex flex-row p-1" id="pickSpot'+[i+1]+'">';
                     teamPickString += '<div class="mr-auto p-0 draftLogo draftText inline"><img src="images/collegelogos/' + players[i].collegelogo + '.png" height="25px" width="25px">' + " " + players[i].name  +'</div>'
                     teamPickString += '<div class=" draftLogo inline pr-1"><small>'+ players[i].position + '</small></div>'
-                    teamPickString += '<div class="  "><small>'+ " | " + players[i].ht + " | " + players[i].wt + '<small></div>'
+                    teamPickString += '<div class=" draftLogo "><small>'+ " | " + players[i].ht + " | " + players[i].wt + '<small></div>'
                     teamPickString += '</div>';
                     teamPickString += '</div>';
                     teamPickString += '<div class="col-2 m-0 mobileHide p-0"></div>';
