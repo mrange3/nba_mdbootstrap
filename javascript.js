@@ -157,7 +157,7 @@ $.ajax
          var aLogo = aTeam.toLowerCase();
          var hLogo = hTeam.toLowerCase();
 
-          var htmlString = '<div class="col-4 scoreCard px-1">';
+          var htmlString = '<div class="col-4 scoreCard px-1 py-1">';
           htmlString += '<div class="card justify-content-center rounded-0 text-dark m-1" " id='+aTeam + hTeam+'>';
           htmlString += '<div class="m-2">'
           htmlString += '<table class="table table-borderless card-background  table-sm w-85 m-0"  >';
@@ -206,22 +206,29 @@ $.ajax
           }
 
 
-          if (aTeamWinPct > .615 && hTeamWinPct > .615) {
+          if (aTeamWinPct > .0 || hTeamWinPct > .0) {
             $("#"+aTeam+hTeam).addClass("cyan");  
             $("#"+'gs'+aTeam+hTeam).text("A");
-          } else if (aTeamWinPct > .525 && hTeamWinPct > .525 || aTeamWinPct + hTeamWinPct > 1.15) {
-            $("#"+aTeam+hTeam).addClass("green");    
-            $("#"+'gs'+aTeam+hTeam).text("B"); 
-          }  else if (aTeamWinPct > .425 && hTeamWinPct > .425 || aTeamWinPct + hTeamWinPct > .95) {
-            $("#"+aTeam+hTeam).addClass("yellow");
-            $("#"+'gs'+aTeam+hTeam).text("C");     
-          } else if (aTeamWinPct > .3 && hTeamWinPct > .3 || aTeamWinPct + hTeamWinPct > .7) {
-            $("#"+aTeam+hTeam).addClass("orange");
-            $("#"+'gs'+aTeam+hTeam).text("D");    
-          }else {
-            $("#"+aTeam+hTeam).addClass("red");    
-            $("#"+'gs'+aTeam+hTeam).text("F");  
           }
+
+
+          // if (aTeamWinPct > .615 && hTeamWinPct > .615) {
+          //   $("#"+aTeam+hTeam).addClass("cyan");  
+          //   $("#"+'gs'+aTeam+hTeam).text("A");
+          // }
+          //  else if (aTeamWinPct > .525 && hTeamWinPct > .525 || aTeamWinPct + hTeamWinPct > 1.15) {
+          //   $("#"+aTeam+hTeam).addClass("green");    
+          //   $("#"+'gs'+aTeam+hTeam).text("B"); 
+          // }  else if (aTeamWinPct > .425 && hTeamWinPct > .425 || aTeamWinPct + hTeamWinPct > .95) {
+          //   $("#"+aTeam+hTeam).addClass("yellow");
+          //   $("#"+'gs'+aTeam+hTeam).text("C");     
+          // } else if (aTeamWinPct > .3 && hTeamWinPct > .3 || aTeamWinPct + hTeamWinPct > .7) {
+          //   $("#"+aTeam+hTeam).addClass("orange");
+          //   $("#"+'gs'+aTeam+hTeam).text("D");    
+          // }else {
+          //   $("#"+aTeam+hTeam).addClass("red");    
+          //   $("#"+'gs'+aTeam+hTeam).text("F");  
+          // }
         };
 
 

@@ -1,9 +1,4 @@
-var teamsUrl = "https://api.mysportsfeeds.com/v2.0/pull/nba/current/standings.json"
-
-
-var api = config.MY_KEY
-
-var players = [
+var playersArray = [
     {
         name: "Zion Williamson",
         position: "PF",
@@ -65,7 +60,7 @@ var players = [
         wt: 218,
         school: "Duke",
         birthday: "",
-        rank: 5,
+        rank: 6,
         collegelogo: "duke",
 
     },
@@ -88,7 +83,7 @@ var players = [
         wt: 233,
         school: "Virginia",
         birthday: "",
-        rank: 6,
+        rank: 5,
         collegelogo: "virginia",
 
     },
@@ -336,103 +331,430 @@ var players = [
     },
 
 ]
- 
-var pickOrder = []
+
+// Teams /////////////////////////////////////////////////////////////////////
+var teamArray = [
+    {
+        team: "New York Knicks",
+        pick: 1,
+        logo: "nyk",
+        bigBoard: [ 1, 2, 3, 13, 6, 5, 7, 8, 9, 10, 11, 12, 4, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+    },
+    {
+        team: "Cleveland Cavaliers",
+        pick: 2,
+        logo: "cle",
+        bigBoard: [ 1, 3, 4, 5, 6, 2, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+    },
+    {
+        team: "Phoenix Suns",
+        pick: 3,
+        logo: "phx",
+        bigBoard: [1, 2, 7, 5, 3, 4, 6, 16, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+    },
+    {
+        team: "Chicago Bulls",
+        pick: 4,
+        logo: "chi",
+        bigBoard: [1, 2, 3, 9, 5, 6, 7, 8, 4, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+    },
+    {
+        team: "Atlanta Hawks",
+        pick: 5,
+        logo: "atl",
+        bigBoard: [1, 3, 4, 5, 6, 2, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+    },
+    {
+        team: "Washington Wizards",
+        pick: 6,
+        logo: "was",
+        bigBoard: [1, 3, 5, 6, 7, 8, 4, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+    },
+    {
+        team: "New Orleans Pelicans",
+        pick: 7,
+        logo: "nop",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+    },
+    {
+        team: "Memphis Grizzlies",
+        pick: 8,
+        logo: "mem",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 9, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+    },
+    {
+        team: "Dallas Mavericks",
+        pick: 9,
+        logo: "dal",
+        bigBoard: [1, 2, 3, 4, 5, 9, 16, 7,  12, 13, 14, 15, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+    },
+    {
+        team: "Minnesota Timberwolves",
+        pick: 10,
+        logo: "min",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 9, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+    },
+    {
+        team: "LA Lakers",
+        pick: 11,
+        logo: "lal",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+    },
+    {
+        team: "Charlotte Hornets",
+        pick: 12,
+        logo: "cha",
+        bigBoard: [1, 3, 4, 2, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+    },
+    {
+        team: "Miami Heat",
+        pick: 13,
+        logo: "mia",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+    },
+    {
+        team: "Sacramento Kings",
+        pick: 14,
+        logo: "sac",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+    },
+    {
+        team: "Detroit Pistons",
+        pick: 15,
+        logo: "det",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+    },
+    {
+        team: "Orlando Magic",
+        pick: 16,
+        logo: "orl",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+    },
+    {
+        team: "Brooklyn Nets",
+        pick: 17,
+        logo: "bro",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+    },
+    {
+        team: "Indiana Pacers",
+        pick: 18,
+        logo: "ind",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+    },
+    {
+        team: "San Antonio Spurs",
+        pick: 19,
+        logo: "sas",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+    },
+    {
+        team: "LA Clippers",
+        pick: 20,
+        logo: "lac",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+    },
+    {
+        team: "Oklahoma City Thunder",
+        pick: 21,
+        logo: "okl",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+    },
+    {
+        team: "Boston Celtics",
+        pick: 22,
+        logo: "bos",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+    },
+    {
+        team: "Utah Jazz",
+        pick: 23,
+        logo: "uta",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+    },
+    {
+        team: "Philidelphia 76ers",
+        pick: 24,
+        logo: "phi",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+    },
+    {
+        team: "Portland Trailblazers",
+        pick: 25,
+        logo: "por",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+    },
+    {
+        team: "Houston Rockets",
+        pick: 26,
+        logo: "hou",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+    },
+    {
+        team: "Denver Nuggets",
+        pick: 27,
+        logo: "den",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+    },
+    {
+        team: "Golden State Warriors",
+        pick: 28,
+        logo: "gsw",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+    },
+    {
+        team: "Toronto Raptors",
+        pick: 29,
+        logo: "tor",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+    },
+    {
+        team: "Milwaulkee Bucks",
+        pick: 30,
+        logo: "mil",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+    },
+]
+
 var lotteryTeams = [];
-var playoffTeams = [];
+var nonLotto = [];
+var players = []
+
+for (i = 0; i < teamArray.length; i++) {
+    if (teamArray[i].pick < 15) {
+        lotteryTeams.push(teamArray[i]);
+    } else {
+        nonLotto.push(teamArray[i]);
+    }
+}
 
 
 
+playersArray.sort(function (a, b) {
+    return a.rank - b.rank
+})
+players = playersArray.slice();
 
-$.ajax
-    ({
-        type: "GET",
-        url: teamsUrl,
-        dataType: 'json',
-        headers: {
-            "Authorization": "Basic " + btoa(api + ":" + "MYSPORTSFEEDS")
-        },
 
-    })
-    .then(function (standings) {
+function lottery() {
+    $("#draftHolder").empty();
+    var playerPool = players.slice()
+    var teamPlayerArray = []
+    var teamArrayCopy = teamArray.slice()
 
-/////////////////Sort Playoff & Lottery Teams ///////////////////////////////
-        for (j = 0; j < standings.teams.length; j++) {
+    for (i = 0; i < teamArrayCopy.length; i++) {
 
-            if (standings.teams[j].playoffRank.rank > 8) {
-                lotteryTeams.push(standings.teams[j].overallRank.rank);
-            } else if (standings.teams[j].playoffRank.rank < 9) {
-                playoffTeams.push(standings.teams[j].overallRank.rank);
-            }
+        // var teamPlayerRank = teamArrayCopy[i].bigBoard.slice()
+
+        // teamPlayerArray.push(playerPool[teamPlayerRank[0]-1])
+
+        // for (j=0; j < teamArrayCopy.length; j++) {
+        //     var index = teamArrayCopy[j].bigBoard.indexOf(teamPlayerRank[0]);
+        //     if (index > -1) {
+        //         teamArrayCopy[j].bigBoard.splice(index, 1);
+        //     }
+        // }
+
+        // players = teamPlayerArray.slice()
+
+        var teamPickString = '<div class="row  align-items-center mb-2 ">';
+        teamPickString += '<div class="col-1 m-0 mobileHide p-0"></div>';
+        teamPickString += '<div class="col-1 m-0 pl-1 pr-0 py-0 ">';
+        teamPickString += '<div class="card text-white  text-center">';
+        teamPickString += '<p class="  my-auto  draftText p-1" id="pickNumber' + [i + 1] + '"><strong>' + [i + 1] + '</strong></p>';
+        teamPickString += '</div>';
+        teamPickString += '</div>';
+        teamPickString += '<div class="col-4  m-0 px-1 py-0">';
+        teamPickString += '<div class="card my-auto rounded-0 d-flex flex-row card-background  p-1" id="teamSpot' + [i + 1] + '">';
+        teamPickString += '<div class="mr-auto my-auto py-auto mobileHide inline draftText "><img src="images/logos/' + teamArray[i].logo + '.png" height="30px" width="30px">' + " " + teamArray[i].team + '</div>'
+        teamPickString += '<div class="mr-auto my-auto py-auto deskHide inline draftText "><img src="images/logos/' + teamArray[i].logo + '.png" height="20px" width="20px">' + " " + teamArray[i].logo.toUpperCase() +'</div>'
+        teamPickString += '<div class="px-1 draftText  inline " id="pickDifferent' + [i + 1] + '"><small>' + " " + '</small></div>'
+        teamPickString += '</div>';
+        teamPickString += '</div>';
+        teamPickString += '<div class="col m-0 pr-1 pl-0 ">';
+        teamPickString += '<div class="card my-auto rounded-0 card-background playerPick d-flex align-middle align-self-center flex-row p-1" id="pickSpot' + [i + 1] + '">';
+        teamPickString += '<div class="mr-automy-auto py-auto  deskHide inline playerText "><img src="images/collegelogos/' + players[i].collegelogo + '.png" height="18px" width="18px">' + " " + players[i].name + '</div>'
+        teamPickString += '<div class="mr-auto my-auto py-auto mobileHide inline playerText "><img src="images/collegelogos/' + players[i].collegelogo + '.png" height="28px" width="28px">' + " " + players[i].name + '</div>'
+        teamPickString += '<div class=" ml-auto my-auto py-auto  playerTextSmall inline pr-1 ">' + players[i].position + '</div>'
+        teamPickString += '<div class="my-auto py-auto  playerTextSmall inline pr-1 ">' + " | " + players[i].ht + " | " + players[i].wt + '</div>'
+        teamPickString += '</div>';
+        teamPickString += '</div>';
+        teamPickString += '<div class="col-1 m-0 mobileHide p-0"></div>';
+        teamPickString += '</div>';
+        $("#draftHolder").append(teamPickString);
+
+    };
+    console.log(teamPlayerArray)
+
+}
+
+// pick 1-4 and then 14-5 ////////
+
+var pickOdds = [
+    [140, 140, 140, 125, 105, 90, 60, 60, 60, 30, 20, 10, 10, 10],
+    [134, 134, 134, 122, 105, 92, 63, 63, 63, 33, 22, 11, 11, 11],
+    [127, 127, 127, 119, 105, 94, 67, 67, 67, 36, 24, 12, 12, 12],
+    [119, 119, 119, 114, 105, 96, 72, 72, 72, 40, 28, 14, 14, 14],
+
+];
+
+var teamOdds = [
+    [479, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [278, 201, 0, 0, 0, 0, 0, 0, 0, 0],
+    [148, 260, 71, 0, 0, 0, 0, 0, 0, 0],
+    [72, 257, 168, 22, 0, 0, 0, 0, 0, 0],
+    [22, 196, 267, 88, 6, 0, 0, 0, 0, 0],
+    [0, 86, 296, 206, 38, 2, 0, 0, 0, 0],
+    [0, 0, 197, 372, 151, 16, 1, 0, 0, 0],
+    [0, 0, 0, 312, 341, 80, 5, 1, 0, 0],
+    [0, 0, 0, 0, 464, 243, 29, 1, 1, 0],
+    [0, 0, 0, 0, 0, 659, 189, 12, 1, 1],
+    [0, 0, 0, 0, 0, 0, 776, 126, 4, 1],
+    [0, 0, 0, 0, 0, 0, 0, 861, 9, 2],
+    [0, 0, 0, 0, 0, 0, 0, 0, 906, 46],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 952],
+]
+
+lottery()
+
+$("#lotteryBtn").click(function () {
+    $(this).prop("disabled", true);
+    var pickOrder = [];
+    var finalOrder = [];
+
+    for (l = 0; l < pickOdds.length; l++) {
+        var multiplier = pickOdds[l].reduce(function (a, b) { return a + b; }, 0);
+        var firstBall = Math.floor(Math.random() * multiplier)
+        var sumOdds = 0;
+        for (i = 0; i < lotteryTeams.length; i++) {
+            if (firstBall <= sumOdds) { break; }
+            var firstTeam = i;
+            sumOdds += pickOdds[l][i];
 
         };
-        
-        lotteryTeams.sort(function(a, b){return b - a});
-        playoffTeams.sort(function(a, b){return b - a});
 
-///////////// Lottery Order //////////////////////////////////////////////
-        function shuffle(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-              let j = Math.floor(Math.random() * (i + 1));
-              [array[i], array[j]] = [array[j], array[i]];
-            }
-          }
-////////////Draft Functions///////////////////////////////////////////////////////
-        function lottery() {
-            $("#draftHolder").empty();        
-        pickOrder = lotteryTeams.concat(playoffTeams);
 
-        console.log(pickOrder)
 
-        for (i = 0; i < 30; i++) {
+        pickOrder.push(lotteryTeams[firstTeam]);
+        lotteryTeams.splice(firstTeam, 1);
+        teamOdds.splice(firstTeam, 1)
 
-            for (j = 0; j < 30; j++) {
-                if (standings.teams[j].overallRank.rank == pickOrder[i]) {
-                    var tLogo = standings.teams[j].team.abbreviation.toLowerCase();
+        for (x = 0; x < pickOdds.length; x++) {
+            pickOdds[x].splice(firstTeam, 1)
+        }
+    }
 
-                    var teamPickString = '<div class="row mb-2">';
-                    teamPickString += '<div class="col-2 m-0 mobileHide p-0"></div>';
-                    teamPickString += '<div class="col-1 m-0 pl-1 pr-0">';
-                    teamPickString += '<div class="card text-white align-middle text-center">';
-                    teamPickString += '<p class="m-0 p-1" id="pickNumber'+[i+1]+'">'+[i+1]+'</p>';
-                    teamPickString += '</div>';
-                    teamPickString += '</div>';
-                    teamPickString += '<div class="col-3  m-0 px-1 py-0">';
-                    teamPickString += '<div class="card rounded-0 d-flex flex-row card-background p-1" id="teamSpot'+[i+1]+'">';
-                    teamPickString += '<div class="mr-auto p-0 draftLogo deskHide inline align-middle"><img src="images/logos/' + tLogo + '.png" height="25px" width="25px">'+ " " +standings.teams[j].team.abbreviation + '</div>'
-                    teamPickString += '<div class="mr-auto p-0 mobileHide inline align-middle"><img src="images/logos/' + tLogo + '.png" height="25px" width="25px">'+ " " +standings.teams[j].team.city + " " + standings.teams[j].team.name + '</div>'
-                    teamPickString += '<div class="px-1 mobileHide draftLogo inline align-middle"><small>'+ " " +standings.teams[j].stats.standings.wins + " - " + standings.teams[j].stats.standings.losses + '</small></div>'
-                    teamPickString += '</div>';
-                    teamPickString += '</div>';
-                    teamPickString += '<div class="col m-0 pr-1 pl-0">';
-                    teamPickString += '<div class="card rounded-0 card-background playerPick d-flex flex-row p-1" id="pickSpot'+[i+1]+'">';
-                    teamPickString += '<div class="mr-auto p-0 draftLogo draftText inline"><img src="images/collegelogos/' + players[i].collegelogo + '.png" height="25px" width="25px">' + " " + players[i].name  +'</div>'
-                    teamPickString += '<div class=" draftLogo inline pr-1"><small>'+ players[i].position + '</small></div>'
-                    teamPickString += '<div class=" draftLogo pr-1"><small>'+ " | " + players[i].ht + " | " + players[i].wt + '<small></div>'
-                    teamPickString += '</div>';
-                    teamPickString += '</div>';
-                    teamPickString += '<div class="col-2 m-0 mobileHide p-0"></div>';
-                    teamPickString += '</div>';
-                    $("#draftHolder").append(teamPickString);
+    teamOdds.reverse();
 
-                    if (pickOrder[i] > 16) {
-                        $("#pickNumber"+[i+1]).addClass("primary-color-dark")
-                    } else {
-                        $("#pickNumber"+[i+1]).addClass("bg-dark")
+    for (j = 0; j < teamOdds.length; j++) {
+        var multiplier2 = teamOdds[j].reduce(function (a, b) { return a + b; }, 0);
+        var secondBall = Math.floor(Math.random() * multiplier2)
+        var sumOdds2 = 0;
+        for (k = 0; k < lotteryTeams.length; k++) {
+            if (secondBall <= sumOdds2) { break; }
+            var secondTeam = k;
+            sumOdds += teamOdds[j][k];
 
-                    }
+        };
+        pickOrder.push(lotteryTeams[secondTeam]);
+        lotteryTeams.splice(secondTeam, 1);
+
+        for (y = 0; y < teamOdds.length; y++) {
+            teamOdds[y].splice(secondTeam, 1)
+        };
+
+    }
+
+    var topFour = pickOrder.slice(0, 4)
+    var bottomTen = pickOrder.slice(4)
+    var lotteryOrder = topFour.concat(bottomTen.reverse())
+    finalOrder = lotteryOrder.concat(nonLotto);
+
+
+    $("#draftHolder").empty();
+
+    var playerPool2 = players.slice()
+    var teamPlayerArray2 = []
+    var teamArrayCopy2 = finalOrder.slice()
+
     
+    for (i = 0; i < 30; i++) {
 
+        var teamPlayerRank2 = teamArrayCopy2[i].bigBoard.slice()
 
-                }
+        teamPlayerArray2.push(playerPool2[teamPlayerRank2[0]-1])
+
+        for (j=0; j < teamArrayCopy2.length; j++) {
+            var index2 = teamArrayCopy2[j].bigBoard.indexOf(teamPlayerRank2[0]);
+            if (index2 > -1) {
+                teamArrayCopy2[j].bigBoard.splice(index2, 1);
             }
+        }
+        console.log(teamPlayerArray2)
+
+        players = teamPlayerArray2.slice()
+
+
+        var pickDiff = finalOrder[i].pick - (i + 1);
+
+        var teamPickString = '<div class="row  align-items-center mb-2 ">';
+        teamPickString += '<div class="col-1 m-0 mobileHide p-0"></div>';
+        teamPickString += '<div class="col-1 m-0 pl-1 pr-0 py-0 ">';
+        teamPickString += '<div class="card text-white  text-center">';
+        teamPickString += '<p class="  my-auto  draftText p-1" id="pickNumber' + [i + 1] + '"><strong>' + [i + 1] + '</strong></p>';
+        teamPickString += '</div>';
+        teamPickString += '</div>';
+        teamPickString += '<div class="col-4  m-0 px-1 py-0">';
+        teamPickString += '<div class="card my-auto rounded-0 d-flex flex-row card-background  p-1" id="teamSpot' + [i + 1] + '">';
+        teamPickString += '<div class="mr-auto my-auto py-auto mobileHide inline draftText "><img src="images/logos/' + finalOrder[i].logo + '.png" height="30px" width="30px">' + " " + finalOrder[i].team + '</div>'
+        teamPickString += '<div class="mr-auto my-auto py-auto deskHide inline draftText "><img src="images/logos/' + finalOrder[i].logo + '.png" height="20px" width="20px">' + " " + finalOrder[i].logo.toUpperCase() +'</div>'
+        teamPickString += '<div class="px-1  draftText inline " id="pickDifferent' + [i + 1] + '"><small>' + " " + '</small></div>'
+        teamPickString += '</div>';
+        teamPickString += '</div>';
+        teamPickString += '<div class="col m-0 pr-1 pl-0 ">';
+        teamPickString += '<div class="card my-auto rounded-0 card-background playerPick d-flex align-middle align-self-center flex-row p-1" id="pickSpot' + [i + 1] + '">';
+        teamPickString += '<div class="mr-automy-auto py-auto  deskHide inline playerText "><img src="images/collegelogos/' + players[i].collegelogo + '.png" height="20px" width="20px">' + " " + players[i].name + '</div>'
+        teamPickString += '<div class="mr-auto my-auto py-auto mobileHide inline playerText "><img src="images/collegelogos/' + players[i].collegelogo + '.png" height="30px" width="30px">' + " " + players[i].name + '</div>'
+        teamPickString += '<div class=" ml-auto my-auto py-auto  playerTextSmall inline pr-1 ">' + players[i].position + '</div>'
+        teamPickString += '<div class="my-auto py-auto  playerTextSmall inline pr-1 ">' + " | " + players[i].ht + " | " + players[i].wt + '</div>'
+        teamPickString += '</div>';
+        teamPickString += '</div>';
+        teamPickString += '<div class="col-1 m-0 mobileHide p-0"></div>';
+        teamPickString += '</div>';
+        $("#draftHolder").append(teamPickString);
+
+        if (i < 14) {
+            $("#pickNumber" + [i + 1]).addClass("primary-color-dark")
+            if (pickDiff > 0) {
+                $("#pickDifferent" + [i + 1]).addClass("text-success")
+                $("#pickDifferent" + [i + 1]).text("+" + pickDiff)
+            } else if (pickDiff < 0) {
+                $("#pickDifferent" + [i + 1]).addClass("text-danger")
+                $("#pickDifferent" + [i + 1]).text("" + pickDiff)
+            } else {
+                $("#pickDifferent" + [i + 1]).text("-")
+
             }
 
-        }  
-        lottery();
-        $("#lotteryBtn").click(function() {
-            shuffle(lotteryTeams)
-            lottery();
-          });
-        
-    });
+        } else {
+            $("#pickNumber" + [i + 1]).addClass("bg-dark")
+
+        }
+
+
+    };
+
+});
+
+for (i = 0; i < 30; i++) {
+    if (i < 14) {
+        $("#pickNumber" + [i + 1]).addClass("primary-color-dark")
+    } else {
+        $("#pickNumber" + [i + 1]).addClass("bg-dark")
+
+    }
+};
+
+$("#resetBtn").click(function () {
+    location.reload(true)
+});

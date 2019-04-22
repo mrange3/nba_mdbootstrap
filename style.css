@@ -44,6 +44,28 @@ body {
   display: none;
 }
 
+.hideBoth {
+  display: none;
+}
+
+.scoreboard {
+  font-size:20px !important;
+}
+.scoreboard-header {
+  font-size: 16px !important;
+}
+.scoreLogo {
+  height: 36px;
+  width: 36px;
+}
+
+.draftText {
+  font-size: 20px;
+}
+
+.playerText {
+  font-size: 20px;
+}
 
 @media (max-width:740px)  { 
   .standings {
@@ -64,6 +86,11 @@ display: none;
     height: 18px;
     width: 18px;
   }
+  .collegeLogo {
+    height: 16px;
+    width: 16px;
+  }
+
   .teamRecord {
     font-size: 5px !important;
   }
@@ -73,12 +100,24 @@ display: none;
   .deskHide {
     display: block;
   }
-  .draftLogo {
-    font-size: 14px;
+  .playerText {
+    font-size: 12px;
   }
+
+  .playerTextSmall {
+    font-size: 7px;
+  }
+
+  .draftText {
+    font-size: 12px;
+  }
+
 
   .gameKey {
     font-size: 13px !important;
+  }
+  .hideBoth {
+    display: none;
   }
   
 }
