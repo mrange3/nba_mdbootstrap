@@ -564,7 +564,7 @@ function lottery() {
         teamPickString += '<p class="  my-auto  draftText p-1" id="pickNumber' + [i + 1] + '"><strong>' + [i + 1] + '</strong></p>';
         teamPickString += '</div>';
         teamPickString += '</div>';
-        teamPickString += '<div class="col-4  m-0 px-1 py-0">';
+        teamPickString += '<div class="col-3 col-md-4  m-0 px-1 py-0">';
         teamPickString += '<div class="card my-auto rounded-0 d-flex flex-row card-background  p-1" id="teamSpot' + [i + 1] + '">';
         teamPickString += '<div class="mr-auto my-auto py-auto mobileHide inline draftText "><img src="images/logos/' + teamArray[i].logo + '.png" height="30px" width="30px">' + " " + teamArray[i].team + '</div>'
         teamPickString += '<div class="mr-auto my-auto py-auto deskHide inline draftText "><img src="images/logos/' + teamArray[i].logo + '.png" height="20px" width="20px">' + " " + teamArray[i].logo.toUpperCase() +'</div>'
@@ -704,7 +704,7 @@ $("#lotteryBtn").click(function () {
         teamPickString += '<p class="  my-auto  draftText p-1" id="pickNumber' + [i + 1] + '"><strong>' + [i + 1] + '</strong></p>';
         teamPickString += '</div>';
         teamPickString += '</div>';
-        teamPickString += '<div class="col-4  m-0 px-1 py-0">';
+        teamPickString += '<div class="col-3 col-md-4  m-0 px-1 py-0">';
         teamPickString += '<div class="card my-auto rounded-0 d-flex flex-row card-background  p-1" id="teamSpot' + [i + 1] + '">';
         teamPickString += '<div class="mr-auto my-auto py-auto mobileHide inline draftText "><img src="images/logos/' + finalOrder[i].logo + '.png" height="30px" width="30px">' + " " + finalOrder[i].team + '</div>'
         teamPickString += '<div class="mr-auto my-auto py-auto deskHide inline draftText "><img src="images/logos/' + finalOrder[i].logo + '.png" height="20px" width="20px">' + " " + finalOrder[i].logo.toUpperCase() +'</div>'
