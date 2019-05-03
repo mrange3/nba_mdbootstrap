@@ -91,6 +91,10 @@ display: none;
     width: 16px;
   }
 
+  .pageHead {
+    font-size: 18px;
+  }
+
   .teamRecord {
     font-size: 5px !important;
   }
