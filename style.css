@@ -31,7 +31,10 @@ body {
 .gameKey {
   font-size: 18px;
   font-weight: bold;
+}
 
+.teamRecord {
+  font-size: 16px !important;
 }
 
 
@@ -74,7 +77,7 @@ body {
 display: none;
   }
   .scoreboard {
-    font-size: 9px !important;
+    font-size: 8px !important;
   }
   .scoreboard-header {
     font-size: 7px !important;

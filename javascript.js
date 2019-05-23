@@ -171,12 +171,12 @@ $.ajax
           htmlString += '<tbody>';
           htmlString += '<tr>';
           htmlString += '<th scope="row" class="table-borderless scoreboard align-middle text-left  py-0 " style="font-size: 13px;" ><img class="scoreLogo" src="images/logos/' + aLogo + '.png" height="24px" width="24px">' + " " + aDisplayName + '</th>'
-          htmlString += '<td class="table-borderless scoreboard align-middle teamRecord text-left py-0 pl-0" id="'+aTeam+'record" style=" font-size: 12px;"> </td>';
+          htmlString += '<td class="table-borderless  align-middle teamRecord text-center" id="'+aTeam+'record" style=" font-size: 12px;"> </td>';
           htmlString += '<td class="table-borderless  scoreboard align-middle py-0 text-right pl-0" style=" font-size: 13px;"><strong>' + aScore + '</strong></td>';
           htmlString += '</tr>';
           htmlString += '<tr>';
           htmlString += '<th scope="row" class="align-middle text-left scoreboard py-0" style="font-size: 13px;"><img class="scoreLogo" src="images/logos/' + hLogo + '.png" height="24px" width="24px">' + " " + hDisplayName + '</th>'
-          htmlString += '<td class="align-middle text-left teamRecord scoreboard py-0 pl-0" id="'+hTeam+'record" style=" font-size: 12px;"> </td>';
+          htmlString += '<td class="align-middle text-center teamRecord " id="'+hTeam+'record" style=" font-size: 12px;"> </td>';
           htmlString += '<td class="  align-middle scoreboard pt-0 text-right pl-0 py-0" style=" font-size: 13px;"><strong>' + hScore + '</strong></td>';
           htmlString += '</tr>';  
           htmlString += '</tbody>';      
