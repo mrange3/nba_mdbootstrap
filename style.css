@@ -1,5 +1,7 @@
 body {
     background-image: url("images/retina_wood.png");
+    overflow-x: hidden; 
+    overflow-y: auto;
   };
 
 @font-face {
