@@ -362,7 +362,7 @@ var teamArray = [
         team: "Atlanta Hawks",
         pick: 5,
         logo: "atl",
-        bigBoard: [1, 3, 4, 5, 6, 2, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+        bigBoard: [1, 3, 4, 6, 5, 12, 7, 8, 9, 10, 11, 2, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
     },
     {
         team: "Washington Wizards",
@@ -527,24 +527,6 @@ var pickOdds = [
 
 ];
 
-var teamOdds = [
-    [479, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [278, 201, 0, 0, 0, 0, 0, 0, 0, 0],
-    [148, 260, 71, 0, 0, 0, 0, 0, 0, 0],
-    [72, 257, 168, 22, 0, 0, 0, 0, 0, 0],
-    [22, 196, 267, 88, 6, 0, 0, 0, 0, 0],
-    [0, 86, 296, 206, 38, 2, 0, 0, 0, 0],
-    [0, 0, 197, 372, 151, 16, 1, 0, 0, 0],
-    [0, 0, 0, 312, 341, 80, 5, 1, 0, 0],
-    [0, 0, 0, 0, 464, 243, 29, 1, 1, 0],
-    [0, 0, 0, 0, 0, 659, 189, 12, 1, 1],
-    [0, 0, 0, 0, 0, 0, 776, 126, 4, 1],
-    [0, 0, 0, 0, 0, 0, 0, 861, 9, 2],
-    [0, 0, 0, 0, 0, 0, 0, 0, 906, 46],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 952],
-];
-
-
 var lotteryTeams = [];
 var nonLotto = [];
 
@@ -613,44 +595,24 @@ $("#lotteryBtn").click(function () {
         var sumOdds = 0;
 
         for (i = 0; i < lotteryTeams.length; i++) {
-            if (firstBall <= sumOdds) { break; }
             sumOdds += pickOdds[l][i];
-        };
 
+            if (sumOdds >= firstBall) {break}
+        };
+        
         pickOrder.push(lotteryTeams[i]);
         lotteryTeams.splice(i, 1);
-        teamOdds.splice(i, 1)
 
         for (x = 0; x < pickOdds.length; x++) {
             pickOdds[x].splice(i, 1)
         }
     }
 
-    teamOdds.reverse();
-
-// Next Ten Teams /////////////
-    for (j = 0; j < teamOdds.length; j++) {
-        var multiplier2 = teamOdds[j].reduce(function (a, b) { return a + b; }, 0);
-        var secondBall = Math.floor(Math.random() * multiplier2)
-        var sumOdds2 = 0;
-        for (k = 0; k < lotteryTeams.length; k++) {
-            if (secondBall <= sumOdds2) { break; }
-            var secondTeam = k;
-            sumOdds += teamOdds[j][k];
-
-        };
-        pickOrder.push(lotteryTeams[secondTeam]);
-        lotteryTeams.splice(secondTeam, 1);
-
-        for (y = 0; y < teamOdds.length; y++) {
-            teamOdds[y].splice(secondTeam, 1)
-        };
-
-    }
+console.log(pickOrder)
 
     var topFour = pickOrder.slice(0, 4)
-    var bottomTen = pickOrder.slice(4)
-    var lotteryOrder = topFour.concat(bottomTen.reverse())
+    var bottomTen = lotteryTeams
+    var lotteryOrder = topFour.concat(bottomTen)
     var finalOrder = lotteryOrder.concat(nonLotto);
 
     $("#draftHolder").empty();
