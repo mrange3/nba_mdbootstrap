@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>NBA Hub Lottery</title>
+    <title>NFL Hub</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -14,7 +14,7 @@
     <!-- Material Design Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.3/css/mdb.min.css" rel="stylesheet">
     <!-- Stylesheet -->
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="nflstyle.css">
 </head>
 
 <body>
@@ -22,37 +22,35 @@
     <header>
         <nav
             class="nav justify-content-center bg-dark navbar-expand-sm border-bottom text-white w-100 border-white nav-justified">
-            <a class="nav-link text-white active ncaa" href="index.html"><i
-                    class="fas orange-text fa-basketball-ball"></i> NBA</a>
-            <a class="nav-link ncaa  text-white" href="nfl.html"><i class="fas text-dark fa-football-ball"></i> NFL</a>
+            <a class="nav-link text-white ncaa" href="index.html"><i class="fas text-dark fa-basketball-ball"></i> NBA</a>
+            <a class="nav-link ncaa active text-white" href="nfl.html"><i class="fas brown-text fa-football-ball"></i> NFL</a>
             <a class="nav-link ncaa disabled text-white" href="#"><i class="fas text-dark fa-baseball-ball"></i> MLB</a>
             <a class="nav-link ncaa disabled text-white" href="#"><i class="fas text-dark fa-hockey-puck"></i> NHL</a>
         </nav>
     </header>
     <header>
         <nav
-            class="navbar  w-100 navbar-expand-sm justify-content-center bg-white p-0  navbar-white">
+            class="navbar w-100 navbar-expand-sm justify-content-center bg-white p-0  navbar-white">
 
             <div class="navbar-expand justify-content-center" id="navbarNavDropdown">
                 <ul class="navbar-nav ncaa">
-                    <li class="nav-item ">
-                        <a class="nav-link text-dark" href="index.html"><small>Home</small>
-                        </a>
-                    </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link nav-text ncaa text-dark disabled" href="standings.html"><small>Standings</small></a>
-                    </li> -->
                     <li class="nav-item active">
-                        <a class="nav-link  ncaa " href="draft.html"><small>Draft</small>
+                        <a class="nav-link nav-text" href="nfl.html"><small>Home</small>
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link text-dark ncaa disabled" href="standings.html"><small>Standings</small></a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link disabled text-dark ncaa" href="draft.html"><small>Draft</small></a>
+                    </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle class text-dark disabled" href="#" id="navbarDropdownMenuLink"
+                        <a class="nav-link dropdown-toggle class text-dark disabled " href="#" id="navbarDropdownMenuLink"
                             role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><small>
                                 Teams
                             </small></a>
-                        <div class="dropdown-menu ncaa" aria-labelledby="navbarDropdownMenuLink">
+                        <div class="dropdown-menu ncaa disabled" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="#">Atlanta Hawks</a>
                             <a class="dropdown-item" href="#">Another action</a>
                             <a class="dropdown-item" href="#">Something else here</a>
@@ -62,34 +60,38 @@
             </div>
         </nav>
     </header>
-
-    <!--- Draft Board -->
-    <div class="container justify-content-center">
-        <div class="row">
-            <div class="col-12 justify-content-center">
-                <div class="draftHeader text-center my-2 justify-content-center">
-    <div class="row pt-2">
+    <div class="row pt-3">
     <div class="col-3 mobileHide"></div>
     <div class="col mx-2 ">
-<h2 class="text-center p-2 border-bottom pageHead border-top border-dark"><strong>2019 NBA Draft</strong></h2>
+<h2 class="text-center p-2 border-bottom border-top pageHead border-light white-text"><strong>2019-2020 NFL Schedule</strong></h2>
 </div>
 <div class="col-3 mobileHide"></div>    
 </div>
-                    <div class="row justify-content-center" >
-                    <button type="button" class="btn danger-color-dark btn-sm" id="lotteryBtn">Simulate Lottery</button>
-                    </div>
-                    <div class="row justify-content-center" >
-                    <button type="button" class="btn success-color btn-sm" id="resetBtn">Reset</button>
-                </div>
-                </div>
-            </div>
-        </div>    
-    <!-- Pick 1 -->
-    <div class="row" >
-        <div class="col-12" id="draftHolder"></div>
+
+<!--  -->
+<div class="align-content-middle justify-content-center col">
+    <div class="mt-0 align-content-middle justify-content-center " style="height: 40px;">
+
+        <div class="d-flex justify-content-between align-middle pr-4 pl-4 mt-2">
+            <button type="button" class=" btn mt-1 pt-0 btn-light rounded-0 btn-sm "
+                style=" font-size: 18px;" id="yesterday"><i
+                    class="fas fa-caret-left"></i></button>
+            <h4 class=" mt-2  date font-weight-bold" id="date" style="font-size: 20px;">
+            </h4>
+            <button type="button" class="btn mt-1 rounded-0 pt-0 btn-light  btn-sm" id="tomorrow"
+                style=" font-size: 18px;" id="yesterday"><i
+                    class="fas fa-caret-right"></i></button>
+
+        </div>
+        <div class="d-flex align-content-stretch flex-wrap px-2 pt-1" id="schedule-holder">
+        </div>
+
+
     </div>
 
 </div>
+
+
     <!-- JQuery -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- Bootstrap tooltips -->
@@ -102,9 +104,9 @@
     <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.3/js/mdb.min.js"></script>
     <!-- API Key -->
-    <!-- Draft Javascript -->
-    <script src="draft.js"></script>
-
+    <script type='text/javascript' src='config.js'></script>
+    <!-- Schedule Javascript -->
+    <script type='text/javascript' src='nflschedule.js'></script>
 
 </body>
 

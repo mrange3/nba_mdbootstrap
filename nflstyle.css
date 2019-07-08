@@ -1,0 +1,133 @@
+body {
+    background-image: url("images/turf.jpeg");
+    background-size: cover;
+    overflow-x: hidden; 
+    overflow-y: auto;
+  };
+
+@font-face {
+    font-family: 'googleSpies';
+    src: url('fonts/Google-spies.ttf') format('opentype');
+}
+@font-face {
+  font-family: 'Ncaa';
+  src: url('fonts/ncaa.otf') format('opentype');
+}
+
+.conference {
+  font-family: 'Ncaa';
+  font-size: 18px;
+}
+
+.ncaa {
+  font-family: 'Ncaa';
+  font-size: 16px;
+}
+
+.title {
+  font-family: 'Ncaa';
+  font-size: 24px;
+}
+
+.gameKey {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.teamRecord {
+  font-size: 16px !important;
+}
+
+
+.card-background {
+  background-color: white;
+}
+
+.playerFont  {
+  font-size: 18px;
+}
+.deskHide {
+  display: none;
+}
+
+.hideBoth {
+  display: none;
+}
+
+.scoreboard {
+  font-size:20px !important;
+}
+.scoreboard-header {
+  font-size: 16px !important;
+}
+.scoreLogo {
+  height: 36px;
+  width: 36px;
+}
+
+.draftText {
+  font-size: 20px;
+}
+
+.playerText {
+  font-size: 20px;
+}
+
+@media (max-width:740px)  { 
+  .standings {
+display: none;
+  }
+  .scoreboard {
+    font-size: 8px !important;
+  }
+  .scoreboard-header {
+    font-size: 7px !important;
+  }
+
+  .date {
+    font-size: 15px !important;
+  }
+
+  .scoreLogo {
+    height: 18px;
+    width: 18px;
+  }
+  .collegeLogo {
+    height: 16px;
+    width: 16px;
+  }
+
+  .pageHead {
+    font-size: 18px;
+  }
+
+  .teamRecord {
+    font-size: 7px !important;
+  }
+  .mobileHide {
+    display: none;
+  }
+  .deskHide {
+    display: block;
+  }
+  .playerText {
+    font-size: 13px;
+  }
+
+  .playerTextSmall {
+    font-size: 9px;
+  }
+
+  .draftText {
+    font-size: 13px;
+  }
+
+
+  .gameKey {
+    font-size: 13px !important;
+  }
+  .hideBoth {
+    display: none;
+  }
+  
+}

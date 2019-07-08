@@ -538,14 +538,15 @@ for (i = 0; i < teamArray.length; i++) {
     }
 };
 
-
+console.log(lotteryTeams)
 
 playersArray.sort(function (a, b) {
     return a.rank - b.rank
 });
 
 
-function draftBoard() {
+
+function draftBoard(teamArray, playersArray) {
     $("#draftHolder").empty();
 
     for (i = 0; i < teamArray.length; i++) {
@@ -575,104 +576,155 @@ function draftBoard() {
         teamPickString += '<div class="col-1 m-0 mobileHide p-0"></div>';
         teamPickString += '</div>';
         $("#draftHolder").append(teamPickString);
+
+
     }
+    for (i = 0; i < 30; i++) {
+        if (i < 14) {
+            $("#pickNumber" + [i + 1]).addClass("primary-color-dark")
+        } else {
+            $("#pickNumber" + [i + 1]).addClass("bg-dark")
+        }
+    };
+    
 };
-
-draftBoard()
-
 $("#lotteryBtn").click(function () {
     // $(this).prop("disabled", true);
 
-
+    var pickOddsBtn = pickOdds.slice()
+    var lotteryTeamsBtn = lotteryTeams.slice()
     var pickOrder = [];
 
 
 // First Four Teams////////////
-    for (l = 0; l < pickOdds.length; l++) {
+    for (l = 0; l < pickOddsBtn.length; l++) {
 
-        var multiplier = pickOdds[l].reduce(function (a, b) { return a + b; }, 0);
+        var multiplier = pickOddsBtn[l].reduce(function (a, b) { return a + b; }, 0);
         var firstBall = Math.floor(Math.random() * multiplier)
         var sumOdds = 0;
 
-        for (i = 0; i < lotteryTeams.length; i++) {
-            sumOdds += pickOdds[l][i];
+        for (i = 0; i < lotteryTeamsBtn.length; i++) {
+            sumOdds += pickOddsBtn[l][i];
 
             if (sumOdds >= firstBall) {break}
         };
         
-        pickOrder.push(lotteryTeams[i]);
-        lotteryTeams.splice(i, 1);
+        pickOrder.push(lotteryTeamsBtn[i]);
+        lotteryTeamsBtn.splice(i, 1);
 
-        for (x = 0; x < pickOdds.length; x++) {
-            pickOdds[x].splice(i, 1)
+        for (x = 0; x < pickOddsBtn.length; x++) {
+            pickOddsBtn[x].splice(i, 1)
         }
     }
 
-console.log(pickOrder)
 
     var topFour = pickOrder.slice(0, 4)
-    var bottomTen = lotteryTeams
+    var bottomTen = lotteryTeamsBtn
     var lotteryOrder = topFour.concat(bottomTen)
     var finalOrder = lotteryOrder.concat(nonLotto);
 
-    $("#draftHolder").empty();
+    console.log(lotteryOrder)
 
-    var playerPool2 = playersArray.slice()
-    var teamPlayerArray2 = []
-    var teamArrayCopy2 = finalOrder.slice()
+    draftBoard(finalOrder, playersArray)
 
-    console.log(finalOrder);
-    console.log(finalOrder.indexOf(teamArray[8]))
-
-// if (finalOrder.indexOf(teamArray[8] > 5)) {
-//     finalOrder.splice(finalOrder.indexOf(teamArray[8], 1, teamArray[4]))
-// }
+});
 
 
+draftBoard(teamArray, playersArray)
 
-    for (i = 0; i < 30; i++) {
-
-        var teamPlayerRank2 = teamArrayCopy2[i].bigBoard.slice()
-
-        teamPlayerArray2.push(playerPool2[teamPlayerRank2[0]-1])
-
-        for (j=0; j < teamArrayCopy2.length; j++) {
-            var index2 = teamArrayCopy2[j].bigBoard.indexOf(teamPlayerRank2[0]);
-            if (index2 > -1) {
-                teamArrayCopy2[j].bigBoard.splice(index2, 1);
-            }
-        }
-
-        players = teamPlayerArray2.slice()
+// $("#lotteryBtn").click(function () {
+//     // $(this).prop("disabled", true);
 
 
-        var pickDiff = finalOrder[i].pick - (i + 1);
+//     var pickOrder = [];
 
-        var teamPickString = '<div class="row  align-items-center mb-2 ">';
-        teamPickString += '<div class="col-1 m-0 mobileHide p-0"></div>';
-        teamPickString += '<div class="col-1 m-0 pl-1 pr-0 py-0 ">';
-        teamPickString += '<div class="card text-white  text-center">';
-        teamPickString += '<p class="  my-auto  draftText p-1" id="pickNumber' + [i + 1] + '"><strong>' + [i + 1] + '</strong></p>';
-        teamPickString += '</div>';
-        teamPickString += '</div>';
-        teamPickString += '<div class="col-3 col-md-4  m-0 px-1 py-0">';
-        teamPickString += '<div class="card my-auto rounded-0 d-flex flex-row card-background  p-1" id="teamSpot' + [i + 1] + '">';
-        teamPickString += '<div class="mr-auto my-auto py-auto mobileHide inline draftText "><img src="images/logos/' + finalOrder[i].logo + '.png" height="30px" width="30px">' + " " + finalOrder[i].team + '</div>'
-        teamPickString += '<div class="mr-auto my-auto py-auto deskHide inline draftText "><img src="images/logos/' + finalOrder[i].logo + '.png" height="20px" width="20px">' + " " + finalOrder[i].logo.toUpperCase() +'</div>'
-        teamPickString += '<div class="px-1  draftText inline " id="pickDifferent' + [i + 1] + '"><small>' + " " + '</small></div>'
-        teamPickString += '</div>';
-        teamPickString += '</div>';
-        teamPickString += '<div class="col m-0 pr-1 pl-0 ">';
-        teamPickString += '<div class="card my-auto rounded-0 card-background playerPick d-flex align-middle align-self-center flex-row p-1" id="pickSpot' + [i + 1] + '">';
-        teamPickString += '<div class="mr-automy-auto py-auto  deskHide inline playerText "><img src="images/collegelogos/' + players[i].collegelogo + '.png" height="20px" width="20px">' + " " + players[i].name + '</div>'
-        teamPickString += '<div class="mr-auto my-auto py-auto mobileHide inline playerText "><img src="images/collegelogos/' + players[i].collegelogo + '.png" height="30px" width="30px">' + " " + players[i].name + '</div>'
-        teamPickString += '<div class=" ml-auto my-auto py-auto  playerTextSmall inline pr-1 ">' + players[i].position + '</div>'
-        teamPickString += '<div class="my-auto py-auto  playerTextSmall inline pr-1 ">' + " | " + players[i].ht + " | " + players[i].wt + '</div>'
-        teamPickString += '</div>';
-        teamPickString += '</div>';
-        teamPickString += '<div class="col-1 m-0 mobileHide p-0"></div>';
-        teamPickString += '</div>';
-        $("#draftHolder").append(teamPickString);
+
+// // First Four Teams////////////
+//     for (l = 0; l < pickOdds.length; l++) {
+
+//         var multiplier = pickOdds[l].reduce(function (a, b) { return a + b; }, 0);
+//         var firstBall = Math.floor(Math.random() * multiplier)
+//         var sumOdds = 0;
+
+//         for (i = 0; i < lotteryTeams.length; i++) {
+//             sumOdds += pickOdds[l][i];
+
+//             if (sumOdds >= firstBall) {break}
+//         };
+        
+//         pickOrder.push(lotteryTeams[i]);
+//         lotteryTeams.splice(i, 1);
+
+//         for (x = 0; x < pickOdds.length; x++) {
+//             pickOdds[x].splice(i, 1)
+//         }
+//     }
+
+// console.log(pickOrder)
+
+//     var topFour = pickOrder.slice(0, 4)
+//     var bottomTen = lotteryTeams
+//     var lotteryOrder = topFour.concat(bottomTen)
+//     var finalOrder = lotteryOrder.concat(nonLotto);
+
+//     $("#draftHolder").empty();
+
+//     var playerPool2 = playersArray.slice()
+//     var teamPlayerArray2 = []
+//     var teamArrayCopy2 = finalOrder.slice()
+
+//     console.log(finalOrder);
+//     console.log(finalOrder.indexOf(teamArray[8]))
+
+// // if (finalOrder.indexOf(teamArray[8] > 5)) {
+// //     finalOrder.splice(finalOrder.indexOf(teamArray[8], 1, teamArray[4]))
+// // }
+
+
+
+//     for (i = 0; i < 30; i++) {
+
+//         var teamPlayerRank2 = teamArrayCopy2[i].bigBoard.slice()
+
+//         teamPlayerArray2.push(playerPool2[teamPlayerRank2[0]-1])
+
+//         for (j=0; j < teamArrayCopy2.length; j++) {
+//             var index2 = teamArrayCopy2[j].bigBoard.indexOf(teamPlayerRank2[0]);
+//             if (index2 > -1) {
+//                 teamArrayCopy2[j].bigBoard.splice(index2, 1);
+//             }
+//         }
+
+//         players = teamPlayerArray2.slice()
+
+
+//         var pickDiff = finalOrder[i].pick - (i + 1);
+
+//         var teamPickString = '<div class="row  align-items-center mb-2 ">';
+//         teamPickString += '<div class="col-1 m-0 mobileHide p-0"></div>';
+//         teamPickString += '<div class="col-1 m-0 pl-1 pr-0 py-0 ">';
+//         teamPickString += '<div class="card text-white  text-center">';
+//         teamPickString += '<p class="  my-auto  draftText p-1" id="pickNumber' + [i + 1] + '"><strong>' + [i + 1] + '</strong></p>';
+//         teamPickString += '</div>';
+//         teamPickString += '</div>';
+//         teamPickString += '<div class="col-3 col-md-4  m-0 px-1 py-0">';
+//         teamPickString += '<div class="card my-auto rounded-0 d-flex flex-row card-background  p-1" id="teamSpot' + [i + 1] + '">';
+//         teamPickString += '<div class="mr-auto my-auto py-auto mobileHide inline draftText "><img src="images/logos/' + finalOrder[i].logo + '.png" height="30px" width="30px">' + " " + finalOrder[i].team + '</div>'
+//         teamPickString += '<div class="mr-auto my-auto py-auto deskHide inline draftText "><img src="images/logos/' + finalOrder[i].logo + '.png" height="20px" width="20px">' + " " + finalOrder[i].logo.toUpperCase() +'</div>'
+//         teamPickString += '<div class="px-1  draftText inline " id="pickDifferent' + [i + 1] + '"><small>' + " " + '</small></div>'
+//         teamPickString += '</div>';
+//         teamPickString += '</div>';
+//         teamPickString += '<div class="col m-0 pr-1 pl-0 ">';
+//         teamPickString += '<div class="card my-auto rounded-0 card-background playerPick d-flex align-middle align-self-center flex-row p-1" id="pickSpot' + [i + 1] + '">';
+//         teamPickString += '<div class="mr-automy-auto py-auto  deskHide inline playerText "><img src="images/collegelogos/' + players[i].collegelogo + '.png" height="20px" width="20px">' + " " + players[i].name + '</div>'
+//         teamPickString += '<div class="mr-auto my-auto py-auto mobileHide inline playerText "><img src="images/collegelogos/' + players[i].collegelogo + '.png" height="30px" width="30px">' + " " + players[i].name + '</div>'
+//         teamPickString += '<div class=" ml-auto my-auto py-auto  playerTextSmall inline pr-1 ">' + players[i].position + '</div>'
+//         teamPickString += '<div class="my-auto py-auto  playerTextSmall inline pr-1 ">' + " | " + players[i].ht + " | " + players[i].wt + '</div>'
+//         teamPickString += '</div>';
+//         teamPickString += '</div>';
+//         teamPickString += '<div class="col-1 m-0 mobileHide p-0"></div>';
+//         teamPickString += '</div>';
+//         $("#draftHolder").append(teamPickString);
 
         if (i < 14) {
             $("#pickNumber" + [i + 1]).addClass("primary-color-dark")
@@ -695,20 +747,10 @@ console.log(pickOrder)
 
 
 
-    };
+//     };
 
-});
+// });
 
-// End Button
-
-for (i = 0; i < 30; i++) {
-    if (i < 14) {
-        $("#pickNumber" + [i + 1]).addClass("primary-color-dark")
-    } else {
-        $("#pickNumber" + [i + 1]).addClass("bg-dark")
-
-    }
-};
 
 $("#resetBtn").click(function () {
     location.reload(true)
