@@ -54,8 +54,8 @@ $.ajax
 
 
       var htmlString = '<tr class=" ">';
-      htmlString += '<td class=" text-left px-4" id="'+aTeam+'record" style=" font-size: 12px;"><img class="scoreLogo" src="images/NFL Logos/' + aTeam + '.png" height="24px" width="24px">'+ " " +aTeam+' </td>';
-      htmlString += '<td class="text-left" style=" font-size: 12px;"><img class="scoreLogo" src="images/NFL Logos/' + hTeam + '.png" height="24px" width="24px">' + " " +hTeam+' </td>';
+      htmlString += '<td class=" text-left px-4" id="'+aTeam+'record" style=" font-size: 12px;"><img class="scoreLogo" src="images/nfl_logos/' + aTeam + '.png" height="12px" width="12px">'+ " " +aTeam+' </td>';
+      htmlString += '<td class="text-left" style=" font-size: 12px;"><img class="scoreLogo" src="images/nfl_logos/' + hTeam + '.png" height="12px" width="12px">' + " " +hTeam+' </td>';
       htmlString += '<td class=" d-flex justify-content-end px-4" id="'+todaySchedule+'record" style=" font-size: 12px;">' +todaySchedule+' </td>';
       htmlString += '</tr>';
 
