@@ -1,6 +1,6 @@
 var nflGames = " https://api.mysportsfeeds.com/v2.1/pull/nfl/upcoming/games.json"
 var nflTeams = " https://api.mysportsfeeds.com/v2.1/pull/nfl/upcoming/standings.json"
-var nflLinesURL = " https://api.mysportsfeeds.com/v2.1/pull/nfl/latest/odds_gamelines.json"
+var nflLinesURL = " https://api.mysportsfeeds.com/v2.1/pull/nfl/upcoming/odds_gamelines.json"
 
 var api = config.MY_KEY;
 
@@ -26,11 +26,13 @@ function addTeamNames() {
       var teamLocation = nflStandings.teams[j].team.city;
       var teamName = nflStandings.teams[j].team.name;
       var teamid = nflStandings.teams[j].team.id;
-      var fullTeamName = teamLocation + " " + teamName;
+      var teamRecord = "(" + nflStandings.teams[j].stats.standings.wins + "-" + nflStandings.teams[j].stats.standings.losses + ")"
+      var fullTeamName = teamLocation + " " + teamName + " " + teamRecord;
       $("#"+ teamid).append(fullTeamName);   
-  
     }
   
+
+
     });
   };
 
@@ -115,11 +117,13 @@ $.ajax
       htmlString += '<tbody>'
       htmlString += '<tr class=" row ">';
       htmlString += '<td class="col-3 text-left px-4 py-1 font-weight-bold" id="'+aid+'" style=" font-size: 14px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> </td>';
-      htmlString += '<td class="col-1 border text-center px-0 py-1 font-weight-bold" id="'+aid+"score"+'" style=" font-size: 14px;">0 </td>';
+      htmlString += '<td class="col text-center px-0 py-1 font-weight-bold" id="'+aid+"odds"+'" style=" font-size: 14px;">+100 </td>';
+      htmlString += '<td class="col border text-center px-0 py-1 font-weight-bold" id="'+aid+"score"+'" style=" font-size: 14px;">0 </td>';
       htmlString += '<td class="col-3 py-1 font-weight-bold" id="'+hid+'" style=" font-size: 14px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"> </td>';
-      htmlString += '<td class="col-1 border text-center px-0  py-1 font-weight-bold" id="'+hid+ "score"+'" style=" font-size: 14px;"> 0</td>';
+      htmlString += '<td class="col text-center px-0 py-1 font-weight-bold" id="'+hid+"odds"+'" style=" font-size: 14px;">-100 </td>';
+      htmlString += '<td class="col border text-center px-0  py-1 font-weight-bold" id="'+hid+ "score"+'" style=" font-size: 14px;"> 0</td>';
       htmlString += '<td class="col-3  text-right py-1 font-weight-bold" id="'+todaySchedule+'record" style=" font-size: 14px;">' +todaySchedule+' </td>';
-      htmlString += '<td class="col-1 text-center font-weight-bold text-primary py-1"  style=" font-size: 14px;">'+100+' </td>';
+      htmlString += '<td class="col text-center font-weight-bold text-primary py-1"  style=" font-size: 14px;">'+100+' </td>';
       htmlString += '</tr>';
       htmlString += '</tbody>'
       htmlString += '</table>'
