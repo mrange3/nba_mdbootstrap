@@ -1,11 +1,13 @@
 var nflGames = " https://api.mysportsfeeds.com/v2.1/pull/nfl/upcoming/games.json"
 var nflTeams = " https://api.mysportsfeeds.com/v2.1/pull/nfl/upcoming/standings.json"
+var nflLinesURL = " https://api.mysportsfeeds.com/v2.1/pull/nfl/latest/odds_gamelines.json"
 
 var api = config.MY_KEY;
 
 
 var scheduledWeek = 1
 
+// /////////////// Add Team Information//////////////////////////////////////
 function addTeamNames() {
   $.ajax
     ({
@@ -32,7 +34,24 @@ function addTeamNames() {
     });
   };
 
+  // /////////////Add Betting Odds//////////////////////////////////////////////////////
+  $.ajax
+    ({
+      type: "GET",
+      url: nflLinesURL,
+      dataType: 'json',
+      headers: {
+        "Authorization": "Basic " + btoa(api + ":" + "MYSPORTSFEEDS")
+      },
+  
+    })
+    .then(function (nflOdds) {
+      console.log(nflOdds)
 
+    });
+
+
+//////////Generate NFL Schedue////////////////////////////////////////////////////////////////////
 function nflSchedule(scheduledWeek) {
   $("#nfl-schedule-holder").empty();
   $("#nflweek").empty();
@@ -95,12 +114,12 @@ $.ajax
       var htmlString = '<table class="table m-1 table-borderless card-background table-sm">'
       htmlString += '<tbody>'
       htmlString += '<tr class=" row ">';
-      htmlString += '<td class="col-3 text-left px-4 py-0" id="'+aid+'" style=" font-size: 16px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> </td>';
-      htmlString += '<td class="col-1 border text-center px-0 py-0" id="'+aid+"score"+'" style=" font-size: 16px;">0 </td>';
-      htmlString += '<td class="col-3 py-0" id="'+hid+'" style=" font-size: 16px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"> </td>';
-      htmlString += '<td class="col-1 border text-center px-0  py-0" id="'+hid+ "score"+'" style=" font-size: 16px;"> 0</td>';
-      htmlString += '<td class="col-3  text-right py-0" id="'+todaySchedule+'record" style=" font-size: 16px;">' +todaySchedule+' </td>';
-      htmlString += '<td class="col-1 text-center text-primary py-0"  style=" font-size: 16px;">'+100+' </td>';
+      htmlString += '<td class="col-3 text-left px-4 py-1 font-weight-bold" id="'+aid+'" style=" font-size: 14px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> </td>';
+      htmlString += '<td class="col-1 border text-center px-0 py-1 font-weight-bold" id="'+aid+"score"+'" style=" font-size: 14px;">0 </td>';
+      htmlString += '<td class="col-3 py-1 font-weight-bold" id="'+hid+'" style=" font-size: 14px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"> </td>';
+      htmlString += '<td class="col-1 border text-center px-0  py-1 font-weight-bold" id="'+hid+ "score"+'" style=" font-size: 14px;"> 0</td>';
+      htmlString += '<td class="col-3  text-right py-1 font-weight-bold" id="'+todaySchedule+'record" style=" font-size: 14px;">' +todaySchedule+' </td>';
+      htmlString += '<td class="col-1 text-center font-weight-bold text-primary py-1"  style=" font-size: 14px;">'+100+' </td>';
       htmlString += '</tr>';
       htmlString += '</tbody>'
       htmlString += '</table>'
@@ -119,9 +138,11 @@ $.ajax
 
 };
 
-
+// ////Run initial schedule/////////////////////////
 
 nflSchedule(scheduledWeek);
+
+// //////////////////Next Week Buttons/////////////////////
 
 $("#lastweek").click(function() {
   $(this).attr("disabled", true);
