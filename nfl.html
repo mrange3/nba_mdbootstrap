@@ -22,15 +22,16 @@
     <header>
         <nav
             class="nav justify-content-center bg-dark navbar-expand-sm border-bottom text-white w-100 border-white nav-justified">
-            <a class="nav-link text-white ncaa" href="index.html"><i class="fas text-dark fa-basketball-ball"></i> NBA</a>
-            <a class="nav-link ncaa active text-white" href="nfl.html"><i class="fas brown-text fa-football-ball"></i> NFL</a>
+            <a class="nav-link text-white ncaa" href="index.html"><i class="fas text-dark fa-basketball-ball"></i>
+                NBA</a>
+            <a class="nav-link ncaa active text-white" href="nfl.html"><i class="fas brown-text fa-football-ball"></i>
+                NFL</a>
             <a class="nav-link ncaa disabled text-white" href="#"><i class="fas text-dark fa-baseball-ball"></i> MLB</a>
             <a class="nav-link ncaa disabled text-white" href="#"><i class="fas text-dark fa-hockey-puck"></i> NHL</a>
         </nav>
     </header>
     <header>
-        <nav
-            class="navbar w-100 navbar-expand-sm justify-content-center bg-white p-0  navbar-white">
+        <nav class="navbar w-100 navbar-expand-sm justify-content-center bg-white p-0  navbar-white">
 
             <div class="navbar-expand justify-content-center" id="navbarNavDropdown">
                 <ul class="navbar-nav ncaa">
@@ -46,8 +47,9 @@
                         <a class="nav-link disabled text-dark ncaa" href="draft.html"><small>Draft</small></a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle class text-dark disabled " href="#" id="navbarDropdownMenuLink"
-                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><small>
+                        <a class="nav-link dropdown-toggle class text-dark disabled " href="#"
+                            id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false"><small>
                                 Teams
                             </small></a>
                         <div class="dropdown-menu ncaa disabled" aria-labelledby="navbarDropdownMenuLink">
@@ -61,38 +63,37 @@
         </nav>
     </header>
     <div class="row pt-3">
-    <div class="col-3 mobileHide"></div>
-    <div class="col mx-2 ">
-<h2 class="text-center p-2 border-bottom border-top pageHead border-light white-text"><strong>2019-2020 NFL Schedule</strong></h2>
-</div>
-<div class="col-3 mobileHide"></div>    
-</div>
-
-<!--  -->
-<div class="align-content-middle justify-content-center col-10 offset-1">
-    <div class="mt-0 align-content-middle justify-content-center " style="height: 40px;">
-
-        <div class="d-flex justify-content-between align-middle pr-4 pl-4 mt-2">
-            <button type="button" class=" btn mt-1 pt-0 btn-white rounded-0 btn-sm "
-                style=" font-size: 18px;" id="yesterday"><i
-                    class="fas fa-caret-left"></i></button>
-            <h4 class=" mt-2 text-white date font-weight-bold" id="date" style="font-size: 20px;">Week 1
-            </h4>
-            <button type="button" class="btn mt-1 rounded-0 pt-0 btn-white  btn-sm" id="tomorrow"
-                style=" font-size: 18px;" id="yesterday"><i
-                    class="fas fa-caret-right"></i></button>
-
+        <div class="col-3 mobileHide"></div>
+        <div class="col mx-2 ">
+            <h2 class="text-center p-2 border-bottom border-top pageHead border-light white-text"><strong>2019-2020 NFL
+                    Schedule</strong></h2>
         </div>
-        <div class="d-flex align-content-stretch flex-wrap px-4 pt-1 ">
-                <table class="table table-borderless card-background table-sm">
-                <tbody id = "nfl-schedule-holder"></tbody>
-                </table>
-        </div>
-
-
+        <div class="col-3 mobileHide"></div>
     </div>
 
-</div>
+    <!--  -->
+    <div class="align-content-middle justify-content-center col-10 offset-1">
+        <div class="mt-0 align-content-middle justify-content-center " style="height: 40px;">
+
+            <div class="d-flex justify-content-between align-middle pr-4 pl-4 mt-2">
+                <button type="button" class=" btn mt-1 pt-0 btn-white rounded-0 btn-sm " style=" font-size: 18px;"
+                    id="lastweek"><i class="fas fa-caret-left"></i></button>
+                <h4 class=" mt-2 text-white date font-weight-bold" id="nflweek" style="font-size: 20px;">
+                </h4>
+                <button type="button" class="btn mt-1 rounded-0 pt-0 btn-white  btn-sm" style=" font-size: 18px;"
+                    id="nextweek"><i class="fas fa-caret-right"></i></button>
+
+            </div>
+            <div class="d-flex align-content-stretch flex-wrap px-4 pt-1 " id="nfl-schedule-holder">
+
+                <tbody id="nfl-schedule-holder"></tbody>
+                </table>
+            </div>
+
+
+        </div>
+
+    </div>
 
 
     <!-- JQuery -->

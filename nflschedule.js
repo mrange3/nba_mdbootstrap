@@ -1,7 +1,45 @@
 var nflGames = " https://api.mysportsfeeds.com/v2.1/pull/nfl/upcoming/games.json"
-
+var nflTeams = " https://api.mysportsfeeds.com/v2.1/pull/nfl/upcoming/standings.json"
 
 var api = config.MY_KEY;
+
+
+var scheduledWeek = 1
+
+function addTeamNames() {
+  $.ajax
+    ({
+      type: "GET",
+      url: nflTeams,
+      dataType: 'json',
+      headers: {
+        "Authorization": "Basic " + btoa(api + ":" + "MYSPORTSFEEDS")
+      },
+  
+    })
+    .then(function (nflStandings) {
+      console.log(nflStandings)
+  
+    for (j=0; j < nflStandings.teams.length; j++) {
+      var teamLocation = nflStandings.teams[j].team.city;
+      var teamName = nflStandings.teams[j].team.name;
+      var teamid = nflStandings.teams[j].team.id;
+      var fullTeamName = teamLocation + " " + teamName;
+      $("#"+ teamid).append(fullTeamName);   
+  
+    }
+  
+    });
+  };
+
+
+function nflSchedule(scheduledWeek) {
+  $("#nfl-schedule-holder").empty();
+  $("#nflweek").empty();
+
+if (scheduledWeek < 1) {
+  scheduledWeek = 1;
+}
 
 $.ajax
   ({
@@ -17,11 +55,13 @@ $.ajax
     console.log(nflSchedule)
 
 
-  for (i=0; i < 17; i++ ) {
-    var x = 1;
-    if (nflSchedule.games[i].schedule.week = 1) {
+  for (i=0; i < nflSchedule.games.length; i++ ) {
+    var x = scheduledWeek;
+    if (nflSchedule.games[i].schedule.week == x) {
       var aTeam = nflSchedule.games[i].schedule.awayTeam.abbreviation;
       var hTeam = nflSchedule.games[i].schedule.homeTeam.abbreviation;
+      var hid = nflSchedule.games[i].schedule.homeTeam.id
+      var aid = nflSchedule.games[i].schedule.awayTeam.id
       var startTime = new Date(nflSchedule.games[i].schedule.startTime);
 
       var dd = startTime.getDate();
@@ -52,15 +92,48 @@ $.ajax
       todaySchedule = hour + ":" +min + " " + sun + " " + dayNames[day] + ", " + monthNames[mm - 1] + " " + dd 
       
 
-
-      var htmlString = '<tr class=" ">';
-      htmlString += '<td class=" text-left px-4" id="'+aTeam+'record" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px">'+ " " +aTeam+' </td>';
-      htmlString += '<td class="text-left" style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px">' + " " +hTeam+' </td>';
-      htmlString += '<td class=" d-flex justify-content-end px-4" id="'+todaySchedule+'record" style=" font-size: 12px;">' +todaySchedule+' </td>';
+      var htmlString = '<table class="table m-1 table-borderless card-background table-sm">'
+      htmlString += '<tbody>'
+      htmlString += '<tr class=" row ">';
+      htmlString += '<td class="col-3 text-left px-4 py-0" id="'+aid+'" style=" font-size: 16px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> </td>';
+      htmlString += '<td class="col-1 border text-center px-0 py-0" id="'+aid+"score"+'" style=" font-size: 16px;">0 </td>';
+      htmlString += '<td class="col-3 py-0" id="'+hid+'" style=" font-size: 16px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"> </td>';
+      htmlString += '<td class="col-1 border text-center px-0  py-0" id="'+hid+ "score"+'" style=" font-size: 16px;"> 0</td>';
+      htmlString += '<td class="col-3  text-right py-0" id="'+todaySchedule+'record" style=" font-size: 16px;">' +todaySchedule+' </td>';
+      htmlString += '<td class="col-1 text-center text-primary py-0"  style=" font-size: 16px;">'+100+' </td>';
       htmlString += '</tr>';
+      htmlString += '</tbody>'
+      htmlString += '</table>'
 
       $("#nfl-schedule-holder").append(htmlString);   
     }
   }
+  $("#lastweek").attr("disabled", false);
+  $("#nextweek").attr("disabled", false);
+
+  $("#nflweek").append("Week " +scheduledWeek);   
+  addTeamNames();
+  
 
 });
+
+};
+
+
+
+nflSchedule(scheduledWeek);
+
+$("#lastweek").click(function() {
+  $(this).attr("disabled", true);
+  scheduledWeek--;
+  nflSchedule(scheduledWeek);
+});
+
+$("#nextweek").click(function() {
+  $(this).attr("disabled", true);
+  scheduledWeek++;
+  nflSchedule(scheduledWeek);
+});
+
+
+
