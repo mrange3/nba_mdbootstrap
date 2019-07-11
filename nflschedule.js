@@ -1,6 +1,6 @@
 var nflGames = " https://api.mysportsfeeds.com/v2.1/pull/nfl/upcoming/games.json"
 var nflTeams = " https://api.mysportsfeeds.com/v2.1/pull/nfl/upcoming/standings.json"
-var nflLinesURL = " https://api.mysportsfeeds.com/v2.1/pull/nfl/upcoming/odds_gamelines.json"
+var nflLinesURL = "https://api.mysportsfeeds.com/v2.1/pull/nfl/2019-regular/odds_gamelines.json?team=atl"
 
 var api = config.MY_KEY;
 
