@@ -117,23 +117,36 @@ $.ajax
       const dayNames = ["Sunday","Monday", "Tuesday", "Wednesday", 
       "Thursday", "Friday", "Saturday"];
        
-      todaySchedule = hour + ":" +min + " " + sun + " " + dayNames[day] + ", " + monthNames[mm - 1] + " " + dd 
-      
+      todaySchedule = hour + ":" +min + " " + sun + " " + dayNames[day] + ", " + monthNames[mm - 1] + " " + dd;
+      var weekEndString = monthNames[mm - 1] + " " + dd;
+      var weekStartString = monthNames[mm - 1] + " " + (dd-7);
 
-      var htmlString = '<table class="table m-1 table-borderless card-background table-sm">'
-      htmlString += '<tbody>'
+
+      var htmlString = '<div class="accordion col-12 mx-0 px-0 mt-2" id="accordionExample">';
+      htmlString += '<div class="card">';
+      htmlString += '<button class="btn btn-link p-0 my-0" type="button" data-toggle="collapse" data-target="#collapse'+i+'" aria-expanded="true" aria-controls="collapse'+i+'">';
+      htmlString += '<table class="table mx-1 my-0 table-borderless card-background table-sm">';
+      htmlString += '<tbody>';
       htmlString += '<tr class=" row ">';
-      htmlString += '<td class="col-3 text-left px-4 py-1 font-weight-bold" id="'+aid+'" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> </td>';
+      htmlString += '<td class="col-3 text-left pl-3 py-1 font-weight-bold" id="'+aid+'" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> </td>';
       htmlString += '<td class="col text-center px-0 py-1 font-weight-bold" id="'+aid+"odds"+'" style=" font-size: 12px;">+100 </td>';
       htmlString += '<td class="col border text-center px-0 py-1 font-weight-bold text-light bg-dark" id="'+aid+"score"+'" style=" font-size: 12px;">0 </td>';
-      htmlString += '<td class="col-3 py-1 px-2 font-weight-bold" id="'+hid+'" style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"> </td>';
+      htmlString += '<td class="col-3 py-1 px-2 font-weight-bold text-left" id="'+hid+'" style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"> </td>';
       htmlString += '<td class="col text-center px-0 py-1 font-weight-bold" id="'+hid+"odds"+'" style=" font-size: 12px;">-100 </td>';
       htmlString += '<td class="col border text-center px-0  py-1 font-weight-bold text-light bg-dark" id="'+hid+ "score"+'" style=" font-size: 12px;"> 0</td>';
       htmlString += '<td class="col-3  text-right py-1 font-weight-bold" id="'+todaySchedule+'record" style=" font-size: 12px;">' +todaySchedule+' </td>';
-      htmlString += '<td class="col text-center font-weight-bold text-primary py-1"  style=" font-size: 12px;">'+100+' </td>';
+      htmlString += '<td class="col text-center font-weight-bold text-primary py-1 pr-3"  style=" font-size: 12px;">'+100+' </td>';
       htmlString += '</tr>';
-      htmlString += '</tbody>'
-      htmlString += '</table>'
+      htmlString += '</tbody>';
+      htmlString += '</table>';
+      htmlString += '</button>';
+      htmlString +='<div id="collapse'+i+'" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">'
+      htmlString += '<div class="card-body border border-top"> Hello Word </div>'
+      htmlString += '</div>';
+      htmlString += '</div>';
+      htmlString += '</div>';
+
+
 
       $("#nfl-schedule-holder").append(htmlString);   
     }
@@ -141,7 +154,7 @@ $.ajax
   $("#lastweek").attr("disabled", false);
   $("#nextweek").attr("disabled", false);
 
-  $("#nflweek").append("Week " +scheduledWeek);   
+  $("#nflweek").append("Week " +scheduledWeek + ": "  +weekStartString+ " - " + weekEndString);   
   addTeamNames();
   
 

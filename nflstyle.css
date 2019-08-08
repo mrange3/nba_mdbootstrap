@@ -1,8 +1,9 @@
 body {
     background-image: url("images/turf.jpeg");
-    background-size: cover;
+    background-size: contain;
+    /* background-color: darkgreen; */
     overflow-x: hidden; 
-    overflow-y: auto;
+    overflow-y: visible;
   };
 
 @font-face {
@@ -72,6 +73,8 @@ body {
 .playerText {
   font-size: 20px;
 }
+
+
 
 @media (max-width:740px)  { 
   .standings {
