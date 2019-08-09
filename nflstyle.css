@@ -1,7 +1,7 @@
 body {
-    background-image: url("images/turf.jpeg");
-    background-size: contain;
-    /* background-color: darkgreen; */
+    /* background-image: url("images/turf.jpeg");
+    background-size: contain; */
+    background-color: darkgreen;
     overflow-x: hidden; 
     overflow-y: visible;
   };
