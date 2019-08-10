@@ -80,6 +80,8 @@ function nflSchedule(scheduledWeek) {
           var aid = nflSchedule.games[i].schedule.awayTeam.id
           var startTime = new Date(nflSchedule.games[i].schedule.startTime);
           var venue = nflSchedule.games[i].schedule.venue.name;
+          var gameID = nflSchedule.games[i].schedule.id
+
 
           var dd = startTime.getDate();
           var mm = startTime.getMonth() + 1; //January is 0!
@@ -107,8 +109,6 @@ function nflSchedule(scheduledWeek) {
             "Thursday", "Friday", "Saturday"];
 
           todaySchedule = hour + ":" + min + " " + sun + " " + dayNames[day] + ", " + monthNames[mm - 1] + " " + dd;
-          var weekEndString = monthNames[mm - 1] + " " + dd;
-          var weekStartString = monthNames[mm - 1] + " " + (dd - 7);
 
 
           var htmlString = '<div class="accordion col-12 mx-0 px-0 mt-2" id="accordionExample">';
@@ -118,10 +118,10 @@ function nflSchedule(scheduledWeek) {
           htmlString += '<tbody>';
           htmlString += '<tr class=" row ">';
           htmlString += '<td class="col-3 text-left pl-3 py-1 font-weight-bold" id="' + aid + '" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> </td>';
-          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold" id="' + aid + "odds" + '" style=" font-size: 12px;">+100 </td>';
+          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold" id="'+ gameID +'awayMoneyLine" style=" font-size: 12px;"></td>';
           htmlString += '<td class="col border text-center px-0 py-1 font-weight-bold text-light bg-dark" id="' + aid + "score" + '" style=" font-size: 12px;">0 </td>';
-          htmlString += '<td class="col-3 py-1 px-2 font-weight-bold text-left" id="' + hid + '" style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"> </td>';
-          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold" id="' + hid + "odds" + '" style=" font-size: 12px;">-100 </td>';
+          htmlString += '<td class="col-3 py-1 px-2 font-weight-bold text-left" id="' + hid + '" style=" font-size: 12px;">@ <img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"> </td>';
+          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold" id="'+ gameID +'homeMoneyLine" style=" font-size: 12px;"></td>';
           htmlString += '<td class="col border text-center px-0  py-1 font-weight-bold text-light bg-dark" id="' + hid + "score" + '" style=" font-size: 12px;"> 0</td>';
           htmlString += '<td class="col-3  text-right py-1 font-weight-bold" id="' + todaySchedule + 'record" style=" font-size: 12px;">' + todaySchedule + ' </td>';
           htmlString += '<td class="col text-center font-weight-bold text-primary py-1 pr-3"  style=" font-size: 12px;">' + 100 + ' </td>';
@@ -130,17 +130,37 @@ function nflSchedule(scheduledWeek) {
           htmlString += '</table>';
           htmlString += '</button>';
           htmlString += '<div id="collapse' + i + '" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">'
-          htmlString += '<div class="card-body border border-top">'
-          htmlString += '<p style=" font-size: 12px;">Venue: ' + venue + '</p>';
+          htmlString += '<div class="card-body border border-top p-0 my-0">'
+          htmlString += '<table class="table mx-1 my-0 table-borderless card-background table-sm">';
+          htmlString += '<tbody>';
+          htmlString += '<tr class=" row ">';
+          htmlString += '<td class="col-3 text-left pl-3 py-1 font-weight-bold" id="" style=" font-size: 12px;"> </td>';
+          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold" id="" style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col  text-center px-0 py-1 font-weight-bold " id="" style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col-3 py-1 px-2 font-weight-bold text-left" id="" style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold" id="" style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col text-center px-0  py-1 font-weight-bold text-light" id="" style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col-3  text-right py-1 " id="" style=" font-size: 12px;">'+ 'Venue: ' +venue+ '</td>';
+          htmlString += '<td class="col text-center font-weight-bold text-primary py-1 pr-3"  style=" font-size: 12px;"></td>';
+          htmlString += '</tr>';
+          htmlString += '</tbody>';
+          htmlString += '</table>';
           htmlString += '</div>';
           htmlString += '</div>';
           htmlString += '</div>';
           htmlString += '</div>';
 
 
-          var gamelines = yyyy + "0" + mm + "0" + dd + '-' + aTeam + "-" + hTeam
+          if (mm <10) {
+            mm = "0"+mm
+          }
+
+          if (dd<10) {
+            dd = "0" + dd
+          }
+
+          var gamelines = yyyy + "" + mm + "" + dd + '-' + aTeam + "-" + hTeam
           gameLinesArray += gamelines + ","
-
 
           $("#nfl-schedule-holder").append(htmlString);
         }
@@ -167,6 +187,31 @@ function nflSchedule(scheduledWeek) {
         })
         .then(function (nflOdds) {
           console.log(nflOdds)
+          for (l = 0; l < nflOdds.gameLines.length; l++){
+          var awayMoneyLine = nflOdds.gameLines[l].lines[0].moneyLines[0].moneyLine.awayLine.american;
+          var homeMoneyLine = nflOdds.gameLines[l].lines[0].moneyLines[0].moneyLine.homeLine.american;
+          var gameIdOdds = nflOdds.gameLines[l].game.id
+
+          if (awayMoneyLine < 0) {
+            $("#"+ gameIdOdds +"awayMoneyLine").addClass("text-success")
+          } else {
+            $("#"+ gameIdOdds +"awayMoneyLine").addClass("text-danger")
+            awayMoneyLine = "+" + awayMoneyLine
+          }
+
+          if (homeMoneyLine < 0) {
+            $("#"+ gameIdOdds +"homeMoneyLine").addClass("text-success")
+          } else { 
+            $("#"+ gameIdOdds +"homeMoneyLine").addClass("text-danger")
+            homeMoneyLine = "+" +homeMoneyLine
+          }
+
+          $("#"+ gameIdOdds +"awayMoneyLine").append(awayMoneyLine)
+          $("#"+ gameIdOdds +"homeMoneyLine").append(homeMoneyLine)
+
+          gameLinesArray = ''
+
+          };
         });
     });
 };
