@@ -1,5 +1,3 @@
-var nflGames = " https://api.mysportsfeeds.com/v2.1/pull/nfl/upcoming/games.json"
-var nflTeams = " https://api.mysportsfeeds.com/v2.1/pull/nfl/upcoming/standings.json"
 
 var api = config.MY_KEY;
 
@@ -12,55 +10,17 @@ for (i = 1; i < 18; i++) {
   $("#weekdropdown").append(htmlweek);
 
 }
-
-var gameLinesArray = '';
-
-
-// /////////////// Add Team Information//////////////////////////////////////
-function addTeamNames() {
-  $.ajax
-    ({
-      type: "GET",
-      url: nflTeams,
-      dataType: 'json',
-      headers: {
-        "Authorization": "Basic " + btoa(api + ":" + "MYSPORTSFEEDS")
-      },
-
-    })
-    .then(function (nflStandings) {
-      console.log(nflStandings)
-
-      for (j = 0; j < nflStandings.teams.length; j++) {
-        var teamLocation = nflStandings.teams[j].team.city;
-        var teamName = nflStandings.teams[j].team.name;
-        var teamid = nflStandings.teams[j].team.id;
-        var teamRecord = "(" + nflStandings.teams[j].stats.standings.wins + "-" + nflStandings.teams[j].stats.standings.losses + ")"
-        var fullTeamName = teamLocation + " " + teamName + " " + teamRecord;
-        $("#" + teamid).append(fullTeamName);
-      }
-
-
-
-    });
-};
-
-// /////////////Add Betting Odds//////////////////////////////////////////////////////
-
-
 //////////Generate NFL Schedue////////////////////////////////////////////////////////////////////
 function nflSchedule(scheduledWeek) {
   $("#nfl-schedule-holder").empty();
   $("#nflweek").empty();
 
-  if (scheduledWeek < 1) {
-    scheduledWeek = 1;
-  }
+  var weeklyStatsURL = "https://api.mysportsfeeds.com/v2.1/pull/nfl/2019-regular/week/" +scheduledWeek +"/odds_gamelines.json"
 
   $.ajax
     ({
       type: "GET",
-      url: nflGames,
+      url: weeklyStatsURL,
       dataType: 'json',
       headers: {
         "Authorization": "Basic " + btoa(api + ":" + "MYSPORTSFEEDS")
@@ -71,18 +31,51 @@ function nflSchedule(scheduledWeek) {
       console.log(nflSchedule)
 
 
-      for (i = 0; i < nflSchedule.games.length; i++) {
+      for (i = 0; i < nflSchedule.references.gameReferences.length; i++) {
         var x = scheduledWeek;
-        if (nflSchedule.games[i].schedule.week == x) {
-          var aTeam = nflSchedule.games[i].schedule.awayTeam.abbreviation;
-          var hTeam = nflSchedule.games[i].schedule.homeTeam.abbreviation;
-          var hid = nflSchedule.games[i].schedule.homeTeam.id
-          var aid = nflSchedule.games[i].schedule.awayTeam.id
-          var startTime = new Date(nflSchedule.games[i].schedule.startTime);
-          var venue = nflSchedule.games[i].schedule.venue.name;
-          var gameID = nflSchedule.games[i].schedule.id
+        if (nflSchedule.references.gameReferences[i].week == x) {
+          var aTeam = nflSchedule.references.gameReferences[i].awayTeam.abbreviation;
+          var hTeam = nflSchedule.references.gameReferences[i].homeTeam.abbreviation;
+          var hid = nflSchedule.references.gameReferences[i].homeTeam.id
+          var aid = nflSchedule.references.gameReferences[i].awayTeam.id
+          var startTime = new Date(nflSchedule.references.gameReferences[i].startTime);
+          var venue = nflSchedule.references.gameReferences[i].venue.name;
+          var gameID = nflSchedule.references.gameReferences[i].id
+
+          for (l =0; l < nflSchedule.references.venueReferences.length; l++) {
+            if (nflSchedule.references.venueReferences[l].id == nflSchedule.references.gameReferences[i].venue.id) {
+              var venueLocation = nflSchedule.references.venueReferences[l].city
+            }
+          }
 
 
+
+          if (nflSchedule.gameLines[i].lines.length == 0) {
+            var awayMoneyLine = "TBD";
+            var homeMoneyLine = "TBD";
+          } else {
+          var awayMoneyLine = nflSchedule.gameLines[i].lines[0].pointSpreads[0].pointSpread.awaySpread;
+          var homeMoneyLine = nflSchedule.gameLines[i].lines[0].pointSpreads[0].pointSpread.homeSpread;
+          };
+
+          for (j=0; j < nflSchedule.references.teamReferences.length; j++) {
+            if (nflSchedule.references.teamReferences[j].id == aid) {
+              var aTeamName = nflSchedule.references.teamReferences[j].city + " " + nflSchedule.references.teamReferences[j].name
+            }
+            if (nflSchedule.references.teamReferences[j].id == hid) {
+              var hTeamName = nflSchedule.references.teamReferences[j].city + " " + nflSchedule.references.teamReferences[j].name
+            }
+          }
+
+          if (awayMoneyLine > 0) {
+            awayMoneyLine = "+" + awayMoneyLine
+          }
+
+          if (homeMoneyLine > 0) {
+            homeMoneyLine = "+" +homeMoneyLine
+          }
+
+  
           var dd = startTime.getDate();
           var mm = startTime.getMonth() + 1; //January is 0!
           var yyyy = startTime.getFullYear();
@@ -117,11 +110,11 @@ function nflSchedule(scheduledWeek) {
           htmlString += '<table class="table mx-1 my-0 table-borderless card-background table-sm">';
           htmlString += '<tbody>';
           htmlString += '<tr class=" row ">';
-          htmlString += '<td class="col-3 text-left pl-3 py-1 font-weight-bold" id="' + aid + '" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> </td>';
-          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold" id="'+ gameID +'awayMoneyLine" style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col-3 text-left pl-3 py-1 font-weight-bold" id="' + aid + '" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px">'+ " " + aTeamName +'</td>';
+          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold" id="'+ aid +'awayMoneyLine" style=" font-size: 12px;">' + awayMoneyLine + '</td>';
           htmlString += '<td class="col border text-center px-0 py-1 font-weight-bold text-light bg-dark" id="' + aid + "score" + '" style=" font-size: 12px;">0 </td>';
-          htmlString += '<td class="col-3 py-1 px-2 font-weight-bold text-left" id="' + hid + '" style=" font-size: 12px;">@ <img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"> </td>';
-          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold" id="'+ gameID +'homeMoneyLine" style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col-3 py-1 px-2 font-weight-bold text-left" id="' + hid + '" style=" font-size: 12px;">@ <img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px">' + " " + hTeamName + '</td>';
+          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold" id="'+ hid +'homeMoneyLine" style=" font-size: 12px;">' + homeMoneyLine + '</td>';
           htmlString += '<td class="col border text-center px-0  py-1 font-weight-bold text-light bg-dark" id="' + hid + "score" + '" style=" font-size: 12px;"> 0</td>';
           htmlString += '<td class="col-3  text-right py-1 font-weight-bold" id="' + todaySchedule + 'record" style=" font-size: 12px;">' + todaySchedule + ' </td>';
           htmlString += '<td class="col text-center font-weight-bold text-primary py-1 pr-3"  style=" font-size: 12px;">' + 100 + ' </td>';
@@ -129,90 +122,82 @@ function nflSchedule(scheduledWeek) {
           htmlString += '</tbody>';
           htmlString += '</table>';
           htmlString += '</button>';
-          htmlString += '<div id="collapse' + i + '" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">'
-          htmlString += '<div class="card-body border border-top p-0 my-0">'
+          htmlString += '<div id="collapse' + i + '" class="collapse hide " aria-labelledby="headingOne" data-parent="#accordionExample">'
+          htmlString += '<div class="d-flex py-0 pl-2 my-0">'
+          htmlString += '<ul class="nav nav-tabs py-0 " id="myTab" role="tablist">'
+          htmlString += '<li class="nav-item m-0 p-0">'
+          htmlString += '<a class="nav-link active p-1 m-0" id="leaders-tab" data-toggle="tab" href="#leaders" role="tab" aria-controls="leaders" style=" font-size: 10px;" aria-selected="true">Leaders</a>'
+          htmlString += '</li>'
+          htmlString += '<li class="nav-item m-0 p-0">'
+          htmlString += '<a class="nav-link p-1 m-0" id="boxscore-tab" data-toggle="tab" href="#boxscore" role="tab" aria-controls="box" style=" font-size: 10px;" aria-selected="false">Boxscore</a>'
+          htmlString += '</li>'
+          htmlString += '<li class="nav-item m-0 p-0">'
+          htmlString += '<a class="nav-link p-1 m-0" id="odds-tab" data-toggle="tab" href="#odds" role="tab" aria-controls="odds" style=" font-size: 10px;" aria-selected="false">Odds</a>'
+          htmlString += '</li>'
+          htmlString += '</ul>'
+          htmlString += '<p class="py-0 my-0 pr-3 ml-auto font-weight-bold "  style=" font-size: 10px;" >' + venue + " in " + venueLocation +'</p>'
+          htmlString += '</div>'
+          htmlString += '<div class="tab-content" id="myTabContent">'
+          htmlString += '<div class="tab-pane fade show pl-2" id="odds" role="tabpanel" aria-labelledby="odds-tab">'
           htmlString += '<table class="table mx-1 my-0 table-borderless card-background table-sm">';
           htmlString += '<tbody>';
           htmlString += '<tr class=" row ">';
-          htmlString += '<td class="col-3 text-left pl-3 py-1 font-weight-bold" id="" style=" font-size: 12px;"> </td>';
-          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold" id="" style=" font-size: 12px;"></td>';
-          htmlString += '<td class="col  text-center px-0 py-1 font-weight-bold " id="" style=" font-size: 12px;"></td>';
-          htmlString += '<td class="col-3 py-1 px-2 font-weight-bold text-left" id="" style=" font-size: 12px;"></td>';
-          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold" id="" style=" font-size: 12px;"></td>';
-          htmlString += '<td class="col text-center px-0  py-1 font-weight-bold text-light" id="" style=" font-size: 12px;"></td>';
-          htmlString += '<td class="col-3  text-right py-1 " id="" style=" font-size: 12px;">'+ 'Venue: ' +venue+ '</td>';
-          htmlString += '<td class="col text-center font-weight-bold text-primary py-1 pr-3"  style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col-3 text-left pl-3 py-1 font-weight-bold" id="" style=" font-size: 10px;">Odds Test </td>';
+          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold" id="" style=" font-size: 10px;"></td>';
+          htmlString += '<td class="col  text-center px-0 py-1 font-weight-bold " id="" style=" font-size: 10px;"></td>';
+          htmlString += '<td class="col-3 py-1 px-2 font-weight-bold text-left" id="" style=" font-size: 10px;"></td>';
+          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold" id="" style=" font-size: 10px;"></td>';
+          htmlString += '<td class="col text-center px-0  py-1 font-weight-bold text-light" id="" style=" font-size: 10px;"></td>';
+          htmlString += '<td class="col-3  text-right py-1 " id="" style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col text-center font-weight-bold text-primary py-1 pr-3"  style=" font-size: 10px;"></td>';
           htmlString += '</tr>';
           htmlString += '</tbody>';
           htmlString += '</table>';
           htmlString += '</div>';
+
+          htmlString += '<div class="tab-pane fade show active pl-2" id="leaders" role="tabpanel" aria-labelledby="leaders-tab">'
+          htmlString += '<table class="table mx-1 my-0 table-borderless card-background table-sm">';
+          htmlString += '<tbody>';
+          htmlString += '<tr class=" row ">';
+          htmlString += '<td class="col-3 text-left pl-3 py-1 font-weight-bold" id="" style=" font-size: 10px;">Passing: </td>';
+          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold" id="" style=" font-size: 10px;"></td>';
+          htmlString += '<td class="col  text-center px-0 py-1 font-weight-bold " id="" style=" font-size: 10px;"></td>';
+          htmlString += '<td class="col-3 py-1 px-2 font-weight-bold text-left" id="" style=" font-size: 10px;">Passing: </td>';
+          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold" id="" style=" font-size: 10px;"></td>';
+          htmlString += '<td class="col text-center px-0  py-1 font-weight-bold text-light" id="" style=" font-size: 10px;"></td>';
+          htmlString += '<td class="col-3  text-right py-1 " id="" style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col text-center font-weight-bold text-primary py-1 pr-3"  style=" font-size: 10px;"></td>';
+          htmlString += '</tr>';
+          htmlString += '</tbody>';
+          htmlString += '</table>';
+
           htmlString += '</div>';
           htmlString += '</div>';
           htmlString += '</div>';
 
+          htmlString += '</div>';
+          htmlString += '</div>';
 
-          if (mm <10) {
-            mm = "0"+mm
+
+          if (awayMoneyLine < 0 ) {
+            $("#"+ aid +"awayMoneyLine").addClass("text-success")
+          } else {
+            $("#"+ aid +"awayMoneyLine").addClass("text-danger")
           }
 
-          if (dd<10) {
-            dd = "0" + dd
+          if (homeMoneyLine < 0) {
+            $("#"+ hid +"homeMoneyLine").addClass("text-success")
+          } else { 
+            $("#"+ hid +"homeMoneyLine").addClass("text-danger")
           }
-
-          var gamelines = yyyy + "" + mm + "" + dd + '-' + aTeam + "-" + hTeam
-          gameLinesArray += gamelines + ","
 
           $("#nfl-schedule-holder").append(htmlString);
         }
       }
       $("#lastweek").attr("disabled", false);
       $("#nextweek").attr("disabled", false);
-
-      addTeamNames();
       $("#nflweek").append("Week " + scheduledWeek);
 
-      // ///////////// Game Lines API////////////////
-
-      var nflLinesURL = "https://api.mysportsfeeds.com/v2.1/pull/nfl/2019-regular/odds_gamelines.json?game=" + gameLinesArray
-
-      $.ajax
-        ({
-          type: "GET",
-          url: nflLinesURL,
-          dataType: 'json',
-          headers: {
-            "Authorization": "Basic " + btoa(api + ":" + "MYSPORTSFEEDS")
-          },
-
-        })
-        .then(function (nflOdds) {
-          console.log(nflOdds)
-          for (l = 0; l < nflOdds.gameLines.length; l++){
-          var awayMoneyLine = nflOdds.gameLines[l].lines[0].moneyLines[0].moneyLine.awayLine.american;
-          var homeMoneyLine = nflOdds.gameLines[l].lines[0].moneyLines[0].moneyLine.homeLine.american;
-          var gameIdOdds = nflOdds.gameLines[l].game.id
-
-          if (awayMoneyLine < 0) {
-            $("#"+ gameIdOdds +"awayMoneyLine").addClass("text-success")
-          } else {
-            $("#"+ gameIdOdds +"awayMoneyLine").addClass("text-danger")
-            awayMoneyLine = "+" + awayMoneyLine
-          }
-
-          if (homeMoneyLine < 0) {
-            $("#"+ gameIdOdds +"homeMoneyLine").addClass("text-success")
-          } else { 
-            $("#"+ gameIdOdds +"homeMoneyLine").addClass("text-danger")
-            homeMoneyLine = "+" +homeMoneyLine
-          }
-
-          $("#"+ gameIdOdds +"awayMoneyLine").append(awayMoneyLine)
-          $("#"+ gameIdOdds +"homeMoneyLine").append(homeMoneyLine)
-
-          gameLinesArray = ''
-
-          };
-        });
     });
 };
 
@@ -246,6 +231,4 @@ $("#nextweek").click(function () {
   weekShownNumber++;
   nflSchedule(weekShownNumber);
 });
-
-
 
