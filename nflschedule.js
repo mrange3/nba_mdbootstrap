@@ -146,7 +146,7 @@ function nflSchedule(scheduledWeek) {
           htmlString += '</tbody>';
           htmlString += '</table>';
           htmlString += '</button>';
-          htmlString += '<div id="collapse' + i + '" class="collapse hide " aria-labelledby="headingOne" data-parent="#accordionExample">'
+          htmlString += '<div id="collapse' + i + '" class="collapse hide border-top border-bottom" aria-labelledby="headingOne" data-parent="#accordionExample">'
           htmlString += '<div class="d-flex py-0 pl-2 my-0">'
           htmlString += '<ul class="nav nav-pills  py-0 " id="myTab" role="tablist">'
           htmlString += '<li class="nav-item pill-1 m-0 p-0 ">'
@@ -166,11 +166,14 @@ function nflSchedule(scheduledWeek) {
           htmlString += '<table class="table mx-1 my-0 table-borderless card-background table-sm">';
           htmlString += '<tbody>';
           htmlString += '<tr class=" row ">';
-          htmlString += '<td class="col-3  text-left py-1 pl-3 font-weight-bold"  style=" font-size: 10px;">Over Under: ' + overUnder +'</td>';
-          htmlString += '<td class="col-3 text-left pl-3 py-1 font-weight-bold" style=" font-size: 10px;">Point Spread: ' + awayMoneyLine + '</td>';
+          htmlString += '<td class="col-3  mobileHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 10px;">Over Under: ' + overUnder +'</td>';
+          htmlString += '<td class="col-3 deskHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 10px;">O/U: ' + overUnder +'</td>';
+          htmlString += '<td class="col-3 text-left mobileHide pl-3 py-1 font-weight-bold" style=" font-size: 10px;">Point Spread: ' + awayMoneyLine + '</td>';
+          htmlString += '<td class="col-3 text-left deskHide pl-1 py-1 font-weight-bold" style=" font-size: 10px;">PS: ' + awayMoneyLine + '</td>';
           htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 12px;"></td>';
           htmlString += '<td class="col  text-center px-0 py-1 font-weight-bold text-light " style=" font-size: 12px;"></td>';
-          htmlString += '<td class="col-3 py-1 px-2 font-weight-bold text-left"  style=" font-size: 10px;">Point Spread ' + homeMoneyLine + '</td>';
+          htmlString += '<td class="col-3 py-1 px-2 mobileHide font-weight-bold text-left"  style=" font-size: 10px;">Point Spread ' + homeMoneyLine + '</td>';
+          htmlString += '<td class="col-3 py-1 px-1 deskHide font-weight-bold text-left"  style=" font-size: 10px;">PS ' + homeMoneyLine + '</td>';
           htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 12px;"></td>';
           htmlString += '<td class="col  text-center px-0  py-1 font-weight-bold text-light "  style=" font-size: 12px;"> </td>';
           htmlString += '<td class="col text-center font-weight-bold text-primary py-1 pr-3"  style=" font-size: 12px;"></td>';
@@ -178,10 +181,12 @@ function nflSchedule(scheduledWeek) {
 
           htmlString += '<tr class=" row ">';
           htmlString += '<td class="col-3  text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;"></td>';
-          htmlString += '<td class="col-3 text-left pl-3 py-1 font-weight-bold" style=" font-size: 10px;"> Spread Line: ' + awaySpreadLine + '</td>';
+          htmlString += '<td class="col-3 mobileHide text-left pl-1 py-1 font-weight-bold" style=" font-size: 10px;"> Spread Line: ' + awaySpreadLine + '</td>';
+          htmlString += '<td class="col-3 deskHide text-left pl-1 py-1 font-weight-bold" style=" font-size: 10px;"> SL: ' + awaySpreadLine + '</td>';
           htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 12px;"></td>';
           htmlString += '<td class="col  text-center px-0 py-1 font-weight-bold text-light " style=" font-size: 12px;"></td>';
-          htmlString += '<td class="col-3 py-1 px-2 font-weight-bold text-left"  style=" font-size: 10px;">Spread Line: ' + homeSpreadLine + '</td>';
+          htmlString += '<td class="col-3 mobileHide py-1 px-2 font-weight-bold text-left"  style=" font-size: 10px;">Spread Line: ' + homeSpreadLine + '</td>';
+          htmlString += '<td class="col-3 deskHide py-1 px-1 font-weight-bold text-left"  style=" font-size: 10px;">SL: ' + homeSpreadLine + '</td>';
           htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 12px;"></td>';
           htmlString += '<td class="col  text-center px-0  py-1 font-weight-bold text-light "  style=" font-size: 12px;"> </td>';
           htmlString += '<td class="col text-center font-weight-bold text-primary py-1 pr-3"  style=" font-size: 12px;"></td>';
@@ -189,10 +194,12 @@ function nflSchedule(scheduledWeek) {
 
           htmlString += '<tr class=" row ">';
           htmlString += '<td class="col-3  text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;"></td>';
-          htmlString += '<td class="col-3 text-left pl-3 py-1 font-weight-bold" style=" font-size: 10px;">Money Line: ' +aMoneyLine+ '</td>';
+          htmlString += '<td class="col-3 text-left mobileHide pl-3 py-1 font-weight-bold" style=" font-size: 10px;">Money Line: ' +aMoneyLine+ '</td>';
+          htmlString += '<td class="col-3 text-left deskHide pl-1 py-1 font-weight-bold" style=" font-size: 10px;">ML: ' +aMoneyLine+ '</td>';
           htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 12px;"></td>';
           htmlString += '<td class="col  text-center px-0 py-1 font-weight-bold text-light " style=" font-size: 12px;"></td>';
-          htmlString += '<td class="col-3 py-1 px-2 font-weight-bold text-left"  style=" font-size: 10px;">Money Line: '+hMoneyLine+ '</td>';
+          htmlString += '<td class="col-3 py-1 px-2 mobileHide font-weight-bold text-left"  style=" font-size: 10px;">Money Line: '+hMoneyLine+ '</td>';
+          htmlString += '<td class="col-3 py-1 px-1 deskHide font-weight-bold text-left"  style=" font-size: 10px;">ML: '+hMoneyLine+ '</td>';
           htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 12px;"></td>';
           htmlString += '<td class="col  text-center px-0  py-1 font-weight-bold text-light "  style=" font-size: 12px;"> </td>';
           htmlString += '<td class="col text-center font-weight-bold text-primary py-1 pr-3"  style=" font-size: 12px;"></td>';
@@ -206,11 +213,28 @@ function nflSchedule(scheduledWeek) {
           htmlString += '<tbody>';
 
           htmlString += '<tr class=" row ">';
-          htmlString += '<td class="col-3  text-left py-1 pl-3 font-weight-bold"  style=" font-size: 10px;">' + venue + " in " + venueLocation +'</td>';
-          htmlString += '<td class="col-3 text-left pl-3 py-1 font-weight-bold" style=" font-size: 10px;">Passing:</td>';
+          htmlString += '<td class="col-3 mobileHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 10px;">' + venue + " in " + venueLocation +'</td>';
+          htmlString += '<td class="col-3 deskHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 10px;">' + venue + '</td>';
+          htmlString += '<td class="col-3 mobileHide text-left pl-3 py-1 font-weight-bold" style=" font-size: 10px;">Passing:</td>';
+          htmlString += '<td class="col-3 deskHide text-left pl-1 py-1 font-weight-bold" style=" font-size: 10px;">Pass:</td>';
           htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 12px;"></td>';
           htmlString += '<td class="col  text-center px-0 py-1 font-weight-bold text-light " style=" font-size: 12px;"></td>';
-          htmlString += '<td class="col-3 py-1 px-2 font-weight-bold text-left"  style=" font-size: 10px;">Passing: </td>';
+          htmlString += '<td class="col-3 mobileHide py-1 px-2 font-weight-bold text-left"  style=" font-size: 10px;">Passing: </td>';
+          htmlString += '<td class="col-3 deskHide text-left px-1 py-1 font-weight-bold" style=" font-size: 10px;">Pass:</td>';
+          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col  text-center px-0  py-1 font-weight-bold text-light "  style=" font-size: 12px;"> </td>';
+          htmlString += '<td class="col text-center font-weight-bold text-primary py-1 pr-3"  style=" font-size: 12px;"></td>';
+          htmlString += '</tr>';
+
+          htmlString += '<tr class=" row ">';
+          htmlString += '<td class="col-3  mobileHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col-3  deskHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 10px;">'+venueLocation+'</td>';
+          htmlString += '<td class="col-3 mobileHide text-left pl-3 py-1 font-weight-bold" style=" font-size: 10px;">Rushing: </td>';
+          htmlString += '<td class="col-3 deskHide text-left pl-1 py-1 font-weight-bold" style=" font-size: 10px;">Rush: </td>';
+          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col  text-center px-0 py-1 font-weight-bold text-light " style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col-3 mobileHide py-1 px-2 font-weight-bold text-left"  style=" font-size: 10px;">Rushing: </td>';
+          htmlString += '<td class="col-3 deskHide py-1 px-1 font-weight-bold text-left"  style=" font-size: 10px;">Rush: </td>';
           htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 12px;"></td>';
           htmlString += '<td class="col  text-center px-0  py-1 font-weight-bold text-light "  style=" font-size: 12px;"> </td>';
           htmlString += '<td class="col text-center font-weight-bold text-primary py-1 pr-3"  style=" font-size: 12px;"></td>';
@@ -218,21 +242,12 @@ function nflSchedule(scheduledWeek) {
 
           htmlString += '<tr class=" row ">';
           htmlString += '<td class="col-3  text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;"></td>';
-          htmlString += '<td class="col-3 text-left pl-3 py-1 font-weight-bold" style=" font-size: 10px;">Rushing: </td>';
+          htmlString += '<td class="col-3 mobileHide text-left pl-3 py-1 font-weight-bold" style=" font-size: 10px;">Receiving: </td>';
+          htmlString += '<td class="col-3 deskHide text-left pl-1 py-1 font-weight-bold" style=" font-size: 10px;">Rec: </td>';
           htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 12px;"></td>';
           htmlString += '<td class="col  text-center px-0 py-1 font-weight-bold text-light " style=" font-size: 12px;"></td>';
-          htmlString += '<td class="col-3 py-1 px-2 font-weight-bold text-left"  style=" font-size: 10px;">Rushing: </td>';
-          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 12px;"></td>';
-          htmlString += '<td class="col  text-center px-0  py-1 font-weight-bold text-light "  style=" font-size: 12px;"> </td>';
-          htmlString += '<td class="col text-center font-weight-bold text-primary py-1 pr-3"  style=" font-size: 12px;"></td>';
-          htmlString += '</tr>';
-
-          htmlString += '<tr class=" row ">';
-          htmlString += '<td class="col-3  text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;"></td>';
-          htmlString += '<td class="col-3 text-left pl-3 py-1 font-weight-bold" style=" font-size: 10px;">Receiving: </td>';
-          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 12px;"></td>';
-          htmlString += '<td class="col  text-center px-0 py-1 font-weight-bold text-light " style=" font-size: 12px;"></td>';
-          htmlString += '<td class="col-3 py-1 px-2 font-weight-bold text-left"  style=" font-size: 10px;">Receiving: </td>';
+          htmlString += '<td class="col-3 mobileHide py-1 px-2 font-weight-bold text-left"  style=" font-size: 10px;">Receiving: </td>';
+          htmlString += '<td class="col-3 deskHide py-1 px-1 font-weight-bold text-left"  style=" font-size: 10px;">Rec: </td>';
           htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 12px;"></td>';
           htmlString += '<td class="col  text-center px-0  py-1 font-weight-bold text-light "  style=" font-size: 12px;"> </td>';
           htmlString += '<td class="col text-center font-weight-bold text-primary py-1 pr-3"  style=" font-size: 12px;"></td>';
@@ -247,22 +262,24 @@ function nflSchedule(scheduledWeek) {
           htmlString += '<tbody>';
 
           htmlString += '<tr class=" row ">';
-          htmlString += '<td class="col-3  text-left py-1 pl-3 font-weight-bold"  style=" font-size: 10px;">' + venue + " in " + venueLocation +'</td>';
-          htmlString += '<td class="col-3 text-left pl-3 py-1 font-weight-bold" style=" font-size: 10px;">Scoring Summary</td>';
+          htmlString += '<td class="col-3 mobileHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 10px;">' + venue + " in " + venueLocation +'</td>';
+          htmlString += '<td class="col-3 deskHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 10px;">' + venue + '</td>';
+          htmlString += '<td class="col-3 text-left pl-3 py-1 font-weight-bold" style=" font-size: 10px;"> </td>';
           htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 10px;">Q1</td>';
           htmlString += '<td class="col  text-center px-0 py-1 font-weight-bold text-light border bg-dark" style=" font-size: 10px;">0</td>';
-          htmlString += '<td class="col-3 py-1 px-2 font-weight-bold text-left"  style=" font-size: 10px;">Scoring Summary: </td>';
+          htmlString += '<td class="col-3 py-1 px-2 font-weight-bold text-left"  style=" font-size: 10px;"> </td>';
           htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 10px;">Q1</td>';
           htmlString += '<td class="col  text-center px-0  py-1 font-weight-bold text-light border bg-dark"  style=" font-size: 10px;">0</td>';
           htmlString += '<td class="col text-center font-weight-bold text-primary py-1 pr-3"  style=" font-size: 12px;"></td>';
           htmlString += '</tr>';
 
           htmlString += '<tr class=" row ">';
-          htmlString += '<td class="col-3  text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;"></td>';
-          htmlString += '<td class="col-3 text-left pl-3 py-1 font-weight-bold" style=" font-size: 10px;">Scoring Summary: </td>';
+          htmlString += '<td class="col-3  mobileHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col-3  deskHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 10px;">'+venueLocation+'</td>';
+          htmlString += '<td class="col-3 text-left pl-3 py-1 font-weight-bold" style=" font-size: 10px;"> </td>';
           htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 10px;">Q2</td>';
           htmlString += '<td class="col  text-center px-0 py-1 font-weight-bold text-light border bg-dark" style=" font-size: 10px;">0</td>';
-          htmlString += '<td class="col-3 py-1 px-2 font-weight-bold text-left"  style=" font-size: 10px;">Scoring Summary: </td>';
+          htmlString += '<td class="col-3 py-1 px-2 font-weight-bold text-left"  style=" font-size: 10px;"> </td>';
           htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 10px;">Q2</td>';
           htmlString += '<td class="col  text-center px-0  py-1 font-weight-bold text-light border bg-dark"  style=" font-size: 10px;">0</td>';
           htmlString += '<td class="col text-center font-weight-bold text-primary py-1 pr-3"  style=" font-size: 12px;"></td>';
@@ -270,10 +287,10 @@ function nflSchedule(scheduledWeek) {
 
           htmlString += '<tr class=" row ">';
           htmlString += '<td class="col-3  text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;"></td>';
-          htmlString += '<td class="col-3 text-left pl-3 py-1 font-weight-bold" style=" font-size: 10px;">Scoring Summary: </td>';
+          htmlString += '<td class="col-3 text-left pl-3 py-1 font-weight-bold" style=" font-size: 10px;"> </td>';
           htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 10px;">Q3</td>';
           htmlString += '<td class="col  text-center px-0 py-1 font-weight-bold text-light border bg-dark" style=" font-size: 10px;">0</td>';
-          htmlString += '<td class="col-3 py-1 px-2 font-weight-bold text-left"  style=" font-size: 10px;">Scoring Summary: </td>';
+          htmlString += '<td class="col-3 py-1 px-2 font-weight-bold text-left"  style=" font-size: 10px;"> </td>';
           htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 10px;">Q3</td>';
           htmlString += '<td class="col  text-center px-0  py-1 font-weight-bold text-light border bg-dark"  style=" font-size: 10px;">0</td>';
           htmlString += '<td class="col text-center font-weight-bold text-primary py-1 pr-3"  style=" font-size: 12px;"></td>';
@@ -281,10 +298,10 @@ function nflSchedule(scheduledWeek) {
 
           htmlString += '<tr class=" row ">';
           htmlString += '<td class="col-3  text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;"></td>';
-          htmlString += '<td class="col-3 text-left pl-3 py-1 font-weight-bold" style=" font-size: 10px;">Scoring Summary: </td>';
+          htmlString += '<td class="col-3 text-left pl-3 py-1 font-weight-bold" style=" font-size: 10px;"> </td>';
           htmlString += '<td class="col text-center px-0 py-1 font-weight-bold "  style=" font-size: 10px;">Q4</td>';
           htmlString += '<td class="col  text-center px-0 py-1 font-weight-bold text-light border bg-dark" style=" font-size: 10px;">0</td>';
-          htmlString += '<td class="col-3 py-1 px-2 font-weight-bold text-left"  style=" font-size: 10px;">Scoring Summary: </td>';
+          htmlString += '<td class="col-3 py-1 px-2 font-weight-bold text-left"  style=" font-size: 10px;"> </td>';
           htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 10px;">Q4</td>';
           htmlString += '<td class="col  text-center border px-0  py-1 font-weight-bold bg-dark text-light "  style=" font-size: 10px;">0</td>';
           htmlString += '<td class="col text-center font-weight-bold text-primary py-1 pr-3"  style=" font-size: 12px;"></td>';
