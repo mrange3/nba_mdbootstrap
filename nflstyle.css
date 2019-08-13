@@ -34,18 +34,18 @@ body {
 
 /* active (faded) */
 .nav-pills .pill-1 .nav-link {
-  background-color: red;
+  background-color: darkred;
   color: white;
 }
 
 .nav-pills .pill-2 .nav-link {
-  background-color: red;
+  background-color: darkred;
   color: white;
 
 }
 
 .nav-pills .pill-3 .nav-link {
-  background-color: red;
+  background-color: darkred;
   color: white;
 }
 .conference {

@@ -31,9 +31,9 @@
         </nav>
     </header>
     <header>
-        <nav class="navbar w-100 navbar-expand-sm justify-content-center bg-white p-0  navbar-white">
+        <nav class="navbar w-100 navbar-expand-sm justify-content-center bg-white p-0 border-bottom border-dark navbar-white">
 
-            <div class="navbar-expand justify-content-center" id="navbarNavDropdown">
+            <div class="navbar-expand justify-content-center " id="navbarNavDropdown">
                 <ul class="navbar-nav ncaa">
                     <li class="nav-item active">
                         <a class="nav-link nav-text" href="nfl.html"><small>Home</small>
@@ -62,61 +62,68 @@
             </div>
         </nav>
     </header>
-    <div class="row pt-3">
-        <div class="col-3 mobileHide"></div>
-        <div class="col mx-2 ">
-            <h2 class="text-center p-2 border-bottom border-top pageHead border-light white-text"><strong>2019-2020 NFL
+    <div class="row  my-0 py-0">
+        <div class="col-1 mobileHide"></div>
+
+        <div class="col-10 my-0 ">
+            <div class=" border border-white" style="background-color: darkred">
+            <h2 class="text-center p-2  pageHead  white-text" ><strong>2019-2020 NFL
                     Schedule</strong></h2>
-        </div>
-        <div class="col-3 mobileHide"></div>
-    </div>
+            <div class="align-content-middle justify-content-center p-2" >
+                <div class="mt-0 align-content-middle justify-content-center " style="height: 40px;">
 
-    <!--  -->
-    <div class="align-content-middle justify-content-center col-10 offset-1">
-        <div class="mt-0 align-content-middle justify-content-center " style="height: 40px;">
+                    <div class="d-flex justify-content-between align-middle pr-4 pl-4 ">
+                        <button type="button" class=" btn mt-1 pt-0 btn-dark rounded-0 btn-sm "
+                            style=" font-size: 18px;" id="lastweek"><i class="fas fa-caret-left"></i></button>
+                        <div class="btn-group">
+                            <button class="btn btn-dark btn-lg dropdown-toggle mx-5 py-2 my-1" style=" font-size: 12px;"
+                                id="nflweek" type="button" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
 
-            <div class="d-flex justify-content-between align-middle pr-4 pl-4 mt-2">
-                <button type="button" class=" btn mt-1 pt-0 btn-dark rounded-0 btn-sm " style=" font-size: 18px;"
-                    id="lastweek"><i class="fas fa-caret-left"></i></button>
-                <div class="btn-group">
-                    <button class="btn btn-dark btn-lg dropdown-toggle mx-5 py-2 my-1" style=" font-size: 12px;" id="nflweek" type="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    
-                  </button>
-                    <div id="weekdropdown" class="dropdown-menu weekbutton">
+                            </button>
+                            <div id="weekdropdown" class="dropdown-menu weekbutton">
+                            </div>
+                        </div>
+                        <button type="button" class="btn mt-1 rounded-0 pt-0 btn-dark  btn-sm" style=" font-size: 18px;"
+                            id="nextweek"><i class="fas fa-caret-right"></i></button>
+
                     </div>
+
                 </div>
-                <button type="button" class="btn mt-1 rounded-0 pt-0 btn-dark  btn-sm" style=" font-size: 18px;"
-                    id="nextweek"><i class="fas fa-caret-right"></i></button>
 
             </div>
+            </div>
+            <div class="d-flex align-content-stretch flex-wrap px-2 pt-0 mt-0 mb-4 col border-right border-left"
+                style="background-color: darkgreen" id="nfl-schedule-holder">
+
+                <tbody id="nfl-schedule-holder"></tbody>
+                </table>
+
+
+            </div>
+            <div class="col-1 mobileHide"></div>
 
         </div>
 
-    </div>
-    <div class="d-flex align-content-stretch flex-wrap px-5 pt-1 mt-2 mb-4 col-10 offset-1 " id="nfl-schedule-holder">
-
-        <tbody id="nfl-schedule-holder"></tbody>
-        </table>
-    </div>
+        <!--  -->
 
 
 
-    <!-- JQuery -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- Bootstrap tooltips -->
-    <script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
-    <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js"></script>
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.3/js/mdb.min.js"></script>
-    <!-- API Key -->
-    <script type='text/javascript' src='config.js'></script>
-    <!-- Schedule Javascript -->
-    <script type='text/javascript' src='nflschedule.js'></script>
+        <!-- JQuery -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.3/js/mdb.min.js"></script>
+        <!-- API Key -->
+        <script type='text/javascript' src='config.js'></script>
+        <!-- Schedule Javascript -->
+        <script type='text/javascript' src='nflschedule.js'></script>
 
 </body>
 
