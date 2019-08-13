@@ -16,19 +16,19 @@ body {
 }
 
 .nav-pills .pill-1 .nav-link:not(.active) {
-  background-color: white;
-  color: black;
+  background-color: black;
+  color: white;
 }
 
 .nav-pills .pill-2 .nav-link:not(.active) {
-  background-color: white;
-  color: black;
+  background-color: black;
+  color: white;
 
 }
 
 .nav-pills .pill-3 .nav-link:not(.active) {
-  background-color: white;
-  color: black;
+  background-color: black;
+  color: white;
 }
 
 
