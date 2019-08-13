@@ -15,6 +15,39 @@ body {
   src: url('fonts/ncaa.otf') format('opentype');
 }
 
+.nav-pills .pill-1 .nav-link:not(.active) {
+  background-color: white;
+  color: black;
+}
+
+.nav-pills .pill-2 .nav-link:not(.active) {
+  background-color: white;
+  color: black;
+
+}
+
+.nav-pills .pill-3 .nav-link:not(.active) {
+  background-color: white;
+  color: black;
+}
+
+
+/* active (faded) */
+.nav-pills .pill-1 .nav-link {
+  background-color: red;
+  color: white;
+}
+
+.nav-pills .pill-2 .nav-link {
+  background-color: red;
+  color: white;
+
+}
+
+.nav-pills .pill-3 .nav-link {
+  background-color: red;
+  color: white;
+}
 .conference {
   font-family: 'Ncaa';
   font-size: 18px;
