@@ -3,7 +3,7 @@ body {
     background-size: contain; */
     background-color: darkgreen;
     overflow-x: hidden; 
-    overflow-y: visible;
+    overflow-y: hidden;
   };
 
 @font-face {
