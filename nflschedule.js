@@ -123,7 +123,7 @@ function nflSchedule(scheduledWeek) {
           const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday",
             "Thursday", "Friday", "Saturday"];
 
-          todaySchedule =  dayNames[day] + ", " + monthNames[mm - 1] + " " + dd;
+          todaySchedule =  monthNames[mm - 1] + " " + dd;
           todayScheduleMobile = hour + ":" + min + " " + sun + " " + mm + "/" +dd
 
           if (i==0) {
@@ -132,7 +132,6 @@ function nflSchedule(scheduledWeek) {
 
           if (i == nflSchedule.references.gameReferences.length-2) {
             var weekLast = todaySchedule;
-            console.log(weekLast)
           }
 
 
@@ -143,12 +142,12 @@ function nflSchedule(scheduledWeek) {
           htmlString += '<tbody>';
           htmlString += '<tr class=" row ">';
           htmlString += '<td class="col-2 mobileHide text-left py-1 pl-3 font-weight-bold" id="' + todaySchedule + 'record" style=" font-size: 12px;">' + todayScheduleMobile + ' </td>';
-          htmlString += '<td class="col-2 deskHide text-left py-1 pl-2 font-weight-bold" id="' + todayScheduleMobile + 'record" style=" font-size: 12px;">' + todayScheduleMobile + ' </td>';
+          htmlString += '<td class="col-3 deskHide text-left py-1 pl-2 font-weight-bold" id="' + todayScheduleMobile + 'record" style=" font-size: 12px;">' + todayScheduleMobile + ' </td>';
           htmlString += '<td class="col-4 text-left pl-1 py-1 mobileHide font-weight-bold border-left" id="' + aid + '" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px">'+ " " + aTeamName +' (0-0)</td>';
-          htmlString += '<td class="col-4 text-left pl-1 py-1 deskHide font-weight-bold border-left" id="' + aid + '" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> (0-0)</td>';
+          htmlString += '<td class="col-3 text-left pl-1 py-1 deskHide font-weight-bold border-left" id="' + aid + '" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> (0-0)</td>';
           htmlString += '<td class="col border text-center px-0 py-1 font-weight-bold text-light bg-dark" id="' + aid + "score" + '" style=" font-size: 12px;">0 </td>';
           htmlString += '<td class="col-4 py-1 px-1 font-weight-bold text-left mobileHide" id="' + hid + '" style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px">' + " " + hTeamName + ' (0-0)</td>';
-          htmlString += '<td class="col-4 py-1 px-1 font-weight-bold text-left deskHide" id="' + hid + '" style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"> (0-0)</td>';
+          htmlString += '<td class="col-3 py-1 px-1 font-weight-bold text-left deskHide" id="' + hid + '" style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"> (0-0)</td>';
           htmlString += '<td class="col border text-center px-0  py-1 font-weight-bold text-light bg-dark" id="' + hid + "score" + '" style=" font-size: 12px;"> 0</td>';
           htmlString += '<td class="col text-center font-weight-bold text-primary py-1 pr-3"  style=" font-size: 12px;">' + 100 + ' </td>';
           htmlString += '</tr>';
@@ -173,8 +172,9 @@ function nflSchedule(scheduledWeek) {
           htmlString += '</div>'
           htmlString += '<div class="tab-content border-top" id="myTabContent">'
           htmlString += '<div class="tab-pane fade show pl-2" id="odds'+i+'" role="tabpanel" aria-labelledby="odds-tab'+i+'">'
-          htmlString += '<table class="table mx-1 my-0 table-borderless card-background table-sm">';
+          htmlString += '<table class="table mx-0 my-0 table-borderless card-background table-sm">';
           htmlString += '<tbody>';
+
           htmlString += '<tr class=" row ">';
           htmlString += '<td class="col-2  mobileHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">Point Spread: </td>';
           htmlString += '<td class="col-2  deskHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">PS:  </td>';
@@ -189,7 +189,7 @@ function nflSchedule(scheduledWeek) {
 
           htmlString += '<tr class=" row ">';
           htmlString += '<td class="col-2 mobileHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">Spread Line: </td>';
-          htmlString += '<td class="col-2 deskHide text-left py-1 pl-2 font-weight-bold"  style=" font-size: 12px;">SL: </td>';
+          htmlString += '<td class="col-2 deskHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">SL: </td>';
           htmlString += '<td class="col-4 mobileHide text-left pl-1 py-1 font-weight-bold" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> ' + awaySpreadLine + '</td>';
           htmlString += '<td class="col-4 deskHide text-left pl-1 py-1 font-weight-bold" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> ' + awaySpreadLine + '</td>';
           htmlString += '<td class="col  text-center px-0 py-1 font-weight-bold text-light " style=" font-size: 12px;"></td>';
@@ -228,7 +228,7 @@ function nflSchedule(scheduledWeek) {
           htmlString += '</div>';
 
           htmlString += '<div class="tab-pane fade show active pl-2" id="leaders'+i+'" role="tabpanel" aria-labelledby="leaders-tab'+i+'">'
-          htmlString += '<table class="table mx-1 my-0 table-borderless card-background table-sm">';
+          htmlString += '<table class="table mx-0 my-0 table-borderless card-background table-sm">';
           htmlString += '<tbody>';
 
           htmlString += '<tr class=" row ">';
@@ -272,7 +272,7 @@ function nflSchedule(scheduledWeek) {
           htmlString += '</div>';
 
           htmlString += '<div class="tab-pane fade show  pl-2" id="boxscore'+i+'" role="tabpanel" aria-labelledby="boxscore-tab'+i+'">'
-          htmlString += '<table class="table mx-1 my-0 table-borderless card-background table-sm">';
+          htmlString += '<table class="table mx-0 my-0 table-borderless card-background table-sm">';
           htmlString += '<tbody>';
 
           htmlString += '<tr class=" row ">';
@@ -349,7 +349,7 @@ function nflSchedule(scheduledWeek) {
       $("#lastweek").attr("disabled", false);
       $("#nextweek").attr("disabled", false);
       $("#nflweek").append("Week " + scheduledWeek);
-      $("#weekDate").text(weekStart + " to " + weekLast)
+      $("#weekDate").text(weekStart + " - " + weekLast)
 
     });
     
