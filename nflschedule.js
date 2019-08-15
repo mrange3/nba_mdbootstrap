@@ -135,8 +135,8 @@ function nflSchedule(scheduledWeek) {
           }
 
 
-          var htmlString = '<div class="accordion col-12 mx-0 px-0 mt-2" id="accordionExample">';
-          htmlString += '<div class="card">';
+          var htmlString = '<div class="accordion col-12 mx-0 px-0 mt-2 " id="accordionExample">';
+          htmlString += '<div class="card shadow-lg">';
           htmlString += '<button class="btn btn-link p-0 my-0" type="button" data-toggle="collapse" data-target="#collapse' + i + '" aria-expanded="true" aria-controls="collapse' + i + '">';
           htmlString += '<table class="table mx-1 my-0 table-borderless card-background table-sm">';
           htmlString += '<tbody>';
