@@ -31,6 +31,7 @@ function nflSchedule(scheduledWeek) {
       console.log(nflSchedule)
 
 
+
       for (i = 0; i < nflSchedule.references.gameReferences.length; i++) {
         var x = scheduledWeek;
         if (nflSchedule.references.gameReferences[i].week == x) {
@@ -122,8 +123,18 @@ function nflSchedule(scheduledWeek) {
           const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday",
             "Thursday", "Friday", "Saturday"];
 
-          todaySchedule = hour + ":" + min + " " + sun + " " + dayNames[day] + ", " + monthNames[mm - 1] + " " + dd;
+          todaySchedule =  dayNames[day] + ", " + monthNames[mm - 1] + " " + dd;
           todayScheduleMobile = hour + ":" + min + " " + sun + " " + mm + "/" +dd
+
+          if (i==0) {
+            var weekStart = todaySchedule;
+          }
+
+          if (i == nflSchedule.references.gameReferences.length-2) {
+            var weekLast = todaySchedule;
+            console.log(weekLast)
+          }
+
 
           var htmlString = '<div class="accordion col-12 mx-0 px-0 mt-2" id="accordionExample">';
           htmlString += '<div class="card">';
@@ -131,15 +142,13 @@ function nflSchedule(scheduledWeek) {
           htmlString += '<table class="table mx-1 my-0 table-borderless card-background table-sm">';
           htmlString += '<tbody>';
           htmlString += '<tr class=" row ">';
-          htmlString += '<td class="col-3 mobileHide text-left py-1 pl-3 font-weight-bold" id="' + todaySchedule + 'record" style=" font-size: 12px;">' + todaySchedule + ' </td>';
-          htmlString += '<td class="col-3 deskHide text-left py-1 pl-2 font-weight-bold" id="' + todayScheduleMobile + 'record" style=" font-size: 12px;">' + todayScheduleMobile + ' </td>';
-          htmlString += '<td class="col-3 text-left pl-1 py-1 mobileHide font-weight-bold border-left" id="' + aid + '" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px">'+ " " + aTeamName +' (0-0)</td>';
-          htmlString += '<td class="col-3 text-left pl-1 py-1 deskHide font-weight-bold border-left" id="' + aid + '" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> (0-0)</td>';
-          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold" id="'+ aid +'awayMoneyLine" style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col-2 mobileHide text-left py-1 pl-3 font-weight-bold" id="' + todaySchedule + 'record" style=" font-size: 12px;">' + todayScheduleMobile + ' </td>';
+          htmlString += '<td class="col-2 deskHide text-left py-1 pl-2 font-weight-bold" id="' + todayScheduleMobile + 'record" style=" font-size: 12px;">' + todayScheduleMobile + ' </td>';
+          htmlString += '<td class="col-4 text-left pl-1 py-1 mobileHide font-weight-bold border-left" id="' + aid + '" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px">'+ " " + aTeamName +' (0-0)</td>';
+          htmlString += '<td class="col-4 text-left pl-1 py-1 deskHide font-weight-bold border-left" id="' + aid + '" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> (0-0)</td>';
           htmlString += '<td class="col border text-center px-0 py-1 font-weight-bold text-light bg-dark" id="' + aid + "score" + '" style=" font-size: 12px;">0 </td>';
-          htmlString += '<td class="col-3 py-1 px-1 font-weight-bold text-left mobileHide" id="' + hid + '" style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px">' + " " + hTeamName + ' (0-0)</td>';
-          htmlString += '<td class="col-3 py-1 px-1 font-weight-bold text-left deskHide" id="' + hid + '" style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"> (0-0)</td>';
-          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold" id="'+ hid +'homeMoneyLine" style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col-4 py-1 px-1 font-weight-bold text-left mobileHide" id="' + hid + '" style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px">' + " " + hTeamName + ' (0-0)</td>';
+          htmlString += '<td class="col-4 py-1 px-1 font-weight-bold text-left deskHide" id="' + hid + '" style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"> (0-0)</td>';
           htmlString += '<td class="col border text-center px-0  py-1 font-weight-bold text-light bg-dark" id="' + hid + "score" + '" style=" font-size: 12px;"> 0</td>';
           htmlString += '<td class="col text-center font-weight-bold text-primary py-1 pr-3"  style=" font-size: 12px;">' + 100 + ' </td>';
           htmlString += '</tr>';
@@ -167,57 +176,49 @@ function nflSchedule(scheduledWeek) {
           htmlString += '<table class="table mx-1 my-0 table-borderless card-background table-sm">';
           htmlString += '<tbody>';
           htmlString += '<tr class=" row ">';
-          htmlString += '<td class="col-3  mobileHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">Point Spread: </td>';
-          htmlString += '<td class="col-3  deskHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">PS:  </td>';
-          htmlString += '<td class="col-3 text-left mobileHide pl-1 py-1 font-weight-bold" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> ' + awayMoneyLine + '</td>';
-          htmlString += '<td class="col-3 text-left deskHide pl-1 py-1 font-weight-bold" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> ' + awayMoneyLine + '</td>';
-          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col-2  mobileHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">Point Spread: </td>';
+          htmlString += '<td class="col-2  deskHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">PS:  </td>';
+          htmlString += '<td class="col-4 text-left mobileHide pl-1 py-1 font-weight-bold" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> ' + awayMoneyLine + '</td>';
+          htmlString += '<td class="col-4 text-left deskHide pl-1 py-1 font-weight-bold" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> ' + awayMoneyLine + '</td>';
           htmlString += '<td class="col  text-center px-0 py-1 font-weight-bold text-light " style=" font-size: 12px;"></td>';
-          htmlString += '<td class="col-3 py-1 pl-1 mobileHide font-weight-bold text-left"  style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"> ' + homeMoneyLine + '</td>';
-          htmlString += '<td class="col-3 py-1 px-1 deskHide font-weight-bold text-left"  style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"> ' + homeMoneyLine + '</td>';
-          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col-4 py-1 px-1 mobileHide font-weight-bold text-left"  style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"> ' + homeMoneyLine + '</td>';
+          htmlString += '<td class="col-4 py-1 px-1 deskHide font-weight-bold text-left"  style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"> ' + homeMoneyLine + '</td>';
           htmlString += '<td class="col  text-center px-0  py-1 font-weight-bold text-light "  style=" font-size: 12px;"> </td>';
           htmlString += '<td class="col text-center font-weight-bold text-primary py-1 pr-3"  style=" font-size: 12px;"></td>';
           htmlString += '</tr>';
 
           htmlString += '<tr class=" row ">';
-          htmlString += '<td class="col-3 mobileHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">Spread Line: </td>';
-          htmlString += '<td class="col-3 deskHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">SL: </td>';
-          htmlString += '<td class="col-3 mobileHide text-left pl-1 py-1 font-weight-bold" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> ' + awaySpreadLine + '</td>';
-          htmlString += '<td class="col-3 deskHide text-left pl-1 py-1 font-weight-bold" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> ' + awaySpreadLine + '</td>';
-          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col-2 mobileHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">Spread Line: </td>';
+          htmlString += '<td class="col-2 deskHide text-left py-1 pl-2 font-weight-bold"  style=" font-size: 12px;">SL: </td>';
+          htmlString += '<td class="col-4 mobileHide text-left pl-1 py-1 font-weight-bold" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> ' + awaySpreadLine + '</td>';
+          htmlString += '<td class="col-4 deskHide text-left pl-1 py-1 font-weight-bold" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> ' + awaySpreadLine + '</td>';
           htmlString += '<td class="col  text-center px-0 py-1 font-weight-bold text-light " style=" font-size: 12px;"></td>';
-          htmlString += '<td class="col-3 mobileHide py-1 pl-1 font-weight-bold text-left"  style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"> ' + homeSpreadLine + '</td>';
-          htmlString += '<td class="col-3 deskHide py-1 px-1 font-weight-bold text-left"  style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"> ' + homeSpreadLine + '</td>';
-          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col-4 mobileHide py-1 px-1 font-weight-bold text-left"  style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"> ' + homeSpreadLine + '</td>';
+          htmlString += '<td class="col-4 deskHide py-1 px-1 font-weight-bold text-left"  style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"> ' + homeSpreadLine + '</td>';
           htmlString += '<td class="col  text-center px-0  py-1 font-weight-bold text-light "  style=" font-size: 12px;"> </td>';
           htmlString += '<td class="col text-center font-weight-bold text-primary py-1 pr-3"  style=" font-size: 12px;"></td>';
           htmlString += '</tr>';
 
           htmlString += '<tr class=" row ">';
-          htmlString += '<td class="col-3  mobileHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">Money Line: </td>';
-          htmlString += '<td class="col-3  deskHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">ML : </td>';
-          htmlString += '<td class="col-3 text-left mobileHide pl-1 py-1 font-weight-bold" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> ' +aMoneyLine+ '</td>';
-          htmlString += '<td class="col-3 text-left deskHide pl-1 py-1 font-weight-bold" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> ' +aMoneyLine+ '</td>';
-          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 12px;"></td>';
-          htmlString += '<td class="col  text-center px-0 py-1 font-weight-bold text-light " style=" font-size: 12px;"></td>';
-          htmlString += '<td class="col-3 py-1 pl-1 mobileHide font-weight-bold text-left"  style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"> '+hMoneyLine+ '</td>';
-          htmlString += '<td class="col-3 py-1 px-1 deskHide font-weight-bold text-left"  style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"> '+hMoneyLine+ '</td>';
-          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col-2  mobileHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">Money Line: </td>';
+          htmlString += '<td class="col-2  deskHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">ML : </td>';
+          htmlString += '<td class="col-4 text-left mobileHide pl-1 py-1 font-weight-bold" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> ' +aMoneyLine+ '</td>';
+          htmlString += '<td class="col-4 text-left deskHide pl-1 py-1 font-weight-bold" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> ' +aMoneyLine+ '</td>';
+          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold text-light " style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col-4 py-1 px-1 mobileHide font-weight-bold text-left"  style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"> '+hMoneyLine+ '</td>';
+          htmlString += '<td class="col-4 py-1 px-1 deskHide font-weight-bold text-left"  style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"> '+hMoneyLine+ '</td>';
           htmlString += '<td class="col  text-center px-0  py-1 font-weight-bold text-light "  style=" font-size: 12px;"> </td>';
           htmlString += '<td class="col text-center font-weight-bold text-primary py-1 pr-3"  style=" font-size: 12px;"></td>';
           htmlString += '</tr>';
 
           htmlString += '<tr class=" row ">';
-          htmlString += '<td class="col-3 mobileHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">Over Under : </td>';
-          htmlString += '<td class="col-3 deskHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">O/U: </td>';
-          htmlString += '<td class="col-3 mobileHide text-left pl-1 py-1 font-weight-bold" style=" font-size: 12px;">' + overUnder + '</td>';
-          htmlString += '<td class="col-3 deskHide text-left pl-1 py-1 font-weight-bold" style=" font-size: 12px;">' + overUnder + '</td>';
-          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col-2 mobileHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">Over Under : </td>';
+          htmlString += '<td class="col-2 deskHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">O/U: </td>';
+          htmlString += '<td class="col-4 mobileHide text-left pl-1 py-1 font-weight-bold" style=" font-size: 12px;">' + overUnder + '</td>';
+          htmlString += '<td class="col-4 deskHide text-left pl-1 py-1 font-weight-bold" style=" font-size: 12px;">' + overUnder + '</td>';
           htmlString += '<td class="col  text-center px-0 py-1 font-weight-bold text-light " style=" font-size: 12px;"></td>';
-          htmlString += '<td class="col-3 mobileHide py-1 pl-1 font-weight-bold text-left"  style=" font-size: 12px;">' + overUnder + '</td>';
-          htmlString += '<td class="col-3 deskHide py-1 px-1 font-weight-bold text-left"  style=" font-size: 12px;">' + overUnder + '</td>';
-          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col-4 mobileHide py-1 px-1 font-weight-bold text-left"  style=" font-size: 12px;">' + overUnder + '</td>';
+          htmlString += '<td class="col-4 deskHide py-1 px-1 font-weight-bold text-left"  style=" font-size: 12px;">' + overUnder + '</td>';
           htmlString += '<td class="col  text-center px-0  py-1 font-weight-bold text-light "  style=" font-size: 12px;"> </td>';
           htmlString += '<td class="col text-center font-weight-bold text-primary py-1 pr-3"  style=" font-size: 12px;"></td>';
           htmlString += '</tr>';
@@ -231,43 +232,37 @@ function nflSchedule(scheduledWeek) {
           htmlString += '<tbody>';
 
           htmlString += '<tr class=" row ">';
-          htmlString += '<td class="col-3 mobileHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">Passing:</td>';
-          htmlString += '<td class="col-3 deskHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">Pass:</td>';
-          htmlString += '<td class="col-3 mobileHide text-left pl-1 py-1 font-weight-bold border-bottom" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> 1.</td>';
-          htmlString += '<td class="col-3 deskHide text-left pl-1 py-1 font-weight-bold border-bottom" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> 1.</td>';
-          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col-2 mobileHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">Passing:</td>';
+          htmlString += '<td class="col-2 deskHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">Pass:</td>';
+          htmlString += '<td class="col-4 mobileHide text-left pl-1 py-1 font-weight-bold border-bottom" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> 1.</td>';
+          htmlString += '<td class="col-4 deskHide text-left pl-1 py-1 font-weight-bold border-bottom" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> 1.</td>';
           htmlString += '<td class="col  text-center px-0 py-1 font-weight-bold text-light " style=" font-size: 12px;"></td>';
-          htmlString += '<td class="col-3 mobileHide py-1 px-2 font-weight-bold text-left border-bottom"  style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"> 1.</td>';
-          htmlString += '<td class="col-3 deskHide text-left px-1 py-1 font-weight-bold border-bottom" style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"> 1.</td>';
-          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col-4 mobileHide py-1 px-1 font-weight-bold text-left border-bottom"  style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"> 1.</td>';
+          htmlString += '<td class="col-4 deskHide text-left px-1 py-1 font-weight-bold border-bottom" style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"> 1.</td>';
           htmlString += '<td class="col  text-center px-0  py-1 font-weight-bold text-light "  style=" font-size: 12px;"> </td>';
           htmlString += '<td class="col text-center font-weight-bold text-primary py-1 pr-3"  style=" font-size: 12px;"></td>';
           htmlString += '</tr>';
 
           htmlString += '<tr class=" row ">';
-          htmlString += '<td class="col-3  mobileHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">Rushing: </td>';
-          htmlString += '<td class="col-3  deskHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">Rush: </td>';
-          htmlString += '<td class="col-3 mobileHide text-left pl-1 py-1 font-weight-bold border-bottom" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> 1.</td>';
-          htmlString += '<td class="col-3 deskHide text-left pl-1 py-1 font-weight-bold border-bottom" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> 1.</td>';
-          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col-2  mobileHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">Rushing: </td>';
+          htmlString += '<td class="col-2  deskHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">Rush: </td>';
+          htmlString += '<td class="col-4 mobileHide text-left pl-1 py-1 font-weight-bold border-bottom" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> 1.</td>';
+          htmlString += '<td class="col-4 deskHide text-left pl-1 py-1 font-weight-bold border-bottom" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> 1.</td>';
           htmlString += '<td class="col  text-center px-0 py-1 font-weight-bold text-light " style=" font-size: 12px;"></td>';
-          htmlString += '<td class="col-3 mobileHide py-1 px-2 font-weight-bold text-left border-bottom"  style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"> 1.</td>';
-          htmlString += '<td class="col-3 deskHide py-1 px-1 font-weight-bold text-left border-bottom"  style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"> 1.</td>';
-          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col-4 mobileHide py-1 px-1 font-weight-bold text-left border-bottom"  style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"> 1.</td>';
+          htmlString += '<td class="col-4 deskHide py-1 px-1 font-weight-bold text-left border-bottom"  style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"> 1.</td>';
           htmlString += '<td class="col  text-center px-0  py-1 font-weight-bold text-light "  style=" font-size: 12px;"> </td>';
           htmlString += '<td class="col text-center font-weight-bold text-primary py-1 pr-3"  style=" font-size: 12px;"></td>';
           htmlString += '</tr>';
 
           htmlString += '<tr class=" row ">';
-          htmlString += '<td class="col-3  mobileHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">Receiving: </td>';
-          htmlString += '<td class="col-3  deskHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">Rec: </td>';
-          htmlString += '<td class="col-3 mobileHide text-left pl-1 py-1 font-weight-bold border-bottom" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> 1.</td>';
-          htmlString += '<td class="col-3 deskHide text-left pl-1 py-1 font-weight-bold border-bottom" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> 1.</td>';
-          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col-2  mobileHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">Receiving: </td>';
+          htmlString += '<td class="col-2  deskHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">Rec: </td>';
+          htmlString += '<td class="col-4 mobileHide text-left pl-1 py-1 font-weight-bold border-bottom" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> 1.</td>';
+          htmlString += '<td class="col-4 deskHide text-left pl-1 py-1 font-weight-bold border-bottom" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> 1.</td>';
           htmlString += '<td class="col  text-center px-0 py-1 font-weight-bold text-light " style=" font-size: 12px;"></td>';
-          htmlString += '<td class="col-3 mobileHide py-1 px-2 font-weight-bold text-left border-bottom"  style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"> 1.</td>';
-          htmlString += '<td class="col-3 deskHide py-1 px-1 font-weight-bold text-left border-bottom"  style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"> 1.</td>';
-          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col-4 mobileHide py-1 px-1 font-weight-bold text-left border-bottom"  style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"> 1.</td>';
+          htmlString += '<td class="col-4 deskHide py-1 px-1 font-weight-bold text-left border-bottom"  style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"> 1.</td>';
           htmlString += '<td class="col  text-center px-0  py-1 font-weight-bold text-light "  style=" font-size: 12px;"> </td>';
           htmlString += '<td class="col text-center font-weight-bold text-primary py-1 pr-3"  style=" font-size: 12px;"></td>';
           htmlString += '</tr>';
@@ -281,51 +276,43 @@ function nflSchedule(scheduledWeek) {
           htmlString += '<tbody>';
 
           htmlString += '<tr class=" row ">';
-          htmlString += '<td class="col-3 mobileHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">First Quarter</td>';
-          htmlString += '<td class="col-3 deskHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">Q1</td>';
-          htmlString += '<td class="col-3 text-left pl-1 py-1 font-weight-bold border-bottom" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"></td>';
-          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col-2 mobileHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">First Quarter</td>';
+          htmlString += '<td class="col-2 deskHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">Q1</td>';
+          htmlString += '<td class="col-4 text-left pl-1 py-1 font-weight-bold border-bottom" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"></td>';
           htmlString += '<td class="col  text-center px-0 py-1 font-weight-bold text-light border bg-dark" style=" font-size: 12px;">0</td>';
-          htmlString += '<td class="col-3 py-1 px-2 font-weight-bold text-left border-bottom"  style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"></td>';
-          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col-4 py-1 px-1 font-weight-bold text-left border-bottom"  style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"></td>';
           htmlString += '<td class="col  text-center px-0  py-1 font-weight-bold text-light border bg-dark"  style=" font-size: 12px;">0</td>';
-          htmlString += '<td class="col text-center font-weight-bold text-primary py-1 pr-4"  style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col text-center font-weight-bold text-primary py-1 pr-3"  style=" font-size: 12px;"></td>';
           htmlString += '</tr>';
 
           htmlString += '<tr class=" row ">';
-          htmlString += '<td class="col-3  mobileHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">Second Quarter</td>';
-          htmlString += '<td class="col-3  deskHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">Q2</td>';
-          htmlString += '<td class="col-3 text-left pl-1 py-1 font-weight-bold border-bottom" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"></td>';
-          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col-2  mobileHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">Second Quarter</td>';
+          htmlString += '<td class="col-2  deskHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">Q2</td>';
+          htmlString += '<td class="col-4 text-left pl-1 py-1 font-weight-bold border-bottom" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"></td>';
           htmlString += '<td class="col  text-center px-0 py-1 font-weight-bold text-light border bg-dark" style=" font-size: 12px;">0</td>';
-          htmlString += '<td class="col-3 py-1 px-2 font-weight-bold text-left border-bottom"  style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"></td>';
-          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col-4 py-1 px-1 font-weight-bold text-left border-bottom"  style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"></td>';
           htmlString += '<td class="col  text-center px-0  py-1 font-weight-bold text-light border bg-dark"  style=" font-size: 12px;">0</td>';
-          htmlString += '<td class="col text-center font-weight-bold text-primary py-1 pr-4"  style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col text-center font-weight-bold text-primary py-1 pr-3"  style=" font-size: 12px;"></td>';
           htmlString += '</tr>';
 
           htmlString += '<tr class=" row ">';
-          htmlString += '<td class="col-3  mobileHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">Third Quarter</td>';
-          htmlString += '<td class="col-3  deskHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">Q3</td>';
-          htmlString += '<td class="col-3 text-left pl-1 py-1 font-weight-bold border-bottom" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"></td>';
-          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col-2  mobileHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">Third Quarter</td>';
+          htmlString += '<td class="col-2  deskHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">Q3</td>';
+          htmlString += '<td class="col-4 text-left pl-1 py-1 font-weight-bold border-bottom" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"></td>';
           htmlString += '<td class="col  text-center px-0 py-1 font-weight-bold text-light border bg-dark" style=" font-size: 12px;">0</td>';
-          htmlString += '<td class="col-3 py-1 px-2 font-weight-bold text-left border-bottom"  style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"></td>';
-          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col-4 py-1 px-1 font-weight-bold text-left border-bottom"  style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"></td>';
           htmlString += '<td class="col  text-center px-0  py-1 font-weight-bold text-light border bg-dark"  style=" font-size: 12px;">0</td>';
-          htmlString += '<td class="col text-center font-weight-bold text-primary py-1 pr-4"  style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col text-center font-weight-bold text-primary py-1 pr-3"  style=" font-size: 12px;"></td>';
           htmlString += '</tr>';
 
           htmlString += '<tr class=" row ">';
-          htmlString += '<td class="col-3  mobileHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">Fourth Quarter</td>';
-          htmlString += '<td class="col-3  deskHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">Q4</td>';
-          htmlString += '<td class="col-3 text-left pl-1 py-1 font-weight-bold border-bottom" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"></td>';
-          htmlString += '<td class="col text-center px-0 mx-0 py-1 font-weight-bold"  style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col-2  mobileHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">Fourth Quarter</td>';
+          htmlString += '<td class="col-2  deskHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 12px;">Q4</td>';
+          htmlString += '<td class="col-4 text-left pl-1 py-1 font-weight-bold border-bottom" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"></td>';
           htmlString += '<td class="col  text-center px-0 py-1 font-weight-bold text-light border bg-dark" style=" font-size: 12px;">0</td>';
-          htmlString += '<td class="col-3 py-1 px-2 font-weight-bold text-left border-bottom"  style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"></td>';
-          htmlString += '<td class="col text-center px-0 py-1 font-weight-bold"  style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col-4 py-1 px-1 font-weight-bold text-left border-bottom"  style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"></td>';
           htmlString += '<td class="col  text-center px-0  py-1 font-weight-bold text-light border bg-dark"  style=" font-size: 12px;">0</td>';
-          htmlString += '<td class="col text-center font-weight-bold text-primary py-1 pr-4"  style=" font-size: 12px;"></td>';
+          htmlString += '<td class="col text-center font-weight-bold text-primary py-1 pr-3"  style=" font-size: 12px;"></td>';
           htmlString += '</tr>';
 
 
@@ -362,8 +349,10 @@ function nflSchedule(scheduledWeek) {
       $("#lastweek").attr("disabled", false);
       $("#nextweek").attr("disabled", false);
       $("#nflweek").append("Week " + scheduledWeek);
+      $("#weekDate").text(weekStart + " to " + weekLast)
 
     });
+    
 };
 
 
