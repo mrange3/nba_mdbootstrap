@@ -1,7 +1,4 @@
 body {
-    /* background-image: url("images/turf.jpeg");
-    background-size: contain; */
-    background-color: darkgreen;
     overflow-x: hidden; 
     overflow-y: visible;
   };
@@ -34,18 +31,18 @@ body {
 
 /* active (faded) */
 .nav-pills .pill-1 .nav-link {
-  background-color: darkred;
+  background-color: #640000;
   color: white;
 }
 
 .nav-pills .pill-2 .nav-link {
-  background-color: darkred;
+  background-color: #640000;
   color: white;
 
 }
 
 .nav-pills .pill-3 .nav-link {
-  background-color: darkred;
+  background-color: #640000;
   color: white;
 }
 .conference {
