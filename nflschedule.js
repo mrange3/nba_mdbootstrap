@@ -160,17 +160,17 @@ function nflSchedule(scheduledWeek) {
           htmlString += '</table>';
           htmlString += '</button>';
           htmlString += '<div id="collapse' + i + '" class="collapse hide border-top border-bottom" aria-labelledby="headingOne" data-parent="#accordionExample">'
-          htmlString += '<div class="d-flex py-0 pl-2 my-0 " style="background-color: black;">'
+          htmlString += '<div class="d-flex py-0 px-0 my-0 " style="background-color: black;">'
           
           htmlString += '<ul class="nav nav-pills  py-0 " id="myTab" role="tablist">'
           htmlString += '<li class="nav-item pill-1 m-0 p-0 ">'
-          htmlString += '<a class="nav-link active py-1 m-0 " id="leaders-tab'+i+'" data-toggle="tab" href="#leaders'+i+'" role="tab" aria-controls="leaders'+i+'" style=" font-size: 16px;" aria-selected="true">Leaders</a>'
+          htmlString += '<a class="nav-link active py-1 px-2 m-0 " id="leaders-tab'+i+'" data-toggle="tab" href="#leaders'+i+'" role="tab" aria-controls="leaders'+i+'" style=" font-size: 16px;" aria-selected="true">Leaders</a>'
           htmlString += '</li>'
           htmlString += '<li class="nav-item pill-2 m-0 p-0">'
-          htmlString += '<a class="nav-link py-1 m-0" id="boxscore-tab'+i+'" data-toggle="tab" href="#boxscore'+i+'" role="tab" aria-controls="box'+i+'" style=" font-size: 16px;" aria-selected="false">Boxscore</a>'
+          htmlString += '<a class="nav-link py-1 m-0 px-2" id="boxscore-tab'+i+'" data-toggle="tab" href="#boxscore'+i+'" role="tab" aria-controls="box'+i+'" style=" font-size: 16px;" aria-selected="false">Boxscore</a>'
           htmlString += '</li>'
           htmlString += '<li class="nav-item pill-3 m-0 p-0">'
-          htmlString += '<a class="nav-link py-1 m-0" id="odds-tab'+i+'" data-toggle="tab" href="#odds'+i+'" role="tab" aria-controls="odds'+i+'" style=" font-size: 16px;" aria-selected="false">Odds</a>'
+          htmlString += '<a class="nav-link py-1 m-0 px-2" id="odds-tab'+i+'" data-toggle="tab" href="#odds'+i+'" role="tab" aria-controls="odds'+i+'" style=" font-size: 16px;" aria-selected="false">Odds</a>'
           htmlString += '</li>'
           htmlString += '</ul>'
           htmlString += '<p class="py-0 my-0 pr-3 ml-auto font-weight-bold "  style=" font-size: 16px;" ></p>'
