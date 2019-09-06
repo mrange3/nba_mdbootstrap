@@ -1,7 +1,8 @@
 body {
     overflow-x: hidden; 
     overflow-y: visible;
-   /* background-color: #cdcdcd; */
+    background-image: url("images/pool_table.png");
+ 
   };
 
 @font-face {

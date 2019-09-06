@@ -42,8 +42,6 @@ function nflSchedule(scheduledWeek) {
           var startTime = new Date(nflSchedule.references.gameReferences[i].startTime);
           var venue = nflSchedule.references.gameReferences[i].venue.name;
           var gameID = nflSchedule.references.gameReferences[i].id
-
-
     
 
           for (l =0; l < nflSchedule.references.venueReferences.length; l++) {
@@ -68,13 +66,13 @@ function nflSchedule(scheduledWeek) {
           } 
         
           else {
-          var awayMoneyLine = nflSchedule.gameLines[i].lines[0].pointSpreads[0].pointSpread.awaySpread;
-          var homeMoneyLine = nflSchedule.gameLines[i].lines[0].pointSpreads[0].pointSpread.homeSpread;
-          var overUnder = nflSchedule.gameLines[i].lines[0].overUnders[0].overUnder.overUnder
+          var awayMoneyLine = nflSchedule.gameLines[i].lines[0].pointSpreads[nflSchedule.gameLines[i].lines[0].pointSpreads.length-1].pointSpread.awaySpread;
+          var homeMoneyLine = nflSchedule.gameLines[i].lines[0].pointSpreads[nflSchedule.gameLines[i].lines[0].pointSpreads.length-1].pointSpread.homeSpread;
+          var overUnder = nflSchedule.gameLines[i].lines[0].overUnders[nflSchedule.gameLines[i].lines[0].overUnders.length-1].overUnder.overUnder
           var awaySpreadLine = nflSchedule.gameLines[i].lines[0].pointSpreads[0].pointSpread.awayLine.american
           var homeSpreadLine = nflSchedule.gameLines[i].lines[0].pointSpreads[0].pointSpread.homeLine.american
-          var aMoneyLine = nflSchedule.gameLines[i].lines[0].moneyLines[0].moneyLine.awayLine.american
-          var hMoneyLine = nflSchedule.gameLines[i].lines[0].moneyLines[0].moneyLine.homeLine.american
+          var aMoneyLine = nflSchedule.gameLines[i].lines[0].moneyLines[nflSchedule.gameLines[i].lines[0].moneyLines.length-1].moneyLine.awayLine.american
+          var hMoneyLine = nflSchedule.gameLines[i].lines[0].moneyLines[nflSchedule.gameLines[i].lines[0].moneyLines.length-1].moneyLine.homeLine.american
 
           };
 
@@ -96,6 +94,13 @@ function nflSchedule(scheduledWeek) {
           if (homeMoneyLine > 0) {
             homeMoneyLine = "+" +homeMoneyLine
           }
+          if (aMoneyLine > 0) {
+            aMoneyLine = "+" +aMoneyLine
+          }
+          if (hMoneyLine > 0) {
+            hMoneyLine = "+" +hMoneyLine
+          }
+
 
   
           var dd = startTime.getDate();
@@ -141,15 +146,15 @@ function nflSchedule(scheduledWeek) {
           htmlString += '<table class="table mx-1 my-0 table-borderless card-background table-sm " >';
           htmlString += '<tbody>';
           htmlString += '<tr class=" row "   >';
-          htmlString += '<td class="col-2 mobileHide text-left text-white py-1 pl-3 font-weight-bold" id="' + todaySchedule + 'record" style=" font-size: 16px; background-color: darkgreen;">' + todayScheduleMobile + ' </td>';
+          htmlString += '<td class="col-2 mobileHide text-left text-white py-1 pl-3 font-weight-bold" id="' + todaySchedule + 'record" style=" font-size: 16px; background-color: #03254e;">' + todayScheduleMobile + ' </td>';
           htmlString += '<td class="col-3 deskHide text-left py-1 pl-2 font-weight-bold" id="' + todayScheduleMobile + 'record" style=" font-size: 16px;">' + todayScheduleMobile + ' </td>';
           htmlString += '<td class="col-4 text-left pl-1 py-1 mobileHide font-weight-bold border-left border-dark" id="' + aid + '" style=" font-size: 16px; "><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px">'+ " " + aTeamName +' (0-0)</td>';
           htmlString += '<td class="col-3 text-left pl-1 py-1 deskHide font-weight-bold border-left border-dark" id="' + aid + '" style=" font-size: 16px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> (0-0)</td>';
-          htmlString += '<td class="col border text-center px-0 py-1 font-weight-bold text-light bg-dark" id="' + aid + "score" + '" style=" font-size: 16px;">0 </td>';
+          htmlString += '<td class="col border text-center px-0 py-1 font-weight-bold text-light bg-dark" id="awayScore" style=" font-size: 16px;">0</td>';
           htmlString += '<td class="col-4 py-1 px-1 font-weight-bold text-left mobileHide" id="' + hid + '" style=" font-size: 16px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px">' + " " + hTeamName + ' (0-0)</td>';
           htmlString += '<td class="col-3 py-1 px-1 font-weight-bold text-left deskHide" id="' + hid + '" style=" font-size: 16px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"> (0-0)</td>';
-          htmlString += '<td class="col border text-center px-0  py-1 font-weight-bold text-light bg-dark" id="' + hid + "score" + '" style=" font-size: 16px;"> 0</td>';
-          htmlString += '<td class="col text-center font-weight-bold text-primary py-1 pr-3"  style=" font-size: 16px;">' + 100 + ' </td>';
+          htmlString += '<td class="col border text-center px-0  py-1 font-weight-bold text-light bg-dark" id="homeScore" style=" font-size: 16px;">0</td>';
+          htmlString += '<td class="col text-center font-weight-bold text-primary py-1 pr-3"   style=" font-size: 16px;">' + 100 + ' </td>';
           htmlString += '</tr>';
           htmlString += '</tbody>';
           htmlString += '</table>';
@@ -349,7 +354,29 @@ function nflSchedule(scheduledWeek) {
       $("#lastweek").attr("disabled", false);
       $("#nextweek").attr("disabled", false);
       $("#nflweek").append("Week " + scheduledWeek);
-      $("#weekDate").text(weekStart + " - " + weekLast)
+      $("#weekDate").text(weekStart + " - " + weekLast);
+
+
+      var gameBox = "https://api.mysportsfeeds.com/v2.1/pull/nfl/2019-regular/week/"+scheduledWeek+"/games.json"
+
+      $.ajax
+        ({
+          type: "GET",
+          url: gameBox,
+          dataType: 'json',
+          headers: {
+            "Authorization": "Basic " + btoa(api + ":" + "MYSPORTSFEEDS")
+          },
+    
+        })
+        .then(function (boxscore) {
+          console.log(boxscore)
+          for (i=0; i < boxscore.games.length; i++){
+          $("#awayScore").text(boxscore.games[i].score.awayScoreTotal.toString());
+          $("#homeScore").text(boxscore.games[i].score.homeScoreTotal.toString());
+
+        }});
+    
 
     });
     
