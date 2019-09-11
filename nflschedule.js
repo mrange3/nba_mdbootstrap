@@ -483,9 +483,9 @@ $(document).on("click", ".gameButton", function () {
       var aPassYardsTotal = gameBoxscore.stats.away.players[passingYardsLeaderIndex].playerStats[0].passing.passYards
       var aPassTD = gameBoxscore.stats.away.players[passingYardsLeaderIndex].playerStats[0].passing.passTD
       console.log(aRushingLeaderName)
-        $("#aPassingLeader"+clickedBtnID).append("  "+ aPassingLeaderName + " - " + aPassYardsTotal + " Yds " + aPassTD + "TD");
-        $("#awayRushingLeader"+clickedBtnID).append("  "+ aRushingLeaderName + " - " + aRushYardsTotal + " Yds " + aRushTD + "TD");
-        $("#awayReceivingLeader"+clickedBtnID).append("  "+ aRecLeaderName + " - " + aRecYardsTotal + " Yds " + aRecTD + "TD");
+        $("#aPassingLeader"+clickedBtnID).append(" &nbsp;"+ aPassingLeaderName + " - " + aPassYardsTotal + " Yds " + aPassTD + "TD");
+        $("#awayRushingLeader"+clickedBtnID).append(" &nbsp;"+ aRushingLeaderName + " - " + aRushYardsTotal + " Yds " + aRushTD + "TD");
+        $("#awayReceivingLeader"+clickedBtnID).append(" &nbsp;"+ aRecLeaderName + " - " + aRecYardsTotal + " Yds " + aRecTD + "TD");
 
 // Home Leaders///////////////////////////////
 var homeRushingArray =[];
@@ -534,9 +534,9 @@ var hRushTD = gameBoxscore.stats.home.players[hRushingYardsLeaderIndex].playerSt
 var hPassingLeaderName = gameBoxscore.stats.home.players[hpassingYardsLeaderIndex].player.firstName +" "+gameBoxscore.stats.home.players[hpassingYardsLeaderIndex].player.lastName
 var hPassYardsTotal = gameBoxscore.stats.home.players[hpassingYardsLeaderIndex].playerStats[0].passing.passYards
 var hPassTD = gameBoxscore.stats.home.players[hpassingYardsLeaderIndex].playerStats[0].passing.passTD
-  $("#hPassingLeader"+clickedBtnID).append("  "+ hPassingLeaderName + " - " + hPassYardsTotal + " Yds " + hPassTD + "TD");
-  $("#homeRushingLeader"+clickedBtnID).append("  "+ hRushingLeaderName + " - " + hRushYardsTotal + " Yds " + hRushTD + "TD");
-  $("#homeReceivingLeader"+clickedBtnID).append("  "+ hRecLeaderName + " - " + hRecYardsTotal + " Yds " + hRecTD + "TD");
+  $("#hPassingLeader"+clickedBtnID).append(" &nbsp;"+ hPassingLeaderName + " - " + hPassYardsTotal + " Yds " + hPassTD + "TD");
+  $("#homeRushingLeader"+clickedBtnID).append(" &nbsp;"+ hRushingLeaderName + " - " + hRushYardsTotal + " Yds " + hRushTD + "TD");
+  $("#homeReceivingLeader"+clickedBtnID).append(" &nbsp;"+ hRecLeaderName + " - " + hRecYardsTotal + " Yds " + hRecTD + "TD");
     });
   }
   $(this).attr("status","clicked")
