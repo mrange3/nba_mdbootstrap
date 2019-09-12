@@ -1,9 +1,11 @@
 
 var api = config.MY_KEY;
 
-
-var scheduledWeek = 1
-
+var NFLstart = new Date(2019,8,3,);
+var today = new Date()
+var oneDay = 24*60*60*1000;
+var diffDays = Math.round(Math.abs((NFLstart.getTime() - today.getTime())/(oneDay)));
+var scheduledWeek = Math.ceil(diffDays/7)
 
 for (i = 1; i < 18; i++) {
   var htmlweek = '<a id="' + i + '" class="dropdown-item weekselect bg-dark text-white" href="#">Week ' + i + '</a>'
