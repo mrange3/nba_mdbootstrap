@@ -343,6 +343,7 @@ function nflSchedule(scheduledWeek) {
 
           $("#nfl-schedule-holder").append(htmlString);
           boxscores(scheduledWeek)
+          statsLeader(gameID)
 
         }
 
@@ -418,11 +419,8 @@ function boxscores(scheduledWeek) {
 }
 
 
-$(document).on("click", ".gameButton", function () {
-  var clickedBtnID = $(this).attr('id'); // or var clickedBtnID = this.id
-  console.log(clickedBtnID)
+function statsLeader(clickedBtnID) {
 
-  if ($(this).attr("status") == "unclicked") {
   var gameStats = "https://api.mysportsfeeds.com/v2.1/pull/nfl/2019-regular/games/" + clickedBtnID + "/boxscore.json"
 
   $.ajax
@@ -541,5 +539,3 @@ var hPassTD = gameBoxscore.stats.home.players[hpassingYardsLeaderIndex].playerSt
   $("#homeReceivingLeader"+clickedBtnID).append(" &nbsp;"+ hRecLeaderName + " - " + hRecYardsTotal + " Yds " + hRecTD + "TD");
     });
   }
-  $(this).attr("status","clicked")
-});
