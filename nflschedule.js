@@ -90,10 +90,6 @@ function nflSchedule(scheduledWeek) {
           } else {
             var Q4homeScore = nflSchedule.games[i].score.quarters[3].homeScore;
           }
-          
-
-          
-
           }
   
 
@@ -333,7 +329,7 @@ function nflSchedule(scheduledWeek) {
           htmlString += '<tr class=" row ">';
           htmlString += '<td class="col-2 mobileHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 16px;">First Quarter</td>';
           htmlString += '<td class="col-2 deskHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 16px;">Q1</td>';
-          htmlString += '<td class="col-4 text-left pl-1 py-1 font-weight-bold border-bottom" style=" font-size: 16px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"></td>';
+          htmlString += '<td class="col-4 text-left pl-1 py-1 border-bottom align-middle" id="awayScorePlayQ0'+gameID+'" style=" font-size: 14px; overflow: ellipsis"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> </td>';
           htmlString += '<td class="col  text-center px-0 py-1 font-weight-bold text-light border bg-dark" style=" font-size: 16px;">' + Q1awayScore + '</td>';
           htmlString += '<td class="col-4 py-1 px-1 font-weight-bold text-left border-bottom"  style=" font-size: 16px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"></td>';
           htmlString += '<td class="col  text-center px-0  py-1 font-weight-bold text-light border bg-dark"  style=" font-size: 16px;">' + Q1homeScore + '</td>';
@@ -343,7 +339,7 @@ function nflSchedule(scheduledWeek) {
           htmlString += '<tr class=" row ">';
           htmlString += '<td class="col-2  mobileHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 16px;">Second Quarter</td>';
           htmlString += '<td class="col-2  deskHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 16px;">Q2</td>';
-          htmlString += '<td class="col-4 text-left pl-1 py-1 font-weight-bold border-bottom" style=" font-size: 16px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"></td>';
+          htmlString += '<td class="col-4  text-left pl-1 py-1  border-bottom align-middle" id="awayScorePlayQ1'+gameID+'" style=" font-size: 14px; text-overflow: ellipsis; width: 70px"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> </td>';
           htmlString += '<td class="col  text-center px-0 py-1 font-weight-bold text-light border bg-dark" style=" font-size: 16px;">' + Q2awayScore + '</td>';
           htmlString += '<td class="col-4 py-1 px-1 font-weight-bold text-left border-bottom"  style=" font-size: 16px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"></td>';
           htmlString += '<td class="col  text-center px-0  py-1 font-weight-bold text-light border bg-dark"  style=" font-size: 16px;">' + Q2homeScore + '</td>';
@@ -353,7 +349,7 @@ function nflSchedule(scheduledWeek) {
           htmlString += '<tr class=" row ">';
           htmlString += '<td class="col-2  mobileHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 16px;">Third Quarter</td>';
           htmlString += '<td class="col-2  deskHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 16px;">Q3</td>';
-          htmlString += '<td class="col-4 text-left pl-1 py-1 font-weight-bold border-bottom" style=" font-size: 16px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"></td>';
+          htmlString += '<td class="col-4 text-left pl-1 py-1  border-bottom align-middle" id="awayScorePlayQ2'+gameID+'" style=" font-size: 14px;  overflow: ellipsis"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> </td>';
           htmlString += '<td class="col  text-center px-0 py-1 font-weight-bold text-light border bg-dark" style=" font-size: 16px;">' + Q3awayScore + '</td>';
           htmlString += '<td class="col-4 py-1 px-1 font-weight-bold text-left border-bottom"  style=" font-size: 16px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"></td>';
           htmlString += '<td class="col  text-center px-0  py-1 font-weight-bold text-light border bg-dark"  style=" font-size: 16px;">' + Q3homeScore + '</td>';
@@ -363,7 +359,7 @@ function nflSchedule(scheduledWeek) {
           htmlString += '<tr class=" row ">';
           htmlString += '<td class="col-2  mobileHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 16px;">Fourth Quarter</td>';
           htmlString += '<td class="col-2  deskHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 16px;">Q4</td>';
-          htmlString += '<td class="col-4 text-left pl-1 py-1 font-weight-bold border-bottom" style=" font-size: 16px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"></td>';
+          htmlString += '<td class="col-4 text-left pl-1 py-1  border-bottom align-middle" id="awayScorePlayQ3'+gameID+'" style=" font-size: 14px; overflow: ellipsis"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> </td>';
           htmlString += '<td class="col  text-center px-0 py-1 font-weight-bold text-light border bg-dark" style=" font-size: 16px;">' + Q4awayScore + '</td>';
           htmlString += '<td class="col-4 py-1 px-1 font-weight-bold text-left border-bottom"  style=" font-size: 16px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"></td>';
           htmlString += '<td class="col  text-center px-0  py-1 font-weight-bold text-light border bg-dark"  style=" font-size: 16px;">' + Q4homeScore + '</td>';
@@ -399,7 +395,7 @@ function nflSchedule(scheduledWeek) {
           // }
 
           $("#nfl-schedule-holder").append(htmlString);
-          statsLeader(gameID)
+          statsLeader(gameID, aid)
 
         }
 
@@ -449,7 +445,7 @@ $("#nextweek").click(function () {
 
 
 
-function statsLeader(clickedBtnID) {
+function statsLeader(clickedBtnID, aid) {
 
   var gameStats = "https://api.mysportsfeeds.com/v2.1/pull/nfl/2019-regular/games/" + clickedBtnID + "/boxscore.json"
 
@@ -502,11 +498,9 @@ function statsLeader(clickedBtnID) {
   }
 }
     }
-    console.log(awayReceivingArray)
       var passingYardsLeaderIndex = awayPassingYardsArray.indexOf(Math.max(...awayPassingYardsArray));
       var aRushingYardsLeaderIndex = awayRushingArray.indexOf(Math.max(...awayRushingArray));
       var aRecYardsLeaderIndex = awayReceivingArray.indexOf(Math.max(...awayReceivingArray));
-console.log(aRecYardsLeaderIndex)
 
       var aRecLeaderName = gameBoxscore.stats.away.players[aRecYardsLeaderIndex].player.firstName +" "+gameBoxscore.stats.away.players[aRecYardsLeaderIndex].player.lastName
       var aRecYardsTotal = gameBoxscore.stats.away.players[aRecYardsLeaderIndex].playerStats[0].receiving.recYards
@@ -528,6 +522,12 @@ console.log(aRecYardsLeaderIndex)
 var homeRushingArray =[];
 var homePassingYardsArray = [];
 var homeReceivingArray =[];
+
+for (y = 0; y < gameBoxscore.scoring.quarters.length; y++ ) {
+if (gameBoxscore.scoring.quarters[y].scoringPlays.length > 0) {
+if (gameBoxscore.scoring.quarters[y].scoringPlays[0].team.id == aid) {
+  $("#awayScorePlayQ"+y+clickedBtnID).append(gameBoxscore.scoring.quarters[y].scoringPlays[0].playDescription);
+}}};
 
 for (j = 0; j < gameBoxscore.stats.home.players.length; j++) {
   var hpassingStats = gameBoxscore.stats.home.players[j].playerStats[0].passing
