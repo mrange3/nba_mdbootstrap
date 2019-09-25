@@ -5,6 +5,10 @@ body {
  
   };
 
+td:hover {
+  overflow: visible;
+}
+
 @font-face {
     font-family: 'googleSpies';
     src: url('fonts/Google-spies.ttf') format('opentype');
@@ -169,4 +173,7 @@ display: none;
     display: none;
   }
   
+}
+td:hover {
+  overflow: visible;
 }
