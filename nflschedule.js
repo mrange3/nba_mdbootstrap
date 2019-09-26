@@ -195,11 +195,11 @@ function nflSchedule(scheduledWeek) {
           htmlString += '<tr class=" row ">';
           htmlString += '<td class="col-2  mobileHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 16px;">Point Spread: </td>';
           htmlString += '<td class="col-2  deskHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 16px;">PS:  </td>';
-          htmlString += '<td class="col-4 text-left mobileHide pl-1 py-1 font-weight-bold" style=" font-size: 16px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"></td>';
-          htmlString += '<td class="col-4 text-left deskHide pl-1 py-1 font-weight-bold" style=" font-size: 16px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"></td>';
+          htmlString += '<td class="col-4 text-left mobileHide pl-1 py-1 " id="awaySpread'+gameID+'" style=" font-size: 16px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"></td>';
+          htmlString += '<td class="col-4 text-left deskHide pl-1 py-1 " id="awaySpread'+gameID+'" style=" font-size: 16px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"></td>';
           htmlString += '<td class="col  text-center px-0 py-1 font-weight-bold text-light " style=" font-size: 16px;"></td>';
-          htmlString += '<td class="col-4 py-1 px-1 mobileHide font-weight-bold text-left"  style=" font-size: 16px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"></td>';
-          htmlString += '<td class="col-4 py-1 px-1 deskHide font-weight-bold text-left"  style=" font-size: 16px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"></td>';
+          htmlString += '<td class="col-4 py-1 px-1 mobileHide  text-left" id="homeSpread'+gameID+'" style=" font-size: 16px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"></td>';
+          htmlString += '<td class="col-4 py-1 px-1 deskHide text-left" id="homeSpread'+gameID+'" style=" font-size: 16px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"></td>';
           htmlString += '<td class="col  text-center px-0  py-1 font-weight-bold text-light "  style=" font-size: 16px;"> </td>';
           htmlString += '<td class="col text-center font-weight-bold text-primary py-1 pr-3"  style=" font-size: 16px;"></td>';
           htmlString += '</tr>';
@@ -208,11 +208,11 @@ function nflSchedule(scheduledWeek) {
           htmlString += '<tr class=" row ">';
           htmlString += '<td class="col-2  mobileHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 16px;">Money Line: </td>';
           htmlString += '<td class="col-2  deskHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 16px;">ML : </td>';
-          htmlString += '<td class="col-4 text-left mobileHide pl-1 py-1 font-weight-bold" style=" font-size: 16px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"></td>';
-          htmlString += '<td class="col-4 text-left deskHide pl-1 py-1 font-weight-bold" style=" font-size: 16px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"></td>';
+          htmlString += '<td class="col-4 text-left mobileHide pl-1 py-1 " id="awayMoneyLine'+gameID+'" style=" font-size: 16px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"></td>';
+          htmlString += '<td class="col-4 text-left deskHide pl-1 py-1 " id="awayMoneyLine'+gameID+'" style=" font-size: 16px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"></td>';
           htmlString += '<td class="col text-center px-0 py-1 font-weight-bold text-light " style=" font-size: 16px;"></td>';
-          htmlString += '<td class="col-4 py-1 px-1 mobileHide font-weight-bold text-left"  style=" font-size: 16px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"></td>';
-          htmlString += '<td class="col-4 py-1 px-1 deskHide font-weight-bold text-left"  style=" font-size: 16px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"></td>';
+          htmlString += '<td class="col-4 py-1 px-1 mobileHide text-left" id="homeMoneyLine'+gameID+'" style=" font-size: 16px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"></td>';
+          htmlString += '<td class="col-4 py-1 px-1 deskHide  text-left" id="homeMoneyLine'+gameID+'" style=" font-size: 16px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"></td>';
           htmlString += '<td class="col  text-center px-0  py-1 font-weight-bold text-light "  style=" font-size: 16px;"> </td>';
           htmlString += '<td class="col text-center font-weight-bold text-primary py-1 pr-3"  style=" font-size: 16px;"></td>';
           htmlString += '</tr>';
@@ -220,11 +220,11 @@ function nflSchedule(scheduledWeek) {
           htmlString += '<tr class=" row ">';
           htmlString += '<td class="col-2 mobileHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 16px;">Over Under : </td>';
           htmlString += '<td class="col-2 deskHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 16px;">O/U: </td>';
-          htmlString += '<td class="col-4 mobileHide text-left pl-1 py-1 font-weight-bold" style=" font-size: 16px;"></td>';
-          htmlString += '<td class="col-4 deskHide text-left pl-1 py-1 font-weight-bold" style=" font-size: 16px;"></td>';
+          htmlString += '<td class="col-4 mobileHide text-left pl-1 py-1 " id="underLine'+gameID+'" style=" font-size: 16px;"></td>';
+          htmlString += '<td class="col-4 deskHide text-left pl-1 py-1 " id="underLine'+gameID+'" style=" font-size: 16px;"></td>';
           htmlString += '<td class="col  text-center px-0 py-1 font-weight-bold text-light " style=" font-size: 16px;"></td>';
-          htmlString += '<td class="col-4 mobileHide py-1 px-1 font-weight-bold text-left"  style=" font-size: 16px;"></td>';
-          htmlString += '<td class="col-4 deskHide py-1 px-1 font-weight-bold text-left"  style=" font-size: 16px;"></td>';
+          htmlString += '<td class="col-4 mobileHide py-1 px-1  text-left" id="overLine'+gameID+'" style=" font-size: 16px;"></td>';
+          htmlString += '<td class="col-4 deskHide py-1 px-1 text-left" id="overLine'+gameID+'" style=" font-size: 16px;"></td>';
           htmlString += '<td class="col  text-center px-0  py-1 font-weight-bold text-light "  style=" font-size: 16px;"> </td>';
           htmlString += '<td class="col text-center font-weight-bold text-primary py-1 pr-3"  style=" font-size: 16px;"></td>';
           htmlString += '</tr>';
@@ -347,6 +347,8 @@ function nflSchedule(scheduledWeek) {
 
 
     });
+    getOdds(scheduledWeek)
+
 };
 
 
@@ -527,3 +529,75 @@ function statsLeader(clickedBtnID, aid, hid) {
     }
     })
 }
+
+function getOdds(scheduledWeek) {
+
+  var gameOddsURL = "https://api.mysportsfeeds.com/v2.1/pull/nfl/2019-regular/week/" + scheduledWeek + "/odds_gamelines.json"
+
+  $.ajax
+    ({
+      type: "GET",
+      url: gameOddsURL,
+      dataType: 'json',
+      headers: {
+        "Authorization": "Basic " + btoa(api + ":" + "MYSPORTSFEEDS")
+      },
+
+    })
+    .then(function (gameOdds) {
+      console.log(gameOdds)
+for (g = 0; g <gameOdds.gameLines.length; g++) {
+
+  // Pont Spreads/////////////////////
+var gameOddsID = gameOdds.gameLines[g].game.id
+var awayPointSpread = gameOdds.gameLines[g].lines[0].pointSpreads[gameOdds.gameLines[g].lines[0].pointSpreads.length-1].pointSpread.awaySpread
+var awaySpreadLine = gameOdds.gameLines[g].lines[0].pointSpreads[gameOdds.gameLines[g].lines[0].pointSpreads.length-1].pointSpread.awayLine.american
+if (awayPointSpread >0) {
+  awayPointSpread = "+"+awayPointSpread;
+}
+
+var homePointSpread = gameOdds.gameLines[g].lines[0].pointSpreads[gameOdds.gameLines[g].lines[0].pointSpreads.length-1].pointSpread.homeSpread
+var homeSpreadLine = gameOdds.gameLines[g].lines[0].pointSpreads[gameOdds.gameLines[g].lines[0].pointSpreads.length-1].pointSpread.homeLine.american
+if (homePointSpread >0) {
+  homePointSpread = "+"+homePointSpread;
+}
+
+// Money Lines/////////////////////////////////////
+if (gameOdds.gameLines[g].lines[0].moneyLines.length >0) {
+var awayMoneyLine = gameOdds.gameLines[g].lines[0].moneyLines[gameOdds.gameLines[g].lines[0].moneyLines.length-1].moneyLine.awayLine.american
+var homeMoneyLine = gameOdds.gameLines[g].lines[0].moneyLines[gameOdds.gameLines[g].lines[0].moneyLines.length-1].moneyLine.homeLine.american
+} else {
+  var awayMoneyLine = "TBD"
+  var homeMoneyLine = "TBD"
+}
+if (awayMoneyLine >0) {
+  awayMoneyLine = "+" +awayMoneyLine
+}
+if (homeMoneyLine >0) {
+  homeMoneyLine = "+" +homeMoneyLine
+}
+// Over Unders////////////////////////////////
+if (gameOdds.gameLines[g].lines[0].overUnders.length>0) {
+var overUnder = gameOdds.gameLines[g].lines[0].overUnders[gameOdds.gameLines[g].lines[0].overUnders.length-1].overUnder.overUnder
+var underLine = gameOdds.gameLines[g].lines[0].overUnders[gameOdds.gameLines[g].lines[0].overUnders.length-1].overUnder.underLine.american
+var overLine = gameOdds.gameLines[g].lines[0].overUnders[gameOdds.gameLines[g].lines[0].overUnders.length-1].overUnder.overLine.american
+} else {
+var overUnder = "TBD"
+var underLine = "TBD"
+var overLine = "TBD"
+
+}
+
+
+console.log(homePointSpread)
+$("#awaySpread"+gameOddsID).append(" " +awayPointSpread+ " (" +awaySpreadLine+")");
+$("#homeSpread"+gameOddsID).append(" " +homePointSpread+ " (" +homeSpreadLine+")");
+$("#awayMoneyLine"+gameOddsID).append(" " +awayMoneyLine);
+$("#homeMoneyLine"+gameOddsID).append(" " +homeMoneyLine);
+$("#underLine"+gameOddsID).append(" U: " +overUnder+ " (" +underLine+")");
+$("#overLine"+gameOddsID).append(" O: " +overUnder+ " (" +overLine+")");
+
+
+}
+    })
+  }
