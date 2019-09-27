@@ -242,32 +242,35 @@ function nflSchedule(scheduledWeek) {
 
           htmlString += '<tr class=" row ">';
           htmlString += '<td class="col-2 mobileHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 16px;">Passing:</td>';
-          htmlString += '<td class="col-2 deskHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 16px;">Pass:</td>';
-          htmlString += '<td class="col-4  text-left pl-1 py-1 border-bottom" id="aPassingLeader' + gameID + '" style=" font-size: 14px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"></td>';
+          htmlString += '<td class="col-4  text-left mobileHide pl-1 py-1 border-bottom" id="aPassingLeader' + gameID + '" style=" font-size: 14px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"></td>';
+          htmlString += '<td class="col-6  text-left deskHide pl-3 py-1 border-bottom" id="aPassingLeaderm' + gameID + '" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"></td>';
           htmlString += '<td class="col  text-center px-0 py-1  text-light " style=" font-size: 14px;"></td>';
-          htmlString += '<td class="col-4  py-1 px-1 text-left border-bottom" id="hPassingLeader' + gameID + '" style=" font-size: 14px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"></td>';
-          htmlString += '<td class="col  text-center px-0  py-1 text-light "  style=" font-size: 14px;"> </td>';
-          htmlString += '<td class="col text-center  text-primary py-1 pr-3"  style=" font-size: 14px;"></td>';
+          htmlString += '<td class="col-4  py-1 px-1 mobileHide text-left border-bottom" id="hPassingLeader' + gameID + '" style=" font-size: 14px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"></td>';
+          htmlString += '<td class="col-6 py-1 px-1 deskHide text-left border-bottom" id="hPassingLeaderm' + gameID + '" style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"></td>';
+          htmlString += '<td class="col mobileHide text-center px-0  py-1 text-light "  style=" font-size: 14px;"> </td>';
+          htmlString += '<td class="col mobileHide text-center  text-primary py-1 pr-3"  style=" font-size: 14px;"></td>';
           htmlString += '</tr>';
 
           htmlString += '<tr class=" row ">';
           htmlString += '<td class="col-2  mobileHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 16px;">Rushing: </td>';
-          htmlString += '<td class="col-2  deskHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 16px;">Rush: </td>';
-          htmlString += '<td class="col-4  text-left pl-1 py-1 border-bottom" id="awayRushingLeader' + gameID + '" style="font-size: 14px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"></td>';
+          htmlString += '<td class="col-4 mobileHide text-left pl-1 py-1 border-bottom" id="awayRushingLeader' + gameID + '" style="font-size: 14px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"></td>';
+          htmlString += '<td class="col-6 deskHide text-left pl-3 py-1 border-bottom" id="awayRushingLeaderm' + gameID + '" style="font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"></td>';
           htmlString += '<td class="col  text-center px-0 py-1  text-light " style=" font-size: 16px;"></td>';
-          htmlString += '<td class="col-4  py-1 px-1 text-left border-bottom" id="homeRushingLeader' + gameID + '"  style=" font-size: 14px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"></td>';
-          htmlString += '<td class="col  text-center px-0  py-1  text-light "  style=" font-size: 14px;"> </td>';
-          htmlString += '<td class="col text-center text-primary py-1 pr-3"  style=" font-size: 14px;"></td>';
+          htmlString += '<td class="col-4 mobileHide py-1 px-1 text-left border-bottom" id="homeRushingLeader' + gameID + '"  style=" font-size: 14px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"></td>';
+          htmlString += '<td class="col-6 deskHide py-1 px-1 text-left border-bottom" id="homeRushingLeaderm' + gameID + '"  style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"></td>';
+          htmlString += '<td class="col mobileHide text-center px-0  py-1  text-light "  style=" font-size: 14px;"> </td>';
+          htmlString += '<td class="col mobileHide text-center text-primary py-1 pr-3"  style=" font-size: 14px;"></td>';
           htmlString += '</tr>';
 
           htmlString += '<tr class=" row ">';
           htmlString += '<td class="col-2  mobileHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 16px;">Receiving: </td>';
-          htmlString += '<td class="col-2  deskHide text-left py-1 pl-3 font-weight-bold"  style=" font-size: 16px;">Rec: </td>';
-          htmlString += '<td class="col-4  text-left pl-1 py-1  border-bottom" id="awayReceivingLeader' + gameID + '" style=" font-size: 14px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"></td>';
+          htmlString += '<td class="col-4 mobileHide text-left pl-1 py-1  border-bottom" id="awayReceivingLeader' + gameID + '" style=" font-size: 14px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"></td>';
+          htmlString += '<td class="col-6 deskHide text-left pl-3 py-1  border-bottom" id="awayReceivingLeaderm' + gameID + '" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"></td>';
           htmlString += '<td class="col  text-center px-0 py-1  text-light " style=" font-size: 16px;"></td>';
-          htmlString += '<td class="col-4  py-1 px-1  text-left border-bottom" id="homeReceivingLeader' + gameID + '"  style=" font-size: 14px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"></td>';
-          htmlString += '<td class="col  text-center px-0  py-1  text-light "  style=" font-size: 14px;"> </td>';
-          htmlString += '<td class="col text-center text-primary py-1 pr-3"  style=" font-size: 14px;"></td>';
+          htmlString += '<td class="col-4 mobileHide py-1 px-1  text-left border-bottom" id="homeReceivingLeader' + gameID + '"  style=" font-size: 14px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"></td>';
+          htmlString += '<td class="col-6 deskHide py-1 px-1  text-left border-bottom" id="homeReceivingLeaderm' + gameID + '"  style=" font-size: 12px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"></td>';
+          htmlString += '<td class="col mobileHide text-center px-0  py-1  text-light "  style=" font-size: 14px;"> </td>';
+          htmlString += '<td class="col mobileHide text-center text-primary py-1 pr-3"  style=" font-size: 14px;"></td>';
           htmlString += '</tr>';
 
           htmlString += '</tbody>';
@@ -435,21 +438,26 @@ function statsLeader(clickedBtnID, aid, hid) {
       var aRushingYardsLeaderIndex = awayRushingArray.indexOf(Math.max(...awayRushingArray));
       var aRecYardsLeaderIndex = awayReceivingArray.indexOf(Math.max(...awayReceivingArray));
 
-      var aRecLeaderName = gameBoxscore.stats.away.players[aRecYardsLeaderIndex].player.firstName + " " + gameBoxscore.stats.away.players[aRecYardsLeaderIndex].player.lastName
+      var aRecLeaderName = gameBoxscore.stats.away.players[aRecYardsLeaderIndex].player.firstName[0] + ". " + gameBoxscore.stats.away.players[aRecYardsLeaderIndex].player.lastName
       var aRecYardsTotal = gameBoxscore.stats.away.players[aRecYardsLeaderIndex].playerStats[0].receiving.recYards
       var aRecTD = gameBoxscore.stats.away.players[aRecYardsLeaderIndex].playerStats[0].receiving.recTD
 
 
-      var aRushingLeaderName = gameBoxscore.stats.away.players[aRushingYardsLeaderIndex].player.firstName + " " + gameBoxscore.stats.away.players[aRushingYardsLeaderIndex].player.lastName
+      var aRushingLeaderName = gameBoxscore.stats.away.players[aRushingYardsLeaderIndex].player.firstName[0] + ". " + gameBoxscore.stats.away.players[aRushingYardsLeaderIndex].player.lastName
       var aRushYardsTotal = gameBoxscore.stats.away.players[aRushingYardsLeaderIndex].playerStats[0].rushing.rushYards
       var aRushTD = gameBoxscore.stats.away.players[aRushingYardsLeaderIndex].playerStats[0].rushing.rushTD
 
-      var aPassingLeaderName = gameBoxscore.stats.away.players[passingYardsLeaderIndex].player.firstName + " " + gameBoxscore.stats.away.players[passingYardsLeaderIndex].player.lastName
+      var aPassingLeaderName = gameBoxscore.stats.away.players[passingYardsLeaderIndex].player.firstName[0] + ". " + gameBoxscore.stats.away.players[passingYardsLeaderIndex].player.lastName
       var aPassYardsTotal = gameBoxscore.stats.away.players[passingYardsLeaderIndex].playerStats[0].passing.passYards
       var aPassTD = gameBoxscore.stats.away.players[passingYardsLeaderIndex].playerStats[0].passing.passTD
       $("#aPassingLeader" + clickedBtnID).append(" &nbsp;" + aPassingLeaderName + " - " + aPassYardsTotal + " Yds " + aPassTD + "TD");
+      $("#aPassingLeaderm" + clickedBtnID).append(" &nbsp;" + aPassingLeaderName + " - " + aPassYardsTotal + " Yds " + aPassTD + "TD");
+
       $("#awayRushingLeader" + clickedBtnID).append(" &nbsp;" + aRushingLeaderName + " - " + aRushYardsTotal + " Yds " + aRushTD + "TD");
+      $("#awayRushingLeaderm" + clickedBtnID).append(" &nbsp;" + aRushingLeaderName + " - " + aRushYardsTotal + " Yds " + aRushTD + "TD");
+
       $("#awayReceivingLeader" + clickedBtnID).append(" &nbsp;" + aRecLeaderName + " - " + aRecYardsTotal + " Yds " + aRecTD + "TD");
+      $("#awayReceivingLeaderm" + clickedBtnID).append(" &nbsp;" + aRecLeaderName + " - " + aRecYardsTotal + " Yds " + aRecTD + "TD");
 
       // Home Leaders///////////////////////////////
       var homeRushingArray = [];
@@ -505,21 +513,26 @@ function statsLeader(clickedBtnID, aid, hid) {
       var hRushingYardsLeaderIndex = homeRushingArray.indexOf(Math.max(...homeRushingArray));
       var hRecYardsLeaderIndex = homeReceivingArray.indexOf(Math.max(...homeReceivingArray));
 
-      var hRecLeaderName = gameBoxscore.stats.home.players[hRecYardsLeaderIndex].player.firstName + " " + gameBoxscore.stats.home.players[hRecYardsLeaderIndex].player.lastName
+      var hRecLeaderName = gameBoxscore.stats.home.players[hRecYardsLeaderIndex].player.firstName[0] + ". " + gameBoxscore.stats.home.players[hRecYardsLeaderIndex].player.lastName
       var hRecYardsTotal = gameBoxscore.stats.home.players[hRecYardsLeaderIndex].playerStats[0].receiving.recYards
       var hRecTD = gameBoxscore.stats.home.players[hRecYardsLeaderIndex].playerStats[0].receiving.recTD
 
 
-      var hRushingLeaderName = gameBoxscore.stats.home.players[hRushingYardsLeaderIndex].player.firstName + " " + gameBoxscore.stats.home.players[hRushingYardsLeaderIndex].player.lastName
+      var hRushingLeaderName = gameBoxscore.stats.home.players[hRushingYardsLeaderIndex].player.firstName[0] + ". " + gameBoxscore.stats.home.players[hRushingYardsLeaderIndex].player.lastName
       var hRushYardsTotal = gameBoxscore.stats.home.players[hRushingYardsLeaderIndex].playerStats[0].rushing.rushYards
       var hRushTD = gameBoxscore.stats.home.players[hRushingYardsLeaderIndex].playerStats[0].rushing.rushTD
 
-      var hPassingLeaderName = gameBoxscore.stats.home.players[hpassingYardsLeaderIndex].player.firstName + " " + gameBoxscore.stats.home.players[hpassingYardsLeaderIndex].player.lastName
+      var hPassingLeaderName = gameBoxscore.stats.home.players[hpassingYardsLeaderIndex].player.firstName[0] + ". " + gameBoxscore.stats.home.players[hpassingYardsLeaderIndex].player.lastName
       var hPassYardsTotal = gameBoxscore.stats.home.players[hpassingYardsLeaderIndex].playerStats[0].passing.passYards
       var hPassTD = gameBoxscore.stats.home.players[hpassingYardsLeaderIndex].playerStats[0].passing.passTD
       $("#hPassingLeader" + clickedBtnID).append(" &nbsp;" + hPassingLeaderName + " - " + hPassYardsTotal + " Yds " + hPassTD + "TD");
+      $("#hPassingLeaderm" + clickedBtnID).append(" &nbsp;" + hPassingLeaderName + " - " + hPassYardsTotal + " Yds " + hPassTD + "TD");
+
       $("#homeRushingLeader" + clickedBtnID).append(" &nbsp;" + hRushingLeaderName + " - " + hRushYardsTotal + " Yds " + hRushTD + "TD");
+      $("#homeRushingLeaderm" + clickedBtnID).append(" &nbsp;" + hRushingLeaderName + " - " + hRushYardsTotal + " Yds " + hRushTD + "TD");
+
       $("#homeReceivingLeader" + clickedBtnID).append(" &nbsp;" + hRecLeaderName + " - " + hRecYardsTotal + " Yds " + hRecTD + "TD");
+      $("#homeReceivingLeaderm" + clickedBtnID).append(" &nbsp;" + hRecLeaderName + " - " + hRecYardsTotal + " Yds " + hRecTD + "TD");
     }
     })
 }
