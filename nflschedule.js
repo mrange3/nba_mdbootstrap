@@ -30,7 +30,6 @@ function nflSchedule(scheduledWeek) {
 
     })
     .then(function (nflSchedule) {
-      console.log(nflSchedule)
 
 
 
@@ -154,13 +153,13 @@ function nflSchedule(scheduledWeek) {
           htmlString += '<tr class=" row "   >';
           htmlString += '<td class="col-2 mobileHide text-left text-white py-1 pl-3 font-weight-bold" id="' + todaySchedule + 'record" style=" font-size: 16px; background-color: #03254e;">' + todayScheduleMobile + ' </td>';
           htmlString += '<td class="col-3 deskHide text-left py-1 pl-2 font-weight-bold" id="' + todayScheduleMobile + 'record" style=" font-size: 16px;">' + todayScheduleMobile + ' </td>';
-          htmlString += '<td class="col-4 text-left pl-1 py-1 mobileHide font-weight-bold border-left border-dark" id="' + aid + '" style=" font-size: 16px; "><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px">' + " " + aTeamName + ' (0-0)</td>';
-          htmlString += '<td class="col-3 text-left pl-1 py-1 deskHide font-weight-bold border-left border-dark" id="' + aid + '" style=" font-size: 16px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"> (0-0)</td>';
+          htmlString += '<td class="col-4 text-left pl-1 py-1 mobileHide font-weight-bold border-left border-dark" id="record' + aid + '" style=" font-size: 16px; "><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px">' + " " + aTeamName + '</td>';
+          htmlString += '<td class="col-3 text-left pl-1 py-1 deskHide font-weight-bold border-left border-dark" id="record' + aid + '" style=" font-size: 16px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"></td>';
           htmlString += '<td class="col border text-center px-0 py-1 font-weight-bold text-light bg-dark" id="awayScore' + gameID + '" style=" font-size: 16px;">' + awayScore + '</td>';
-          htmlString += '<td class="col-4 py-1 px-1 font-weight-bold text-left mobileHide" id="' + hid + '" style=" font-size: 16px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px">' + " " + hTeamName + ' (0-0)</td>';
-          htmlString += '<td class="col-3 py-1 px-1 font-weight-bold text-left deskHide" id="' + hid + '" style=" font-size: 16px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"> (0-0)</td>';
+          htmlString += '<td class="col-4 py-1 px-1 font-weight-bold text-left mobileHide" id="record' + hid + '" style=" font-size: 16px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px">' + " " + hTeamName + '</td>';
+          htmlString += '<td class="col-3 py-1 px-1 font-weight-bold text-left deskHide" id="record' + hid + '" style=" font-size: 16px;"><img  src="images/nfl_logos/' + hTeam + '.png" height="20px" width="20px"></td>';
           htmlString += '<td class="col border text-center px-0  py-1 font-weight-bold text-light bg-dark" id="homeScore' + gameID + '" style=" font-size: 16px;">' + homeScore + '</td>';
-          htmlString += '<td class="col text-center font-weight-bold text-primary py-1 pr-3"   style=" font-size: 16px;">' + 100 + ' </td>';
+          htmlString += '<td class="col text-center font-weight-bold id="gameScore'+gameID+'" text-primary py-1 pr-3"   style=" font-size: 16px;"></td>';
           htmlString += '</tr>';
           
           htmlString += '</tbody>';
@@ -348,7 +347,7 @@ function nflSchedule(scheduledWeek) {
 
     });
     getOdds(scheduledWeek)
-
+    getStandings()
 };
 
 
@@ -399,7 +398,6 @@ function statsLeader(clickedBtnID, aid, hid) {
     .then(function (gameBoxscore) {
 
       // Away Leaders///////////////////////////
-      console.log(gameBoxscore)
       var awayRushingArray = [];
       var awayPassingYardsArray = [];
       var awayReceivingArray = [];
@@ -545,7 +543,6 @@ function getOdds(scheduledWeek) {
 
     })
     .then(function (gameOdds) {
-      console.log(gameOdds)
 for (g = 0; g <gameOdds.gameLines.length; g++) {
 
   // Pont Spreads/////////////////////
@@ -589,7 +586,6 @@ var overLine = "TBD"
 }
 
 
-console.log(homePointSpread)
 $("#awaySpread"+gameOddsID).append(" " +awayPointSpread+ " (" +awaySpreadLine+")");
 $("#homeSpread"+gameOddsID).append(" " +homePointSpread+ " (" +homeSpreadLine+")");
 $("#awayMoneyLine"+gameOddsID).append(" " +awayMoneyLine);
@@ -598,6 +594,38 @@ $("#underLine"+gameOddsID).append(" U: " +overUnder+ " (" +underLine+")");
 $("#overLine"+gameOddsID).append(" O: " +overUnder+ " (" +overLine+")");
 
 
-}
+}})
+};
+
+function getStandings() {
+  var standingsURL = "https://api.mysportsfeeds.com/v2.1/pull/nfl/2019-regular/standings.json"
+
+  $.ajax
+    ({
+      type: "GET",
+      url: standingsURL,
+      dataType: 'json',
+      headers: {
+        "Authorization": "Basic " + btoa(api + ":" + "MYSPORTSFEEDS")
+      },
+
     })
-  }
+    .then(function (standings) {
+      for (t=0; t < standings.teams.length; t++) {
+      var teamWins = standings.teams[t].stats.standings.wins;
+      var teamLoses = standings.teams[t].stats.standings.losses;
+      var teamTies = standings.teams[t].stats.standings.ties;
+      var standingsTeamID = standings.teams[t].team.id
+
+
+      if (teamTies == 0) {
+        teamTies = "";
+      } else {
+        teamTies = "-" +teamTies
+      }
+      $("#record"+standingsTeamID).append(" ("+teamWins+"-"+teamLoses +teamTies+")")
+      }
+    })};
+
+
+    
