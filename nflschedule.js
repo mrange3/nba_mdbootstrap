@@ -315,8 +315,6 @@ function nflSchedule(scheduledWeek) {
           // htmlString += '</tr>';
           
           htmlString += '<div class="row justify-content-center py-0 px-0 my-0 ">'
-          htmlString += '<div class="col-5"></div>'
-          htmlString += '<div class="col">'
 
           htmlString += '<div class="d-flex justify-content-center p-0 my-0 ">'
           htmlString += '<ul class="nav nav-tabs py-0 d-flex justify-content-around" id="quartersScoring" role="tablist">'
@@ -334,10 +332,6 @@ function nflSchedule(scheduledWeek) {
           htmlString += '</li>'
           htmlString += '</ul>'
           htmlString += '</div>'
-
-          htmlString += '</div>';
-
-           htmlString += '<div class="col-5"></div>'
 
           htmlString += '<div class="tab-content ">'
 
