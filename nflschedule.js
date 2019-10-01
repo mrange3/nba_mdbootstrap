@@ -177,7 +177,7 @@ function nflSchedule(scheduledWeek) {
           htmlString += '<a class="nav-link active py-1 px-2 m-0 " id="leaders-tab' + i + '" data-toggle="tab" href="#leaders' + i + '" role="tab" aria-controls="leaders' + i + '" style=" font-size: 16px;" aria-selected="true">Leaders</a>'
           htmlString += '</li>'
           htmlString += '<li class="nav-item pill-2 m-0 p-0">'
-          htmlString += '<a class="nav-link py-1 m-0 px-2" id="boxscore-tab' + i + '" data-toggle="tab" href="#boxscore' + i + '" role="tab" aria-controls="box' + i + '" style=" font-size: 16px;" aria-selected="false">Boxscore</a>'
+          htmlString += '<a class="nav-link py-1 m-0 px-2" id="boxscore-tab' + i + '" data-toggle="tab" href="#boxscore' + i + '" role="tab" aria-controls="box' + i + '" style=" font-size: 16px;" aria-selected="false">Scoring</a>'
           htmlString += '</li>'
           htmlString += '<li class="nav-item pill-3 m-0 p-0">'
           htmlString += '<a class="nav-link py-1 m-0 px-2" id="odds-tab' + i + '" data-toggle="tab" href="#odds' + i + '" role="tab" aria-controls="odds' + i + '" style=" font-size: 16px;" aria-selected="false">Odds</a>'
@@ -305,41 +305,50 @@ function nflSchedule(scheduledWeek) {
           htmlString += '</table>';
 
 
-          // htmlString += '<tr class=" row ">';
+          // htmlString += '<tr class=" row d-flex nav-tabs ">';
           // htmlString += '<td class="col  text-left py-1 pl-3 font-weight-bold"  style=" font-size: 16px;"></td>';
-          // htmlString += '<td class="col-1  text-center px-0 py-1 font-weight-bold nav-link " id="Q1'+i+'" data-toggle="tab" href="#scoringSummary'+gameID+ '" role="tab" aria-controls="scoringSummary' + gameID + '" style=" font-size: 14px;">Q1</td>';
+          // htmlString += '<td class="col-1  text-center px-0 py-1 font-weight-bold  " style=" font-size: 14px;"></td>';
           // htmlString += '<td class="col-1  text-center px-0 py-1 font-weight-bold  " style=" font-size: 14px;">Q2</td>';
           // htmlString += '<td class="col-1  text-center px-0 py-1 font-weight-bold  " style=" font-size: 14px;">Q3</td>';
           // htmlString += '<td class="col-1  text-center px-0 py-1 font-weight-bold  " style=" font-size: 14px;">Q4</td>';
           // htmlString += '<td class="col text-center font-weight-bold  py-1 pr-3"  style=" font-size: 16px;"></td>';
           // htmlString += '</tr>';
+          
           htmlString += '<div class="row justify-content-center py-0 px-0 my-0 ">'
-          htmlString += '<div class="d-flex justify-content-center py-0 px-0 my-0 ">'
-          htmlString += '<ul class="nav  nav-tabs py-0 " id="quartersScoring" role="tablist">'
-          htmlString += '<li class="nav-item -1 m-0 p-0 ">'
-          htmlString += '<a class="nav-link active py-1 px-2 m-0 " id="Q1-tab' + gameID + '" data-toggle="tab" href="#Q1'+gameID+ '" role="tab" aria-controls="Q1' + gameID + '" style=" font-size: 14px;" aria-selected="true">Q1</a>'
+          htmlString += '<div class="col-5"></div>'
+          htmlString += '<div class="col">'
+
+          htmlString += '<div class="d-flex justify-content-center p-0 my-0 ">'
+          htmlString += '<ul class="nav nav-tabs py-0 d-flex justify-content-around" id="quartersScoring" role="tablist">'
+          htmlString += '<li class="nav-item  ">'
+          htmlString += '<a class="nav-link active py-0 px-1 m-0 quarter-1 text-dark" id="Q1-tab' + gameID + '" data-toggle="tab" href="#Q1'+gameID+ '" role="tab" aria-controls="Q1' + gameID + '" style=" font-size: 14px;" aria-selected="true">Q1</a>'
           htmlString += '</li>'
-          htmlString += '<li class="nav-item -2 m-0 p-0">'
-          htmlString += '<a class="nav-link py-1 px-2 m-0 " id="Q2-tab' + gameID + '" data-toggle="tab" href="#Q2'+gameID+ '" role="tab" aria-controls="Q2' + gameID + '" style=" font-size: 14px;" aria-selected="false">Q2</a>'
+          htmlString += '<li class="nav-item ">'
+          htmlString += '<a class="nav-link py-0 px-1 m-0 quarter text-dark" id="Q2-tab' + gameID + '" data-toggle="tab" href="#Q2'+gameID+ '" role="tab" aria-controls="Q2' + gameID + '" style=" font-size: 14px;" aria-selected="false">Q2</a>'
           htmlString += '</li>'
-          htmlString += '<li class="nav-item -3 m-0 p-0">'
-          htmlString += '<a class="nav-link py-1 px-2 m-0 " id="Q3-tab' + gameID + '" data-toggle="tab" href="#Q3'+gameID+ '" role="tab" aria-controls="Q3' + gameID + '" style=" font-size: 14px;" aria-selected="false">Q3</a>'
+          htmlString += '<li class="nav-item ">'
+          htmlString += '<a class="nav-link py-0 px-1 m-0 quarter text-dark" id="Q3-tab' + gameID + '" data-toggle="tab" href="#Q3'+gameID+ '" role="tab" aria-controls="Q3' + gameID + '" style=" font-size: 14px;" aria-selected="false">Q3</a>'
           htmlString += '</li>'
-          htmlString += '<li class="nav-item -3 m-0 p-0">'
-          htmlString += '<a class="nav-link py-1 px-2 m-0 " id="Q4-tab' + gameID + '" data-toggle="tab" href="#Q4'+gameID+ '" role="tab" aria-controls="Q4' + gameID + '" style=" font-size: 14px;" aria-selected="false">Q4</a>'
+          htmlString += '<li class="nav-item ">'
+          htmlString += '<a class="nav-link py-0 px-1 m-0 quarter text-dark" id="Q4-tab' + gameID + '" data-toggle="tab" href="#Q4'+gameID+ '" role="tab" aria-controls="Q4' + gameID + '" style=" font-size: 14px;" aria-selected="false">Q4</a>'
           htmlString += '</li>'
           htmlString += '</ul>'
           htmlString += '</div>'
-          htmlString += '</div>'
+
+          htmlString += '</div>';
+
+           htmlString += '<div class="col-5"></div>'
 
           htmlString += '<div class="tab-content ">'
 
-          htmlString += '<div class="tab-pane fade show active text-center" id="Q1' + gameID + '" role="tabpanel" aria-labelledby="Q1-tab' + gameID+ '"></div>'
+          htmlString += '<div class="tab-pane fade show  active text-center" id="Q1' + gameID + '" role="tabpanel" aria-labelledby="Q1-tab' + gameID+ '"></div>'
           htmlString += '<div class="tab-pane fade show  text-center" id="Q2' + gameID + '" role="tabpanel" aria-labelledby="Q2-tab' + gameID+ '"></div>'
           htmlString += '<div class="tab-pane fade show text-center" id="Q3' + gameID + '" role="tabpanel" aria-labelledby="Q3-tab' + gameID+ '"></div>'
           htmlString += '<div class="tab-pane fade show  text-center" id="Q4' + gameID + '" role="tabpanel" aria-labelledby="Q4-tab' + gameID+ '"></div>'
 
           htmlString += '</div>';
+
+
           htmlString += '</div>';
 
 
