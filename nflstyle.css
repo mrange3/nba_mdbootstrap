@@ -34,6 +34,18 @@ td:hover {
   color: white;
 }
 
+.quarter .nav-link:not(.active) {
+  border-color: white !important;
+  font-weight: normal;
+  color: black ;
+}
+
+.quarter .nav-link {
+  font-weight: bold;
+  border-bottom: none;
+  border-top: none;
+  border-color: black !important;
+}
 
 
 
@@ -42,6 +54,8 @@ td:hover {
   background-color: #640000;
   color: white;
 }
+
+
 
 .nav-pills .pill-2 .nav-link {
   background-color: #640000;
