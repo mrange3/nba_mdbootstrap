@@ -2,8 +2,9 @@ body {
     overflow-x: hidden; 
     overflow-y: visible;
     background-image: url("images/pool_table.png");
- 
   };
+
+  
 
 td:hover {
   overflow: visible;
@@ -147,7 +148,7 @@ display: none;
   }
 
   .scoreSummary {
-    font-size: 12px;
+    font-size: 1px;
   }
   
 

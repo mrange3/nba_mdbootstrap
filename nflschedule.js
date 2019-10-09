@@ -152,7 +152,7 @@ function nflSchedule(scheduledWeek) {
           htmlString += '<tbody>';
           htmlString += '<tr class=" row "   >';
           htmlString += '<td class="col-2 mobileHide text-left align-middle text-white py-1 pl-3 font-weight-bold" id="' + todaySchedule + 'record" style=" font-size: 16px; background-color: #03254e;">' + todayScheduleMobile + ' </td>';
-          htmlString += '<td class="col-3 deskHide text-left text-white py-1 pl-3 font-weight-bold" id="' + todayScheduleMobile + 'record" style=" font-size: 10px; background-color: #03254e;">' + todayScheduleMobile + ' </td>';
+          htmlString += '<td class="col-3 deskHide text-left text-white py-1 pl-2 font-weight-bold" id="' + todayScheduleMobile + 'record" style=" font-size: 12px; background-color: #03254e;">' + todayScheduleMobile + ' </td>';
           htmlString += '<td class="col-4 text-left pl-1 py-1 mobileHide font-weight-bold border-left border-dark" id="record' + aid + '" style=" font-size: 16px;  "><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px">' + " " + aTeamName + '</td>';
           htmlString += '<td class="col-3 text-left pl-1 py-1 deskHide font-weight-bold border-left border-dark" id="recordm' + aid + '" style=" font-size: 12px;"><img  src="images/nfl_logos/' + aTeam + '.png" height="20px" width="20px"></td>';
           htmlString += '<td class="col border text-center px-0 py-1 mobileHide font-weight-bold text-light bg-dark" id="awayScore' + gameID + '" style=" font-size: 16px;">' + awayScore + '</td>';
