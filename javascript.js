@@ -1,10 +1,6 @@
 
 //==================== Todays Date =========================
-console.log("hello")
 var today = new Date();
-
-function schedule(today) {
-  $("#schedule-holder").empty();
 
 //====================== Get Request for Todays Games ============
 var dd = today.getDate();
@@ -12,6 +8,7 @@ var mm = today.getMonth() + 1; //January is 0!
 var yyyy = today.getFullYear();
 var day  = today.getDay();
 
+console.log(yyyy)
 const monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
 ];
@@ -21,7 +18,7 @@ const dayNames = ["Sunday","Monday", "Tuesday", "Wednesday",
  
 todaySchedule = dayNames[day] + ", " + monthNames[mm - 1] + " " + dd + ", " + yyyy
 
-$("#date").text(todaySchedule);      // Append the new elements 
+$("#datepicker").val(todaySchedule);      // Append the new elements 
 
 
 if (dd < 10) {
@@ -32,14 +29,18 @@ if (mm < 10) {
   mm = '0' + mm;
 }
 
+today = String(yyyy) + String(mm) + String(dd);
+today = parseInt(today)
+console.log(today)
 
-today = yyyy + mm + dd;
-today = parseInt(today) 
+
+function schedule(today) {
+  $("#schedule-holder").empty();
 
 
+// today = currentDate
 
-var gameUrl = "https://api.mysportsfeeds.com/v2.0/pull/nba/current/date/" + today + "/games.json"
-var teamsUrl = "https://api.mysportsfeeds.com/v2.0/pull/nba/current/team_stats_totals.json"
+var gameUrl = "https://api.mysportsfeeds.com/v2.0/pull/nba/2019-2020-regular/date/" + today + "/games.json"
 
 
 var api = config.MY_KEY;
@@ -47,36 +48,22 @@ var api = config.MY_KEY;
 $.ajax
   ({
     type: "GET",
-    url: teamsUrl,
+    url: gameUrl,
     dataType: 'json',
     headers: {
       "Authorization": "Basic " + btoa(api + ":" + "MYSPORTSFEEDS")
     },
 
   })
-  .then(function (teamStats) {
-    console.log(teamStats)
+  .then(function (games) {
+    console.log(games)
 
 
 
-    $.ajax
-      ({
-        type: "GET",
-        url: gameUrl,
-        dataType: 'json',
-        headers: {
-          "Authorization": "Basic " + btoa(api + ":" + "MYSPORTSFEEDS")
-        },
 
-      })
-      .then(function (response) {
-        console.log(response);
+        for (i = 0; i < games.games.length; i++) {
 
-
-
-        for (i = 0; i < response.games.length; i++) {
-
-          var dateFromAPI = response.games[i].schedule.startTime;
+          var dateFromAPI = games.games[i].schedule.startTime;
           var localDate = new Date(dateFromAPI);
           var localDateString = localDate.toLocaleDateString(undefined, {
             day: 'numeric',
@@ -89,13 +76,13 @@ $.ajax
             minute: '2-digit',
           })
 
-          var hTeam = response.games[i].schedule.homeTeam.abbreviation;
-          var aTeam = response.games[i].schedule.awayTeam.abbreviation;
-          var aScore = response.games[i].score.awayScoreTotal;
-          var hScore = response.games[i].score.homeScoreTotal;
-          var status = response.games[i].schedule.playedStatus;
-          var quarter = response.games[i].score.currentQuarter;
-          var intermission = response.games[i].score.currentIntermission;
+          var hTeam = games.games[i].schedule.homeTeam.abbreviation;
+          var aTeam = games.games[i].schedule.awayTeam.abbreviation;
+          var aScore = games.games[i].score.awayScoreTotal;
+          var hScore = games.games[i].score.homeScoreTotal;
+          var status = games.games[i].schedule.playedStatus;
+          var quarter = games.games[i].score.currentQuarter;
+          var intermission = games.games[i].score.currentIntermission;
 
 
           function myTime(time) {
@@ -110,7 +97,7 @@ $.ajax
             sec_min += "" + sec;
             return sec_min;
           }
-          var timeRemaining = (myTime(response.games[i].score.currentQuarterSecondsRemaining));
+          var timeRemaining = (myTime(games.games[i].score.currentQuarterSecondsRemaining));
 
           if (quarter == null || intermission > 0) {
             quarter = intermission
@@ -189,54 +176,53 @@ $.ajax
 
   
 
-          for (j = 0; j < teamStats.teamStatsTotals.length; j++) {
+        //   for (j = 0; j < teamStats.teamStatsTotals.length; j++) {
 
 
 
-            if (teamStats.teamStatsTotals[j].team.abbreviation == aTeam) {
-              var aTeamStats = teamStats.teamStatsTotals[j];
-              var aTeamWinPct = teamStats.teamStatsTotals[j].stats.standings.winPct;
-              $("#"+aTeam+"record").text(teamStats.teamStatsTotals[j].stats.standings.wins + "-"+teamStats.teamStatsTotals[j].stats.standings.losses);  
-            }
-            if (teamStats.teamStatsTotals[j].team.abbreviation == hTeam) {
-              var hTeamStats = teamStats.teamStatsTotals[j]
-              var hTeamWinPct = teamStats.teamStatsTotals[j].stats.standings.winPct;
-              $("#"+hTeam+"record").text(teamStats.teamStatsTotals[j].stats.standings.wins + "-"+teamStats.teamStatsTotals[j].stats.standings.losses);      // Append the new elements 
-            }
-          }
+        //     if (teamStats.teamStatsTotals[j].team.abbreviation == aTeam) {
+        //       var aTeamStats = teamStats.teamStatsTotals[j];
+        //       var aTeamWinPct = teamStats.teamStatsTotals[j].stats.standings.winPct;
+        //       $("#"+aTeam+"record").text(teamStats.teamStatsTotals[j].stats.standings.wins + "-"+teamStats.teamStatsTotals[j].stats.standings.losses);  
+        //     }
+        //     if (teamStats.teamStatsTotals[j].team.abbreviation == hTeam) {
+        //       var hTeamStats = teamStats.teamStatsTotals[j]
+        //       var hTeamWinPct = teamStats.teamStatsTotals[j].stats.standings.winPct;
+        //       $("#"+hTeam+"record").text(teamStats.teamStatsTotals[j].stats.standings.wins + "-"+teamStats.teamStatsTotals[j].stats.standings.losses);      // Append the new elements 
+        //     }
+        //   }
 
 
-          if (aTeamWinPct > .0 || hTeamWinPct > .0) {
-            $("#"+aTeam+hTeam).addClass("cyan");  
-            $("#"+'gs'+aTeam+hTeam).text("A");
-          }
+        //   if (aTeamWinPct > .0 || hTeamWinPct > .0) {
+        //     $("#"+aTeam+hTeam).addClass("cyan");  
+        //     $("#"+'gs'+aTeam+hTeam).text("A");
+        //   }
 
 
-          // if (aTeamWinPct > .615 && hTeamWinPct > .615) {
-          //   $("#"+aTeam+hTeam).addClass("cyan");  
-          //   $("#"+'gs'+aTeam+hTeam).text("A");
-          // }
-          //  else if (aTeamWinPct > .525 && hTeamWinPct > .525 || aTeamWinPct + hTeamWinPct > 1.15) {
-          //   $("#"+aTeam+hTeam).addClass("green");    
-          //   $("#"+'gs'+aTeam+hTeam).text("B"); 
-          // }  else if (aTeamWinPct > .425 && hTeamWinPct > .425 || aTeamWinPct + hTeamWinPct > .95) {
-          //   $("#"+aTeam+hTeam).addClass("yellow");
-          //   $("#"+'gs'+aTeam+hTeam).text("C");     
-          // } else if (aTeamWinPct > .3 && hTeamWinPct > .3 || aTeamWinPct + hTeamWinPct > .7) {
-          //   $("#"+aTeam+hTeam).addClass("orange");
-          //   $("#"+'gs'+aTeam+hTeam).text("D");    
-          // }else {
-          //   $("#"+aTeam+hTeam).addClass("red");    
-          //   $("#"+'gs'+aTeam+hTeam).text("F");  
-          // }
-        };
+        //   if (aTeamWinPct > .615 && hTeamWinPct > .615) {
+        //     $("#"+aTeam+hTeam).addClass("cyan");  
+        //     $("#"+'gs'+aTeam+hTeam).text("A");
+        //   }
+        //    else if (aTeamWinPct > .525 && hTeamWinPct > .525 || aTeamWinPct + hTeamWinPct > 1.15) {
+        //     $("#"+aTeam+hTeam).addClass("green");    
+        //     $("#"+'gs'+aTeam+hTeam).text("B"); 
+        //   }  else if (aTeamWinPct > .425 && hTeamWinPct > .425 || aTeamWinPct + hTeamWinPct > .95) {
+        //     $("#"+aTeam+hTeam).addClass("yellow");
+        //     $("#"+'gs'+aTeam+hTeam).text("C");     
+        //   } else if (aTeamWinPct > .3 && hTeamWinPct > .3 || aTeamWinPct + hTeamWinPct > .7) {
+        //     $("#"+aTeam+hTeam).addClass("orange");
+        //     $("#"+'gs'+aTeam+hTeam).text("D");    
+        //   }else {
+        //     $("#"+aTeam+hTeam).addClass("red");    
+        //     $("#"+'gs'+aTeam+hTeam).text("F");  
+        //   }
+        // };
 
 
         $("#yesterday").attr("disabled", false);
         $("#tomorrow").attr("disabled", false);
-      });
-  });
-}
+  }})
+};
 
 schedule(today);
 
@@ -250,3 +236,21 @@ $("#tomorrow").click(function() {
   today.setDate(today.getDate() + 1);
   schedule(today);
 });
+
+$("#datepicker").datepicker({
+  onSelect: function(date, inst) {
+    schedule(date);
+
+},
+  defaultDate: null,
+  dateFormat: "yymmdd",
+  showOn: "both",
+  buttonImage: "images/icons/calendar.png",
+  buttonImageOnly: true,
+  autoSize: true,
+  altField: "#alternate",
+  altFormat: "DD, MM d, yy ",
+}, 
+);
+
+
