@@ -8,7 +8,6 @@ var mm = today.getMonth() + 1; //January is 0!
 var yyyy = today.getFullYear();
 var day  = today.getDay();
 
-console.log(yyyy)
 const monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
 ];
@@ -18,9 +17,8 @@ const dayNames = ["Sunday","Monday", "Tuesday", "Wednesday",
  
 todaySchedule = dayNames[day] + ", " + monthNames[mm - 1] + " " + dd + ", " + yyyy
 
-$("#datepicker").val(todaySchedule);      // Append the new elements 
-$("#alternate").val(todaySchedule);      // Append the new elements 
-
+$("#datepicker").datepicker( "refresh" )
+$("#alternate").val(todaySchedule);  
 
 if (dd < 10) {
   dd = '0' + dd;
@@ -34,6 +32,7 @@ today = String(yyyy) + String(mm) + String(dd);
 today = parseInt(today)
 console.log(today)
 
+$("#datepicker").val(today)
 
 function schedule(today) {
   $("#schedule-holder").empty();
@@ -226,32 +225,44 @@ $.ajax
 };
 
 schedule(today);
-
+var nextDay = 0;
 $("#yesterday").click(function() {
   $(this).attr("disabled", true);
-  today.setDate(today.getDate() - 1);
-  schedule(today);
-});
+  nextDay--
+  
+  if (nextDay ==0) {
+    $("#alternate").val(todaySchedule);  
+    schedule(today)
+  } else {
+  $("#datepicker").datepicker( "setDate", nextDay )
+  schedule($("#datepicker").val())
+  console.log(nextDay)
+}});
 $("#tomorrow").click(function() {
   $(this).attr("disabled", true);
-  today.setDate(today.getDate() + 1);
-  schedule(today);
+  // $("#datepicker").val(parseInt($("#datepicker").val()) +1)
+  // var placeholder = parseInt($("#datepicker").val())
+  // console.log($("#alternate").val())
+  nextDay++
+  $("#datepicker").datepicker( "setDate", nextDay )
+  schedule($("#datepicker").val())
+
 });
 
 $("#datepicker").datepicker({
   onSelect: function(date, inst) {
     schedule(date);
-
+    nextDay = date - today
 },
   defaultDate: null,
   dateFormat: "yymmdd",
   showOn: "both",
-  buttonImage: "images/icons/calendar.png",
+  buttonImage: "images/icons/calendar-16x16.png",
   buttonImageOnly: true,
   autoSize: true,
   altField: "#alternate",
   altFormat: "DD, MM d, yy ",
 }, 
 );
-
+console.log($("#datepicker").val())
 
