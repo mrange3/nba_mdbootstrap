@@ -19,6 +19,7 @@ const dayNames = ["Sunday","Monday", "Tuesday", "Wednesday",
 todaySchedule = dayNames[day] + ", " + monthNames[mm - 1] + " " + dd + ", " + yyyy
 
 $("#datepicker").val(todaySchedule);      // Append the new elements 
+$("#alternate").val(todaySchedule);      // Append the new elements 
 
 
 if (dd < 10) {
