@@ -18,7 +18,7 @@ const dayNames = ["Sunday","Monday", "Tuesday", "Wednesday",
 todaySchedule = dayNames[day] + ", " + monthNames[mm - 1] + " " + dd + ", " + yyyy
 
 $("#datepicker").datepicker( "refresh" )
-$("#alternate").val(todaySchedule);  
+$("#alternate").val(today);  
 
 if (dd < 10) {
   dd = '0' + dd;
@@ -32,7 +32,7 @@ today = String(yyyy) + String(mm) + String(dd);
 today = parseInt(today)
 console.log(today)
 
-$("#datepicker").val(today)
+$("#datepicker").val(todaySchedule)
 
 function schedule(today) {
   $("#schedule-holder").empty();
@@ -235,7 +235,7 @@ $("#yesterday").click(function() {
     schedule(today)
   } else {
   $("#datepicker").datepicker( "setDate", nextDay )
-  schedule($("#datepicker").val())
+  schedule($("#alternate").val())
   console.log(nextDay)
 }});
 $("#tomorrow").click(function() {
@@ -245,23 +245,20 @@ $("#tomorrow").click(function() {
   // console.log($("#alternate").val())
   nextDay++
   $("#datepicker").datepicker( "setDate", nextDay )
-  schedule($("#datepicker").val())
+  schedule($("#alternate").val())
 
 });
 
 $("#datepicker").datepicker({
   onSelect: function(date, inst) {
-    schedule(date);
-    nextDay = date - today
+    schedule($("#alternate").val());
+    nextDay = parseInt($("#alternate").val()) - today
 },
   defaultDate: null,
-  dateFormat: "yymmdd",
-  showOn: "both",
-  buttonImage: "images/icons/calendar-16x16.png",
-  buttonImageOnly: true,
+  dateFormat: "DD, MM d, yy ",
   autoSize: true,
   altField: "#alternate",
-  altFormat: "DD, MM d, yy ",
+  altFormat: "yymmdd"
 }, 
 );
 console.log($("#datepicker").val())
