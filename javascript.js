@@ -2,7 +2,15 @@
 //==================== Todays Date =========================
 var today = new Date();
 
+
 //====================== Get Request for Todays Games ============
+
+
+
+
+function schedule(today) {
+  $("#schedule-holder").empty();
+
 var dd = today.getDate();
 var mm = today.getMonth() + 1; //January is 0!
 var yyyy = today.getFullYear();
@@ -30,12 +38,8 @@ if (mm < 10) {
 
 today = String(yyyy) + String(mm) + String(dd);
 today = parseInt(today)
-console.log(today)
 
 $("#datepicker").val(todaySchedule)
-
-function schedule(today) {
-  $("#schedule-holder").empty();
 
 
 // today = currentDate
@@ -225,41 +229,37 @@ $.ajax
 };
 
 schedule(today);
-var nextDay = 0;
 $("#yesterday").click(function() {
   $(this).attr("disabled", true);
-  nextDay--
+  var dateChange = new Date($("#datepicker").val())
+  dateChange.setDate(dateChange.getDate()-1)
+  $("#alternate").val(dateChange)
+  console.log(dateChange)
+  schedule(dateChange)
   
-  if (nextDay ==0) {
-    $("#alternate").val(todaySchedule);  
-    schedule(today)
-  } else {
-  $("#datepicker").datepicker( "setDate", nextDay )
-  schedule($("#alternate").val())
-  console.log(nextDay)
-}});
+});
 $("#tomorrow").click(function() {
   $(this).attr("disabled", true);
-  // $("#datepicker").val(parseInt($("#datepicker").val()) +1)
-  // var placeholder = parseInt($("#datepicker").val())
-  // console.log($("#alternate").val())
-  nextDay++
-  $("#datepicker").datepicker( "setDate", nextDay )
-  schedule($("#alternate").val())
-
+  var dateChange = new Date($("#datepicker").val())
+  dateChange.setDate(dateChange.getDate()+1)
+  $("#alternate").val(dateChange)
+  console.log(dateChange)
+  schedule(dateChange)
 });
 
 $("#datepicker").datepicker({
   onSelect: function(date, inst) {
-    schedule($("#alternate").val());
-    nextDay = parseInt($("#alternate").val()) - today
+    // schedule(date);
+    var pickerDate = new Date(date);
+    schedule(pickerDate)
 },
   defaultDate: null,
   dateFormat: "DD, MM d, yy ",
   autoSize: true,
   altField: "#alternate",
-  altFormat: "yymmdd"
+  altFormat: "@"
 }, 
 );
-console.log($("#datepicker").val())
+// console.log($("#datepicker").val())
+console.log($("#alternate").val())
 
