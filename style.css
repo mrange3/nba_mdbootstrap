@@ -74,9 +74,43 @@ body {
 }
 
 .ui-datepicker-header  {
+  /* background-image: url("images/retina_wood.png"); */
+  color: black;
+  border: none;
+  border-bottom: solid;
+  background-color: white;
+
+}
+
+.ui-datepicker  {
   background-color: black;
   color: white;
 }
+
+
+
+.ui-datepicker table {
+  background-image: url("images/retina_wood.png");
+  color: black;
+}
+
+
+.ui-datepicker .ui-state-active {
+  background-color: #00bcd4 ;
+  color: white;
+  border-color: white;
+}
+
+
+.ui-icon-circle-triangle-e {
+  background-color: white;
+  color: black;
+}
+.ui-icon-circle-triangle-w {
+  background-color: white;
+  color: black;
+}
+
 
 
 @media (max-width:740px)  { 

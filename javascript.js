@@ -1,11 +1,23 @@
 
 //==================== Todays Date =========================
-var today = new Date();
-
-
+var thisDay = new Date();
 //====================== Get Request for Todays Games ============
 
 
+var dd = thisDay.getDate();
+var mm = thisDay.getMonth() + 1; //January is 0!
+var yyyy = thisDay.getFullYear();
+var day  = thisDay.getDay();
+
+const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+
+const dayNames = ["Sunday","Monday", "Tuesday", "Wednesday", 
+"Thursday", "Friday", "Saturday"];
+ 
+todaySchedule = dayNames[day] + ", " + monthNames[mm - 1] + " " + dd + ", " + yyyy
+$("#datepicker").val(todaySchedule)
 
 
 function schedule(today) {
@@ -25,8 +37,6 @@ const dayNames = ["Sunday","Monday", "Tuesday", "Wednesday",
  
 todaySchedule = dayNames[day] + ", " + monthNames[mm - 1] + " " + dd + ", " + yyyy
 
-$("#datepicker").datepicker( "refresh" )
-$("#alternate").val(today);  
 
 if (dd < 10) {
   dd = '0' + dd;
@@ -39,7 +49,6 @@ if (mm < 10) {
 today = String(yyyy) + String(mm) + String(dd);
 today = parseInt(today)
 
-$("#datepicker").val(todaySchedule)
 
 
 // today = currentDate
@@ -194,14 +203,14 @@ $.ajax
 
 };
 
-schedule(today);
+schedule(thisDay);
 // Navigation///////////////
 // Arrow Buttons////////////
 $("#yesterday").click(function() {
   $(this).attr("disabled", true);
   var dateChange = new Date($("#datepicker").val())
   dateChange.setDate(dateChange.getDate()-1)
-  $("#alternate").val(dateChange)
+  $("#datepicker").datepicker( "setDate", dateChange )
   console.log(dateChange)
   schedule(dateChange)
   
@@ -210,8 +219,9 @@ $("#tomorrow").click(function() {
   $(this).attr("disabled", true);
   var dateChange = new Date($("#datepicker").val())
   dateChange.setDate(dateChange.getDate()+1)
-  $("#alternate").val(dateChange)
+  $("#datepicker").datepicker( "setDate", dateChange )
   console.log(dateChange)
+
   schedule(dateChange)
 });
 
@@ -219,6 +229,7 @@ $("#tomorrow").click(function() {
 $("#datepicker").datepicker({
   onSelect: function(date, inst) {
     var pickerDate = new Date(date);
+
     schedule(pickerDate)
 },
   defaultDate: null,
@@ -226,7 +237,7 @@ $("#datepicker").datepicker({
   autoSize: true,
   altField: "#alternate",
   altFormat: "@",
-  showAnim: "slideDown"
+  showAnim: "slideDown",
 }, 
 );
 
