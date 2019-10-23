@@ -89,6 +89,7 @@ body {
 
 
 
+
 .ui-datepicker table {
   background-image: url("images/retina_wood.png");
   color: black;
@@ -96,10 +97,20 @@ body {
 
 
 .ui-datepicker .ui-state-active {
+  background-color: white ;
+  color: #00bcd4;
+  border-color: #00bcd4;
+  font-weight: bold;
+}
+
+.ui-datepicker .ui-state-highlight {
   background-color: #00bcd4 ;
   color: white;
   border-color: white;
+  font-weight: bold;
+
 }
+
 
 
 .ui-icon-circle-triangle-e {
