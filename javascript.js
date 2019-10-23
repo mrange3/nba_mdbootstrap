@@ -124,8 +124,8 @@ $.ajax
 
 
           if (aScore == null) {
-            aScore = 0;
-            hScore = 0;
+            aScore = "-";
+            hScore = "-";
           }
 
           var aDisplayName = aTeam
@@ -154,7 +154,7 @@ $.ajax
           htmlString += '<table class="table table-borderless  card-background  table-sm w-85 m-0"  >';
           htmlString += '<thead class="table-borderless">';
           htmlString += '<tr>';
-          htmlString += '<th class="table-borderless scoreboard-header py-0" style=" font-size: 11px;">' + scoreStatus + '</th>';
+          htmlString += '<th class="table-borderless scoreboard-header py-0" id='+aTeam + hTeam+"clock"+' style=" font-size: 11px;">' + scoreStatus + '</th>';
           htmlString += '<th class="table-borderless  scoreboard-header py-0" ></th>';
           htmlString += '<th class="table-borderless scoreboard-header text-right text-dark py-0" style=" font-size: 11px;" id='+'gs'+aTeam + hTeam+'></th>';
           htmlString += '</tr>';
@@ -163,72 +163,40 @@ $.ajax
           htmlString += '<tr>';
           htmlString += '<th scope="row" class="table-borderless scoreboard align-middle text-left  py-0 " style="font-size: 13px;" ><img class="scoreLogo" src="images/logos/' + aLogo + '.png" height="24px" width="24px">' + " " + aDisplayName + '</th>'
           htmlString += '<td class="table-borderless  align-middle teamRecord text-center" id="'+aTeam+'record" style=" font-size: 12px;"> </td>';
-          htmlString += '<td class="table-borderless  scoreboard align-middle py-0 text-right pl-0" style=" font-size: 13px;"><strong>' + aScore + '</strong></td>';
+          htmlString += '<td class="table-borderless text-right scoreboard align-middle" id="'+aTeam+'score"  py-0 text-right pl-0" style=" font-size: 13px;"><strong>' + aScore + '</strong></td>';
           htmlString += '</tr>';
           htmlString += '<tr>';
           htmlString += '<th scope="row" class="align-middle text-left scoreboard py-0" style="font-size: 13px;"><img class="scoreLogo" src="images/logos/' + hLogo + '.png" height="24px" width="24px">' + " " + hDisplayName + '</th>'
           htmlString += '<td class="align-middle text-center teamRecord " id="'+hTeam+'record" style=" font-size: 12px;"> </td>';
-          htmlString += '<td class="  align-middle scoreboard pt-0 text-right pl-0 py-0" style=" font-size: 13px;"><strong>' + hScore + '</strong></td>';
+          htmlString += '<td class="  align-middle scoreboard pt-0 text-right pl-0 py-0" id="'+hTeam+'score" style=" font-size: 13px;"><strong>' + hScore + '</strong></td>';
           htmlString += '</tr>';  
           htmlString += '</tbody>';      
           htmlString += '</table>';
           htmlString += '</div>';
           htmlString += '</div>';
           htmlString += '</div>';
-          $("#schedule-holder").append(htmlString);      // Append the new elements 
+          $("#schedule-holder").append(htmlString);      
 
 
-  
+          if (status == "LIVE") {
+            $("#"+aTeam+"score").addClass("text-danger")
+            $("#"+hTeam+"score").addClass("text-danger")
+            $("#"+aTeam+hTeam+"clock").addClass("text-danger")
 
-        //   for (j = 0; j < teamStats.teamStatsTotals.length; j++) {
-
-
-
-        //     if (teamStats.teamStatsTotals[j].team.abbreviation == aTeam) {
-        //       var aTeamStats = teamStats.teamStatsTotals[j];
-        //       var aTeamWinPct = teamStats.teamStatsTotals[j].stats.standings.winPct;
-        //       $("#"+aTeam+"record").text(teamStats.teamStatsTotals[j].stats.standings.wins + "-"+teamStats.teamStatsTotals[j].stats.standings.losses);  
-        //     }
-        //     if (teamStats.teamStatsTotals[j].team.abbreviation == hTeam) {
-        //       var hTeamStats = teamStats.teamStatsTotals[j]
-        //       var hTeamWinPct = teamStats.teamStatsTotals[j].stats.standings.winPct;
-        //       $("#"+hTeam+"record").text(teamStats.teamStatsTotals[j].stats.standings.wins + "-"+teamStats.teamStatsTotals[j].stats.standings.losses);      // Append the new elements 
-        //     }
-        //   }
-
-
-        //   if (aTeamWinPct > .0 || hTeamWinPct > .0) {
-        //     $("#"+aTeam+hTeam).addClass("cyan");  
-        //     $("#"+'gs'+aTeam+hTeam).text("A");
-        //   }
-
-
-        //   if (aTeamWinPct > .615 && hTeamWinPct > .615) {
-        //     $("#"+aTeam+hTeam).addClass("cyan");  
-        //     $("#"+'gs'+aTeam+hTeam).text("A");
-        //   }
-        //    else if (aTeamWinPct > .525 && hTeamWinPct > .525 || aTeamWinPct + hTeamWinPct > 1.15) {
-        //     $("#"+aTeam+hTeam).addClass("green");    
-        //     $("#"+'gs'+aTeam+hTeam).text("B"); 
-        //   }  else if (aTeamWinPct > .425 && hTeamWinPct > .425 || aTeamWinPct + hTeamWinPct > .95) {
-        //     $("#"+aTeam+hTeam).addClass("yellow");
-        //     $("#"+'gs'+aTeam+hTeam).text("C");     
-        //   } else if (aTeamWinPct > .3 && hTeamWinPct > .3 || aTeamWinPct + hTeamWinPct > .7) {
-        //     $("#"+aTeam+hTeam).addClass("orange");
-        //     $("#"+'gs'+aTeam+hTeam).text("D");    
-        //   }else {
-        //     $("#"+aTeam+hTeam).addClass("red");    
-        //     $("#"+'gs'+aTeam+hTeam).text("F");  
-        //   }
-        // };
-
+          }
 
         $("#yesterday").attr("disabled", false);
         $("#tomorrow").attr("disabled", false);
   }})
+
+
+
+
 };
 
 schedule(today);
+// Navigation///////////////
+// Arrow Buttons////////////
 $("#yesterday").click(function() {
   $(this).attr("disabled", true);
   var dateChange = new Date($("#datepicker").val())
@@ -247,9 +215,9 @@ $("#tomorrow").click(function() {
   schedule(dateChange)
 });
 
+// Datepicker Calendar///////////
 $("#datepicker").datepicker({
   onSelect: function(date, inst) {
-    // schedule(date);
     var pickerDate = new Date(date);
     schedule(pickerDate)
 },
@@ -260,6 +228,7 @@ $("#datepicker").datepicker({
   altFormat: "@"
 }, 
 );
-// console.log($("#datepicker").val())
-console.log($("#alternate").val())
+
+
+
 

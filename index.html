@@ -67,60 +67,54 @@
     <div class="row pt-3">
         <div class="col-3 mobileHide"></div>
         <div class="col mx-2 ">
-            <h2 class="text-center p-2 border-bottom border-top pageHead border-dark"><strong>2018-2019 NBA
+            <h2 class="text-center p-2 border-bottom border-top pageHead border-dark"><strong>2019-2020 NBA
                     Schedule</strong></h2>
         </div>
         <div class="col-3 mobileHide"></div>
     </div>
-    <!--- Westen Conference -->
     <div class="container justify-content-center ">
-
         <div class="row mb-4">
 
-            <!---Schedule-->
+            <!---------------------------Game Score Key---------------------------------------------------->
 
             <div class="col  p-0">
                 <div class="mt-0 align-content-middle justify-content-center " style="height: 40px;">
                     <div class="row">
                         <div class="col">
-                            <ul class="list-inline text-center text-align-middle pb-0 mt-1 pt-1 mb-0">
-                                <li class="list-inline-item gameKey"><i class="fas cyan-text fa-basketball-ball"></i>|A
-                                    - Great
-                                </li>
-                                <li class="list-inline-item gameKey"><i class="fas green-text fa-basketball-ball"></i>|B
-                                    - Good
-                                </li>
-                                <li class="list-inline-item gameKey"><i
-                                        class="fas yellow-text fa-basketball-ball"></i>|C - OK</li>
-                                <li class="list-inline-item gameKey"><i
-                                        class="fas orange-text fa-basketball-ball"></i>|D - Bad
-                                </li>
-                                <li class="list-inline-item gameKey"><i class="fas red-text fa-basketball-ball"></i>|F -
-                                    Awful
-                                </li>
+                            <p class="text-center gameKey m-0" style="font-size: 12px;">Watchability Grade:</p>
+                            <ul class="list-inline text-center text-align-middle pb-0 mt-0 pt-0 mb-0">
+                                <li class="list-inline-item gameKey"><i class="fas cyan-text fa-basketball-ball"></i>|A</li>
+                                <li class="list-inline-item gameKey"><i class="fas green-text fa-basketball-ball"></i>|B</li>
+                                <li class="list-inline-item gameKey"><i class="fas yellow-text fa-basketball-ball"></i>|C</li>
+                                <li class="list-inline-item gameKey"><i class="fas orange-text fa-basketball-ball"></i>|D</li>
+                                <li class="list-inline-item gameKey"><i class="fas red-text fa-basketball-ball"></i>|F</li>
                             </ul>
                         </div>
                     </div>
 
-
+                    <!-- ---------------------------Navigation -------------------------------------- -->
                     <div class="d-flex justify-content-between align-middle  mt-2">
                         <button type="button" class=" btn mt-1 pt-0 btn-dark rounded-0 btn-sm "
                             style=" font-size: 18px;" id="yesterday"><i class="fas fa-caret-left"></i></button>
-                            <div >
-                        <input hidden class=" mt-2 date text-center font-weight-bold border-0 " id="alternate"  style="font-size: 20px; background: transparent;">
-                        <input class=" mt-2  text-center font-weight-bold border-0 " id="datepicker"  style="font-size: 20px; background: transparent;">
-                                 </div>
+                        <div>
+                            <input hidden class=" mt-2 date text-center font-weight-bold border-0 " id="alternate"
+                                style="font-size: 20px; background: transparent;">
+                            <input class=" mt-2 date text-center font-weight-bold border-0 " id="datepicker"
+                                style="font-size: 20px; background: transparent;">
+                        </div>
                         <button type="button" class="btn mt-1 rounded-0 pt-0 btn-dark  btn-sm" id="tomorrow"
                             style=" font-size: 18px;" id="yesterday"><i class="fas fa-caret-right"></i></button>
-
+                        <!-- ----------------------Schedule---------------------------------------------- -->
                     </div>
-                    <div class="d-flex align-content-stretch flex-wrap px-2 pt-1" id="schedule-holder">
+                    <div class="d-flex align-content-stretch flex-wrap pt-1" id="schedule-holder">
                     </div>
 
 
                 </div>
+                <div class="col  p-0">
+
             </div>
-            <!---End Schedule-->
+            <!----------------------End Schedule---------------------------------->
 
         </div>
 
@@ -137,9 +131,8 @@
     <!-- MDB core JavaScript -->
     <!-- <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/js/mdb.min.js"></script> -->
-            <!-- Jquery UI core JavaScript -->
-    <script type="text/javascript"
-    src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+    <!-- Jquery UI core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
 
     <!-- API Key -->
     <script type='text/javascript' src='config.js'></script>
