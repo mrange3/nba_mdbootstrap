@@ -73,6 +73,12 @@ body {
   font-size: 20px;
 }
 
+.ui-datepicker-header  {
+  background-color: black;
+  color: white;
+}
+
+
 @media (max-width:740px)  { 
   .standings {
 display: none;

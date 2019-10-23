@@ -225,7 +225,8 @@ $("#datepicker").datepicker({
   dateFormat: "DD, MM d, yy ",
   autoSize: true,
   altField: "#alternate",
-  altFormat: "@"
+  altFormat: "@",
+  showAnim: "slideDown"
 }, 
 );
 
