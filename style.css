@@ -99,17 +99,24 @@ body {
 .ui-datepicker .ui-state-active {
   background-color: white ;
   color: #00bcd4;
-  border-color: #00bcd4;
+  border-color: #00bcd4 !important;
   font-weight: bold;
 }
 
 .ui-datepicker .ui-state-highlight {
-  background-color: #00bcd4 ;
+  background-color: #00bcd4 !important;
   color: white;
   border-color: white;
   font-weight: bold;
 
 }
+
+.ui-datepicker .ui-state-default {
+  border-color: white;
+  background-color: white ;
+
+}
+
 
 
 
