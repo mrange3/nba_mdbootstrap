@@ -97,7 +97,6 @@ $.ajax
           var quarter = games.games[i].score.currentQuarter;
           var intermission = games.games[i].score.currentIntermission;
 
-
           function myTime(time) {
             var hr = ~~(time / 3600);
             var min = ~~((time % 3600) / 60);
@@ -112,15 +111,29 @@ $.ajax
           }
           var timeRemaining = (myTime(games.games[i].score.currentQuarterSecondsRemaining));
 
-          if (quarter == null || intermission > 0) {
-            quarter = intermission
+          if (intermission > 0) {
+            console.log(intermission)
           }
 
-        if (timeRemaining == "0:00") {
+        if (timeRemaining == "0:00" && quarter == null) {
+            timeRemaining = "Starting"
+          } else if (timeRemaining == "0:00" && quarter == 1) {
+            timeRemaining = "12:00" + " Q" + quarter;
+          }else if (timeRemaining == "0:00" && quarter > 0) {
             timeRemaining = "End of"
-          } else {
+          }
+          else {
             timeRemaining = timeRemaining + " Q" + quarter;
           }
+
+          if (intermission == 2) {
+            timeRemaining = "Halftime"
+          } else if (intermission == 3) {
+            timeRemaining = "End of Q3"
+          } else if (intermission == 1) {
+            timeRemaining = "End of Q1"
+          }
+
 
 
           if (status == "COMPLETED_PENDING_REVIEW" || status == "COMPLETED") {
@@ -158,9 +171,9 @@ $.ajax
          var hLogo = hTeam.toLowerCase();
 
           var htmlString = '<div class="col-4 col-lg-3 scoreCard px-1 py-1">';
-          htmlString += '<div class="card justify-content-center rounded-0 text-dark m-1" " id='+aTeam + hTeam+'>';
+          htmlString += '<div class="card justify-content-center rounded-0 text-dark m-1" id='+aTeam + hTeam+'>';
           htmlString += '<div class="m-2">'
-          htmlString += '<table class="table table-borderless  card-background  table-sm w-85 m-0"  >';
+          htmlString += '<table class="table table-borderless    table-sm w-85 m-0" id='+aTeam + hTeam+"table"+'  >';
           htmlString += '<thead class="table-borderless">';
           htmlString += '<tr>';
           htmlString += '<th class="table-borderless scoreboard-header py-0" id='+aTeam + hTeam+"clock"+' style=" font-size: 11px;">' + scoreStatus + '</th>';
@@ -191,8 +204,12 @@ $.ajax
             $("#"+aTeam+"score").addClass("text-danger")
             $("#"+hTeam+"score").addClass("text-danger")
             $("#"+aTeam+hTeam+"clock").addClass("text-danger")
+          } 
+          if (scoreStatus == "FINAL") {
+            $("#"+aTeam+hTeam+"table").addClass("rgba-stylish-light")
 
           }
+
 
         $("#yesterday").attr("disabled", false);
         $("#tomorrow").attr("disabled", false);

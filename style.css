@@ -97,9 +97,8 @@ body {
 
 
 .ui-datepicker .ui-state-active {
-  background-color: white ;
-  color: #00bcd4;
-  border-color: #00bcd4 !important;
+  background-color: lightcyan !important;
+  color: black;
   font-weight: bold;
 }
 
@@ -114,9 +113,13 @@ body {
 .ui-datepicker .ui-state-default {
   border-color: white;
   background-color: white ;
-
 }
 
+.ui-datepicker .ui-state-hover {
+  background-color: lightcyan ;
+  border-color: black;
+
+}
 
 
 
