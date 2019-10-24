@@ -91,6 +91,8 @@ $.ajax
 
           var hTeam = games.games[i].schedule.homeTeam.abbreviation;
           var aTeam = games.games[i].schedule.awayTeam.abbreviation;
+          var hTeamID = games.games[i].schedule.homeTeam.id;
+          var aTeamID = games.games[i].schedule.awayTeam.id;
           var aScore = games.games[i].score.awayScoreTotal;
           var hScore = games.games[i].score.homeScoreTotal;
           var status = games.games[i].schedule.playedStatus;
@@ -150,23 +152,6 @@ $.ajax
             hScore = "-";
           }
 
-          var aDisplayName = aTeam
-          var hDisplayName = hTeam
-
-          if (aTeam == "BRO") {
-            aDisplayName = "BKN";
-          } ;
-          if (aTeam == "OKL") {
-            aDisplayName = "OKC";
-          };
-
-          if (hTeam == "BRO") {
-            hDisplayName = "BKN";
-          } ;
-          if (hTeam == "OKL") {
-            hDisplayName = "OKC";
-          };
-
          var aLogo = aTeam.toLowerCase();
          var hLogo = hTeam.toLowerCase();
 
@@ -176,21 +161,21 @@ $.ajax
           htmlString += '<table class="table table-borderless    table-sm w-85 m-0" id='+aTeam + hTeam+"table"+'  >';
           htmlString += '<thead class="table-borderless">';
           htmlString += '<tr>';
-          htmlString += '<th class="table-borderless scoreboard-header py-0" id='+aTeam + hTeam+"clock"+' style=" font-size: 11px;">' + scoreStatus + '</th>';
-          htmlString += '<th class="table-borderless  scoreboard-header py-0" ></th>';
-          htmlString += '<th class="table-borderless scoreboard-header text-right text-dark py-0" style=" font-size: 11px;" id='+'gs'+aTeam + hTeam+'></th>';
+          htmlString += '<th class="table-borderless scoreboard-header p-0" id='+aTeam + hTeam+"clock"+' style=" font-size: 11px;">' + scoreStatus + '</th>';
+          htmlString += '<th class="table-borderless  scoreboard-header p-0" ></th>';
+          htmlString += '<th class="table-borderless scoreboard-header text-right text-dark p-0" style=" font-size: 11px;" id='+'gs'+aTeam + hTeam+'></th>';
           htmlString += '</tr>';
           htmlString += '</thead>';
           htmlString += '<tbody>';
           htmlString += '<tr>';
-          htmlString += '<th scope="row" class="table-borderless scoreboard align-middle text-left  py-0 " style="font-size: 13px;" ><img class="scoreLogo" src="images/logos/' + aLogo + '.png" height="24px" width="24px">' + " " + aDisplayName + '</th>'
-          htmlString += '<td class="table-borderless  align-middle teamRecord text-center" id="'+aTeam+'record" style=" font-size: 12px;"> </td>';
-          htmlString += '<td class="table-borderless text-right scoreboard align-middle" id="'+aTeam+'score"  py-0 text-right pl-0" style=" font-size: 13px;"><strong>' + aScore + '</strong></td>';
+          htmlString += '<th scope="row" class="table-borderless scoreboard align-middle text-left p-0" id='+aTeamID+"name"+' style="font-size: 13px;" ><img class="scoreLogo" src="images/logos/' + aLogo + '.png" height="24px" width="24px"></th>'
+          htmlString += '<td hidden class="table-borderless p-0 align-middle teamRecord text-center" id="'+aTeam+'record" style=" font-size: 12px;"></td>';
+          htmlString += '<td class="table-borderless text-right scoreboard align-middle p-0" id="'+aTeam+'score"  style=" font-size: 13px;"><strong>' + aScore + '</strong></td>';
           htmlString += '</tr>';
           htmlString += '<tr>';
-          htmlString += '<th scope="row" class="align-middle text-left scoreboard py-0" style="font-size: 13px;"><img class="scoreLogo" src="images/logos/' + hLogo + '.png" height="24px" width="24px">' + " " + hDisplayName + '</th>'
-          htmlString += '<td class="align-middle text-center teamRecord " id="'+hTeam+'record" style=" font-size: 12px;"> </td>';
-          htmlString += '<td class="  align-middle scoreboard pt-0 text-right pl-0 py-0" id="'+hTeam+'score" style=" font-size: 13px;"><strong>' + hScore + '</strong></td>';
+          htmlString += '<th scope="row" class="align-middle text-left scoreboard py-0 px-0" id='+hTeamID+"name"+' style="font-size: 13px;"><img class="scoreLogo" src="images/logos/' + hLogo + '.png" height="24px" width="24px"></th>'
+          htmlString += '<td hidden class="align-middle text-center p-0 teamRecord " id="'+hTeam+'record" style=" font-size: 12px;"></td>';
+          htmlString += '<td class="  align-middle scoreboard  text-right  p-0" id="'+hTeam+'score" style=" font-size: 13px;"><strong>' + hScore + '</strong></td>';
           htmlString += '</tr>';  
           htmlString += '</tbody>';      
           htmlString += '</table>';
@@ -213,11 +198,13 @@ $.ajax
 
         $("#yesterday").attr("disabled", false);
         $("#tomorrow").attr("disabled", false);
-  }})
+  }
+  for (c = 0; c < games.references.teamReferences.length; c++) {
+    $("#"+games.references.teamReferences[c].id+"name").append(" " +games.references.teamReferences[c].city)
+  };
 
 
-
-
+})
 };
 
 schedule(thisDay);
