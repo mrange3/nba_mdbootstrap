@@ -162,7 +162,7 @@ $.ajax
          var hLogo = hTeam.toLowerCase();
 
           var htmlString = '<div class="col-4 col-lg-3 scoreCard px-lg-1 py-lg-1 px-0 py-0">';
-          htmlString += '<div type="button" class="card btn toBoxcscore justify-content-center p-1 rounded-0 text-dark m-1" id='+gameID+' >';
+          htmlString += '<div type="button" class="card btn toBoxcscore disabled justify-content-center p-1 rounded-0 text-dark m-1" id='+gameID+' >';
           htmlString += '<div class="m-1 m-lg-2">'
           htmlString += '<table class="table table-borderless table-sm w-85 m-0" id='+aTeam + hTeam+"table"+'  >';
           htmlString += '<thead class="table-borderless">';
@@ -197,9 +197,12 @@ $.ajax
             $("#"+aTeam+"score").addClass("text-danger")
             $("#"+hTeam+"score").addClass("text-danger")
             $("#"+aTeam+hTeam+"clock").addClass("text-danger")
+            $("#"+gameID).removeClass("disabled")
+
           } 
           if (scoreStatus == "FINAL") {
             $("#"+aTeam+hTeam+"table").addClass("rgba-stylish-light")
+            $("#"+gameID).removeClass("disabled")
 
           }
 
@@ -302,19 +305,30 @@ $.ajax
     var homeTeamBoxScoreID = boxscore.game.homeTeam.id
     var boxScoreGameid = boxscore.game.id
 
+    for (g = 0; g < boxscore.references.teamReferences.length; g++) {
+      if (boxscore.references.teamReferences[g].id == awayTeamBoxScoreID) {
+        var awayTeamFullName = boxscore.references.teamReferences[g].city + " " + boxscore.references.teamReferences[g].name
+      }
+      if (boxscore.references.teamReferences[g].id == homeTeamBoxScoreID) {
+        var homeTeamFullName = boxscore.references.teamReferences[g].city + " " + boxscore.references.teamReferences[g].name
+      }
+    };
 
-    var boxscoreString = '<div type="button" called="false" class="row m-0 p-0 container-fluid boxscorebutton btn text-dark justify-content-center" id='+boxScoreGameid+"boxscore"+'>'
-    boxscoreString += '<div class="col-6 py-0 px-1  " >';
+
+    var boxscoreString = '<div type="button" called="false" class="row m-0 p-0 container-fluid  boxscorebutton btn text-dark " id='+boxScoreGameid+"boxscore"+'>'
+    boxscoreString += '<div class=" container-fluid p-0 d-flex" >';
+    boxscoreString += '<div class="col-6 py-0 container-fluid px-1  " >';
     boxscoreString += '<div class="jumbotron  p-0 jumbotron-fluid"><div class="container p-0">'
-    boxscoreString += '<h4 id="'+awayTeamBoxScoreID+'awayBoxscoreName" class="p-0" ><img  src="images/logos/' + awayTeamBoxScoreAbv + '.png" height="80px" width="80px"></h4>'
+    boxscoreString += '<h4 id="'+awayTeamBoxScoreID+'awayBoxscoreName" class="p-0" ><img  src="images/logos/' + awayTeamBoxScoreAbv + '.png" height="80px" width="80px">'+" " +awayTeamFullName+'</h4>'
     boxscoreString += '<p class="lead">Boxscore</p>';
     boxscoreString += '</div>'
     boxscoreString += '</div>'
     boxscoreString += '</div>'
-    boxscoreString += '<div class="col-6 py-0 px-1">';
+    boxscoreString += '<div class="col-6 container-fluid py-0 px-1">';
     boxscoreString += '<div class="jumbotron  p-0 jumbotron-fluid"><div class="container p-0">'
-    boxscoreString += '<h4 id="'+homeTeamBoxScoreID+'awayBoxscoreName" ><img  src="images/logos/' + homeTeamBoxScoreAbv + '.png" height="80px" width="80px"></h4>'
+    boxscoreString += '<h4 id="'+homeTeamBoxScoreID+'awayBoxscoreName" ><img  src="images/logos/' + homeTeamBoxScoreAbv + '.png" height="80px" width="80px">' + " " + homeTeamFullName+'</h4>'
     boxscoreString += '<p class="lead">Boxscore</p>';
+    boxscoreString += '</div>'
     boxscoreString += '</div>'
     boxscoreString += '</div>'
     boxscoreString += '</div>'
@@ -324,15 +338,13 @@ $.ajax
     $("#boxscoreCard").append(boxscoreString)
     $("#"+boxScoreGameid+"boxscore").attr("called", "true")
 
-    for (g = 0; g < boxscore.references.teamReferences.length; g++) {
-      if (awayTeamBoxScoreID = boxscore.references.teamReferences[g].id ) {
-      $("#"+awayTeamBoxScoreID+"awayBoxscoreName").append(" " +boxscore.references.teamReferences[g].city + " " + boxscore.references.teamReferences[g].name)
-      }
-    };
+
 
     $(".boxscorebutton").click(function() {
       $(".boxscorebutton").hide()
       $(".toBoxcscore").show()
+      console.log($("#"+boxScoreGameid+"boxscore").attr("called")
+      )
 
     });
   
