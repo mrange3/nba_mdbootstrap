@@ -19,8 +19,21 @@ const dayNames = ["Sunday","Monday", "Tuesday", "Wednesday",
 todaySchedule = dayNames[day] + ", " + monthNames[mm - 1] + " " + dd + ", " + yyyy
 $("#datepicker").val(todaySchedule)
 
+function myTime(time) {
+  var hr = ~~(time / 3600);
+  var min = ~~((time % 3600) / 60);
+  var sec = time % 60;
+  var sec_min = "";
+  if (hr > 0) {
+    sec_min += "" + hrs + ":" + (min < 10 ? "0" : "");
+  }
+  sec_min += "" + min + ":" + (sec < 10 ? "0" : "");
+  sec_min += "" + sec;
+  return sec_min;
+}
 
-function schedule(today) {
+
+function schedule(today, gamebtn) {
   $("#schedule-holder").empty();
 
 var dd = today.getDate();
@@ -98,19 +111,9 @@ $.ajax
           var status = games.games[i].schedule.playedStatus;
           var quarter = games.games[i].score.currentQuarter;
           var intermission = games.games[i].score.currentIntermission;
+          var gameID = games.games[i].schedule.id;
 
-          function myTime(time) {
-            var hr = ~~(time / 3600);
-            var min = ~~((time % 3600) / 60);
-            var sec = time % 60;
-            var sec_min = "";
-            if (hr > 0) {
-              sec_min += "" + hrs + ":" + (min < 10 ? "0" : "");
-            }
-            sec_min += "" + min + ":" + (sec < 10 ? "0" : "");
-            sec_min += "" + sec;
-            return sec_min;
-          }
+
           var timeRemaining = (myTime(games.games[i].score.currentQuarterSecondsRemaining));
 
           if (intermission > 0) {
@@ -159,12 +162,12 @@ $.ajax
          var hLogo = hTeam.toLowerCase();
 
           var htmlString = '<div class="col-4 col-lg-3 scoreCard px-lg-1 py-lg-1 px-0 py-0">';
-          htmlString += '<div class="card justify-content-center rounded-0 text-dark m-1" id='+aTeam + hTeam+'>';
+          htmlString += '<div type="button" class="card btn toBoxcscore justify-content-center p-1 rounded-0 text-dark m-1" id='+gameID+' >';
           htmlString += '<div class="m-1 m-lg-2">'
           htmlString += '<table class="table table-borderless table-sm w-85 m-0" id='+aTeam + hTeam+"table"+'  >';
           htmlString += '<thead class="table-borderless">';
           htmlString += '<tr>';
-          htmlString += '<th class="table-borderless scoreboard-header py-0 pr-0 pl-1" id='+aTeam + hTeam+"clock"+' style=" font-size: 11px;">' + scoreStatus + '</th>';
+          htmlString += '<th class="table-borderless text-left scoreboard-header py-0 pr-0 pl-1" id='+aTeam + hTeam+"clock"+' style=" font-size: 11px;">' + scoreStatus + '</th>';
           htmlString += '<th class="table-borderless  scoreboard-header p-0" ></th>';
           htmlString += '<th class="table-borderless scoreboard-header text-right text-dark p-0" style=" font-size: 11px;" id='+'gs'+aTeam + hTeam+'></th>';
           htmlString += '</tr>';
@@ -185,7 +188,9 @@ $.ajax
           htmlString += '</div>';
           htmlString += '</div>';
           htmlString += '</div>';
-          $("#schedule-holder").append(htmlString);      
+          $("#schedule-holder").append(htmlString);     
+          
+          
 
 
           if (status == "LIVE") {
@@ -205,9 +210,28 @@ $.ajax
   for (c = 0; c < games.references.teamReferences.length; c++) {
     $("#"+games.references.teamReferences[c].id+"name").append(" " +games.references.teamReferences[c].city)
   };
+  
+  $( ".toBoxcscore" ).click(function() {
+    $(".toBoxcscore").hide()
+
+    var gamebtn = $(this).attr('id')
+    
+
+    if ($("#"+gamebtn).attr("called") == "true") {
+      $("#"+gamebtn+"boxscore").show()
+    } else {
+    boxScoreFunction(gamebtn)
+    };
+  });
+  
 
 
 })
+
+// ///////////Boxscore/////////////////////////////////
+
+
+
 };
 
 schedule(thisDay);
@@ -215,6 +239,7 @@ schedule(thisDay);
 // Arrow Buttons////////////
 $("#yesterday").click(function() {
   $(this).attr("disabled", true);
+  $(".boxscorebutton").hide()
   var dateChange = new Date($("#datepicker").val())
   dateChange.setDate(dateChange.getDate()-1)
   $("#datepicker").datepicker( "setDate", dateChange )
@@ -224,6 +249,7 @@ $("#yesterday").click(function() {
 });
 $("#tomorrow").click(function() {
   $(this).attr("disabled", true);
+  $(".boxscorebutton").hide()
   var dateChange = new Date($("#datepicker").val())
   dateChange.setDate(dateChange.getDate()+1)
   $("#datepicker").datepicker( "setDate", dateChange )
@@ -249,5 +275,70 @@ $("#datepicker").datepicker({
 );
 
 
+function boxScoreFunction(gamebtn) {
 
+  var boxscoreURL = " https://api.mysportsfeeds.com/v2.1/pull/nba/current/games/"+gamebtn+"/boxscore.json"
+
+
+  var api = config.MY_KEY;
+
+$.ajax
+  ({
+    type: "GET",
+    url: boxscoreURL,
+    dataType: 'json',
+    headers: {
+      "Authorization": "Basic " + btoa(api + ":" + "MYSPORTSFEEDS")
+    },
+
+  })
+  .then(function (boxscore) {
+    console.log(boxscore)
+
+    
+    var awayTeamBoxScoreAbv = boxscore.game.awayTeam.abbreviation
+    var homeTeamBoxScoreAbv = boxscore.game.homeTeam.abbreviation
+    var awayTeamBoxScoreID = boxscore.game.awayTeam.id
+    var homeTeamBoxScoreID = boxscore.game.homeTeam.id
+    var boxScoreGameid = boxscore.game.id
+
+
+    var boxscoreString = '<div type="button" called="false" class="row m-0 p-0 container-fluid boxscorebutton btn text-dark justify-content-center" id='+boxScoreGameid+"boxscore"+'>'
+    boxscoreString += '<div class="col-6 py-0 px-1  " >';
+    boxscoreString += '<div class="jumbotron  p-0 jumbotron-fluid"><div class="container p-0">'
+    boxscoreString += '<h4 id="'+awayTeamBoxScoreID+'awayBoxscoreName" class="p-0" ><img  src="images/logos/' + awayTeamBoxScoreAbv + '.png" height="80px" width="80px"></h4>'
+    boxscoreString += '<p class="lead">Boxscore</p>';
+    boxscoreString += '</div>'
+    boxscoreString += '</div>'
+    boxscoreString += '</div>'
+    boxscoreString += '<div class="col-6 py-0 px-1">';
+    boxscoreString += '<div class="jumbotron  p-0 jumbotron-fluid"><div class="container p-0">'
+    boxscoreString += '<h4 id="'+homeTeamBoxScoreID+'awayBoxscoreName" ><img  src="images/logos/' + homeTeamBoxScoreAbv + '.png" height="80px" width="80px"></h4>'
+    boxscoreString += '<p class="lead">Boxscore</p>';
+    boxscoreString += '</div>'
+    boxscoreString += '</div>'
+    boxscoreString += '</div>'
+    boxscoreString += '</div>'
+
+
+    $("#boxscoreCard").append(boxscoreString)
+    $("#"+boxScoreGameid+"boxscore").attr("called", "true")
+
+    for (g = 0; g < boxscore.references.teamReferences.length; g++) {
+      if (awayTeamBoxScoreID = boxscore.references.teamReferences[g].id ) {
+      $("#"+awayTeamBoxScoreID+"awayBoxscoreName").append(" " +boxscore.references.teamReferences[g].city + " " + boxscore.references.teamReferences[g].name)
+      }
+    };
+
+    $(".boxscorebutton").click(function() {
+      $(".boxscorebutton").hide()
+      $(".toBoxcscore").show()
+
+    });
+  
+  
+
+  });
+
+}
 
