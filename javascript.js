@@ -162,9 +162,9 @@ $.ajax
          var hLogo = hTeam.toLowerCase();
 
           var htmlString = '<div class="col-4 col-lg-3 scoreCard px-lg-1 py-lg-1 px-0 py-0">';
-          htmlString += '<div  class="card  toBoxcscore disabled justify-content-center p-1 rounded-0 text-dark m-1" id='+gameID+' >';
+          htmlString += '<div  class="card  toBoxcscore disabled justify-content-center p-0  rounded-0 text-dark m-1" id='+gameID+' >';
           htmlString += '<div class="m-1 m-lg-2">'
-          htmlString += '<table class="table table-borderless table-sm w-85 m-0" id='+aTeam + hTeam+"table"+'  >';
+          htmlString += '<table class="table table-borderless table-sm w-85 m-0 white" id='+aTeam + hTeam+"table"+'  >';
           htmlString += '<thead class="table-borderless">';
           htmlString += '<tr>';
           htmlString += '<th class="table-borderless text-left scoreboard-header py-0 pr-0 pl-1" id='+aTeam + hTeam+"clock"+' style=" font-size: 11px;">' + scoreStatus + '</th>';
@@ -190,7 +190,9 @@ $.ajax
           htmlString += '</div>';
           $("#schedule-holder").append(htmlString);     
           
-          
+
+          $("#"+gameID).addClass("green")
+
 
 
           if (status == "LIVE") {
@@ -201,7 +203,8 @@ $.ajax
 
           } 
           if (scoreStatus == "FINAL") {
-            $("#"+aTeam+hTeam+"table").addClass("rgba-stylish-light")
+            $("#"+aTeam+hTeam+"table").addClass("grey lighten-2")
+            $("#"+aTeam+hTeam+"table").removeClass("white")
             $("#"+gameID).removeClass("disabled")
 
           }
