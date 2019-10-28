@@ -162,7 +162,7 @@ $.ajax
          var hLogo = hTeam.toLowerCase();
 
           var htmlString = '<div class="col-4 col-lg-3 scoreCard px-lg-1 py-lg-1 px-0 py-0">';
-          htmlString += '<div type="button" class="card btn toBoxcscore disabled justify-content-center p-1 rounded-0 text-dark m-1" id='+gameID+' >';
+          htmlString += '<div  class="card  toBoxcscore disabled justify-content-center p-1 rounded-0 text-dark m-1" id='+gameID+' >';
           htmlString += '<div class="m-1 m-lg-2">'
           htmlString += '<table class="table table-borderless table-sm w-85 m-0" id='+aTeam + hTeam+"table"+'  >';
           htmlString += '<thead class="table-borderless">';
