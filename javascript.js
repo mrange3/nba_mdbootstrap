@@ -267,6 +267,8 @@ $("#tomorrow").click(function() {
 // Datepicker Calendar///////////
 $("#datepicker").datepicker({
   onSelect: function(date, inst) {
+    $(".boxscorebutton").hide()
+
     var pickerDate = new Date(date);
 
     schedule(pickerDate)
