@@ -322,14 +322,14 @@ $.ajax
     boxscoreString += '<div class=" container-fluid p-0 d-flex" >';
     boxscoreString += '<div class="col-6 py-0 container-fluid px-1  " >';
     boxscoreString += '<div class="jumbotron  p-0 jumbotron-fluid"><div class="container p-0">'
-    boxscoreString += '<h4 id="'+awayTeamBoxScoreID+'awayBoxscoreName" class="p-0" ><img  src="images/logos/' + awayTeamBoxScoreAbv + '.png" height="80px" width="80px">'+" " +awayTeamFullName+'</h4>'
+    boxscoreString += '<h4 id="'+awayTeamBoxScoreID+'awayBoxscoreName" class="p-0" ><img  src="images/logos/' + awayTeamBoxScoreAbv.toLowerCase() + '.png" height="80px" width="80px">'+" " +awayTeamFullName+'</h4>'
     boxscoreString += '<p class="lead">Boxscore</p>';
     boxscoreString += '</div>'
     boxscoreString += '</div>'
     boxscoreString += '</div>'
     boxscoreString += '<div class="col-6 container-fluid py-0 px-1">';
     boxscoreString += '<div class="jumbotron  p-0 jumbotron-fluid"><div class="container p-0">'
-    boxscoreString += '<h4 id="'+homeTeamBoxScoreID+'awayBoxscoreName" ><img  src="images/logos/' + homeTeamBoxScoreAbv + '.png" height="80px" width="80px">' + " " + homeTeamFullName+'</h4>'
+    boxscoreString += '<h4 id="'+homeTeamBoxScoreID+'awayBoxscoreName" ><img  src="images/logos/' + homeTeamBoxScoreAbv.toLowerCase() + '.png" height="80px" width="80px">' + " " + homeTeamFullName+'</h4>'
     boxscoreString += '<p class="lead">Boxscore</p>';
     boxscoreString += '</div>'
     boxscoreString += '</div>'
