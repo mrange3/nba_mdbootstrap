@@ -315,7 +315,7 @@ $.ajax
     };
 
 
-    var boxscoreString = '<div type="button" called="false" class="row m-0 p-0 container-fluid  boxscorebutton btn text-dark " id='+boxScoreGameid+"boxscore"+'>'
+    var boxscoreString = '<div called="false" class="row m-0 p-0 container-fluid  boxscorebutton  text-dark " id='+boxScoreGameid+"boxscore"+'>'
     boxscoreString += '<div class=" container-fluid p-0 d-flex" >';
     boxscoreString += '<div class="col-6 py-0 container-fluid px-1  " >';
     boxscoreString += '<div class="jumbotron  p-0 jumbotron-fluid"><div class="container p-0">'
