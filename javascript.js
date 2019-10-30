@@ -116,18 +116,15 @@ $.ajax
 
           var timeRemaining = (myTime(games.games[i].score.currentQuarterSecondsRemaining));
 
-          if (intermission > 0) {
-            console.log(intermission)
-          }
 
         if (timeRemaining == "0:00" && quarter == null) {
-            timeRemaining = "Starting"
-          } else if (timeRemaining == "0:00" && quarter == 1) {
+          timeRemaining = "12:00" + " Q1";
+        } else if (timeRemaining == "0:00" && quarter == 1) {
             timeRemaining = "12:00" + " Q" + quarter;
           }else if (timeRemaining == "0:00" && quarter > 0) {
             timeRemaining = "End of"
           }
-          else if (quarter > 0 && quarter < 4){
+          else if (quarter > 0 && quarter <= 4){
             timeRemaining = timeRemaining + " Q" + quarter;
           } else if (quarter > 4) {
             timeRemaining = timeRemaining + " OT" + quarter -4;
@@ -152,6 +149,7 @@ $.ajax
             scoreStatus = timeRemaining;
           }
 
+          scoreStatus.toString()
 
           if (aScore == null) {
             aScore = "-";
@@ -162,9 +160,9 @@ $.ajax
          var hLogo = hTeam.toLowerCase();
 
           var htmlString = '<div class="col-4 col-lg-3 scoreCard px-lg-1 py-lg-1 px-0 py-0">';
-          htmlString += '<div  class="card  toBoxcscore disabled justify-content-center p-0  rounded-0 text-dark m-1" id='+gameID+' >';
+          htmlString += '<div  class="card  toBoxcscore disabled justify-content-center p-0  rounded-0 text-dark m-1" time="'+scoreStatus+'" id='+gameID+' >';
           htmlString += '<div class="m-1 m-lg-2">'
-          htmlString += '<table class="table table-borderless table-sm w-85 m-0 white" id='+aTeam + hTeam+"table"+'  >';
+          htmlString += '<table class="table table-borderless table-sm w-85 m-0 white innerTable" id='+aTeam + hTeam+"table"+'  >';
           htmlString += '<thead class="table-borderless">';
           htmlString += '<tr>';
           htmlString += '<th class="table-borderless text-left scoreboard-header py-0 pr-0 pl-1" id='+aTeam + hTeam+"clock"+' style=" font-size: 11px;">' + scoreStatus + '</th>';
@@ -190,8 +188,8 @@ $.ajax
           htmlString += '</div>';
           $("#schedule-holder").append(htmlString);     
           
+          teamRecords(aTeamID, hTeamID, gameID)
 
-          $("#"+gameID).addClass("green")
 
 
 
@@ -203,10 +201,9 @@ $.ajax
 
           } 
           if (scoreStatus == "FINAL") {
-            $("#"+aTeam+hTeam+"table").addClass("grey lighten-2")
+            $("#"+aTeam+hTeam+"table").addClass("grey lighten-1")
             $("#"+aTeam+hTeam+"table").removeClass("white")
             $("#"+gameID).removeClass("disabled")
-
           }
 
 
@@ -221,12 +218,14 @@ $.ajax
     $(".toBoxcscore").hide()
 
     var gamebtn = $(this).attr('id')
-    
+    var boxstatus = $(this).attr("time")
+
+    console.log(boxstatus)
 
     if ($("#"+gamebtn).attr("called") == "true") {
       $("#"+gamebtn+"boxscore").show()
     } else {
-    boxScoreFunction(gamebtn)
+    boxScoreFunction(gamebtn, boxstatus)
     };
   });
   
@@ -283,7 +282,7 @@ $("#datepicker").datepicker({
 );
 
 
-function boxScoreFunction(gamebtn) {
+function boxScoreFunction(gamebtn, boxstatus) {
 
   var boxscoreURL = " https://api.mysportsfeeds.com/v2.1/pull/nba/current/games/"+gamebtn+"/boxscore.json"
 
@@ -309,6 +308,14 @@ $.ajax
     var awayTeamBoxScoreID = boxscore.game.awayTeam.id
     var homeTeamBoxScoreID = boxscore.game.homeTeam.id
     var boxScoreGameid = boxscore.game.id
+    var awayTotalScore = boxscore.scoring.awayScoreTotal;
+    var homeScoreTotal = boxscore.scoring.homeScoreTotal;
+    var ifLive = boxscore.game.playedStatus;
+console.log(ifLive)
+    var awayScores =[0,0,0,0];
+    var homeScores = [0,0,0,0];
+
+    var boxtimeRemaining = boxstatus;
 
     for (g = 0; g < boxscore.references.teamReferences.length; g++) {
       if (boxscore.references.teamReferences[g].id == awayTeamBoxScoreID) {
@@ -319,25 +326,68 @@ $.ajax
       }
     };
 
+    for (x=0; x < boxscore.scoring.quarters.length; x++) {
+        awayScores[x] = boxscore.scoring.quarters[x].awayScore
+        homeScores[x] = boxscore.scoring.quarters[x].homeScore
+    }
 
-    var boxscoreString = '<div called="false" class="row m-0 p-0 container-fluid  boxscorebutton  text-dark " id='+boxScoreGameid+"boxscore"+'>'
-    boxscoreString += '<div class=" container-fluid p-0 d-flex" >';
-    boxscoreString += '<div class="col-6 py-0 container-fluid px-1  " >';
-    boxscoreString += '<div class="jumbotron  p-0 jumbotron-fluid"><div class="container p-0">'
-    boxscoreString += '<h4 id="'+awayTeamBoxScoreID+'awayBoxscoreName" class="p-0" ><img  src="images/logos/' + awayTeamBoxScoreAbv.toLowerCase() + '.png" height="80px" width="80px">'+" " +awayTeamFullName+'</h4>'
-    boxscoreString += '<p class="lead">Boxscore</p>';
+
+
+
+    var boxscoreString = '<div called="false" class=" container-fluid justify-content-center white boxscorebutton  text-dark " id='+boxScoreGameid+"boxscore"+'>'
+    boxscoreString += '<div class=" row  white pb-0 pt-1 m-0 justify-content-center" >';
+    boxscoreString += '<p class="boxtable pb-1 pt-0 m-0 text-danger" id='+boxScoreGameid+ "time"+'>'+boxtimeRemaining+'</p>'
+    boxscoreString += '</div>'
+    boxscoreString += '<div class=" row  white py-0 justify-content-center" >';
+    boxscoreString += '<div class="col-2 col-lg-3 py-3 py-lg-1  text-left  px-1  " >';
+    boxscoreString += '<h4 class="p-0 mobileHide px-1" >'+" " +awayTeamFullName+'<img  src="images/logos/' + awayTeamBoxScoreAbv.toLowerCase() + '.png" height="80px" width="80px"></h4>'
+    boxscoreString += '<p  class="p-0 deskHide " style="font-size: 12px;">'+" " +awayTeamBoxScoreAbv+'<img  src="images/logos/' + awayTeamBoxScoreAbv.toLowerCase() + '.png" height="20px" width="20px"></p>'
+    boxscoreString += '</div>'
+    boxscoreString += '<div class="col-1 px-1 largeBoxScore font-weight-bold text-center pt-3">'+awayTotalScore+'</div>';
+    boxscoreString += '<div class="col-6 col-lg-3 " >';
+    boxscoreString += '<table class="table boxtable">';
+    boxscoreString += '<thead>';
+    boxscoreString += '<tr>';
+    boxscoreString += '<th class="py-0 boxtable"></th>';
+    boxscoreString += '<th class="py-0 px-1 text-center boxtable">1</th>';
+    boxscoreString += '<th class="py-0 px-1 text-center boxtable">2</th>';
+    boxscoreString += '<th class="py-0 px-1 text-center boxtable">3</th>';
+    boxscoreString += '<th class="py-0 px-1 text-center boxtable">4</th>';
+    boxscoreString += '<th class="py-0 px-1 text-center boxtable">T</th>';
+    boxscoreString += '</tr>';
+    boxscoreString += '</thead>';
+    boxscoreString += '<tbody>';
+    boxscoreString += '<tr>';
+    boxscoreString += '<th class="py-0 px-1 text-center boxtable">'+awayTeamBoxScoreAbv+'</th>';
+    boxscoreString += '<td class="py-0 px-1 text-center boxtable">'+awayScores[0]+'</td>'
+    boxscoreString += '<td class="py-0 px-1 text-center boxtable">'+awayScores[1]+'</td>'
+    boxscoreString += '<td class="py-0 px-1 text-center boxtable">'+awayScores[2]+'</td>'
+    boxscoreString += '<td class="py-0 px-1 text-center boxtable">'+awayScores[3]+'</td>'
+    boxscoreString += '<td class="py-0 px-1 text-center font-weight-bold boxtable">'+awayTotalScore+'</td>'
+    boxscoreString += '</tr>';
+    boxscoreString += '<tr>';
+    boxscoreString += '<th class="py-0 px-1 text-center boxtable">'+homeTeamBoxScoreAbv+'</th>';
+    boxscoreString += '<td class="py-0 px-1 text-center boxtable">'+homeScores[0]+'</td>'
+    boxscoreString += '<td class="py-0 px-1 text-center boxtable">'+homeScores[1]+'</td>'
+    boxscoreString += '<td class="py-0 px-1 text-center boxtable">'+homeScores[2]+'</td>'
+    boxscoreString += '<td class="py-0 px-1 text-center boxtable">'+homeScores[3]+'</td>'
+    boxscoreString += '<td class="py-0 px-1 text-center boxtable font-weight-bold">'+homeScoreTotal+'</td>'
+    boxscoreString += '</tr>';
+    boxscoreString += '</tbody>';
+    boxscoreString += '</table>';
+    boxscoreString += '</div>'
+
+    boxscoreString += '<div class="col-1 largeBoxScore  text-center pt-3 font-weight-bold px-1">'+homeScoreTotal+'</div>';
+    boxscoreString += '<div class="col-2 col-lg-3  text-right py-3 py-lg-1 px-1"><div>';
+    boxscoreString += '<h4 class="p-0 mobileHide "><img  src="images/logos/' + homeTeamBoxScoreAbv.toLowerCase() + '.png" height="80px" width="80px">' + " " + homeTeamFullName+'</h4>'
+    boxscoreString += '<p class="p-0 deskHide px-1" style="font-size: 12px;"><img  src="images/logos/' + homeTeamBoxScoreAbv.toLowerCase() + '.png" height="20px" width="20px">' + " " + homeTeamBoxScoreAbv+'</p>'
     boxscoreString += '</div>'
     boxscoreString += '</div>'
     boxscoreString += '</div>'
-    boxscoreString += '<div class="col-6 container-fluid py-0 px-1">';
-    boxscoreString += '<div class="jumbotron  p-0 jumbotron-fluid"><div class="container p-0">'
-    boxscoreString += '<h4 id="'+homeTeamBoxScoreID+'awayBoxscoreName" ><img  src="images/logos/' + homeTeamBoxScoreAbv.toLowerCase() + '.png" height="80px" width="80px">' + " " + homeTeamFullName+'</h4>'
-    boxscoreString += '<p class="lead">Boxscore</p>';
+    boxscoreString += '<div class=" row  white " >';
     boxscoreString += '</div>'
-    boxscoreString += '</div>'
-    boxscoreString += '</div>'
-    boxscoreString += '</div>'
-    boxscoreString += '</div>'
+
+
 
 
     $("#boxscoreCard").append(boxscoreString)
@@ -348,8 +398,6 @@ $.ajax
     $(".boxscorebutton").click(function() {
       $(".boxscorebutton").hide()
       $(".toBoxcscore").show()
-      console.log($("#"+boxScoreGameid+"boxscore").attr("called")
-      )
 
     });
   
@@ -359,3 +407,51 @@ $.ajax
 
 }
 
+function teamRecords(aTeamID, hTeamID, gameID) {
+
+  var standingsURL = " https://api.mysportsfeeds.com/v2.1/pull/nba/current/standings.json"
+
+
+  var api = config.MY_KEY;
+
+$.ajax
+  ({
+    type: "GET",
+    url: standingsURL,
+    dataType: 'json',
+    headers: {
+      "Authorization": "Basic " + btoa(api + ":" + "MYSPORTSFEEDS")
+    },
+
+  })
+  .then(function (teamStandings) {
+
+    var awayWinPct = 0;
+    var homeWinPct = 0;
+
+    for (s = 0; s < teamStandings.teams.length; s++) {
+
+      if (teamStandings.teams[s].team.id == aTeamID) {
+          awayWinPct = teamStandings.teams[s].stats.standings.winPct
+      } else if (teamStandings.teams[s].team.id == hTeamID) {
+        homeWinPct = teamStandings.teams[s].stats.standings.winPct
+    }
+    }
+
+    var combinedPCt = awayWinPct+homeWinPct;
+
+    if (combinedPCt >= 1.3) {
+      $("#"+gameID).addClass("cyan")
+    } else if (combinedPCt < 1.3 && combinedPCt >= 1.1) {
+      $("#"+gameID).addClass("green")
+    }else if (combinedPCt < 1.1 && combinedPCt >= .9) {
+      $("#"+gameID).addClass("yellow")
+    }else if (combinedPCt < .9 && combinedPCt >= .7) {
+      $("#"+gameID).addClass("orange")
+    }else if (combinedPCt < .7 ) {
+      $("#"+gameID).addClass("red")
+    }
+
+
+  });
+}

@@ -19,12 +19,46 @@ body {
   font-size: 18px;
 }
 
+.boxtable {
+  font-size: 16px;
+}
+
 .card {
  cursor:pointer;
-}
-.card:hover {
   box-shadow: 10px 10px 5px grey;
  }
+
+ .card:hover {
+  cursor:pointer;
+   box-shadow: 10px 10px 5px dimgray;
+  }
+ 
+
+ .card:active {
+   left:10px;
+   top:10px;
+   box-shadow: none !important;
+  }
+
+  .innerTable:hover {
+    background-color: lightgrey !important;
+  }
+ 
+
+
+
+ .disabled {
+  box-shadow: none !important;
+
+ }
+
+ .boxscorebutton {
+  cursor:pointer;
+
+  box-shadow: 10px 10px 5px grey;
+ }
+ 
+
  
 .ncaa {
   font-family: 'Ncaa';
@@ -95,7 +129,9 @@ body {
 }
 
 
-
+.largeBoxScore {
+  font-size: 32px;
+}
 
 .ui-datepicker table {
   background-image: url("images/retina_wood.png");
@@ -165,6 +201,8 @@ display: none;
     width: 16px;
   }
 
+  
+
   .pageHead {
     font-size: 18px;
   }
@@ -197,5 +235,17 @@ display: none;
   .hideBoth {
     display: none;
   }
-  
+  .card {
+    cursor:pointer;
+     box-shadow: 4px 4px 2px grey;
+    }
+    .largeBoxScore {
+      font-size: 12px;
+    }
+    .boxtable {
+      font-size: 10px !important;
+    }
+    
+    
+    
 }
