@@ -310,6 +310,10 @@ $.ajax
     var boxScoreGameid = boxscore.game.id
     var awayTotalScore = boxscore.scoring.awayScoreTotal;
     var homeScoreTotal = boxscore.scoring.homeScoreTotal;
+    var venue = boxscore.game.venue.name
+    var venueCity = boxscore.references.venueReferences[0].city
+
+
     var ifLive = boxscore.game.playedStatus;
 console.log(ifLive)
     var awayScores =[0,0,0,0];
@@ -335,16 +339,24 @@ console.log(ifLive)
 
 
     var boxscoreString = '<div called="false" class=" container-fluid justify-content-center white boxscorebutton  text-dark " id='+boxScoreGameid+"boxscore"+'>'
+
     boxscoreString += '<div class=" row  white pb-0 pt-1 m-0 justify-content-center" >';
     boxscoreString += '<p class="boxtable pb-1 pt-0 m-0 text-danger" id='+boxScoreGameid+ "time"+'>'+boxtimeRemaining+'</p>'
     boxscoreString += '</div>'
-    boxscoreString += '<div class=" row  white py-0 justify-content-center" >';
-    boxscoreString += '<div class="col-2 col-lg-3 py-3 py-lg-1  text-left  px-1  " >';
-    boxscoreString += '<h4 class="p-0 mobileHide px-1" >'+" " +awayTeamFullName+'<img  src="images/logos/' + awayTeamBoxScoreAbv.toLowerCase() + '.png" height="80px" width="80px"></h4>'
-    boxscoreString += '<p  class="p-0 deskHide " style="font-size: 12px;">'+" " +awayTeamBoxScoreAbv+'<img  src="images/logos/' + awayTeamBoxScoreAbv.toLowerCase() + '.png" height="20px" width="20px"></p>'
+
+    boxscoreString += '<div class=" row  white py-0 my-0 justify-content-between px-3" >';
+
+
+    boxscoreString += '<div class="col-4 px-0   d-flex ">';
+    boxscoreString += '<div class="pt-3 m-0">'
+    boxscoreString += '<p class="py-0 m-0 font-weight-bold largeBoxScore">'+awayTeamFullName+'</p>'
+    boxscoreString += '<p class="py-0 m-0">(41-41)</p>'
     boxscoreString += '</div>'
-    boxscoreString += '<div class="col-1 px-1 largeBoxScore font-weight-bold text-center pt-3">'+awayTotalScore+'</div>';
-    boxscoreString += '<div class="col-6 col-lg-3 " >';
+    boxscoreString += '<img class="pt-2 mr-auto pl-3" src="images/logos/' + awayTeamBoxScoreAbv.toLowerCase() + '.png" height="75px" width="75px">'
+    boxscoreString += '<p class="pt-4 pb-0 m-0 font-weight-bold largeBoxScore ">'+awayTotalScore+'</p>'
+    boxscoreString += '</div>'
+
+    boxscoreString += '<div class="col-4 " >';
     boxscoreString += '<table class="table boxtable">';
     boxscoreString += '<thead>';
     boxscoreString += '<tr>';
@@ -377,14 +389,26 @@ console.log(ifLive)
     boxscoreString += '</table>';
     boxscoreString += '</div>'
 
-    boxscoreString += '<div class="col-1 largeBoxScore  text-center pt-3 font-weight-bold px-1">'+homeScoreTotal+'</div>';
-    boxscoreString += '<div class="col-2 col-lg-3  text-right py-3 py-lg-1 px-1"><div>';
-    boxscoreString += '<h4 class="p-0 mobileHide "><img  src="images/logos/' + homeTeamBoxScoreAbv.toLowerCase() + '.png" height="80px" width="80px">' + " " + homeTeamFullName+'</h4>'
-    boxscoreString += '<p class="p-0 deskHide px-1" style="font-size: 12px;"><img  src="images/logos/' + homeTeamBoxScoreAbv.toLowerCase() + '.png" height="20px" width="20px">' + " " + homeTeamBoxScoreAbv+'</p>'
+    boxscoreString += '<div class="col-4   px-0 d-flex ">'
+    boxscoreString += '<p class="pt-4 pb-0 m-0 largeBoxScore font-weight-bold">'+homeScoreTotal+'</p>'
+    boxscoreString += '<img class="pt-2 ml-auto pr-3" src="images/logos/' + homeTeamBoxScoreAbv.toLowerCase() + '.png" height="75px" width="75px">'
+    boxscoreString += '<div class="pt-3 m-0">'
+    boxscoreString += '<p class="py-0 m-0 largeBoxScore font-weight-bold">'+homeTeamFullName+'</p>'
+    boxscoreString += '<p class="py-0 text-right">(41-41)</p>'
     boxscoreString += '</div>'
     boxscoreString += '</div>'
+
     boxscoreString += '</div>'
-    boxscoreString += '<div class=" row  white " >';
+
+
+    boxscoreString += '<div class=" row py-0 my-0 white d-flex justify-content-center" >';
+
+    boxscoreString += '<div class="col-3 px-1 py-0 justify-content-center text-center">';
+    boxscoreString += '<p class="p-0  m-0">'+venue+'</p>'
+    boxscoreString += '<p class="p-0 m-0  ">'+venueCity+'</p>'
+    boxscoreString += '</div>'
+
+
     boxscoreString += '</div>'
 
 
