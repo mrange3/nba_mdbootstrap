@@ -343,16 +343,16 @@ $.ajax
     boxscoreString += '<div class=" row  white py-0 my-0 justify-content-between px-3" >';
 
 
-    boxscoreString += '<div class="col-4 px-0   d-flex ">';
-    boxscoreString += '<div class="pt-3 m-0">'
+    boxscoreString += '<div class="col-lg-4 col-3 px-0   d-flex ">';
+    boxscoreString += '<div class="pt-3 m-0 mobileHide">'
     boxscoreString += '<p class="py-0 m-0 font-weight-bold largeBoxScore">'+awayTeamFullName+'</p>'
     boxscoreString += '<p class="py-0 m-0" id="'+awayTeamBoxScoreID+'record">'+awayboxrecord+'</p>'
     boxscoreString += '</div>'
-    boxscoreString += '<img class="pt-3 mr-auto pl-3" src="images/logos/' + awayTeamBoxScoreAbv.toLowerCase() + '.png" height="75px" width="75px">'
-    boxscoreString += '<p class="pt-4 pb-0 m-0 font-weight-bold bigScore ">'+awayTotalScore+'</p>'
+    boxscoreString += '<img class="pt-3 mr-auto pl-3 boxlogos" src="images/logos/' + awayTeamBoxScoreAbv.toLowerCase() + '.png" height="75px" width="75px">'
+    boxscoreString += '<p class="pt-lg-4 pt-3 pb-0 m-0 font-weight-bold bigScore ">'+awayTotalScore+'</p>'
     boxscoreString += '</div>'
 
-    boxscoreString += '<div class="col-4 " >';
+    boxscoreString += '<div class="col-lg-4 col-6" >';
     boxscoreString += '<table class="table boxtable">';
     boxscoreString += '<thead>';
     boxscoreString += '<tr>';
@@ -385,11 +385,11 @@ $.ajax
     boxscoreString += '</table>';
     boxscoreString += '</div>'
 
-    boxscoreString += '<div class="col-4   px-0 d-flex ">'
-    boxscoreString += '<p class="pt-4 pb-0 m-0 bigScore font-weight-bold">'+homeScoreTotal+'</p>'
-    boxscoreString += '<img class="pt-3 ml-auto pr-3" src="images/logos/' + homeTeamBoxScoreAbv.toLowerCase() + '.png" height="75px" width="75px">'
-    boxscoreString += '<div class="pt-3 m-0">'
-    boxscoreString += '<p class="py-0 m-0 largeBoxScore font-weight-bold">'+homeTeamFullName+'</p>'
+    boxscoreString += '<div class="col-lg-4 col-3 mobileHide px-0 d-flex ">'
+    boxscoreString += '<p class="pt-lg-4 pt-3 pb-0 m-0 bigScore font-weight-bold">'+homeScoreTotal+'</p>'
+    boxscoreString += '<img class="pt-3 ml-auto pr-3 boxlogos" src="images/logos/' + homeTeamBoxScoreAbv.toLowerCase() + '.png" height="75px" width="75px">'
+    boxscoreString += '<div class="pt-3 m-0 mobileHide">'
+    boxscoreString += '<p class="py-0 m-0 largeBoxScore font-weight-bold ">'+homeTeamFullName+'</p>'
     boxscoreString += '<p class="py-0 text-right" id="'+homeTeamBoxScoreID+'record">'+homeboxrecord+'</p>'
     boxscoreString += '</div>'
     boxscoreString += '</div>'
@@ -399,7 +399,7 @@ $.ajax
 
     boxscoreString += '<div class=" row py-0 my-0 white d-flex justify-content-center" >';
 
-    boxscoreString += '<div class="col-3 px-1 py-0 justify-content-center text-center">';
+    boxscoreString += '<div class="col-6 px-1 py-0 justify-content-center text-center boxtable">';
     boxscoreString += '<p class="p-0  m-0">'+venue+'</p>'
     boxscoreString += '<p class="p-0 m-0  ">'+venueCity+'</p>'
     boxscoreString += '</div>'

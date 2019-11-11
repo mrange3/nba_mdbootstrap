@@ -194,7 +194,9 @@ display: none;
   .date {
     font-size: 12px !important;
   }
-
+  .bigScore {
+    font-size: 16px;
+  }
   .scoreLogo {
     height: 18px;
     width: 18px;
@@ -204,7 +206,10 @@ display: none;
     width: 16px;
   }
 
-  
+  .boxlogos {
+    height: 45px;
+    width:45px;
+  }
 
   .pageHead {
     font-size: 18px;
