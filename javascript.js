@@ -82,10 +82,6 @@ $.ajax
 
   })
   .then(function (games) {
-    console.log(games)
-
-
-
 
         for (i = 0; i < games.games.length; i++) {
 
@@ -162,7 +158,7 @@ $.ajax
           var htmlString = '<div class="col-4 col-lg-3 scoreCard px-lg-1 py-lg-1 px-0 py-0">';
           htmlString += '<div  class="card  toBoxcscore disabled justify-content-center p-0  rounded-0 text-dark m-1" time="'+scoreStatus+'" id='+gameID+' >';
           htmlString += '<div class="m-1 m-lg-2">'
-          htmlString += '<table class="table table-borderless table-sm w-85 m-0 white innerTable" id='+aTeam + hTeam+"table"+'  >';
+          htmlString += '<table class="table table-borderless table-sm w-85 m-0 white innerTable"  id="'+aTeam + hTeam+"table"+'"  >';
           htmlString += '<thead class="table-borderless">';
           htmlString += '<tr>';
           htmlString += '<th class="table-borderless text-left scoreboard-header py-0 pr-0 pl-1" id='+aTeam + hTeam+"clock"+' style=" font-size: 11px;">' + scoreStatus + '</th>';
@@ -173,12 +169,12 @@ $.ajax
           htmlString += '<tbody>';
           htmlString += '<tr>';
           htmlString += '<th scope="row" class="table-borderless scoreboard align-middle text-left pt-0 pb-0 pb-lg-1 pr-0 pl-1" id='+aTeamID+"name"+' style="font-size: 13px;" ><img class="scoreLogo" src="images/logos/' + aLogo + '.png" height="24px" width="24px"></th>'
-          htmlString += '<td hidden class="table-borderless p-0 align-middle teamRecord text-center" id="'+aTeam+'record" style=" font-size: 12px;"></td>';
+          htmlString += '<td hidden class="table-borderless p-0 align-middle teamRecord text-center" style=" font-size: 12px;"></td>';
           htmlString += '<td class="table-borderless text-right scoreboard align-middle pt-0 pb-0 pb-lg-1   pr-1 pl-0" id="'+aTeam+'score"  style=" font-size: 13px;"><strong>' + aScore + '</strong></td>';
           htmlString += '</tr>';
           htmlString += '<tr>';
           htmlString += '<th scope="row" class="align-middle text-left scoreboard pt-0 pb-0 pb-lg-1  pr-0 pl-1" id='+hTeamID+"name"+' style="font-size: 13px;"><img class="scoreLogo" src="images/logos/' + hLogo + '.png" height="24px" width="24px"></th>'
-          htmlString += '<td hidden class="align-middle text-center p-0 teamRecord " id="'+hTeam+'record" style=" font-size: 12px;"></td>';
+          htmlString += '<td hidden class="align-middle text-center p-0 teamRecord "  style=" font-size: 12px;"></td>';
           htmlString += '<td class="  align-middle scoreboard  text-right  pt-0 pb-0 pb-lg-1  pr-1" id="'+hTeam+'score" style=" font-size: 13px;"><strong>' + hScore + '</strong></td>';
           htmlString += '</tr>';  
           htmlString += '</tbody>';      
@@ -220,12 +216,15 @@ $.ajax
     var gamebtn = $(this).attr('id')
     var boxstatus = $(this).attr("time")
 
-    console.log(boxstatus)
+console.log($(this).children().children("table").attr("id"));
+var awayboxrecord = $(this).attr("awayRecord")
+var homeboxrecord = $(this).attr("homeRecord")
+
 
     if ($("#"+gamebtn).attr("called") == "true") {
       $("#"+gamebtn+"boxscore").show()
     } else {
-    boxScoreFunction(gamebtn, boxstatus)
+    boxScoreFunction(gamebtn, boxstatus, awayboxrecord, homeboxrecord)
     };
   });
   
@@ -248,7 +247,6 @@ $("#yesterday").click(function() {
   var dateChange = new Date($("#datepicker").val())
   dateChange.setDate(dateChange.getDate()-1)
   $("#datepicker").datepicker( "setDate", dateChange )
-  console.log(dateChange)
   schedule(dateChange)
   
 });
@@ -258,7 +256,6 @@ $("#tomorrow").click(function() {
   var dateChange = new Date($("#datepicker").val())
   dateChange.setDate(dateChange.getDate()+1)
   $("#datepicker").datepicker( "setDate", dateChange )
-  console.log(dateChange)
 
   schedule(dateChange)
 });
@@ -282,7 +279,7 @@ $("#datepicker").datepicker({
 );
 
 
-function boxScoreFunction(gamebtn, boxstatus) {
+function boxScoreFunction(gamebtn, boxstatus, awayboxrecord, homeboxrecord) {
 
   var boxscoreURL = " https://api.mysportsfeeds.com/v2.1/pull/nba/current/games/"+gamebtn+"/boxscore.json"
 
@@ -315,7 +312,6 @@ $.ajax
 
 
     var ifLive = boxscore.game.playedStatus;
-console.log(ifLive)
     var awayScores =[0,0,0,0];
     var homeScores = [0,0,0,0];
 
@@ -350,10 +346,10 @@ console.log(ifLive)
     boxscoreString += '<div class="col-4 px-0   d-flex ">';
     boxscoreString += '<div class="pt-3 m-0">'
     boxscoreString += '<p class="py-0 m-0 font-weight-bold largeBoxScore">'+awayTeamFullName+'</p>'
-    boxscoreString += '<p class="py-0 m-0">(41-41)</p>'
+    boxscoreString += '<p class="py-0 m-0" id="'+awayTeamBoxScoreID+'record">'+awayboxrecord+'</p>'
     boxscoreString += '</div>'
-    boxscoreString += '<img class="pt-2 mr-auto pl-3" src="images/logos/' + awayTeamBoxScoreAbv.toLowerCase() + '.png" height="75px" width="75px">'
-    boxscoreString += '<p class="pt-4 pb-0 m-0 font-weight-bold largeBoxScore ">'+awayTotalScore+'</p>'
+    boxscoreString += '<img class="pt-3 mr-auto pl-3" src="images/logos/' + awayTeamBoxScoreAbv.toLowerCase() + '.png" height="75px" width="75px">'
+    boxscoreString += '<p class="pt-4 pb-0 m-0 font-weight-bold bigScore ">'+awayTotalScore+'</p>'
     boxscoreString += '</div>'
 
     boxscoreString += '<div class="col-4 " >';
@@ -390,11 +386,11 @@ console.log(ifLive)
     boxscoreString += '</div>'
 
     boxscoreString += '<div class="col-4   px-0 d-flex ">'
-    boxscoreString += '<p class="pt-4 pb-0 m-0 largeBoxScore font-weight-bold">'+homeScoreTotal+'</p>'
-    boxscoreString += '<img class="pt-2 ml-auto pr-3" src="images/logos/' + homeTeamBoxScoreAbv.toLowerCase() + '.png" height="75px" width="75px">'
+    boxscoreString += '<p class="pt-4 pb-0 m-0 bigScore font-weight-bold">'+homeScoreTotal+'</p>'
+    boxscoreString += '<img class="pt-3 ml-auto pr-3" src="images/logos/' + homeTeamBoxScoreAbv.toLowerCase() + '.png" height="75px" width="75px">'
     boxscoreString += '<div class="pt-3 m-0">'
     boxscoreString += '<p class="py-0 m-0 largeBoxScore font-weight-bold">'+homeTeamFullName+'</p>'
-    boxscoreString += '<p class="py-0 text-right">(41-41)</p>'
+    boxscoreString += '<p class="py-0 text-right" id="'+homeTeamBoxScoreID+'record">'+homeboxrecord+'</p>'
     boxscoreString += '</div>'
     boxscoreString += '</div>'
 
@@ -450,17 +446,46 @@ $.ajax
   })
   .then(function (teamStandings) {
 
+    console.log(teamStandings)
+
     var awayWinPct = 0;
     var homeWinPct = 0;
+    var awayWins = 0;
+    var homeWins = 0;
+    var awayLosses = 0;
+    var homeLosses = 0;
+
+
+
 
     for (s = 0; s < teamStandings.teams.length; s++) {
 
       if (teamStandings.teams[s].team.id == aTeamID) {
           awayWinPct = teamStandings.teams[s].stats.standings.winPct
+          awayWins = teamStandings.teams[s].stats.standings.wins
+          awayLosses = teamStandings.teams[s].stats.standings.losses
+
+
+
       } else if (teamStandings.teams[s].team.id == hTeamID) {
         homeWinPct = teamStandings.teams[s].stats.standings.winPct
+        homeWins = teamStandings.teams[s].stats.standings.wins
+        homeLosses = teamStandings.teams[s].stats.standings.losses
+
     }
     }
+
+    var awayRecord = " (" + awayWins + "-" + awayLosses + ")"
+    var homeRecord = " (" + homeWins + "-" + homeLosses + ")"
+
+
+    $("#"+gameID).attr("homeRecord", homeRecord)
+    $("#"+gameID).attr("awayRecord", awayRecord)
+
+    $("#"+aTeamID+"name").append(awayRecord)
+    $("#"+hTeamID+"name").append(homeRecord)
+
+
 
     var combinedPCt = awayWinPct+homeWinPct;
 

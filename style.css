@@ -128,6 +128,9 @@ body {
   color: white;
 }
 
+.bigScore {
+  font-size: 32px;
+}
 
 .largeBoxScore {
   font-size: 22px;
