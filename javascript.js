@@ -216,7 +216,6 @@ $.ajax
     var gamebtn = $(this).attr('id')
     var boxstatus = $(this).attr("time")
 
-console.log($(this).children().children("table").attr("id"));
 var awayboxrecord = $(this).attr("awayRecord")
 var homeboxrecord = $(this).attr("homeRecord")
 
@@ -310,8 +309,6 @@ $.ajax
     var venue = boxscore.game.venue.name
     var venueCity = boxscore.references.venueReferences[0].city
 
-
-    var ifLive = boxscore.game.playedStatus;
     var awayScores =[0,0,0,0];
     var homeScores = [0,0,0,0];
 
@@ -330,8 +327,99 @@ $.ajax
         awayScores[x] = boxscore.scoring.quarters[x].awayScore
         homeScores[x] = boxscore.scoring.quarters[x].homeScore
     }
+// ///////Away Player Stats
+    var awayPlayerStatsArray ="" ;
+    for (s = 0; s < boxscore.stats.away.players.length; s++) {
+      var awayPlayerName = boxscore.stats.away.players[s].player.firstName + " " + boxscore.stats.away.players[s].player.lastName;
+      var awayPlayerMin = Math.round((boxscore.stats.away.players[s].playerStats[0].miscellaneous.minSeconds)/60);
+      var awayPlayerFG = boxscore.stats.away.players[s].playerStats[0].fieldGoals.fgMade + "-" + boxscore.stats.away.players[s].playerStats[0].fieldGoals.fgAtt;
+      var awayPlayer3PT = boxscore.stats.away.players[s].playerStats[0].fieldGoals.fg3PtMade + "-" + boxscore.stats.away.players[s].playerStats[0].fieldGoals.fg3PtAtt;
+      var awayPlayerFT = boxscore.stats.away.players[s].playerStats[0].freeThrows.ftMade + "-" + boxscore.stats.away.players[s].playerStats[0].freeThrows.ftAtt;
+      var awayPlayerOffReb = boxscore.stats.away.players[s].playerStats[0].rebounds.offReb
+      var awayPlayerDefReb = boxscore.stats.away.players[s].playerStats[0].rebounds.defReb
+      var awayPlayerReb = boxscore.stats.away.players[s].playerStats[0].rebounds.reb
+      var awayPlayerAst = boxscore.stats.away.players[s].playerStats[0].offense.ast
+      var awayPlayerStl = boxscore.stats.away.players[s].playerStats[0].defense.stl
+      var awayPlayerBlk = boxscore.stats.away.players[s].playerStats[0].defense.blk
+      var awayPlayerTO = boxscore.stats.away.players[s].playerStats[0].defense.tov
+      var awayPlayerFouls = boxscore.stats.away.players[s].playerStats[0].miscellaneous.fouls
+      var awayPlayerPM = boxscore.stats.away.players[s].playerStats[0].miscellaneous.plusMinus
+      var awayPlayerPts = boxscore.stats.away.players[s].playerStats[0].offense.pts
 
 
+      if (awayPlayerPM > 0) {
+        awayPlayerPM = "+"+awayPlayerPM;
+      }
+
+
+      var awayPlayerStatsString = '<tr>';
+      awayPlayerStatsString += '<th class="py-0 px-1 text-left ">'+awayPlayerName+'</th>';
+      awayPlayerStatsString += '<td class="py-0 px-1 text-center ">'+awayPlayerMin+'</td>'
+      awayPlayerStatsString += '<td class="py-0 px-1 text-center ">'+awayPlayerFG+'</td>'
+      awayPlayerStatsString += '<td class="py-0 px-1 text-center ">'+ awayPlayer3PT +'</td>'
+      awayPlayerStatsString += '<td class="py-0 px-1 text-center ">'+awayPlayerFT+'</td>'
+      awayPlayerStatsString += '<td class="py-0 px-1 text-center  ">'+awayPlayerOffReb+'</td>'
+      awayPlayerStatsString += '<td class="py-0 px-1 text-center ">'+awayPlayerDefReb+'</td>'
+      awayPlayerStatsString += '<td class="py-0 px-1 text-center ">'+awayPlayerReb+'</td>'
+      awayPlayerStatsString += '<td class="py-0 px-1 text-center ">'+awayPlayerAst+'</td>'
+      awayPlayerStatsString += '<td class="py-0 px-1 text-center ">'+awayPlayerStl+'</td>'
+      awayPlayerStatsString += '<td class="py-0 px-1 text-center ">'+awayPlayerBlk+'</td>'
+      awayPlayerStatsString += '<td class="py-0 px-1 text-center ">'+awayPlayerTO+'</td>'
+      awayPlayerStatsString += '<td class="py-0 px-1 text-center ">'+awayPlayerFouls+'</td>'
+      awayPlayerStatsString += '<td class="py-0 px-1 text-center ">'+awayPlayerPM+'</td>'
+      awayPlayerStatsString += '<td class="py-0 px-1 text-center ">'+awayPlayerPts+'</td>'
+      awayPlayerStatsString += '</tr>';
+    
+      awayPlayerStatsArray = awayPlayerStatsArray + awayPlayerStatsString;
+    
+    }
+// ///////////////////// Home Player Stats
+var homePlayerStatsArray ="" ;
+for (s = 0; s < boxscore.stats.home.players.length; s++) {
+  var homePlayerName = boxscore.stats.home.players[s].player.firstName + " " + boxscore.stats.home.players[s].player.lastName;
+  var homePlayerMin = Math.round((boxscore.stats.home.players[s].playerStats[0].miscellaneous.minSeconds)/60);
+  var homePlayerFG = boxscore.stats.home.players[s].playerStats[0].fieldGoals.fgMade + "-" + boxscore.stats.home.players[s].playerStats[0].fieldGoals.fgAtt;
+  var homePlayer3PT = boxscore.stats.home.players[s].playerStats[0].fieldGoals.fg3PtMade + "-" + boxscore.stats.home.players[s].playerStats[0].fieldGoals.fg3PtAtt;
+  var homePlayerFT = boxscore.stats.home.players[s].playerStats[0].freeThrows.ftMade + "-" + boxscore.stats.home.players[s].playerStats[0].freeThrows.ftAtt;
+  var homePlayerOffReb = boxscore.stats.home.players[s].playerStats[0].rebounds.offReb
+  var homePlayerDefReb = boxscore.stats.home.players[s].playerStats[0].rebounds.defReb
+  var homePlayerReb = boxscore.stats.home.players[s].playerStats[0].rebounds.reb
+  var homePlayerAst = boxscore.stats.home.players[s].playerStats[0].offense.ast
+  var homePlayerStl = boxscore.stats.home.players[s].playerStats[0].defense.stl
+  var homePlayerBlk = boxscore.stats.home.players[s].playerStats[0].defense.blk
+  var homePlayerTO = boxscore.stats.home.players[s].playerStats[0].defense.tov
+  var homePlayerFouls = boxscore.stats.home.players[s].playerStats[0].miscellaneous.fouls
+  var homePlayerPM = boxscore.stats.home.players[s].playerStats[0].miscellaneous.plusMinus
+  var homePlayerPts = boxscore.stats.home.players[s].playerStats[0].offense.pts
+
+
+  if (homePlayerPM > 0) {
+    homePlayerPM = "+"+homePlayerPM;
+  }
+
+
+  var homePlayerStatsString = '<tr>';
+  homePlayerStatsString += '<th class="py-0 px-1 text-left ">'+homePlayerName+'</th>';
+  homePlayerStatsString += '<td class="py-0 px-1 text-center ">'+homePlayerMin+'</td>'
+  homePlayerStatsString += '<td class="py-0 px-1 text-center ">'+homePlayerFG+'</td>'
+  homePlayerStatsString += '<td class="py-0 px-1 text-center ">'+ homePlayer3PT +'</td>'
+  homePlayerStatsString += '<td class="py-0 px-1 text-center ">'+homePlayerFT+'</td>'
+  homePlayerStatsString += '<td class="py-0 px-1 text-center  ">'+homePlayerOffReb+'</td>'
+  homePlayerStatsString += '<td class="py-0 px-1 text-center ">'+homePlayerDefReb+'</td>'
+  homePlayerStatsString += '<td class="py-0 px-1 text-center ">'+homePlayerReb+'</td>'
+  homePlayerStatsString += '<td class="py-0 px-1 text-center ">'+homePlayerAst+'</td>'
+  homePlayerStatsString += '<td class="py-0 px-1 text-center ">'+homePlayerStl+'</td>'
+  homePlayerStatsString += '<td class="py-0 px-1 text-center ">'+homePlayerBlk+'</td>'
+  homePlayerStatsString += '<td class="py-0 px-1 text-center ">'+homePlayerTO+'</td>'
+  homePlayerStatsString += '<td class="py-0 px-1 text-center ">'+homePlayerFouls+'</td>'
+  homePlayerStatsString += '<td class="py-0 px-1 text-center ">'+homePlayerPM+'</td>'
+  homePlayerStatsString += '<td class="py-0 px-1 text-center ">'+homePlayerPts+'</td>'
+  homePlayerStatsString += '</tr>';
+
+  homePlayerStatsArray = homePlayerStatsArray + homePlayerStatsString;
+
+}
+// //////////////
 
 
     var boxscoreString = '<div called="false" class=" container-fluid justify-content-center white boxscorebutton  text-dark " id='+boxScoreGameid+"boxscore"+'>'
@@ -348,7 +436,7 @@ $.ajax
     boxscoreString += '<p class="py-0 m-0 font-weight-bold largeBoxScore">'+awayTeamFullName+'</p>'
     boxscoreString += '<p class="py-0 m-0" id="'+awayTeamBoxScoreID+'record">'+awayboxrecord+'</p>'
     boxscoreString += '</div>'
-    boxscoreString += '<img class="pt-3 mr-auto pl-3 boxlogos" src="images/logos/' + awayTeamBoxScoreAbv.toLowerCase() + '.png" height="75px" width="75px">'
+    boxscoreString += '<img class="pt-3 mr-auto pl-2 boxlogos" src="images/logos/' + awayTeamBoxScoreAbv.toLowerCase() + '.png" height="75px" width="75px">'
     boxscoreString += '<p class="pt-lg-4 pt-3 pb-0 m-0 font-weight-bold bigScore ">'+awayTotalScore+'</p>'
     boxscoreString += '</div>'
 
@@ -387,7 +475,7 @@ $.ajax
 
     boxscoreString += '<div class="col-lg-4 col-3 mobileHide px-0 d-flex ">'
     boxscoreString += '<p class="pt-lg-4 pt-3 pb-0 m-0 bigScore font-weight-bold">'+homeScoreTotal+'</p>'
-    boxscoreString += '<img class="pt-3 ml-auto pr-3 boxlogos" src="images/logos/' + homeTeamBoxScoreAbv.toLowerCase() + '.png" height="75px" width="75px">'
+    boxscoreString += '<img class="pt-3 ml-auto pr-2 boxlogos" src="images/logos/' + homeTeamBoxScoreAbv.toLowerCase() + '.png" height="75px" width="75px">'
     boxscoreString += '<div class="pt-3 m-0 mobileHide">'
     boxscoreString += '<p class="py-0 m-0 largeBoxScore font-weight-bold ">'+homeTeamFullName+'</p>'
     boxscoreString += '<p class="py-0 text-right" id="'+homeTeamBoxScoreID+'record">'+homeboxrecord+'</p>'
@@ -403,6 +491,70 @@ $.ajax
     boxscoreString += '<p class="p-0  m-0">'+venue+'</p>'
     boxscoreString += '<p class="p-0 m-0  ">'+venueCity+'</p>'
     boxscoreString += '</div>'
+    boxscoreString += '</div>'
+
+    boxscoreString += '<div class=" row py-2 my-0 white justify-content-center" >';
+    boxscoreString += '<div class=" col-12 white table-responsive px-3">';
+    boxscoreString += '<p class="py-1 m-0 font-weight-bold "><img class="" src="images/logos/' + awayTeamBoxScoreAbv.toLowerCase() + '.png" height="24px" width="24px">'+" " +awayTeamFullName+" | Away"+'</p>';
+    boxscoreString += '<table class="table table-sm  playerStatsBox" >';
+    boxscoreString += '<thead >';
+    boxscoreString += '<tr >';
+    boxscoreString += '<th class="py-0 " >NAME</th>';
+    boxscoreString += '<th class="py-0 px-1 text-center ">MIN</th>';
+    boxscoreString += '<th class="py-0 px-1 text-center ">FG</th>';
+    boxscoreString += '<th class="py-0 px-1 text-center ">3PT</th>';
+    boxscoreString += '<th class="py-0 px-1 text-center ">FT</th>';
+    boxscoreString += '<th class="py-0 px-1 text-center ">OREB</th>';
+    boxscoreString += '<th class="py-0 px-1 text-center ">DREB</th>';
+    boxscoreString += '<th class="py-0 px-1 text-center ">REB</th>';
+    boxscoreString += '<th class="py-0 px-1 text-center ">AST</th>';
+    boxscoreString += '<th class="py-0 px-1 text-center ">STL</th>';
+    boxscoreString += '<th class="py-0 px-1 text-center ">BLK</th>';
+    boxscoreString += '<th class="py-0 px-1 text-center ">TO</th>';
+    boxscoreString += '<th class="py-0 px-1 text-center ">PF</th>';
+    boxscoreString += '<th class="py-0 px-1 text-center ">+/-</th>';
+    boxscoreString += '<th class="py-0 px-1 text-center ">PTS</th>';
+    boxscoreString += '</tr>';
+    boxscoreString += '</thead>';
+    boxscoreString += '<tbody id="'+boxScoreGameid+'awayPlayerStats">';
+    boxscoreString += awayPlayerStatsArray
+    
+    boxscoreString += '</tbody>';
+    boxscoreString += '</table>';
+    boxscoreString += '</div>'
+    boxscoreString += '</div>'
+
+    boxscoreString += '<div class=" row py-2 my-0 white justify-content-center" >';
+    boxscoreString += '<div class=" col-12 white table-responsive px-3">';
+    boxscoreString += '<p class="py-1 m-0 font-weight-bold "><img class="" src="images/logos/' + homeTeamBoxScoreAbv.toLowerCase() + '.png" height="24px" width="24px">'+" " +homeTeamFullName+" | Home"+'</p>';
+    boxscoreString += '<table class="table table-sm  playerStatsBox" >';
+    boxscoreString += '<thead >';
+    boxscoreString += '<tr >';
+    boxscoreString += '<th class="py-0 " >NAME</th>';
+    boxscoreString += '<th class="py-0 px-1 text-center ">MIN</th>';
+    boxscoreString += '<th class="py-0 px-1 text-center ">FG</th>';
+    boxscoreString += '<th class="py-0 px-1 text-center ">3PT</th>';
+    boxscoreString += '<th class="py-0 px-1 text-center ">FT</th>';
+    boxscoreString += '<th class="py-0 px-1 text-center ">OREB</th>';
+    boxscoreString += '<th class="py-0 px-1 text-center ">DREB</th>';
+    boxscoreString += '<th class="py-0 px-1 text-center ">REB</th>';
+    boxscoreString += '<th class="py-0 px-1 text-center ">AST</th>';
+    boxscoreString += '<th class="py-0 px-1 text-center ">STL</th>';
+    boxscoreString += '<th class="py-0 px-1 text-center ">BLK</th>';
+    boxscoreString += '<th class="py-0 px-1 text-center ">TO</th>';
+    boxscoreString += '<th class="py-0 px-1 text-center ">PF</th>';
+    boxscoreString += '<th class="py-0 px-1 text-center ">+/-</th>';
+    boxscoreString += '<th class="py-0 px-1 text-center ">PTS</th>';
+    boxscoreString += '</tr>';
+    boxscoreString += '</thead>';
+    boxscoreString += '<tbody id="'+boxScoreGameid+'homePlayerStats">';
+    boxscoreString += homePlayerStatsArray
+    
+    boxscoreString += '</tbody>';
+    boxscoreString += '</table>';
+    boxscoreString += '</div>'
+    boxscoreString += '</div>'
+
 
 
     boxscoreString += '</div>'
@@ -410,10 +562,11 @@ $.ajax
 
 
 
+
     $("#boxscoreCard").append(boxscoreString)
     $("#"+boxScoreGameid+"boxscore").attr("called", "true")
 
-
+    
 
     $(".boxscorebutton").click(function() {
       $(".boxscorebutton").hide()
@@ -446,7 +599,6 @@ $.ajax
   })
   .then(function (teamStandings) {
 
-    console.log(teamStandings)
 
     var awayWinPct = 0;
     var homeWinPct = 0;
