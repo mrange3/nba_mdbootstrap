@@ -439,16 +439,20 @@ for (s = 0; s < boxscore.stats.home.players.length; s++) {
     boxscoreString += '<div class=" row  white py-0 my-0 justify-content-between px-3" >';
 
 
-    boxscoreString += '<div class="col-lg-4 col-3 px-0   d-flex ">';
+    boxscoreString += '<div class=" col px-0   d-flex justify-content-center">';
     boxscoreString += '<div class="pt-3 m-0 mobileHide">'
     boxscoreString += '<p class="py-0 m-0 font-weight-bold largeBoxScore">'+awayTeamFullName+'</p>'
     boxscoreString += '<p class="py-0 m-0" id="'+awayTeamBoxScoreID+'record">'+awayboxrecord+'</p>'
     boxscoreString += '</div>'
-    boxscoreString += '<img class="pt-3 mr-auto pl-2 boxlogos" src="images/logos/' + awayTeamBoxScoreAbv.toLowerCase() + '.png" height="75px" width="75px">'
-    boxscoreString += '<p class="pt-lg-4 pt-3 pb-0 m-0 font-weight-bold bigScore ">'+awayTotalScore+'</p>'
+    boxscoreString += '<img class="pt-3  pl-2 boxlogos" src="images/logos/' + awayTeamBoxScoreAbv.toLowerCase() + '.png" height="75px" width="75px">'
     boxscoreString += '</div>'
 
-    boxscoreString += '<div class="col-lg-4 col-6" >';
+    boxscoreString += '<div class="col-1 px-1 mx-0">'
+    boxscoreString += '<p class="pt-lg-4 pt-3 pb-0 m-0 pr-1 font-weight-bold bigScore text-right">'+awayTotalScore+'</p>'
+    boxscoreString += '</div>'
+
+
+    boxscoreString += '<div class="col-lg-3 col-6 px-0 mx-0" >';
     boxscoreString += '<table class="table boxtable">';
     boxscoreString += '<thead>';
     boxscoreString += '<tr>';
@@ -480,10 +484,12 @@ for (s = 0; s < boxscore.stats.home.players.length; s++) {
     boxscoreString += '</tbody>';
     boxscoreString += '</table>';
     boxscoreString += '</div>'
+    boxscoreString += '<div class="col-1 px-1 mx-0">'
+    boxscoreString += '<p class="pt-lg-4 pt-3 pb-0 m-0 pl-1 font-weight-bold bigScore text-left ">'+homeScoreTotal+'</p>'
+    boxscoreString += '</div>'
 
-    boxscoreString += '<div class="col-lg-4 col-3 mobileHide px-0 d-flex ">'
-    boxscoreString += '<p class="pt-lg-4 pt-3 pb-0 m-0 bigScore font-weight-bold">'+homeScoreTotal+'</p>'
-    boxscoreString += '<img class="pt-3 ml-auto pr-2 boxlogos" src="images/logos/' + homeTeamBoxScoreAbv.toLowerCase() + '.png" height="75px" width="75px">'
+    boxscoreString += '<div class="col mobileHide px-0 d-flex justify-content-center">'
+    boxscoreString += '<img class="pt-3 pr-2 boxlogos" src="images/logos/' + homeTeamBoxScoreAbv.toLowerCase() + '.png" height="75px" width="75px">'
     boxscoreString += '<div class="pt-3 m-0 mobileHide">'
     boxscoreString += '<p class="py-0 m-0 largeBoxScore font-weight-bold ">'+homeTeamFullName+'</p>'
     boxscoreString += '<p class="py-0 text-right" id="'+homeTeamBoxScoreID+'record">'+homeboxrecord+'</p>'
