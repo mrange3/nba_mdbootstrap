@@ -353,22 +353,20 @@ $.ajax
       }
 
 
-      var awayPlayerStatsString = '<tr>';
-      awayPlayerStatsString += '<th class="py-0 px-1 text-left d-inline text-nowrap">'+awayPlayerName+'<p class="d-inline" style="color: grey; font-size:12px;">'+" - " +awayPlayerPos+'</p></th>';
-      awayPlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+awayPlayerMin+'</td>'
-      awayPlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+awayPlayerFG+'</td>'
-      awayPlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+ awayPlayer3PT +'</td>'
-      awayPlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+awayPlayerFT+'</td>'
-      // awayPlayerStatsString += '<td class="py-0 px-1 text-center  text-nowrap">'+awayPlayerOffReb+'</td>'
-      // awayPlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+awayPlayerDefReb+'</td>'
-      awayPlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+awayPlayerReb+'</td>'
-      awayPlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+awayPlayerAst+'</td>'
-      awayPlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+awayPlayerStl+'</td>'
-      awayPlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+awayPlayerBlk+'</td>'
-      awayPlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+awayPlayerTO+'</td>'
-      awayPlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+awayPlayerFouls+'</td>'
-      awayPlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+awayPlayerPM+'</td>'
-      awayPlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+awayPlayerPts+'</td>'
+      var awayPlayerStatsString = '<tr class="align-middle p-0 m-0">';
+      awayPlayerStatsString += '<th class="p-0 text-left d-inline text-nowrap align-middle m-0"><p class="p-0 m-0 align-middle d-inline ">'+awayPlayerName+'<p class="p-0 m-0  align-middle d-inline " style="color: grey; font-size:12px;">'+" - " +awayPlayerPos+'</p></th>';
+      awayPlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap align-middle m-0"><p class="p-0 m-0 align-middle">'+awayPlayerMin+'</p></td>'
+      awayPlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap align-middle m-0"><p class="p-0 m-0 align-middle">'+awayPlayerFG+'</p></td>'
+      awayPlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap align-middle m-0"><p class="p-0 m-0 align-middle">'+awayPlayer3PT+'</p></td>'
+      awayPlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap align-middle m-0"><p class="p-0 m-0 align-middle">'+awayPlayerFT+'</p></td>'
+      awayPlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap align-middle m-0"><p class="p-0 m-0 align-middle">'+awayPlayerReb+'</p></td>'
+      awayPlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap align-middle m-0"><p class="p-0 m-0 align-middle">'+awayPlayerAst+'</p></td>'
+      awayPlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap align-middle m-0"><p class="p-0 m-0 align-middle">'+awayPlayerStl+'</p></td>'
+      awayPlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap align-middle m-0"><p class="p-0 m-0 align-middle">'+awayPlayerBlk+'</p></td>'
+      awayPlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap align-middle m-0"><p class="p-0 m-0 align-middle">'+awayPlayerTO+'</p></td>'
+      awayPlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap align-middle m-0"><p class="p-0 m-0 align-middle">'+awayPlayerFouls+'</p></td>'
+      awayPlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap align-middle m-0"><p class="p-0 m-0 align-middle">'+awayPlayerPM+'</p></td>'
+      awayPlayerStatsString += '<td class="py-0 pr-0 pl-1 text-center text-nowrap align-middle m-0"><p class="p-0 m-0 align-middle">'+awayPlayerPts+'</p></td>'
       awayPlayerStatsString += '</tr>';
     
       awayPlayerStatsArray = awayPlayerStatsArray + awayPlayerStatsString;
@@ -400,22 +398,20 @@ for (s = 0; s < boxscore.stats.home.players.length; s++) {
   }
 
 
-  var homePlayerStatsString = '<tr>';
-  homePlayerStatsString += '<th class="py-0 px-1 text-left text-nowrap d-inline">'+homePlayerName+'<p class="d-inline" style="color: grey; font-size:12px;">'+" - " +homePlayerPos+'</p></th>';
-  homePlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+homePlayerMin+'</td>'
-  homePlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+homePlayerFG+'</td>'
-  homePlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+ homePlayer3PT +'</td>'
-  homePlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+homePlayerFT+'</td>'
-  // homePlayerStatsString += '<td class="py-0 px-1 text-center  text-nowrap">'+homePlayerOffReb+'</td>'
-  // homePlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+homePlayerDefReb+'</td>'
-  homePlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+homePlayerReb+'</td>'
-  homePlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+homePlayerAst+'</td>'
-  homePlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+homePlayerStl+'</td>'
-  homePlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+homePlayerBlk+'</td>'
-  homePlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+homePlayerTO+'</td>'
-  homePlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+homePlayerFouls+'</td>'
-  homePlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+homePlayerPM+'</td>'
-  homePlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+homePlayerPts+'</td>'
+  var homePlayerStatsString = '<tr class="my-auto">';
+  homePlayerStatsString += '<th class="p-0 text-left d-inline text-nowrap align-middle m-0"><p class="p-0 m-0 align-middle d-inline ">'+homePlayerName+'<p class="p-0 m-0  align-middle d-inline " style="color: grey; font-size:12px;">'+" - " +homePlayerPos+'</p></th>';
+  homePlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap align-middle m-0"><p class="p-0 m-0 align-middle">'+homePlayerMin+'</p></td>'
+  homePlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap align-middle m-0"><p class="p-0 m-0 align-middle">'+homePlayerFG+'</p></td>'
+  homePlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap align-middle m-0"><p class="p-0 m-0 align-middle">'+homePlayer3PT+'</p></td>'
+  homePlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap align-middle m-0"><p class="p-0 m-0 align-middle">'+homePlayerFT+'</p></td>'
+  homePlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap align-middle m-0"><p class="p-0 m-0 align-middle">'+homePlayerReb+'</p></td>'
+  homePlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap align-middle m-0"><p class="p-0 m-0 align-middle">'+homePlayerAst+'</p></td>'
+  homePlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap align-middle m-0"><p class="p-0 m-0 align-middle">'+homePlayerStl+'</p></td>'
+  homePlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap align-middle m-0"><p class="p-0 m-0 align-middle">'+homePlayerBlk+'</p></td>'
+  homePlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap align-middle m-0"><p class="p-0 m-0 align-middle">'+homePlayerTO+'</p></td>'
+  homePlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap align-middle m-0"><p class="p-0 m-0 align-middle">'+homePlayerFouls+'</p></td>'
+  homePlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap align-middle m-0"><p class="p-0 m-0 align-middle">'+homePlayerPM+'</p></td>'
+  homePlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap align-middle m-0"><p class="p-0 m-0 align-middle">'+homePlayerPts+'</p></td>'
   homePlayerStatsString += '</tr>';
 
   homePlayerStatsArray = homePlayerStatsArray + homePlayerStatsString;
