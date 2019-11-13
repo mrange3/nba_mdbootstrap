@@ -123,6 +123,9 @@ body {
 
 }
 
+.playerBoxHeader {
+  font-size:12px;
+}
 .ui-datepicker  {
   background-color: black;
   color: white;
