@@ -355,20 +355,20 @@ $.ajax
 
       var awayPlayerStatsString = '<tr>';
       awayPlayerStatsString += '<th class="py-0 px-1 text-left d-inline text-nowrap">'+awayPlayerName+'<p class="d-inline" style="color: grey; font-size:12px;">'+" - " +awayPlayerPos+'</p></th>';
-      awayPlayerStatsString += '<td class="py-0 px-1 text-center ">'+awayPlayerMin+'</td>'
-      awayPlayerStatsString += '<td class="py-0 px-1 text-center ">'+awayPlayerFG+'</td>'
-      awayPlayerStatsString += '<td class="py-0 px-1 text-center ">'+ awayPlayer3PT +'</td>'
-      awayPlayerStatsString += '<td class="py-0 px-1 text-center ">'+awayPlayerFT+'</td>'
-      // awayPlayerStatsString += '<td class="py-0 px-1 text-center  ">'+awayPlayerOffReb+'</td>'
-      // awayPlayerStatsString += '<td class="py-0 px-1 text-center ">'+awayPlayerDefReb+'</td>'
-      awayPlayerStatsString += '<td class="py-0 px-1 text-center ">'+awayPlayerReb+'</td>'
-      awayPlayerStatsString += '<td class="py-0 px-1 text-center ">'+awayPlayerAst+'</td>'
-      awayPlayerStatsString += '<td class="py-0 px-1 text-center ">'+awayPlayerStl+'</td>'
-      awayPlayerStatsString += '<td class="py-0 px-1 text-center ">'+awayPlayerBlk+'</td>'
-      awayPlayerStatsString += '<td class="py-0 px-1 text-center ">'+awayPlayerTO+'</td>'
-      awayPlayerStatsString += '<td class="py-0 px-1 text-center ">'+awayPlayerFouls+'</td>'
-      awayPlayerStatsString += '<td class="py-0 px-1 text-center ">'+awayPlayerPM+'</td>'
-      awayPlayerStatsString += '<td class="py-0 px-1 text-center ">'+awayPlayerPts+'</td>'
+      awayPlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+awayPlayerMin+'</td>'
+      awayPlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+awayPlayerFG+'</td>'
+      awayPlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+ awayPlayer3PT +'</td>'
+      awayPlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+awayPlayerFT+'</td>'
+      // awayPlayerStatsString += '<td class="py-0 px-1 text-center  text-nowrap">'+awayPlayerOffReb+'</td>'
+      // awayPlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+awayPlayerDefReb+'</td>'
+      awayPlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+awayPlayerReb+'</td>'
+      awayPlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+awayPlayerAst+'</td>'
+      awayPlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+awayPlayerStl+'</td>'
+      awayPlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+awayPlayerBlk+'</td>'
+      awayPlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+awayPlayerTO+'</td>'
+      awayPlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+awayPlayerFouls+'</td>'
+      awayPlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+awayPlayerPM+'</td>'
+      awayPlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+awayPlayerPts+'</td>'
       awayPlayerStatsString += '</tr>';
     
       awayPlayerStatsArray = awayPlayerStatsArray + awayPlayerStatsString;
@@ -402,20 +402,20 @@ for (s = 0; s < boxscore.stats.home.players.length; s++) {
 
   var homePlayerStatsString = '<tr>';
   homePlayerStatsString += '<th class="py-0 px-1 text-left text-nowrap d-inline">'+homePlayerName+'<p class="d-inline" style="color: grey; font-size:12px;">'+" - " +homePlayerPos+'</p></th>';
-  homePlayerStatsString += '<td class="py-0 px-1 text-center ">'+homePlayerMin+'</td>'
-  homePlayerStatsString += '<td class="py-0 px-1 text-center ">'+homePlayerFG+'</td>'
-  homePlayerStatsString += '<td class="py-0 px-1 text-center ">'+ homePlayer3PT +'</td>'
-  homePlayerStatsString += '<td class="py-0 px-1 text-center ">'+homePlayerFT+'</td>'
-  // homePlayerStatsString += '<td class="py-0 px-1 text-center  ">'+homePlayerOffReb+'</td>'
-  // homePlayerStatsString += '<td class="py-0 px-1 text-center ">'+homePlayerDefReb+'</td>'
-  homePlayerStatsString += '<td class="py-0 px-1 text-center ">'+homePlayerReb+'</td>'
-  homePlayerStatsString += '<td class="py-0 px-1 text-center ">'+homePlayerAst+'</td>'
-  homePlayerStatsString += '<td class="py-0 px-1 text-center ">'+homePlayerStl+'</td>'
-  homePlayerStatsString += '<td class="py-0 px-1 text-center ">'+homePlayerBlk+'</td>'
-  homePlayerStatsString += '<td class="py-0 px-1 text-center ">'+homePlayerTO+'</td>'
-  homePlayerStatsString += '<td class="py-0 px-1 text-center ">'+homePlayerFouls+'</td>'
-  homePlayerStatsString += '<td class="py-0 px-1 text-center ">'+homePlayerPM+'</td>'
-  homePlayerStatsString += '<td class="py-0 px-1 text-center ">'+homePlayerPts+'</td>'
+  homePlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+homePlayerMin+'</td>'
+  homePlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+homePlayerFG+'</td>'
+  homePlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+ homePlayer3PT +'</td>'
+  homePlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+homePlayerFT+'</td>'
+  // homePlayerStatsString += '<td class="py-0 px-1 text-center  text-nowrap">'+homePlayerOffReb+'</td>'
+  // homePlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+homePlayerDefReb+'</td>'
+  homePlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+homePlayerReb+'</td>'
+  homePlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+homePlayerAst+'</td>'
+  homePlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+homePlayerStl+'</td>'
+  homePlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+homePlayerBlk+'</td>'
+  homePlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+homePlayerTO+'</td>'
+  homePlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+homePlayerFouls+'</td>'
+  homePlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+homePlayerPM+'</td>'
+  homePlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap">'+homePlayerPts+'</td>'
   homePlayerStatsString += '</tr>';
 
   homePlayerStatsArray = homePlayerStatsArray + homePlayerStatsString;
