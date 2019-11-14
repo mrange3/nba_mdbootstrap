@@ -33,6 +33,9 @@ body {
    box-shadow: 10px 10px 5px dimgray;
   }
  
+  /* .teamstatsData {
+    font-size:12px !important;
+  } */
 
  .card:active {
    left:10px;
@@ -44,7 +47,9 @@ body {
     background-color: lightgrey !important;
   }
  
-
+.playoffLine{
+  border-bottom-color: red !important;
+}
 
 
  .disabled {

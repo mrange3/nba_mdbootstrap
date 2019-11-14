@@ -354,7 +354,7 @@ $.ajax
 
 
       var awayPlayerStatsString = '<tr class="align-middle p-0 m-0">';
-      awayPlayerStatsString += '<th class="p-0 text-left d-inline text-nowrap align-middle m-0"><p class="p-0 m-0 align-middle d-inline ">'+awayPlayerName+'<p class="p-0 m-0  align-middle d-inline " style="color: grey; font-size:12px;">'+" - " +awayPlayerPos+'</p></th>';
+      awayPlayerStatsString += '<th class="p-0 text-left d-inline text-nowrap align-middle m-0 "><p class="p-0 m-0 align-middle d-inline ">'+awayPlayerName+'<p class="p-0 m-0  align-middle d-inline " style="color: grey; font-size:12px;">'+" - " +awayPlayerPos+'</p></th>';
       awayPlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap align-middle m-0"><p class="p-0 m-0 align-middle">'+awayPlayerMin+'</p></td>'
       awayPlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap align-middle m-0"><p class="p-0 m-0 align-middle">'+awayPlayerFG+'</p></td>'
       awayPlayerStatsString += '<td class="py-0 px-1 text-center text-nowrap align-middle m-0"><p class="p-0 m-0 align-middle">'+awayPlayer3PT+'</p></td>'

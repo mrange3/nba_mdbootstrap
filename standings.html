@@ -23,19 +23,19 @@
         <nav
             class="nav justify-content-center bg-dark navbar-expand-sm border-bottom text-white w-100 border-white nav-justified">
             <a class="nav-link text-white active ncaa" href="index.html"><i class="fas orange-text fa-basketball-ball"></i> NBA</a>
-            <a class="nav-link ncaa disabled text-white" href="#"><i class="fas text-dark fa-football-ball"></i> NFL</a>
-            <a class="nav-link ncaa disabled text-white" href="#"><i class="fas text-dark fa-baseball-ball"></i> MLB</a>
-            <a class="nav-link ncaa disabled text-white" href="#"><i class="fas text-dark fa-hockey-puck"></i> NHL</a>
+            <a class="nav-link ncaa  text-white" href="#"><i class="fas text-dark fa-football-ball"></i> NFL</a>
+            <!-- <a class="nav-link ncaa disabled text-white" href="#"><i class="fas text-dark fa-baseball-ball"></i> MLB</a>
+            <a class="nav-link ncaa disabled text-white" href="#"><i class="fas text-dark fa-hockey-puck"></i> NHL</a> -->
         </nav>
     </header>
     <header>
         <nav
-            class="navbar border-bottom border-dark w-100 navbar-expand-sm justify-content-center bg-white p-0  navbar-white">
+            class="navbar  w-100 navbar-expand-sm justify-content-center bg-white p-0  navbar-white">
 
             <div class="navbar-expand justify-content-center" id="navbarNavDropdown">
                 <ul class="navbar-nav ncaa">
                     <li class="nav-item ">
-                        <a class="nav-link text-dark" href="index.html"><small>Home</small>
+                        <a class="nav-link text-dark" href="index.html"><small>Schedule</small>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -47,7 +47,7 @@
                         <a class="nav-link  ncaa text-dark" href="draft.html"><small>Draft</small>
                         </a>
                     </li>
-                    <li class="nav-item dropdown">
+                    <!-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle class text-dark" href="#" id="navbarDropdownMenuLink"
                             role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><small>
                                 Teams
@@ -57,7 +57,7 @@
                             <a class="dropdown-item" href="#">Another action</a>
                             <a class="dropdown-item" href="#">Something else here</a>
                         </div>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </nav>
@@ -65,32 +65,37 @@
 
     <div class="container justify-content-center">
     <!--- Westen Conference Standings-->
+    <div class="row pt-2">
+        <div class="col-3 mobileHide"></div>
+        <div class="col ">
+            <h2 class="text-center p-2 border-bottom border-top pageHead border-dark"><strong>2019-2020 NBA Standings</strong></h2>
+        </div>
+        <div class="col-3 mobileHide"></div>
+    </div>
+    <div class="container justify-content-center ">
+        <div class="row justify-content-center ">
+                <p class="conference mb-0 mt-2 text-center" style="color: crimson;">Western Conference
+                    </p>
 
-        <div class="row mb-4">
-            <div class="col">
-                <div class="card mt-4 w-100 rounded border border-dark card-background">
-                        <p class="conference mb-0 text-center" style="color: crimson;">Western Conference
-                            </p>
-                        <table class="table table-sm  table-hover mb-0 p-1 ">
-                                <thead class="border-bottom border-dark">
+                <div class=" rounded-0 mt-0 w-100 white  px-3 col-12">
+                        <table class="table white table-hover mx-0 mb-3  table-striped">
+                                <thead class="border-bottom border-dark pb-0">
                                     <tr>
-                                        <th scope="col"></th>
-                                        <th scope="col"></th>
-                                        <th scope="col " class="text-center" style="font-size: 12px;">W</th>
-                                        <th scope="col " class="text-center" style="font-size: 12px;">L</th>
-                                        <th scope="col " class="text-center" style="font-size: 12px;">Win %</th>
-                                        <th scope="col " class="text-center" style="font-size: 12px;">GB</th>
-                                        <th scope="col " class="text-center" style="font-size: 12px;">PPG</th>
-                                        <th scope="col " class="text-center" style="font-size: 12px;">APG</th>
-                                        <th scope="col " class="text-center" style="font-size: 12px;">oPPG</th>
-                                        <th scope="col " class="text-center" style="font-size: 12px;">BPG</th>
-                                        <th scope="col " class="text-center" style="font-size: 12px;">SPG</th>
-                                        <th scope="col " class="text-center" style="font-size: 12px;">DRB</th>
-                                        <th scope="col " class="text-center" style="font-size: 12px;">ORB</th>
-                                        <th scope="col " class="text-center" style="font-size: 12px;">TRB</th>
-                                        <th scope="col" class="text-center " style="font-size: 12px;">Diff</th>
+                                        <th scope="col" class="text-center pb-0 px-1"></th>
+                                        <th scope="col" class="text-center pb-0 px-1"></th>
+                                        <th scope="col " class="text-center pb-0 px-1" style="font-size: 12px;">W</th>
+                                        <th scope="col " class="text-center pb-0 px-1" style="font-size: 12px;">L</th>
+                                        <th scope="col " class="text-center mobileHide pb-0 px-1" style="font-size: 12px;">Win %</th>
+                                        <th scope="col " class="text-center mobileHide pb-0 px-1" style="font-size: 12px;">GB</th>
+                                        <th scope="col " class="text-center mobileHide pb-0 px-1" style="font-size: 12px;">PPG</th>
+                                        <th scope="col " class="text-center mobileHide pb-0 px-1" style="font-size: 12px;">oPPG</th>
+                                        <!-- <th scope="col " class="text-center mobileHide" style="font-size: 12px;">APG</th>
+                                        <th scope="col " class="text-center mobileHide" style="font-size: 12px;">BPG</th>
+                                        <th scope="col " class="text-center mobileHide" style="font-size: 12px;">SPG</th>
+                                        <th scope="col " class="text-center mobileHide" style="font-size: 12px;">RPG</th> -->
+                                        <th scope="col" class="text-center pb-0 px-1" style="font-size: 12px;">Diff</th>
                                     </tr>
-                                <tbody>
+                                <tbody class="table-borderless">
                                     <tr id="wSTeam1">
                                     </tr>
                                     <tr id="wSTeam2">
@@ -105,7 +110,7 @@
                                     </tr>
                                     <tr id="wSTeam7">
                                     </tr>
-                                    <tr class="border-bottom border-danger" id="wSTeam8">
+                                    <tr class="border-bottom border-red playoffLine" id="wSTeam8">
                                     </tr>
                                     <tr id="wSTeam9">
                                     </tr>
@@ -126,29 +131,28 @@
         
                 </div>
 <!-- Eastern Conference Standings -->
-<div class="card mt-4 w-100 rounded border border-dark card-background">
-        <p class="conference mb-0 text-center" style="color: navy;">Eastern Conference
-            </p>
-        <table class="table table-sm  table-hover mb-0 p-1 ">
-                <thead class="border-bottom border-dark">
+<p class="conference mt-2 mb-0 text-center" style="color: navy;">Eastern Conference
+    </p>
+
+<div class=" rounded-0 mt-2 mb-4 w-100 px-3  white">
+        <table class="table  table-hover  white  table-striped">
+                <thead class="border-bottom border-dark pb-0">
                     <tr>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                        <th scope="col " class="text-center" style="font-size: 12px;">W</th>
-                        <th scope="col " class="text-center" style="font-size: 12px;">L</th>
-                        <th scope="col " class="text-center" style="font-size: 12px;">Win %</th>
-                        <th scope="col " class="text-center" style="font-size: 12px;">GB</th>
-                        <th scope="col " class="text-center" style="font-size: 12px;">PPG</th>
-                        <th scope="col " class="text-center" style="font-size: 12px;">APG</th>
-                        <th scope="col " class="text-center" style="font-size: 12px;">oPPG</th>
-                        <th scope="col " class="text-center" style="font-size: 12px;">BPG</th>
-                        <th scope="col " class="text-center" style="font-size: 12px;">SPG</th>
-                        <th scope="col " class="text-center" style="font-size: 12px;">DRB</th>
-                        <th scope="col " class="text-center" style="font-size: 12px;">ORB</th>
-                        <th scope="col " class="text-center" style="font-size: 12px;">TRB</th>
-                        <th scope="col" class="text-center " style="font-size: 12px;">Diff</th>
+                        <th scope="col" class="text-center pb-0"></th>
+                        <th scope="col" class="text-center pb-0"></th>
+                        <th scope="col " class="text-center pb-0" style="font-size: 12px;">W</th>
+                        <th scope="col " class="text-center pb-0" style="font-size: 12px;">L</th>
+                        <th scope="col " class="text-center mobileHide pb-0" style="font-size: 12px;">Win %</th>
+                        <th scope="col " class="text-center mobileHide pb-0" style="font-size: 12px;">GB</th>
+                        <th scope="col " class="text-center mobileHide pb-0" style="font-size: 12px;">PPG</th>
+                        <th scope="col " class="text-center mobileHide pb-0" style="font-size: 12px;">oPPG</th>
+                        <!-- <th scope="col " class="text-center mobileHide" style="font-size: 12px;">APG</th>
+                        <th scope="col " class="text-center mobileHide" style="font-size: 12px;">BPG</th>
+                        <th scope="col " class="text-center mobileHide" style="font-size: 12px;">SPG</th>
+                        <th scope="col " class="text-center mobileHide" style="font-size: 12px;">RPG</th> -->
+                        <th scope="col" class="text-center pb-0" style="font-size: 12px;">Diff</th>
                     </tr>
-                <tbody>
+                <tbody class="table-borderless">
                     <tr id="eSTeam1">
                     </tr>
                     <tr id="eSTeam2">
@@ -163,7 +167,7 @@
                     </tr>
                     <tr id="eSTeam7">
                     </tr>
-                    <tr class="border-bottom border-danger" id="eSTeam8">
+                    <tr class="border-bottom border-danger playoffLine" id="eSTeam8">
                     </tr>
                     <tr id="eSTeam9">
                     </tr>
@@ -184,7 +188,6 @@
 
 </div>
 
-            </div>
 </div>
 </div>
     <!-- JQuery -->
@@ -200,8 +203,6 @@
         src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.3/js/mdb.min.js"></script>
     <!-- API Key -->
     <script type='text/javascript' src='config.js'></script>
-    <!-- Schedule Javascript -->
-    <script src="javascript.js"></script>
     <!-- Standings Javascript -->
     <script src="ministandings.js"></script>
 
