@@ -156,9 +156,9 @@ $.ajax
          var hLogo = hTeam.toLowerCase();
 
           var htmlString = '<div class="col-4 col-lg-4 scoreCard  mb-1  px-0 py-0">';
-          htmlString += '<div  class="card  toBoxcscore disabled justify-content-center p-0  rounded-0 text-dark m-1" time="'+scoreStatus+'" id='+gameID+' >';
+          htmlString += '<div  class="card  toBoxcscore disabled justify-content-center p-0 border border-dark rounded-0 text-dark m-1" time="'+scoreStatus+'" id='+gameID+' >';
           htmlString += '<div class="m-1 m-lg-2">'
-          htmlString += '<table class="table table-borderless table-sm w-85 m-0 white innerTable"  id="'+aTeam + hTeam+"table"+'"  >';
+          htmlString += '<table class="table table-borderless border border-dark table-sm w-85 m-0 white innerTable"  id="'+aTeam + hTeam+"table"+'"  >';
           htmlString += '<thead class="table-borderless">';
           htmlString += '<tr>';
           htmlString += '<th class="table-borderless text-left scoreboard-header py-0 pr-0 pl-1" id='+aTeam + hTeam+"clock"+' style=" font-size: 11px;">' + scoreStatus + '</th>';
@@ -168,7 +168,7 @@ $.ajax
           htmlString += '</thead>';
           htmlString += '<tbody>';
           htmlString += '<tr>';
-          htmlString += '<th scope="row" class="table-borderless scoreboard align-middle text-left pt-0 pb-0 pb-lg-1 pr-0 pl-1" id='+aTeamID+"name"+' style="font-size: 13px;" ><img class="scoreLogo" src="images/logos/' + aLogo + '.png" height="24px" width="24px"></th>'
+          htmlString += '<th scope="row" class="table-borderless scoreboard align-middle text-left pt-0 pb-0 pb-lg-1 pr-0 pl-1 " id='+aTeamID+"name"+' style="font-size: 13px;" ><img class="scoreLogo" src="images/logos/' + aLogo + '.png" height="24px" width="24px"></th>'
           htmlString += '<td hidden class="table-borderless p-0 align-middle teamRecord text-center" style=" font-size: 12px;"></td>';
           htmlString += '<td class="table-borderless text-right scoreboard align-middle pt-0 pb-0 pb-lg-1   pr-1 pl-0" id="'+aTeam+'score"  style=" font-size: 13px;"><strong>' + aScore + '</strong></td>';
           htmlString += '</tr>';
@@ -420,7 +420,7 @@ for (s = 0; s < boxscore.stats.home.players.length; s++) {
 // //////////////
 
 
-    var boxscoreString = '<div called="false" class=" container-fluid justify-content-center white boxscorebutton  text-dark " id='+boxScoreGameid+"boxscore"+'>'
+    var boxscoreString = '<div called="false" class=" container-fluid justify-content-center white boxscorebutton border border-dark text-dark " id='+boxScoreGameid+"boxscore"+'>'
 
     boxscoreString += '<div class=" row  white pb-0 pt-1 m-0 justify-content-center" >';
     boxscoreString += '<div class="col-5 px-0" >';
