@@ -155,7 +155,7 @@ $.ajax
          var aLogo = aTeam.toLowerCase();
          var hLogo = hTeam.toLowerCase();
 
-          var htmlString = '<div class="col-4 col-lg-3 scoreCard px-lg-1 py-lg-1 px-0 py-0">';
+          var htmlString = '<div class="col-4 col-lg-4 scoreCard px-lg-1 py-lg-1 px-0 py-0">';
           htmlString += '<div  class="card  toBoxcscore disabled justify-content-center p-0  rounded-0 text-dark m-1" time="'+scoreStatus+'" id='+gameID+' >';
           htmlString += '<div class="m-1 m-lg-2">'
           htmlString += '<table class="table table-borderless table-sm w-85 m-0 white innerTable"  id="'+aTeam + hTeam+"table"+'"  >';
@@ -207,7 +207,7 @@ $.ajax
         $("#tomorrow").attr("disabled", false);
   }
   for (c = 0; c < games.references.teamReferences.length; c++) {
-    $("#"+games.references.teamReferences[c].id+"name").append(" " +games.references.teamReferences[c].city)
+    $("#"+games.references.teamReferences[c].id+"name").append(" " +games.references.teamReferences[c].abbreviation)
   };
   
   $( ".toBoxcscore" ).click(function() {
@@ -423,26 +423,26 @@ for (s = 0; s < boxscore.stats.home.players.length; s++) {
     var boxscoreString = '<div called="false" class=" container-fluid justify-content-center white boxscorebutton  text-dark " id='+boxScoreGameid+"boxscore"+'>'
 
     boxscoreString += '<div class=" row  white pb-0 pt-1 m-0 justify-content-center" >';
-    boxscoreString += '<div class="col-4 px-0" >';
-    boxscoreString += '<p class="text-center mobileHide">'+todaySchedule+'</p>'
+    boxscoreString += '<div class="col-5 px-0" >';
+    boxscoreString += '<p class="text-center mobileHide" style="font-size: 14px;">'+todaySchedule+'</p>'
     boxscoreString += '</div>'
-    boxscoreString += '<div class="col-4 " >';
+    boxscoreString += '<div class="col-2 " >';
     boxscoreString += '<p class="boxtable pb-1 pt-0 my-0 text-danger text-center " id='+boxScoreGameid+ "time"+'>'+boxtimeRemaining+'</p>'
     boxscoreString += '</div>'
-    boxscoreString += '<div class="col-4 px-0" >';
-    boxscoreString += '<p class="text-center mobileHide">'+venue+ " - " + venueCity+'</p>'
+    boxscoreString += '<div class="col-5 px-0" >';
+    boxscoreString += '<p class="text-center mobileHide" style="font-size: 14px;">'+venue+ " - " + venueCity+'</p>'
     boxscoreString += '</div>'
     boxscoreString += '</div>'
 
     boxscoreString += '<div class=" row  white py-0 my-0 justify-content-between px-3" >';
 
 
-    boxscoreString += '<div class=" col px-0   d-flex justify-content-center">';
+    boxscoreString += '<div class=" col px-0   d-flex ">';
     boxscoreString += '<div class="pt-3 m-0 mobileHide">'
     boxscoreString += '<p class="py-0 m-0 font-weight-bold largeBoxScore">'+awayTeamFullName+'</p>'
     boxscoreString += '<p class="py-0 m-0" id="'+awayTeamBoxScoreID+'record">'+awayboxrecord+'</p>'
     boxscoreString += '</div>'
-    boxscoreString += '<img class="pt-3  pl-2 boxlogos" src="images/logos/' + awayTeamBoxScoreAbv.toLowerCase() + '.png" height="75px" width="75px">'
+    boxscoreString += '<img class="pt-3  pr-1 boxlogos" src="images/logos/' + awayTeamBoxScoreAbv.toLowerCase() + '.png" height="76px" width="76px">'
     boxscoreString += '</div>'
 
     boxscoreString += '<div class="col-1 mobileHide px-1 mx-0">'
@@ -486,10 +486,10 @@ for (s = 0; s < boxscore.stats.home.players.length; s++) {
     boxscoreString += '<p class="pt-lg-4 pt-3 pb-0 m-0 pl-1 font-weight-bold bigScore text-left ">'+homeScoreTotal+'</p>'
     boxscoreString += '</div>'
 
-    boxscoreString += '<div class="col mobileHide px-0 d-flex justify-content-center">'
-    boxscoreString += '<img class="pt-3 pr-2 boxlogos" src="images/logos/' + homeTeamBoxScoreAbv.toLowerCase() + '.png" height="75px" width="75px">'
-    boxscoreString += '<div class="pt-3 m-0 mobileHide">'
-    boxscoreString += '<p class="py-0 m-0 largeBoxScore font-weight-bold ">'+homeTeamFullName+'</p>'
+    boxscoreString += '<div class="col  px-0 d-flex justify-content-right ">'
+    boxscoreString += '<img class="pt-3 pl-1 boxlogos" src="images/logos/' + homeTeamBoxScoreAbv.toLowerCase() + '.png" height="76px" width="76px">'
+    boxscoreString += '<div class="pt-3 m-0 mobileHide justify-content-right ">'
+    boxscoreString += '<p class="py-0 m-0 largeBoxScore font-weight-bold text-right justify-content-right">'+homeTeamFullName+'</p>'
     boxscoreString += '<p class="py-0 text-right" id="'+homeTeamBoxScoreID+'record">'+homeboxrecord+'</p>'
     boxscoreString += '</div>'
     boxscoreString += '</div>'
@@ -646,13 +646,13 @@ $.ajax
 
     var combinedPCt = awayWinPct+homeWinPct;
 
-    if (combinedPCt >= 1.3) {
+    if (combinedPCt >= 1.2 && awayWinPct > .6 && homeWinPct > .6) {
       $("#"+gameID).addClass("cyan")
-    } else if (combinedPCt < 1.3 && combinedPCt >= 1.1) {
+    } else if (combinedPCt >= .95 && awayWinPct > .4 && homeWinPct > .4) {
       $("#"+gameID).addClass("green")
-    }else if (combinedPCt < 1.1 && combinedPCt >= .9) {
+    }else if (combinedPCt >= .85 && awayWinPct > .25 && homeWinPct > .25) {
       $("#"+gameID).addClass("yellow")
-    }else if (combinedPCt < .9 && combinedPCt >= .7) {
+    }else if ( combinedPCt >= .7) {
       $("#"+gameID).addClass("orange")
     }else if (combinedPCt < .7 ) {
       $("#"+gameID).addClass("red")
