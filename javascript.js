@@ -261,6 +261,9 @@ $("#tomorrow").click(function() {
 datepicker
 // Datepicker Calendar///////////
 
+$("#calButton").click(function() {
+  $('#datepicker').focus()
+})
 
 $("#datepicker").datepicker({
   onSelect: function(date, inst) {

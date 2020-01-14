@@ -42,6 +42,19 @@ body {
    box-shadow: none !important;
   }
 
+  input:focus {
+
+    
+  }
+  .fakeButton:active {
+    left:7px;
+    top:7px;
+    box-shadow: none !important;
+   }
+
+
+ 
+
   .card:disabled {
     left:7px;
     top:7px;
