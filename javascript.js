@@ -148,8 +148,8 @@ $.ajax
           scoreStatus.toString()
 
           if (aScore == null) {
-            aScore = "";
-            hScore = "";
+            aScore = "-";
+            hScore = "-";
           }
 
          var aLogo = aTeam.toLowerCase();
@@ -170,12 +170,12 @@ $.ajax
           htmlString += '<tr>';
           htmlString += '<th scope="row" class="table-borderless scoreboard align-middle text-left pt-0 pb-0 pb-lg-1 pr-0 pl-1 " id='+aTeamID+"name"+' style="font-size: 13px;" ><img class="scoreLogo" src="images/logos/' + aLogo + '.png" height="24px" width="24px"></th>'
           htmlString += '<td hidden class="table-borderless p-0 align-middle teamRecord text-center" style=" font-size: 12px;"></td>';
-          htmlString += '<td class="table-borderless text-right scoreboard align-middle pt-0 pb-0 pb-lg-1   pr-1 pl-0" id="'+aTeam+'score"  style=" font-size: 13px;"><strong>' + aScore + '</strong></td>';
+          htmlString += '<td class="table-borderless text-right scoreboard align-middle pt-0 pb-0 pb-lg-1   pr-2 pr-lg-3 pl-0" id="'+aTeam+'score"  style=" font-size: 13px;"><strong>' + aScore + '</strong></td>';
           htmlString += '</tr>';
           htmlString += '<tr>';
           htmlString += '<th scope="row" class="align-middle text-left scoreboard pt-0 pb-0 pb-lg-1 dateFont pr-0 pl-1" id='+hTeamID+"name"+' style="font-size: 13px;"><img class="scoreLogo" src="images/logos/' + hLogo + '.png" height="24px" width="24px"></th>'
           htmlString += '<td hidden class="align-middle text-center p-0 teamRecord "  style=" font-size: 12px;"></td>';
-          htmlString += '<td class="  align-middle scoreboard  text-right  pt-0 pb-0 pb-lg-1 dateFont pr-1" id="'+hTeam+'score" style=" font-size: 13px;"><strong>' + hScore + '</strong></td>';
+          htmlString += '<td class="  align-middle scoreboard  text-right  pt-0 pb-0 pb-lg-1 dateFont pr-2 pr-lg-3" id="'+hTeam+'score" style=" font-size: 13px;"><strong>' + hScore + '</strong></td>';
           htmlString += '</tr>';  
           htmlString += '</tbody>';      
           htmlString += '</table>';
