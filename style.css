@@ -19,11 +19,15 @@ body {
   font-size: 18px;
 }
 
+
+
 .boxtable {
   font-size: 16px;
 }
 
-
+.mainDate {
+  font-size: 18px;
+}
 
 
 
@@ -44,7 +48,7 @@ body {
 
   input:focus {
 
-    
+
   }
   .fakeButton:active {
     left:7px;
@@ -237,6 +241,10 @@ display: none;
     height: 16px;
     width: 16px;
   }
+  .mainDate {
+    font-size: 14px;
+  }
+  
 
   .boxlogos {
     height: 45px;
