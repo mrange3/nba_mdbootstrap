@@ -242,7 +242,7 @@ display: none;
     width: 16px;
   }
   .mainDate {
-    font-size: 12px;
+    font-size: 13px;
   }
   
 
@@ -285,7 +285,7 @@ display: none;
   }
   .card {
     cursor:pointer;
-     box-shadow: 4px 4px 2px grey;
+     box-shadow: 5px 5px 3px grey;
     }
     .largeBoxScore {
       font-size: 12px;
