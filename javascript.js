@@ -148,8 +148,8 @@ $.ajax
           scoreStatus.toString()
 
           if (aScore == null) {
-            aScore = "-";
-            hScore = "-";
+            aScore = "0";
+            hScore = "0";
           }
 
          var aLogo = aTeam.toLowerCase();
