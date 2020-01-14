@@ -156,7 +156,7 @@ $.ajax
          var hLogo = hTeam.toLowerCase();
 
           var htmlString = '<div class="col-4 col-lg-4 scoreCard  mb-1  px-0 py-0">';
-          htmlString += '<div  class="card  toBoxcscore disabled justify-content-center p-0 border border-dark rounded-0 text-dark m-1" time="'+scoreStatus+'" id='+gameID+' >';
+          htmlString += '<div  class="card  toBoxcscore disabled justify-content-center p-0  rounded-0 text-dark m-1" time="'+scoreStatus+'" id='+gameID+' >';
           htmlString += '<div class="m-1 m-lg-2">'
           htmlString += '<table class="table table-borderless border border-dark table-sm w-85 m-0 white innerTable"  id="'+aTeam + hTeam+"table"+'"  >';
           htmlString += '<thead class="table-borderless">';
