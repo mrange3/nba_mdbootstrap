@@ -36,8 +36,8 @@ $.ajax
 
             if (standings.teams[j].playoffRank.conferenceName == "Western") {
                 var standingsStringW = '<td class="align-middle text-center py-0 px-1 m-0 font-weight-bold" style="font-size: 12px;">'+ playoffSeed + '</td>'
-                standingsStringW += '<th class="align-middle text-left py-0 pl-0 pr-1 text-nowrap boxtable" style="font-size: 18px;"><img class=" smallLogo" src="images/logos/' + tLogo + '.png" >'+ " " +standings.teams[j].team.abbreviation+ '</th>'
-                standingsStringW += '<th class="align-middle text-center py-0 px-1 teamstatsData" style="font-size: 18px;">' + standings.teams[j].stats.standings.wins + "-" + standings.teams[j].stats.standings.losses +'</th>'
+                standingsStringW += '<th class="align-middle text-left py-0 pl-0 pr-1 text-nowrap boxtable dateFont" style="font-size: 18px;"><img class=" smallLogo" src="images/logos/' + tLogo + '.png" >'+ " " +standings.teams[j].team.abbreviation+ '</th>'
+                standingsStringW += '<th class="align-middle text-center py-0 px-1 teamstatsData dateFont" style="font-size: 18px;">' + standings.teams[j].stats.standings.wins + "-" + standings.teams[j].stats.standings.losses +'</th>'
                 // standingsStringW += '<td class="align-middle text-center py-0 px-1  teamstatsData">' + " " + standings.teams[j].conferenceRank.gamesBack + '</td>'
                 // standingsStringW += '<td class="align-middle text-right p-0 mobileHide teamstatsData">' + standings.teams[j].stats.offense.ptsPerGame + '</td>'
                 // standingsStringW += '<td class="align-middle text-right p-0 mobileHide teamstatsData">' + standings.teams[j].stats.defense.ptsAgainstPerGame + '</td>'
@@ -50,8 +50,8 @@ $.ajax
                 $("#wSTeam"+standings.teams[j].playoffRank.rank).append(standingsStringW)
             } else {
                 var standingsStringE = '<td class="align-middle text-center py-0 px-1 m-0 font-weight-bold" style="font-size: 12px;">'+ playoffSeed + '</td>'
-                standingsStringE += '<th class="align-middle text-left py-0 pl-0 pr-1 text-nowrap boxteam boxtable" style="font-size: 18px;"><img class="p-0 m-0 smallLogo" src="images/logos/' + tLogo + '.png" >'+ " " +standings.teams[j].team.abbreviation  + '</th>'
-                standingsStringE += '<th class="align-middle text-center py-0 px-1 teamstatsData" style="font-size: 18px;">' + standings.teams[j].stats.standings.wins + "-" + standings.teams[j].stats.standings.losses +'</th>'
+                standingsStringE += '<th class="align-middle text-left py-0 pl-0 pr-1 text-nowrap boxteam boxtable dateFont" style="font-size: 18px;"><img class="p-0 m-0 smallLogo" src="images/logos/' + tLogo + '.png" >'+ " " +standings.teams[j].team.abbreviation  + '</th>'
+                standingsStringE += '<th class="align-middle text-center py-0 px-1 teamstatsData dateFont" style="font-size: 18px;">' + standings.teams[j].stats.standings.wins + "-" + standings.teams[j].stats.standings.losses +'</th>'
                 // standingsStringE += '<td class="align-middle text-center py-0 px-1 teamstatsData">' + standings.teams[j].conferenceRank.gamesBack +'</td>'
                 // standingsStringE += '<td class="align-middle text-right p-0 mobileHide teamstatsData">' + standings.teams[j].stats.standings.winPct.toFixed(3).replace(/^0+/, '') + '</td>'
                 // standingsStringE += '<td class="align-middle text-right p-0  teamstatsData" >' + standings.teams[j].conferenceRank.gamesBack + '</td>'

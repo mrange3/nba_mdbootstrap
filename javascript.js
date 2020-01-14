@@ -155,15 +155,15 @@ $.ajax
          var aLogo = aTeam.toLowerCase();
          var hLogo = hTeam.toLowerCase();
 
-          var htmlString = '<div class="col-4 col-lg-4 scoreCard  mb-1  px-0 py-0">';
-          htmlString += '<div  class="card  toBoxcscore disabled justify-content-center p-0  rounded-0 text-dark m-1" time="'+scoreStatus+'" id='+gameID+' >';
+          var htmlString = '<div class="col-4 col-lg-4 scoreCard  mb-lg-1  mb-0 px-0 px-lg-1 pb-1">';
+          htmlString += '<div  class="card  toBoxcscore disabled justify-content-center p-0  rounded-0 text-dark m-1 dateFont" time="'+scoreStatus+'" id='+gameID+' >';
           htmlString += '<div class="m-1 m-lg-2">'
           htmlString += '<table class="table table-borderless border border-dark table-sm w-85 m-0 white innerTable"  id="'+aTeam + hTeam+"table"+'"  >';
           htmlString += '<thead class="table-borderless">';
           htmlString += '<tr>';
-          htmlString += '<th class="table-borderless text-left scoreboard-header py-0 pr-0 pl-1" id='+aTeam + hTeam+"clock"+' style=" font-size: 11px;">' + scoreStatus + '</th>';
+          htmlString += '<th class="table-borderless text-left scoreboard-header py-0 pr-0 pl-1 dateFont" id='+aTeam + hTeam+"clock"+' style=" font-size: 11px;">' + scoreStatus + '</th>';
           htmlString += '<th class="table-borderless  scoreboard-header p-0" ></th>';
-          htmlString += '<th class="table-borderless scoreboard-header text-right text-dark p-0" style=" font-size: 11px;" id='+'gs'+aTeam + hTeam+'></th>';
+          htmlString += '<th class="table-borderless scoreboard-header text-right text-dark p-0 dateFont" style=" font-size: 11px;" id='+'gs'+aTeam + hTeam+'></th>';
           htmlString += '</tr>';
           htmlString += '</thead>';
           htmlString += '<tbody>';
@@ -173,9 +173,9 @@ $.ajax
           htmlString += '<td class="table-borderless text-right scoreboard align-middle pt-0 pb-0 pb-lg-1   pr-1 pl-0" id="'+aTeam+'score"  style=" font-size: 13px;"><strong>' + aScore + '</strong></td>';
           htmlString += '</tr>';
           htmlString += '<tr>';
-          htmlString += '<th scope="row" class="align-middle text-left scoreboard pt-0 pb-0 pb-lg-1  pr-0 pl-1" id='+hTeamID+"name"+' style="font-size: 13px;"><img class="scoreLogo" src="images/logos/' + hLogo + '.png" height="24px" width="24px"></th>'
+          htmlString += '<th scope="row" class="align-middle text-left scoreboard pt-0 pb-0 pb-lg-1 dateFont pr-0 pl-1" id='+hTeamID+"name"+' style="font-size: 13px;"><img class="scoreLogo" src="images/logos/' + hLogo + '.png" height="24px" width="24px"></th>'
           htmlString += '<td hidden class="align-middle text-center p-0 teamRecord "  style=" font-size: 12px;"></td>';
-          htmlString += '<td class="  align-middle scoreboard  text-right  pt-0 pb-0 pb-lg-1  pr-1" id="'+hTeam+'score" style=" font-size: 13px;"><strong>' + hScore + '</strong></td>';
+          htmlString += '<td class="  align-middle scoreboard  text-right  pt-0 pb-0 pb-lg-1 dateFont pr-1" id="'+hTeam+'score" style=" font-size: 13px;"><strong>' + hScore + '</strong></td>';
           htmlString += '</tr>';  
           htmlString += '</tbody>';      
           htmlString += '</table>';
@@ -258,8 +258,10 @@ $("#tomorrow").click(function() {
 
   schedule(dateChange)
 });
-
+datepicker
 // Datepicker Calendar///////////
+
+
 $("#datepicker").datepicker({
   onSelect: function(date, inst) {
     $(".boxscorebutton").hide()
