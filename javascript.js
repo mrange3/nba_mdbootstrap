@@ -264,6 +264,10 @@ datepicker
 $("#calButton").click(function() {
   $('#datepicker').focus()
 })
+$("#calButton2").click(function() {
+  $('#datepicker').focus()
+})
+
 
 $("#datepicker").datepicker({
   onSelect: function(date, inst) {
