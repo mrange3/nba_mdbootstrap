@@ -46,14 +46,10 @@ body {
    box-shadow: none !important;
   }
 
-  input:focus {
-
-
-  }
   .fakeButton:active {
     left:7px;
     top:7px;
-    box-shadow: none !important;
+    box-shadow: none;
    }
 
 
@@ -247,8 +243,8 @@ display: none;
   
 
   .boxlogos {
-    height: 45px;
-    width:45px;
+    height: 54px;
+    width: 54px;
   }
 
   .pageHead {

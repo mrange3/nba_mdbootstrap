@@ -333,6 +333,26 @@ $.ajax
     var venue = boxscore.game.venue.name
     var venueCity = boxscore.references.venueReferences[0].city
 
+    
+    var awayLogo = awayTeamBoxScoreAbv.toLowerCase();
+    var homeLogo = homeTeamBoxScoreAbv.toLowerCase();
+
+
+    if (awayTeamBoxScoreAbv == "OKL") {
+      awayTeamBoxScoreAbv = "OKC"
+    }
+    if (awayTeamBoxScoreAbv == "BRO") {
+      awayTeamBoxScoreAbv = "BKN"
+    }
+    if (homeTeamBoxScoreAbv == "OKL") {
+      homeTeamBoxScoreAbv = "OKC"
+    }
+    if (homeTeamBoxScoreAbv == "BRO") {
+      homeTeamBoxScoreAbv = "BKN"
+    }
+
+
+
     var awayScores =[0,0,0,0];
     var homeScores = [0,0,0,0];
 
@@ -466,7 +486,7 @@ for (s = 0; s < boxscore.stats.home.players.length; s++) {
     boxscoreString += '<p class="py-0 m-0 font-weight-bold largeBoxScore">'+awayTeamFullName+'</p>'
     boxscoreString += '<p class="py-0 m-0" id="'+awayTeamBoxScoreID+'record">'+awayboxrecord+'</p>'
     boxscoreString += '</div>'
-    boxscoreString += '<img class="pt-3  pr-1 boxlogos" src="images/logos/' + awayTeamBoxScoreAbv.toLowerCase() + '.png" height="76px" width="76px">'
+    boxscoreString += '<img class="pt-3  pr-1  boxlogos" src="images/logos/' + awayLogo + '.png" height="76px" width="76px">'
     boxscoreString += '</div>'
 
     boxscoreString += '<div class="col-1 mobileHide px-1 mx-0">'
@@ -511,7 +531,7 @@ for (s = 0; s < boxscore.stats.home.players.length; s++) {
     boxscoreString += '</div>'
 
     boxscoreString += '<div class="col  px-0 d-flex justify-content-right ">'
-    boxscoreString += '<img class="pt-3 pl-1 boxlogos" src="images/logos/' + homeTeamBoxScoreAbv.toLowerCase() + '.png" height="76px" width="76px">'
+    boxscoreString += '<img class="pt-3 pl-1 boxlogos" src="images/logos/' + homeLogo+ '.png" height="76px" width="76px">'
     boxscoreString += '<div class="pt-3 m-0 mobileHide justify-content-right ">'
     boxscoreString += '<p class="py-0 m-0 largeBoxScore font-weight-bold text-right justify-content-right">'+homeTeamFullName+'</p>'
     boxscoreString += '<p class="py-0 text-right" id="'+homeTeamBoxScoreID+'record">'+homeboxrecord+'</p>'
@@ -524,7 +544,7 @@ for (s = 0; s < boxscore.stats.home.players.length; s++) {
 
     boxscoreString += '<div class=" row py-2 my-0 white justify-content-center" >';
     boxscoreString += '<div class=" col-12 white table-responsive px-3">';
-    boxscoreString += '<p class="py-0 m-0 font-weight-bold "><img class="" src="images/logos/' + awayTeamBoxScoreAbv.toLowerCase() + '.png" height="24px" width="24px">'+" " +awayTeamFullName+" | Away"+'</p>';
+    boxscoreString += '<p class="py-0 m-0 font-weight-bold "><img class="" src="images/logos/' + awayLogo + '.png" height="24px" width="24px">'+" " +awayTeamFullName+" | Away"+'</p>';
     boxscoreString += '<table class="table table-responsive-sm table-borderless table-sm  playerStatsBox table-hover table-striped" >';
     boxscoreString += '<thead >';
     boxscoreString += '<tr >';
@@ -555,7 +575,7 @@ for (s = 0; s < boxscore.stats.home.players.length; s++) {
 
     boxscoreString += '<div class=" row py-2 my-0 white justify-content-center" >';
     boxscoreString += '<div class=" col-12 white table-responsive px-3">';
-    boxscoreString += '<p class="py-0 m-0 font-weight-bold "><img class="" src="images/logos/' + homeTeamBoxScoreAbv.toLowerCase() + '.png" height="24px" width="24px">'+" " +homeTeamFullName+" | Home"+'</p>';
+    boxscoreString += '<p class="py-0 m-0 font-weight-bold "><img class="" src="images/logos/' + homeLogo + '.png" height="24px" width="24px">'+" " +homeTeamFullName+" | Home"+'</p>';
     boxscoreString += '<table class="table table-sm table-borderless playerStatsBox table-hover table-striped" >';
     boxscoreString += '<thead >';
     boxscoreString += '<tr >';
