@@ -282,12 +282,13 @@ display: none;
 
   .fakeButton {
     cursor:pointer;
-    box-shadow: 5px 5px 3px grey !important;
+    box-shadow: 4px 4px 3px grey !important;
+
 
   }
   .card {
     cursor:pointer;
-     box-shadow: 5px 5px 3px grey;
+    box-shadow: 4px 4px 3px grey !important;
     }
 
 
