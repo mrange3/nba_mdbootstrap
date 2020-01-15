@@ -85,7 +85,7 @@ $.ajax
 
     if (games.references == null) {
       $("#schedule-holder").addClass("justify-content-center")
-      $("#schedule-holder").html("<div class='justify-content-center text-center mt-5' style='font-size: 36px;'>No Games</div>")
+      $("#schedule-holder").html("<div class='justify-content-center ncaa border-top border-bottom border-dark text-center mt-5' style='font-size: 36px;'>No Games Scheduled</div>")
       console.log("no games")
     } else {
     $("#schedule-holder").removeClass("justify-content-center")
@@ -162,7 +162,7 @@ $.ajax
          var aLogo = aTeam.toLowerCase();
          var hLogo = hTeam.toLowerCase();
 
-          var htmlString = '<div class="col-4 col-lg-4 scoreCard  mb-lg-1  mb-0 px-0 px-lg-1 pb-1">';
+          var htmlString = '<div class="col-4 scoreCard mt-0 pt-0  px-0 px-lg-1 ">';
           htmlString += '<div  class="card  toBoxcscore disabled justify-content-center p-0  rounded-0 text-dark m-1 dateFont" time="'+scoreStatus+'" id='+gameID+' >';
           htmlString += '<div class="m-1 m-lg-2">'
           htmlString += '<table class="table table-borderless border border-dark table-sm w-85 m-0 white innerTable"  id="'+aTeam + hTeam+"table"+'"  >';
@@ -226,6 +226,7 @@ if (teamAbv == "BRO") {
   
   $( ".toBoxcscore" ).click(function() {
     $(".toBoxcscore").hide()
+
 
     var gamebtn = $(this).attr('id')
     var boxstatus = $(this).attr("time")
