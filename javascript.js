@@ -83,6 +83,13 @@ $.ajax
   })
   .then(function (games) {
 
+    if (games.references == null) {
+      $("#schedule-holder").addClass("justify-content-center")
+      $("#schedule-holder").html("<div class='justify-content-center text-center mt-5' style='font-size: 36px;'>No Games</div>")
+      console.log("no games")
+    } else {
+    $("#schedule-holder").removeClass("justify-content-center")
+
         for (i = 0; i < games.games.length; i++) {
 
           var dateFromAPI = games.games[i].schedule.startTime;
@@ -207,7 +214,14 @@ $.ajax
         $("#tomorrow").attr("disabled", false);
   }
   for (c = 0; c < games.references.teamReferences.length; c++) {
-    $("#"+games.references.teamReferences[c].id+"name").append(" " +games.references.teamReferences[c].abbreviation)
+var teamAbv = games.references.teamReferences[c].abbreviation
+if (teamAbv == "OKL") {
+  teamAbv = "OKC"
+}
+if (teamAbv == "BRO") {
+  teamAbv = "BKN"
+}
+    $("#"+games.references.teamReferences[c].id+"name").append(" " +teamAbv)
   };
   
   $( ".toBoxcscore" ).click(function() {
@@ -229,7 +243,7 @@ var homeboxrecord = $(this).attr("homeRecord")
   
 
 
-})
+}})
 
 // ///////////Boxscore/////////////////////////////////
 
