@@ -16,7 +16,7 @@ body {
 
 .conference {
   font-family: 'Ncaa';
-  font-size: 18px;
+  font-size: 16px;
 }
 
 
@@ -26,7 +26,7 @@ body {
 }
 
 .mainDate {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 
@@ -94,7 +94,7 @@ body {
 }
 
 .gameKey {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
 }
 
@@ -108,7 +108,7 @@ body {
 }
 
 .playerFont  {
-  font-size: 18px;
+  font-size: 16px;
 }
 .deskHide {
   display: none;
@@ -119,18 +119,18 @@ body {
 }
 
 .scoreboard {
-  font-size:18px !important;
+  font-size:16px !important;
 }
 .scoreboard-header {
   font-size: 16px !important;
 }
 .scoreLogo {
-  height: 30px;
-  width: 30px;
+  height: 28px;
+  width: 28px;
 }
 .smallLogo {
-  height: 30px;
-  width: 30px;
+  height: 28px;
+  width: 28px;
 }
 
 
