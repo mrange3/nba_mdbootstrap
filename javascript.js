@@ -278,10 +278,7 @@ $("#tomorrow").click(function() {
 datepicker
 // Datepicker Calendar///////////
 
-$("#calButton").click(function() {
-  $('#datepicker').focus()
-})
-$("#calButton2").click(function() {
+$("#dateButton").click(function() {
   $('#datepicker').focus()
 })
 
@@ -707,3 +704,84 @@ $.ajax
 
   });
 }
+// /////////////// click stats
+
+$("#westernConference").click(function(){
+  if ($("#westernConference").attr("status") == "unclicked") {
+    $(".westernStats").show();
+    $(".easternStats").hide();
+    $(".clickHide2").show()
+    $(".clickHide").hide()
+
+    if ($("#easternConference").attr("status") == "clicked") {
+      $(".easternStats").hide();
+      $("#easternConference").parent().parent().removeClass("col-10")
+      $("#easternConference").parent().parent().addClass("col-2")  
+      $("#easternConference").attr("status", "unclicked")
+
+    }
+
+  $(".boxscorebutton").hide();
+  $(".toBoxcscore").hide();
+  $("#schedule-holder").parent().hide();
+  $("#westernConference").parent().parent().removeClass("col-2")
+  $("#westernConference").parent().parent().addClass("col-10")
+  $("#westernConference").attr("status", "clicked")
+
+  } else if ($("#westernConference").attr("status") == "clicked") {
+    $(".westernStats").hide();
+    // $(".easternStats").hide();
+
+    $("#westernConference").parent().parent().removeClass("col-10")
+    $("#westernConference").parent().parent().addClass("col-2")
+
+    $(".clickHide").show()
+    $("#schedule-holder").parent().fadeIn(3000);
+    $(".toBoxcscore").show();
+
+    $("#westernConference").attr("status", "unclicked")
+
+  }
+})
+
+$("#easternConference").click(function(){
+  
+  if ($("#easternConference").attr("status") == "unclicked") {
+    $(".westernStats").hide();
+    $(".easternStats").show();
+    $(".clickHide").show()
+
+    $(".clickHide2").hide()
+
+    if ($("#westernConference").attr("status") == "clicked") {
+      $(".westernStats").hide();
+
+      $("#westernConference").parent().parent().removeClass("col-10")
+      $("#westernConference").parent().parent().addClass("col-2") 
+      $("#wasternConference").attr("status", "unclicked")
+ 
+    }
+
+  $(".boxscorebutton").hide();
+  $(".toBoxcscore").hide();
+  $("#schedule-holder").parent().hide();
+  $("#easternConference").parent().parent().removeClass("col-2")
+  $("#easternConference").parent().parent().addClass("col-10")
+  $("#easternConference").attr("status", "clicked")
+
+  } else if ($("#easternConference").attr("status") == "clicked") {
+    // $(".westernStats").hide();
+    $(".easternStats").hide();
+
+    $("#easternConference").parent().parent().removeClass("col-10")
+    $("#easternConference").parent().parent().addClass("col-2")
+
+    $(".clickHide2").show()
+    $("#schedule-holder").parent().fadeIn(3000);
+    $(".toBoxcscore").show();
+
+    $("#easternConference").attr("status", "unclicked")
+
+
+  }
+})

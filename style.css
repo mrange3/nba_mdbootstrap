@@ -75,8 +75,9 @@ body {
  .boxscorebutton {
   cursor:pointer;
 
-  box-shadow: 10px 10px 5px grey;
- }
+  box-shadow: 7px 7px 3px dimgray;  
+}
+ 
  .dateFont {
    text-transform: lowercase;
    text-transform: capitalize;
