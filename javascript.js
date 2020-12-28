@@ -64,7 +64,7 @@ function schedule(today, gamebtn) {
   today = String(yyyy) + String(mm) + String(dd);
   today = parseInt(today)
 
-  var gameUrl ="http://data.nba.net/10s/prod/v2/"+today+"/scoreboard.json"
+  var gameUrl ="https://data.nba.net/10s/prod/v2/"+today+"/scoreboard.json"
 
 
 
