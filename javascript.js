@@ -96,8 +96,8 @@ function schedule(today, gamebtn) {
           var aLoss = Number(games.games[i].vTeam.loss);
           // var hTeamID = games.games[i].schedule.homeTeam.id;
           // var aTeamID = games.games[i].schedule.awayTeam.id;
-          var aScore = games.games[i].hTeam.score
-          var hScore = games.games[i].vTeam.score
+          var aScore = games.games[i].vTeam.score
+          var hScore = games.games[i].hTeam.score
           var status = "TBD"
           var quarter = 0
           // var intermission = games.games[i].score.currentIntermission;
