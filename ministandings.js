@@ -30,9 +30,9 @@ $.ajax
 
 
                 var standingsStringW = '<td class="dateFont mainDate align-middle text-center py-0 px-1 m-0 font-weight-bold" style="font-size: 12px; ">'+ wplayoffSeed + '</td>'
-                standingsStringW += '<th class="dateFont mainDate align-middle clickHide text-left py-0 pl-0 pr-1 text-nowrap boxtable " style="font-size: 20px; font-family: Ncaa;"><img class=" smallLogo" src="images/logos/' + wtLogo + '.png" >'+ " " +wteamStandingsAbv+ '</th>'
+                standingsStringW += '<th class="dateFont mainDate align-middle clickHide text-left py-0 pl-0 pr-1 text-nowrap boxtable " style="font-size: 20px; font-family: Changa One;"><img class=" smallLogo" src="images/logos/' + wtLogo + '.png" >'+ " " +wteamStandingsAbv+ '</th>'
                 // standingsStringW += '<th  class="dateFont   align-middle text-left py-0 pl-0 pr-1 text-nowrap boxtable dateFont westernStats collapse" style="font-size: 16px;"><img class=" smallLogo" src="images/logos/' + tLogo + '.png" >'+ " " +standings.teams[j].team.city+ " " + standings.teams[j].team.name+'</th>'
-                standingsStringW += '<th class="dateFont mainDate align-middle text-center py-0 px-1 teamstatsData dateFont font-weight-bold " style="font-size: 20px;">' + wteamWins + "-" + wteamLoss +'</th>'
+                standingsStringW += '<th class="dateFont mainDate align-middle text-center py-0 px-1 teamstatsData dateFont font-weight-bold " style="font-size: 20px; font-family: Changa One;">' + wteamWins + "-" + wteamLoss +'</th>'
                 // standingsStringW += '<td class="dateFont mainDate align-middle text-center py-0 px-1  teamstatsData collapse westernStats"  aria-labelledby="headingOne" data-parent="#westernConference">' + " " + standings.teams[j].conferenceRank.gamesBack + '</td>'
                 // standingsStringW += '<td class="dateFont mainDate align-middle text-center py-0 px-1 mobileHide teamstatsData collapse westernStats"  aria-labelledby="headingOne" data-parent="#westernConference">' + standings.teams[j].stats.offense.ptsPerGame + '</td>'
                 // standingsStringW += '<td class="dateFont mainDate align-middle text-center py-0 px-1 mobileHide teamstatsData collapse westernStats"  aria-labelledby="headingOne" data-parent="#westernConference">' + standings.teams[j].stats.defense.ptsAgainstPerGame + '</td>'
@@ -66,9 +66,9 @@ $.ajax
 
 
                 var standingsStringE = '<td class="dateFont mainDate align-middle text-center py-0 px-1 m-0 font-weight-bold" style="font-size: 12px; ">'+ eplayoffSeed + '</td>'
-                standingsStringE += '<th class="dateFont mainDate align-middle clickHide text-left py-0 pl-0 pr-1 text-nowrap boxtable font-weight-bold " style="font-size: 20px; font-family: Ncaa;"><img class=" smallLogo" src="images/logos/' + etLogo + '.png" >'+ " " +eteamStandingsAbv+ '</th>'
+                standingsStringE += '<th class="dateFont mainDate align-middle clickHide text-left py-0 pl-0 pr-1 text-nowrap boxtable f " style="font-size: 20px; font-family: Changa One;"><img class=" smallLogo" src="images/logos/' + etLogo + '.png" >'+ " " +eteamStandingsAbv+ '</th>'
                 // standingsStringW += '<th  class="dateFont   align-middle text-left py-0 pl-0 pr-1 text-nowrap boxtable dateFont westernStats collapse" style="font-size: 16px;"><img class=" smallLogo" src="images/logos/' + tLogo + '.png" >'+ " " +standings.teams[j].team.city+ " " + standings.teams[j].team.name+'</th>'
-                standingsStringE += '<th class="dateFont mainDate align-middle text-center py-0 px-1 teamstatsData dateFont font-weight-bold" style="font-size: 20px;">' + eteamWins + "-" + eteamLoss +'</th>'
+                standingsStringE += '<th class="dateFont mainDate align-middle text-center py-0 px-1 teamstatsData dateFont " style="font-size: 20px; font-family: Changa One;">' + eteamWins + "-" + eteamLoss +'</th>'
                 // standingsStringW += '<td class="dateFont mainDate align-middle text-center py-0 px-1  teamstatsData collapse westernStats"  aria-labelledby="headingOne" data-parent="#westernConference">' + " " + standings.teams[j].conferenceRank.gamesBack + '</td>'
                 // standingsStringW += '<td class="dateFont mainDate align-middle text-center py-0 px-1 mobileHide teamstatsData collapse westernStats"  aria-labelledby="headingOne" data-parent="#westernConference">' + standings.teams[j].stats.offense.ptsPerGame + '</td>'
                 // standingsStringW += '<td class="dateFont mainDate align-middle text-center py-0 px-1 mobileHide teamstatsData collapse westernStats"  aria-labelledby="headingOne" data-parent="#westernConference">' + standings.teams[j].stats.defense.ptsAgainstPerGame + '</td>'

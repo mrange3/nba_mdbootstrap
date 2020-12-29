@@ -14,8 +14,14 @@ body {
   src: url('fonts/ncaa.otf') format('opentype');
 }
 
+@font-face {
+  font-family: 'Changa One';
+  src: url('fonts/ChangaOne-Regular.ttf') format('opentype');
+}
+
+
 .conference {
-  font-family: 'Ncaa';
+  font-family: 'Changa One';
   font-size: 22px;
 }
 
@@ -84,13 +90,13 @@ body {
    font-family:Arial, Helvetica, sans-serif;
  }
 .ncaa {
-  font-family: 'Ncaa';
+  font-family: 'Changa One';
   font-size: 16px;
 }
 
 .title {
-  font-family: 'Ncaa';
-  font-size: 24px;
+  font-family: 'Changa One';
+  font-size: 28px;
 }
 
 .gameKey {
