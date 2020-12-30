@@ -16,7 +16,7 @@ const monthNames = ["January", "February", "March", "April", "May", "June",
 const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday",
   "Thursday", "Friday", "Saturday"];
 
-todaySchedule = dayNames[day] + ", " + monthNames[mm - 1] + " " + dd + ", " + yyyy
+todaySchedule =  monthNames[mm - 1] + " " + dd + ", " + yyyy
 $("#datepicker").val(todaySchedule)
 
 function myTime(time) {
@@ -50,7 +50,7 @@ function schedule(today, gamebtn) {
   const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday",
     "Thursday", "Friday", "Saturday"];
 
-  todaySchedule = dayNames[day] + ", " + monthNames[mm - 1] + " " + dd + ", " + yyyy
+  todaySchedule =  monthNames[mm - 1] + " " + dd + ", " + yyyy
 
 
   if (dd < 10) {
@@ -148,12 +148,11 @@ function schedule(today, gamebtn) {
           var hLogo = hTeam.toLowerCase();
 
           var htmlString = '<div  class="col-6 col-lg-4 scoreCard disabled toBoxcscore mt-0 pt-0 mb-1 mb-lg-2 px-0 px-lg-1 ">';
-          htmlString += '<div  class="card  toBoxcscore disabled justify-content-center p-0  rounded-0 text-dark m-1 dateFont" time="' + scoreStatus + '" id=' + gameID + ' >';
-          htmlString += '<div class="m-1 m-lg-2">'
-          htmlString += '<table class="table table-borderless border border-dark table-sm w-85 m-0 white innerTable"  id="' + aTeam + hTeam + "table" + '"  >';
-          htmlString += '<thead class="table-borderless">';
+          htmlString += '<div   class="  toBoxcscore  justify-content-center py-0 rounded text-dark mx-0 px-1 my-0 dateFont border-1" style="background: rgba(255, 255, 255, .3);" time="' + scoreStatus + '" id=' + gameID + ' >';
+          htmlString += '<table class="table table-borderless  table-sm w-85 my-0 py-0 px-2 mx-1  innerTable"  id="' + aTeam + hTeam + "table" + '"  >';
+          htmlString += '<thead class="table-borderless p-0 m-0">';
           htmlString += '<tr>';
-          htmlString += '<th class="table-borderless text-left scoreboard-header py-0 pr-0 pl-2 dateFont" id=' + aTeam + hTeam + "clock" + ' style=" font-size: 11px;">' + scoreStatus + '</th>';
+          htmlString += '<th class="table-borderless text-left scoreboard-header py-0 pr-0 pl-2 dateFont" id=' + aTeam + hTeam + "clock" + ' style=" font-size: 8px;">' + scoreStatus + '</th>';
           htmlString += '<th class="table-borderless  scoreboard-header p-0" ></th>';
           htmlString += '<th class="table-borderless scoreboard-header text-right text-dark p-0 dateFont" style=" font-size: 11px;" id=' + 'gs' + aTeam + hTeam + '></th>';
           htmlString += '</tr>';
@@ -161,17 +160,16 @@ function schedule(today, gamebtn) {
           htmlString += '<tbody>';
           htmlString += '<tr>';
           htmlString += '<th scope="row" class="table-borderless scoreboard align-middle text-left pt-0 pb-0 pb-lg-1 pr-0 pl-2 " id=' +  + "name" + ' style="font-size: 13px;" ><img class="scoreLogo" src="images/logos/' + aLogo + '.png" height="24px" width="24px">&nbsp;'+aTeam+'&nbsp;('+aWins+ '-' +aLoss+')</th>'
-          htmlString += '<td class="table-borderless p-0 align-middle teamRecord text-center" style=" font-size: 12px;"></td>';
+          htmlString += '<td class="table-borderless p-0 align-middle teamRecord text-center" style=" font-size: 14px;"></td>';
           htmlString += '<td class="table-borderless text-right scoreboard align-middle pt-0 pb-0 pb-lg-1   pr-2 pr-lg-3 pl-0" id="' + aTeam + 'score"  style=" font-size: 13px;"><strong>' + aScore + '</strong></td>';
           htmlString += '</tr>';
           htmlString += '<tr>';
           htmlString += '<th scope="row" class="align-middle text-left scoreboard pt-0 pb-0 pb-lg-1 dateFont pr-0 pl-2" id=' +  + "name" + ' style="font-size: 13px;"><img class="scoreLogo" src="images/logos/' + hLogo + '.png" height="24px" width="24px">&nbsp;'+hTeam+'&nbsp;('+hWins+'-'+hLoss+')</th>'
-          htmlString += '<td class="align-middle text-center p-0 teamRecord "  style=" font-size: 12px;"></td>';
+          htmlString += '<td class="align-middle text-center p-0 teamRecord "  style=" font-size: 14px;"></td>';
           htmlString += '<td class="  align-middle scoreboard  text-right  pt-0 pb-0 pb-lg-1 dateFont pr-2 pr-lg-3" id="' + hTeam + 'score" style=" font-size: 13px;"><strong>' + hScore + '</strong></td>';
           htmlString += '</tr>';
           htmlString += '</tbody>';
           htmlString += '</table>';
-          htmlString += '</div>';
           htmlString += '</div>';
           htmlString += '</div>';
 
@@ -180,15 +178,15 @@ function schedule(today, gamebtn) {
           $("#schedule-holder").append(htmlString);
 
           if (combinedPCt >= 1.2) {
-            $("#" + gameID).addClass("cyan")
+            $("#" + gameID).addClass("border border-info")
           } else if (combinedPCt >= .95) {
-            $("#" + gameID).addClass("green")
+            $("#" + gameID).addClass("border border-success")
           } else if (combinedPCt >= .85 ) {
-            $("#" + gameID).addClass("yellow")
+            $("#" + gameID).addClass("border border-dark")
           } else if (combinedPCt >= .7) {
-            $("#" + gameID).addClass("orange")
+            $("#" + gameID).addClass("border border-warning")
           } else if (combinedPCt < .7) {
-            $("#" + gameID).addClass("red")
+            $("#" + gameID).addClass("border border-danger")
           }
           
     // console.log(combinedPCt);
@@ -286,8 +284,7 @@ $("#datepicker").datepicker({
     schedule(pickerDate)
   },
   defaultDate: null,
-  dateFormat: "DD, MM d, yy ",
-  autoSize: true,
+  dateFormat: "MM d, yy ",
   altField: "#alternate",
   altFormat: "@",
   showAnim: "slideDown",

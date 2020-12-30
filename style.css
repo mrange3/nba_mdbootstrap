@@ -25,16 +25,20 @@ body {
   font-size: 22px;
 }
 
-
+.border-1 {
+  border-width:5px !important;
+}
 
 .boxtable {
   font-size: 16px;
 }
 
 .mainDate {
-  font-size: 16px;
+  font-size: 18px !important;
 }
-
+.border-gray {
+  border-color: gray !important;
+}
 
 
 .card {
@@ -68,9 +72,9 @@ body {
    }
  
 
-  .innerTable:hover {
+  /* .innerTable:hover {
     background-color: lightgrey !important;
-  }
+  } */
  
 .playoffLine{
   border-bottom-color: red !important;
@@ -83,15 +87,22 @@ body {
 
   box-shadow: 7px 7px 3px dimgray;  
 }
- 
+ .mainDate {
+  text-transform: lowercase;
+  text-transform: capitalize;
+
+  font-family:'Changa One';
+  font-size: 16px;
+
+ }
  .dateFont {
    text-transform: lowercase;
    text-transform: capitalize;
-   font-family:Arial, Helvetica, sans-serif;
+   font-family:'Changa One';
  }
 .ncaa {
   font-family: 'Changa One';
-  font-size: 16px;
+  /* font-size: 12px; */
 }
 
 .title {
@@ -100,7 +111,7 @@ body {
 }
 
 .gameKey {
-  font-size: 16px;
+  font-size: 12px;
   font-weight: bold;
 }
 
@@ -149,11 +160,12 @@ body {
 }
 
 .ui-datepicker-header  {
-  /* background-image: url("images/retina_wood.png"); */
+  background-image: url("images/retina_wood.png");
   color: black;
   border: none;
   border-bottom: solid;
-  background-color: white;
+  font-family: 'Changa One';
+
 
 }
 .bigBorder {
@@ -163,7 +175,7 @@ body {
   font-size:12px;
 }
 .ui-datepicker  {
-  background-color: black;
+  background-color: gray;
   color: white;
 }
 
@@ -178,6 +190,8 @@ body {
 .ui-datepicker table {
   background-image: url("images/retina_wood.png");
   color: black;
+  font-family: 'Changa One';
+
 }
 
 
@@ -196,13 +210,13 @@ body {
 }
 
 .ui-datepicker .ui-state-default {
-  border-color: white;
+  border-color: gray;
   background-color: white ;
 }
 
 .ui-datepicker .ui-state-hover {
-  background-color: lightcyan ;
-  border-color: black;
+  background-color: lightgray ;
+  border-color: gray;
 
 }
 
