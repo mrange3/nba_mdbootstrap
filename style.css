@@ -150,6 +150,12 @@ body {
   width: 30px;
 }
 
+.border-orange {
+  border-color: darkorange !important;
+}
+.border-yellow {
+  border-color: gold !important;
+}
 
 .draftText {
   font-size: 20px;
@@ -259,10 +265,9 @@ display: none;
     width: 16px;
   }
   .mainDate {
-    font-size: 16px;
+    font-size: 12px !important;
   }
   
-
   .boxlogos {
     height: 54px;
     width: 54px;

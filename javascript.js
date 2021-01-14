@@ -158,7 +158,7 @@ function schedule(today, gamebtn) {
           var aLogo = aTeam.toLowerCase();
           var hLogo = hTeam.toLowerCase();
 
-          var htmlString = '<div  class="col-6 col-lg-4 scoreCard disabled toBoxcscore mt-0 pt-0 mb-1 mb-lg-2 px-0 px-lg-1 ">';
+          var htmlString = '<div  class="col-6 col-lg-4 scoreCard disabled toBoxcscore mt-0 pt- pb-1 mb-1 mb-lg-2 px-1 px-lg-1 ">';
           htmlString += '<div   class="  toBoxcscore  justify-content-center py-0 rounded text-dark mx-0 px-1 my-0 dateFont border-1" style="background: rgba(255, 255, 255, .5);" time="' + scoreStatus + '" id=' + gameID + ' >';
           htmlString += '<table class="table table-borderless  table-sm w-85 my-0 py-0 px-2 mx-1  innerTable"  id="' + aTeam + hTeam + "table" + '"  >';
           htmlString += '<thead class="table-borderless p-0 m-0">';
@@ -192,9 +192,9 @@ function schedule(today, gamebtn) {
           } else if (combinedPCt >= .95) {
             $("#" + gameID).addClass("border border-success")
           } else if (combinedPCt >= .85 ) {
-            $("#" + gameID).addClass("border border-dark")
+            $("#" + gameID).addClass("border border-yellow")
           } else if (combinedPCt >= .7) {
-            $("#" + gameID).addClass("border border-warning")
+            $("#" + gameID).addClass("border border-orange")
           } else if (combinedPCt < .7) {
             $("#" + gameID).addClass("border border-danger")
           }
