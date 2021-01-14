@@ -102,6 +102,13 @@ function schedule(today, gamebtn) {
           var quarter = 0
           // var intermission = games.games[i].score.currentIntermission;
           var gameID = games.games[i].gameId;
+          var natBroadcast = games.games[i].watch.broadcast.broadcasters.national
+
+          if (natBroadcast.length == 0) {
+            natBroadcast = "";
+          } else {
+            natBroadcast = natBroadcast[0].shortName;
+          }
           // var timeRemaining = (myTime(games.games[i].score.currentQuarterSecondsRemaining));
 
 
@@ -148,13 +155,13 @@ function schedule(today, gamebtn) {
           var hLogo = hTeam.toLowerCase();
 
           var htmlString = '<div  class="col-6 col-lg-4 scoreCard disabled toBoxcscore mt-0 pt-0 mb-1 mb-lg-2 px-0 px-lg-1 ">';
-          htmlString += '<div   class="  toBoxcscore  justify-content-center py-0 rounded text-dark mx-0 px-1 my-0 dateFont border-1" style="background: rgba(255, 255, 255, .3);" time="' + scoreStatus + '" id=' + gameID + ' >';
+          htmlString += '<div   class="  toBoxcscore  justify-content-center py-0 rounded text-dark mx-0 px-1 my-0 dateFont border-1" style="background: rgba(255, 255, 255, .5);" time="' + scoreStatus + '" id=' + gameID + ' >';
           htmlString += '<table class="table table-borderless  table-sm w-85 my-0 py-0 px-2 mx-1  innerTable"  id="' + aTeam + hTeam + "table" + '"  >';
           htmlString += '<thead class="table-borderless p-0 m-0">';
           htmlString += '<tr>';
           htmlString += '<th class="table-borderless text-left scoreboard-header py-0 pr-0 pl-2 dateFont" id=' + aTeam + hTeam + "clock" + ' style=" font-size: 8px;">' + scoreStatus + '</th>';
           htmlString += '<th class="table-borderless  scoreboard-header p-0" ></th>';
-          htmlString += '<th class="table-borderless scoreboard-header text-right text-dark p-0 dateFont" style=" font-size: 11px;" id=' + 'gs' + aTeam + hTeam + '></th>';
+          htmlString += '<th class="table-borderless scoreboard-header text-right py-0 pr-2 text-danger dateFont" style=" font-size: 11px;" id=' + 'gs' + aTeam + hTeam + '>'+natBroadcast+'</th>';
           htmlString += '</tr>';
           htmlString += '</thead>';
           htmlString += '<tbody>';
@@ -174,7 +181,6 @@ function schedule(today, gamebtn) {
           htmlString += '</div>';
 
           var combinedPCt =  (hWins/(hLoss+hWins)) + aWins/(aLoss+aWins) ;
-          console.log(combinedPCt)
           $("#schedule-holder").append(htmlString);
 
           if (combinedPCt >= 1.2) {
