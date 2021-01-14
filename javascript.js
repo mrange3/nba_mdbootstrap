@@ -109,6 +109,10 @@ function schedule(today, gamebtn) {
           } else {
             natBroadcast = natBroadcast[0].shortName;
           }
+
+          if (natBroadcast == "TNTOT") {
+            natBroadcast = "TNT"
+          }
           // var timeRemaining = (myTime(games.games[i].score.currentQuarterSecondsRemaining));
 
 
@@ -234,7 +238,7 @@ function schedule(today, gamebtn) {
 
 
           if ($("#" + gamebtn).attr("called") == "true") {
-            $("#" + gamebtn + "boxscore").fadeIn(1000)
+            $("#" + gamebtn + "boxscore")
           } else {
             boxScoreFunction(gamebtn, boxstatus, awayboxrecord, homeboxrecord, todaySchedule)
           };
@@ -246,7 +250,7 @@ function schedule(today, gamebtn) {
     })
 
   // ///////////Boxscore/////////////////////////////////
-  $("#schedule-holder").fadeIn(1500);
+  $("#schedule-holder");
 
 
 
